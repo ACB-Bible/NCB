@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head id="-ncbHead">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Computerized Bible</title>
+
+    <base id="id-ncbBase">
+    <link id="test" async href="CSS/main-noMin.css" rel="stylesheet" type="text/css">
+
+    <script>
+        //var ncbDev = false;
+        var ncbDev = true;
+        var mainPath = '';
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            if (ncbDev) { mainPath = "./" } else { mainPath = '' };
+            document.getElementsById('test').href = mainPath;
+        })
+    </script>
+
+</head>
+<body>
+    <h1 class="cs-ncbTitle">New Computerized Bible</h1>
+</body>
+</html>
