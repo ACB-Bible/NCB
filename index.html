@@ -3,25 +3,32 @@
 <head id="-ncbHead">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Computerized Bible</title>
+    <title>New Christian Bible</title>
 
     <base id="id-ncbBase">
-    <link id="test" async href="CSS/main-noMin.css" rel="stylesheet" type="text/css">
 
     <script>
         var ncbDev = false;
-        //var ncbDev = true;
+        //ncbDev = true;
         var mainPath = '';
 
         document.addEventListener("DOMContentLoaded", () => {
 
-            if (ncbDev) { mainPath = "./" } else { mainPath = 'https://github.com/ACB-Bible/NCB/' };
-            //document.getElementById('test').href = mainPath;
+            if (ncbDev) { mainPath = "./" } else { mainPath = 'https://acbible.com/' };
+            document.getElementById('id-ncbBase').href = mainPath;
         })
+
     </script>
+<link async href="CSS/test.css" rel="stylesheet" type="text/css">
+
+<!--<base href="./">
+<link async href="CSS/main-noMin.css" rel="stylesheet" type="text/css">
+<script id="id-acbVar" src="JS/variables-noMin.js" type="text/javascript"></script>
+<script src="JS/main-noMin.js" type="text/javascript" async></script>
+<script src="JS/lateload-noMin.js" type="text/javascript" defer></script>-->
 
 </head>
 <body>
-    <h1 class="cs-ncbTitle">New Computerized Bible</h1>
+    <h1 class="cs-ncbTitle">New Christian Bible</h1>
 </body>
 </html>
