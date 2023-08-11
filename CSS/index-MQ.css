@@ -1,0 +1,66 @@
+@media (max-height: 730px) {
+
+    html {
+        font-size: 90%;
+    }
+
+    .cs-ncbMenuImg {
+        left: 7.6%;
+    }
+
+    .cs-ncbTitle {
+        left: 15%;
+        top: -.1em;
+        width: 50%;
+        font-size: 1.6rem;
+    }
+
+    .cs-ncbMainText {
+        font-size: 1.1rem;
+        padding-top: 5%;
+        padding-bottom: 17%;
+        left: 7%;
+    }
+
+    .cs-ncbFirstNumber {
+        margin-top: .07em;
+    }
+
+    .cs-ncbNumber {
+        font-size: .93rem;
+    }
+}
+
+@media (max-width: 770px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .cs-ncbSelectContainer {
+        display: none;
+    }
+
+    .cs-ncbTitle {
+        width: 60%;
+        left: 3%;
+    }
+
+    .cs-ncbWebLink {
+        display: none;
+    }
+
+    .cs-ncbMainText {
+        left: 0;
+        width: 90%;
+        border-radius: 0;
+        padding: 5%;
+        padding-top: 15%;
+        margin-bottom: 5%;
+    }
+
+    .cs-ncbMenu1 { left: 2%; }
+    .cs-ncbMenu2 { left: 12%; }
+    .cs-ncbMenu3 { left: 20%; }
+    .cs-ncbMenu4 { left: 25%; }
+}
