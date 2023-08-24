@@ -6,7 +6,8 @@ BibleVersions:
     ar      Abreviation
     id      VersionID
     vn      VersionName
-*/[
+*/
+[
     {
         "ar": "ASV",
         "id": 2,
@@ -26,6 +27,11 @@ BibleVersions:
         "ar": "KJV",
         "id": 5,
         "vn": "King James Version"
+    },
+    {
+        "ar": "TWF",
+        "id": 1,
+        "vn": "Twenty-First Century Bible"
     },
     {
         "ar": "NWB",

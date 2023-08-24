@@ -1,0 +1,125 @@
+.cs-ncbSelectContainer {
+    display: block;
+    position: fixed;
+    top: 11%;
+    right: .5%;
+    width: 20.5%;
+    height: 88%;
+    overflow: hidden;
+    background-color: #cbcaca;
+}
+
+.cs-ncbPanelLbl {
+    position: relative;
+    top: 10%;
+    display: block;
+    background-color: #025c8d;
+    background-image: linear-gradient(#00a3fa, #010154);
+    color: white;
+    width: 74.5%;
+    margin: auto;
+    padding: .5em;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 99%;
+    font-size: 1.1rem;
+}
+.cs-ncbPanelLbl1 {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.cs-ncbPanelLbl2 { top: 12%; }
+.cs-ncbPanelLbl3 { top: 13%; }
+
+.cs-ncbPanelP1,
+.cs-ncbPanelP2 {
+    display: block;
+    position: relative;
+    top: 11%;
+    height: 55%;
+    width: 70%;
+    margin: auto;
+    padding: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    line-height: 1.6em;
+    text-align: justify;
+    word-break: keep-all;
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: #dfdcdc;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.cs-ncbPanelP1::-webkit-scrollbar { display: none; }
+.cs-ncbPanelP2 { display: none; }
+.cs-ncbSidePanelSelect {
+    display: block;
+    position: relative;
+    width: 90%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    margin-bottom: 6%;
+    padding: .1em;
+    padding-left: .5em;
+    padding-right: .5em;
+    background-color: #b8afaf;
+    color: white;
+    text-align: center;
+}
+.cs-ncbSidePanelStorage {
+    background-color: #fafad1;
+    color: #504c4c;
+    border-radius: 6px;
+    text-align: left;
+    text-align: justify;
+    word-break: keep-all;
+    font-size: .8rem;
+    line-height: 1em;
+    cursor: default;
+    padding: .5em;
+}
+.cs-ncbSidePanelVersion { text-align: left; top: -8%; }
+.cs-ncbSidePanelTheme { text-align: left; top: -4%; }
+
+.cs-ncbMoveVersion { display: inline; position: relative; left: 12%; width: 99%;}
+.cs-ncbMoveTheme { position: relative; left: 12%;}
+.cs-ncbSelector {
+    display: none;
+    position: fixed;
+    left: 82.25%;
+    top: 41.7%;
+    height: 30%;
+    width: 14%;
+    background-color: white;
+    color: #504c4c;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    z-index: 1;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.cs-ncbSelector::-webkit-scrollbar { display: none; }
+
+.cs-ncbThemeSelector { top: 47.9%; height: 6.5%;}
+
+.cs-ncbVersion {
+    padding: .7em;
+    padding-left: .8em;
+    font-size: .90rem;
+    border-bottom: 1px solid #dfdcdc;
+}
+
+.cs-ncbTheme {
+    padding: .3em;
+    padding-left: .8rem;
+    border-bottom: 1px solid #dfdcdc;
+}
+

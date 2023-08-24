@@ -8,19 +8,49 @@ function ncbSpanHover(id) {
     };
 };
 
+function ncbOpenVersion() {
+
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+
+    if (openID) {
+        ncbClose();
+    } else {
+        ncbClose();
+        document.getElementById('id-ncbChangeVersion').style.display = "block";
+        document.getElementById('id-ncbVersionPointer').textContent = '▲';
+        openID = true;
+    };
+};
 function ncbChangeVersion() {
+
+    var id = this.event.target.id;
+    
+    document.getElementById('id-ncbVersionText').textContent = document.getElementById(id).dataset.version;
+    document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
+
+    ncbClose();
 
 };
 
+function ncbOpenBook() {
+
+};
 function ncbChangeBook() {
 
 };
 
+function ncbOpenChapter() {
+
+};
 function ncbChangeChapter() {
 
 };
 
-function ncbChangeVerse() {
+function ncbOpenVerse() {
+
+};
+function ncbSelectVerse() {
 
 };
 
