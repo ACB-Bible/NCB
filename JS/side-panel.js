@@ -69,6 +69,8 @@ async function ncbApplyTheme(id) {
             document.getElementById('id-ncbPanelP1').style.backgroundColor = 'white';
             document.getElementById('id-ncbPanelP2').style.color = '#333333';
             document.getElementById('id-ncbPanelP2').style.backgroundColor = '#dfdcdc';
+            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#f3f3f3';
+
             break;
         case 'Dark':
             document.getElementById('id-ncbDefaultThemeSpan').textContent = id;

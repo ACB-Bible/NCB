@@ -234,8 +234,4 @@ body::-webkit-scrollbar {
     width: 2.3rem;
 }
 
-.cs-ncbChangeVersion {
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    box-shadow: 0 10px 10px rgba(112, 111, 111, .25);
-}
+::selection { background: #cdddfc; }

@@ -1,9 +1,5 @@
-.cs-ncbSidePanelSelect:hover,
-.cs-ncbAbout:hover {
-    background-color: #ebe8cf;
-    color: #025c8d;
-    cursor: pointer;
-}
+.cs-ncbSidePanelSelect:hover { cursor: pointer; opacity: 1; }
+.cs-ncbAbout:hover { color: white; cursor: pointer; }
 
 .cs-ncbPanelLblCursor:hover { cursor: pointer; color:#cdddfc; }
 

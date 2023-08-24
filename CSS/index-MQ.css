@@ -49,10 +49,7 @@ html { font-size: 90%; }
     .cs-ncbClear { top: 2%; }
 
     .cs-ncbChangeVersion { position: absolute; left: 12%; top: 18%; height: 30.5%; }
-    .cs-ncbChangeVersionSelect {
-        background-color: #f3f3f3;
-        border-bottom: 1px solid #c0bfbf;
-    }
+    .cs-ncbChangeDefaultVersion { height: 33.5%; }
 }
 
 @media (max-width: 770px) {

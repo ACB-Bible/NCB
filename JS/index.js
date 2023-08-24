@@ -42,7 +42,7 @@ async function ncbLoadVersions() {
         div.dataset.version = version.ar;
         div.dataset.loaded = false;
         div.classList.add('cs-ncbVersion');
-        div.classList.add('cs-ncbChangeVersionSelect');
+        //div.classList.add('cs-ncbChangeVersionSelect');
         document.getElementById('id-ncbChangeVersion').appendChild(div);
     });
     // #endregion load the change version dropdown box
