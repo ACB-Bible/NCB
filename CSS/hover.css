@@ -25,6 +25,11 @@
 
 .cs-ncbArrow:hover { opacity: 1; }
 
+.cs-ncbSort:hover {
+    color: #c74343;
+    cursor: pointer;
+    background-color: #f5f4f4;
+}
 .cs-ncbVersion:hover,
 .cs-ncbBookSpan:hover,
 .cs-ncbBookSpan1:hover,

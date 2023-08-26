@@ -57,8 +57,7 @@ function ncbSortBooks() {
         newBooks.sort((a, b) => (a.id > b.id) ? 1 : -1);
         document.getElementById('id-ncbSort').dataset.sorted = '1';
     }
-    while (i < oldAlph.length) {console.log(oldAlph[i].t); i++;}
-    alert(newAlph)
+    
     if (pointer.textContent === '▼') {
         pointer.textContent = '▲';
         document.getElementById('id-ncbSort').title = "Sort Biblically";
