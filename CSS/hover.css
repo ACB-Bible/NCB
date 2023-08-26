@@ -1,11 +1,11 @@
 .cs-ncbSidePanelSelect:hover { cursor: pointer; opacity: 1; }
 .cs-ncbAbout:hover { color: white; cursor: pointer; }
 
-.cs-ncbPanelLblCursor:hover { cursor: pointer; color:#cdddfc; }
+.cs-ncbPanelLblCursor:hover { cursor: pointer; color: #e6c79a; }
 
 .cs-ncbSidePanelSelectMsg:hover {
-    background-color: rgb(250, 250, 209);
-    color: rgb(80, 76, 76);
+    background-color: #fafad1;
+    color: #504c4c;
     cursor: default;
 }
 
@@ -26,6 +26,8 @@
 .cs-ncbArrow:hover { opacity: 1; }
 
 .cs-ncbVersion:hover,
+.cs-ncbBookSpan:hover,
+.cs-ncbBookSpan1:hover,
 .cs-ncbTheme:hover { background-color: #ebe8cf; cursor: pointer; }
 
 .test {background-color: #b8afaf;}

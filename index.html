@@ -33,14 +33,12 @@
     <div id="id-ncbMainText" class="cs-ncbMainText" onscroll="ncbClose()">
 
         <div class="cs-ncbMenu">
-            <span id="id-ncbVersion" class="cs-ncbMenuSelect cs-ncbMenu1" title="Change Version"
-                onclick="ncbOpenVersion()">
+            <span id="id-ncbVersion" class="cs-ncbMenuSelect cs-ncbMenu1" title="Change Version" onclick="ncbOpenVersion()">
                 <span id="id-ncbVersionPointer" class="cs-ncbPointer">▼</span>
                 <span id="id-ncbVersionText">TWF</span>
             </span>
 
-            <span id="id-ncbBook" class="cs-ncbMenuSelect cs-ncbMenu2" title="Change Book"
-                onclick="ncbOpenBook()">
+            <span id="id-ncbBook" class="cs-ncbMenuSelect cs-ncbMenu2" title="Change Book" onclick="ncbOpenBook()">
                 <span id="id-ncbBookPointer" class="cs-ncbPointer">▼</span>
                 <span id="id-ncbBookText">Genesis</span>
             </span>
@@ -302,8 +300,9 @@
                 <span id="id-ncbDefaultVersionSpan" class="cs-ncbMoveVersion">TWF</span>
             </span>
 
-            <span class="cs-ncbSidePanelSelect cs-ncbSidePanelTheme" onclick="ncbOpenDefaultTheme()"> <span id="id-ncbDefaultThemePointer" class="cs-ncbPointer">▼</span> Theme:
-            <span id="id-ncbDefaultThemeSpan" class="cs-ncbMoveTheme">Light</span>
+            <span class="cs-ncbSidePanelSelect cs-ncbSidePanelTheme" onclick="ncbOpenDefaultTheme()">
+                <span id="id-ncbDefaultThemePointer" class="cs-ncbPointer">▼</span> Theme:
+                    <span id="id-ncbDefaultThemeSpan" class="cs-ncbMoveTheme">Light</span>
             </span>
         </div>
 
@@ -313,17 +312,63 @@
 
     <div class="cs-ncbFooter">
         <span class="cs-ncbAbout" onclick="ncbAbout()">About</span>
-        <span class="cs-ncbCopyright" title="God's Word is not Copyrighted">Copyright © 2019-<span class="cs-cnbInfinity" title="Infinity">∞ </span> Free Forever</span>
+
+        <span class="cs-ncbCopyright" title="God's Word is not Copyrighted">Copyright © 2019-Forever Free - by God</span>
+
         <img async src="IMAGES/share.png" class="cs-ncbSharePage" onclick="ncbSharePage()" title="Share this Page"><br>
     </div>
 
     <!-- #region All Dropdowns -->
-    <div id="id-ncbChangeVersion" class="cs-ncbSelector cs-ncbChangeVersion" onclick="ncbOpenVersion()">
+
+    <div id="id-ncbChangeVersion" class="cs-ncbSelector cs-ncbChangeVersion">
 
     </div>
 
-    <div id="id-ncbChangeBook" class="cs-ncbSelector">
+    <div id="id-ncbChangeBookHeader" class="cs-ncbChangeBookHeader">
+        <span class="cs-ncbOld">Old</span>
 
+        <span id="id-ncbSort" class="cs-ncbSort" onclick="ncbSortBooks()" title="Sort Alphabetically" data-sorted="0">
+            <span id="id-ncbChangeBookHeaderPointer" class="cs-ncbPointer cs-ncbChangeBookSortPointer">▼</span> sort</span>
+        <span class="cs-ncbNew"> New</span>
+    </div>
+
+    <div id="id-ncbChangeBook" class="cs-ncbSelector cs-ncbChangeBook">
+        <div class="cs-ncbBookLine">
+            <span class="cs-ncbBookSpan">Genesis</span>
+            <span class="cs-ncbBookSpan1">Matthew</span>
+        </div>
+        <div class="cs-ncbBookLine">
+            <span class="cs-ncbBookSpan">Song of Solomon</span>
+            <span class="cs-ncbBookSpan1">1 Thessalonians</span>
+        </div>
+        <div class="cs-ncbBookLine">
+            <span class="cs-ncbBookSpan">1 Corinthians</span>
+            <span class="cs-ncbBookSpan1">2 Thessalonians</span>
+        </div>
+        <div class="cs-ncbBookLine">
+            <span class="cs-ncbBookSpan">Genesis</span>
+            <span class="cs-ncbBookSpan1">Matthew</span>
+        </div>
+        <div class="cs-ncbBookLine">
+            <span class="cs-ncbBookSpan">Song of Solomon</span>
+            <span class="cs-ncbBookSpan1">1 Thessalonians</span>
+        </div>
+        <div class="cs-ncbBookLine">
+            <span class="cs-ncbBookSpan">1 Corinthians</span>
+            <span class="cs-ncbBookSpan1">2 Thessalonians</span>
+        </div>
+        <div class="cs-ncbBookLine">
+            <span class="cs-ncbBookSpan">Genesis</span>
+            <span class="cs-ncbBookSpan1">Matthew</span>
+        </div>
+        <div class="cs-ncbBookLine">
+            <span class="cs-ncbBookSpan">Song of Solomon</span>
+            <span class="cs-ncbBookSpan1">1 Thessalonians</span>
+        </div>
+        <div class="cs-ncbBookLine">
+            <span class="cs-ncbBookSpan">1 Corinthians</span>
+            <span class="cs-ncbBookSpan1">2 Thessalonians</span>
+        </div>
     </div>
 
     <div id="id-ncbChangeChapter" class="cs-ncbSelector">

@@ -1,15 +1,11 @@
-// #region versionLoaded and theme Loaded are on used at startup
-var versionLoaded = true;
-var themeLoaded = true;
-// #endregion versionLoaded and theme Loaded are on used at startup
-
+var sidePanelLoaded = true;
 var sidePanelChapter = 'Genesis 1:31'
 
 function ncbSwapPanel() {
     if (panelSwapped) {
         document.getElementById('id-ncbPanelP1').style.display = "none";
         document.getElementById('id-ncbPanelP2').style.display = "block";
-        document.getElementById('id-ncbPanelLbl1').textContent = "Set Defaults";
+        document.getElementById('id-ncbPanelLbl1').textContent = "Settings";
         panelSwapped = false;
     } else {
         document.getElementById('id-ncbPanelP1').style.display = "block";
@@ -46,48 +42,15 @@ async function ncbDefaultVersion() {
 
     var id = this.event.target.id;
     var version = document.getElementById(id).dataset.version;
+    document.getElementById('id-ncbVersion').dataset.versionid = id;
     document.getElementById('id-ncbDefaultVersionSpan').textContent = version;
     document.getElementById('id-ncbVersionText').textContent = version;
     document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
 
-    localStorage.setItem("version", version);
+    localStorage.setItem("versionID", id);
     ncbClose();
 };
 
-async function ncbApplyTheme(id) {
-
-    const ncbNumber = document.getElementsByClassName("cs-ncbNumber");
-
-    switch (id) {
-        case 'Light':
-            document.getElementById('id-ncbDefaultThemeSpan').textContent = id;
-            document.getElementById('id-ncbMainText').classList.remove('cs-ncbMainTextDark');
-            for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#9e6105'; };
-            document.getElementById('id-ncbTextTitle2').style.color = '#720D0D';
-            document.getElementById('id-ncbSelectContainer').style.backgroundColor = '#cbcaca';
-            document.getElementById('id-ncbPanelP1').style.color = '#333333';
-            document.getElementById('id-ncbPanelP1').style.backgroundColor = 'white';
-            document.getElementById('id-ncbPanelP2').style.color = '#333333';
-            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#dfdcdc';
-            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#f3f3f3';
-
-            break;
-        case 'Dark':
-            document.getElementById('id-ncbDefaultThemeSpan').textContent = id;
-            document.getElementById('id-ncbMainText').classList.add('cs-ncbMainTextDark');
-            for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#b88a48'; };
-            document.getElementById('id-ncbTextTitle2').style.color = "white";
-            document.getElementById('id-ncbSelectContainer').style.backgroundColor = '#333333';
-            document.getElementById('id-ncbPanelP1').style.backgroundColor = '#5e5c5c';
-            document.getElementById('id-ncbPanelP1').style.color = 'white';
-            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#5e5c5c';
-            document.getElementById('id-ncbPanelP2').style.color = 'white';
-            document.getElementById('id-ncbTextTitle2').style.color = '#b8afaf';
-            break;
-
-    }
-
-}
 
 function ncbOpenDefaultTheme() {
     this.event.preventDefault();
@@ -106,10 +69,11 @@ function ncbOpenDefaultTheme() {
 function ncbDefaultTheme() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
-    var id = document.getElementById(this.event.target.id).dataset.theme;
 
-    ncbApplyTheme(id);
-    localStorage.setItem("theme", id);
+    var theme = document.getElementById(this.event.target.id).dataset.theme;
+    document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
+    ncbApplyTheme();
+    localStorage.setItem("theme", theme);
     ncbClose();
 };
 
@@ -124,13 +88,18 @@ function ncbRemoveItems(id) {
 function ncbClose() {
 
     openID = false;
-    /*
-    document.getElementById('id-ncbBook').style.display = "none";
-    document.getElementById('id-ncbChapter').style.display = "none";
-    document.getElementById('id-ncbVerse').style.display = "none";
-    */
+
     document.getElementById('id-ncbChangeVersion').style.display = "none";
     document.getElementById('id-ncbVersionPointer').textContent = '▼';
+    document.getElementById('id-ncbChangeBookHeader').style.display = "none";
+    document.getElementById('id-ncbChangeBookHeaderPointer').textContent = '▼';
+    document.getElementById('id-ncbChangeBook').style.display = "none";
+    document.getElementById('id-ncbBookPointer').textContent = '▼';
+    document.getElementById('id-ncbChangeChapter').style.display = "none";
+    document.getElementById('id-ncbChapterPointer').textContent = '▼';
+    document.getElementById('id-ncbSelectVerse').style.display = "none";
+    document.getElementById('id-ncbVersePointer').textContent = '▼';
+
 
     document.getElementById('id-ncbDefaultVersion').style.display = "none";
     document.getElementById('id-ncbDefaultVersionPointer').textContent = '▼';

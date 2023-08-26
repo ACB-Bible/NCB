@@ -1,14 +1,35 @@
 
 window.onload = async () => {
 
-    const theme = localStorage.getItem("theme");
     document.getElementById("id-ncbIntro").textContent = "New Christian Bible";
-    if (theme) { if (themeLoaded) { ncbApplyTheme(theme) } };
-    let res = false;
-    //if (localStorage.getItem("loaded")) {localStorage.removeItem("loaded")};
-    res = await ncbLoadVersions();
-    //res = await acbLoadBooks(oldBooks);
+    if (sidePanelLoaded) {
+        var theme = localStorage.getItem("theme");
+        if (!theme) {theme = 'Light'};
+        var versionID = localStorage.getItem("versionID");
+        if (!versionID) {versionID = 'id-ncbDefaultVersion0'};
+
+        document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
+        document.getElementById('id-ncbVersion').dataset.bookid = versionID;
+        document.getElementById('id-ncbBook').dataset.bookid = 'id-ncbBook0';
+        document.getElementById('id-ncbChapter').dataset.chapterid = 'id-ncbChapter0';
+        document.getElementById('id-ncbVerse').dataset.verseid = 'id-ncbverse0';
+
+        ncbStartup();
+    };
 }
+
+async function ncbStartup(theme) {
+
+    let res = false;
+    ncbApplyTheme();
+    res = await ncbLoadVersions();
+    //if (res) { ncbLoadBooks() };
+    if (res) { ncbApplyVersion() };
+};
+
+async function ncbApplyVersion() {
+
+};
 
 async function ncbLoadVersions() {
 
@@ -30,6 +51,7 @@ async function ncbLoadVersions() {
           // #endregion load the default version dropdown box
 
         // #region load the change version dropdown box
+
         div = document.createElement("div");
         div.addEventListener('click', function(event) {
             event.stopPropagation();
@@ -42,10 +64,35 @@ async function ncbLoadVersions() {
         div.dataset.version = version.ar;
         div.dataset.loaded = false;
         div.classList.add('cs-ncbVersion');
-        //div.classList.add('cs-ncbChangeVersionSelect');
+        div.classList.add('cs-ncbChangeVersionSelect');
         document.getElementById('id-ncbChangeVersion').appendChild(div);
+
     });
     // #endregion load the change version dropdown box
+    return Promise.resolve(true);
+};
+
+async function ncbLoadBooks(books) {
+
+    let i = 0;
+
+    ncbRemoveItems('id-ncbChangeBook');
+    books.forEach(book => {
+        let div = document.createElement("div");
+        div.addEventListener('click', function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            ncbChangeBook();
+          });
+        div.id = `id-acbBk${book.id}`;
+        div.textContent = book.t;
+        div.dataset.bid = book.id;
+        div.dataset.c = book.c;
+        div.classList.add('cs-acbSelect');
+        document.getElementById("id-ncbChangeBook").appendChild(div);
+        i++;
+    });
     return Promise.resolve(true);
 };
 
@@ -62,25 +109,40 @@ async function fetchJson(url) {
     return Promise.resolve(aFile);
 };
 
-async function acbLoadBooks(books) {
+async function ncbApplyTheme() {
 
-    let i = 0;
+    const ncbNumber = document.getElementsByClassName("cs-ncbNumber");
+    const theme = document.getElementById('id-ncbDefaultTheme').dataset.theme;
+    switch (theme) {
+        case 'Light':
+            document.getElementById('id-ncbDefaultThemeSpan').textContent = theme;
+            document.getElementById('id-ncbMainText').classList.remove('cs-ncbMainTextDark');
+            for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#9e6105'; };
+            document.getElementById('id-ncbTextTitle2').style.color = '#720D0D';
+            document.getElementById('id-ncbSelectContainer').style.backgroundColor = '#cbcaca';
+            document.getElementById('id-ncbPanelP1').style.color = '#333333';
+            document.getElementById('id-ncbPanelP1').style.backgroundColor = 'white';
+            document.getElementById('id-ncbPanelP2').style.color = '#333333';
+            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#dfdcdc';
+            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#f3f3f3';
 
-    acbRemoveItems('id-ncbChangeBook');
-    books.forEach(book => {
-        let sp = document.createElement("span");
-        sp.addEventListener("click", acbChangeBook, true);
-        sp.id = `id-acbBk${book.id}`;
-        sp.textContent = book.t;
-        sp.dataset.bid = book.id;
-        sp.dataset.c = book.c;
-        sp.dataset.idx = i;
-        sp.classList.add('cs-acbSelect');
-        document.getElementById("id-ncbChangeBook").appendChild(sp);
-        i++;
-    });
-    return Promise.resolve(true);
-};
+            break;
+        case 'Dark':
+            document.getElementById('id-ncbDefaultThemeSpan').textContent = theme;
+            document.getElementById('id-ncbMainText').classList.add('cs-ncbMainTextDark');
+            for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#b88a48'; };
+            document.getElementById('id-ncbTextTitle2').style.color = "white";
+            document.getElementById('id-ncbSelectContainer').style.backgroundColor = '#333333';
+            document.getElementById('id-ncbPanelP1').style.backgroundColor = '#5e5c5c';
+            document.getElementById('id-ncbPanelP1').style.color = 'white';
+            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#5e5c5c';
+            document.getElementById('id-ncbPanelP2').style.color = 'white';
+            document.getElementById('id-ncbTextTitle2').style.color = '#b8afaf';
+            break;
+
+    }
+
+}
 
 function ncbClickedP() {
 

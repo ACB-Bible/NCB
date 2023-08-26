@@ -234,4 +234,18 @@ body::-webkit-scrollbar {
     width: 2.3rem;
 }
 
+.cs-ncbSort {
+    position: absolute;
+    left: 65%;
+    top: 10%;
+    margin-left: 12%;
+    border-radius: 10px;
+    background-color: #e9eaeb;
+    color: #494949;
+    padding-right: .8em;
+    font-size: .8em;
+
+}
+.cs-ncbSort:hover { color: #c74343; cursor: pointer; background-color: #f5f4f4; }
+
 ::selection { background: #cdddfc; }
