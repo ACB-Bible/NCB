@@ -217,7 +217,6 @@
 .cs-ncbBookLine {
     height: 12%;
     width: 100%;
-    border-bottom: 1px solid #dfdcdc;
     font-size: .90rem;
     overflow: hidden;
 }
