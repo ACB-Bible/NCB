@@ -18,7 +18,7 @@ window.onload = async () => {
     };
 }
 
-async function ncbStartup(theme) {
+async function ncbStartup() {
 
     let res = false;
     ncbApplyTheme();
@@ -125,7 +125,6 @@ async function ncbApplyTheme() {
             document.getElementById('id-ncbPanelP2').style.color = '#333333';
             document.getElementById('id-ncbPanelP2').style.backgroundColor = '#dfdcdc';
             document.getElementById('id-ncbPanelP2').style.backgroundColor = '#f3f3f3';
-
             break;
         case 'Dark':
             document.getElementById('id-ncbDefaultThemeSpan').textContent = theme;
@@ -139,7 +138,6 @@ async function ncbApplyTheme() {
             document.getElementById('id-ncbPanelP2').style.color = 'white';
             document.getElementById('id-ncbTextTitle2').style.color = '#b8afaf';
             break;
-
     }
 
 }
