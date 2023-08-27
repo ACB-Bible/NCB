@@ -32,11 +32,13 @@ function ncbOpenBook() {
 
     if (openID) {
         ncbClose();
+
     } else {
         ncbClose();
         document.getElementById('id-ncbChangeBook').style.display = "block";
         document.getElementById('id-ncbBookPointer').textContent = '▲';
         document.getElementById('id-ncbChangeBookHeader').style.display = "block";
+
         openID = true;
     };
 };
@@ -57,7 +59,7 @@ function ncbSortBooks() {
         newBooks.sort((a, b) => (a.id > b.id) ? 1 : -1);
         document.getElementById('id-ncbSort').dataset.sorted = '1';
     }
-    
+
     if (pointer.textContent === '▼') {
         pointer.textContent = '▲';
         document.getElementById('id-ncbSort').title = "Sort Biblically";

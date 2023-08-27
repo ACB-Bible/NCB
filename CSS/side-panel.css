@@ -112,6 +112,7 @@
     border-left: 1px solid #bcbaba;
     border-right: 1px solid #bcbaba;
     border-bottom: 1px solid #bcbaba;
+    overscroll-behavior: contain;
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
@@ -163,9 +164,10 @@
 .cs-ncbChangeBook {
     position: absolute;
     left: 31%;
-    top: 20.7%;
+    top: 20.6%;
     height: 33.5%;
     width: 18.7%;
+    padding: 0;
     background-color: #f3f3f3;
     border-bottom: 1px solid #bcbaba;
     border-left: 1px solid #bcbaba;
@@ -205,6 +207,7 @@
     width: 18.2%;
     background-color: #c65d5d;
     color: white;
+    color: #f0ecc9;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 550;
     padding-top: .6em;
@@ -215,7 +218,7 @@
     box-shadow: 0 10px 10px rgba(112, 111, 111, .25);
 }
 .cs-ncbBookLine {
-    height: 12%;
+    height: 12.2%;
     width: 100%;
     border-bottom: 1px solid #dfdcdc;
     font-size: .90rem;
@@ -252,7 +255,8 @@
     margin-left: 12%;
     border-radius: 10px;
     background-color: #e9eaeb;
-    color: #494949;
+    background-color: #ebe8cf;
+    color: #720D0D;
     padding: .3em;
     padding-right: .8em;
     font-size: .8em;
