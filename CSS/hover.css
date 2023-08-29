@@ -36,4 +36,8 @@
 .cs-ncbTheme:hover { background-color: #ebe8cf; cursor: pointer; }
 .cs-ncbNoBookHover:hover { background-color: #f3f3f3; cursor: default; }
 
-.test {background-color: #b8afaf;}
+.cs-ncbToSelect:hover {
+    color: white !important;
+    background-color: #adb6bb !important;
+    cursor: pointer;
+}

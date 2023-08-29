@@ -17,4 +17,4 @@ const versions = [{"ar":"ASV","id":2,"vn":"American Standard Version"},{"ar":"BB
 // #endregion Data for Books and Versions
 
 
-    
+

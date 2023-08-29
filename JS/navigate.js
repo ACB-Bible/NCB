@@ -1,5 +1,3 @@
-
-
 function ncbOpenVersion() {
 
     this.event.preventDefault();
@@ -11,7 +9,7 @@ function ncbOpenVersion() {
         ncbClose();
         document.getElementById('id-ncbChangeVersion').style.display = "block";
         document.getElementById('id-ncbVersionPointer').textContent = '▲';
-
+        document.getElementById('id-ncbChangeVersion').scrollTop = 0;
         openID = true;
     };
 };
@@ -38,7 +36,7 @@ function ncbOpenBook() {
         document.getElementById('id-ncbChangeBook').style.display = "block";
         document.getElementById('id-ncbBookPointer').textContent = '▲';
         document.getElementById('id-ncbChangeBookHeader').style.display = "block";
-
+        document.getElementById('id-ncbChangeBook').scrollTop = 0;
         openID = true;
     };
 };
@@ -53,26 +51,35 @@ function ncbSortBooks() {
     var pointer = document.getElementById('id-ncbChangeBookHeaderPointer');
 
     if (document.getElementById('id-ncbSort').dataset.sorted === '0') {
-        oldAlph = oldBooks;
         oldBooks.sort((a, b) => (a.t > b.t) ? 1 : -1);
-        newAlph = newBooks;
-        newBooks.sort((a, b) => (a.id > b.id) ? 1 : -1);
+        newBooks.sort((a, b) => (a.t > b.t) ? 1 : -1);
         document.getElementById('id-ncbSort').dataset.sorted = '1';
-    }
-
-    if (pointer.textContent === '▼') {
         pointer.textContent = '▲';
         document.getElementById('id-ncbSort').title = "Sort Biblically";
     } else {
+        oldBooks.sort((a, b) => (a.id > b.id) ? 1 : -1);
+        newBooks.sort((a, b) => (a.id > b.id) ? 1 : -1);
+        document.getElementById('id-ncbSort').dataset.sorted = '0';
         pointer.textContent = '▼';
         document.getElementById('id-ncbSort').title = "Sort Alphabetically";
-    };
-
-
-
-
+    }
+    ncbLoadBooks();
 }
+
 function ncbOpenChapter() {
+
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+
+    if (openID) {
+        ncbClose();
+    } else {
+        ncbClose();
+        document.getElementById('id-ncbChangeChapter').style.display = "block";
+        document.getElementById('id-ncbChapterPointer').textContent = '▲';
+        document.getElementById('id-ncbChapterPointer').scrollTop = 0;
+        openID = true;
+    };
 
 };
 function ncbChangeChapter() {
@@ -80,6 +87,19 @@ function ncbChangeChapter() {
 };
 
 function ncbOpenVerse() {
+
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+
+    if (openID) {
+        ncbClose();
+    } else {
+        ncbClose();
+        document.getElementById('id-ncbSelectVerse').style.display = "block";
+        document.getElementById('id-ncbVersePointer').textContent = '▲';
+        document.getElementById('id-ncbVersePointer').scrollTop = 0;
+        openID = true;
+    };
 
 };
 function ncbSelectVerse() {

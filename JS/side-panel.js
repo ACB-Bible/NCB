@@ -34,6 +34,7 @@ function ncbOpenDefaultVersion() {
         ncbClose();
         document.getElementById('id-ncbDefaultVersion').style.display = "block";
         document.getElementById('id-ncbDefaultVersionPointer').textContent = '▲';
+        document.getElementById('id-ncbDefaultVersion').scrollTop = 0;
         openID = true;
     };
 };
@@ -42,12 +43,12 @@ async function ncbDefaultVersion() {
 
     var id = this.event.target.id;
     var version = document.getElementById(id).dataset.version;
-    document.getElementById('id-ncbVersion').dataset.versionid = id;
+    document.getElementById('id-ncbVersion').dataset.version = version;
     document.getElementById('id-ncbDefaultVersionSpan').textContent = version;
     document.getElementById('id-ncbVersionText').textContent = version;
     document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
 
-    localStorage.setItem("versionID", id);
+    localStorage.setItem("version", version);
     ncbClose();
 };
 
@@ -99,7 +100,6 @@ function ncbClose() {
     document.getElementById('id-ncbChapterPointer').textContent = '▼';
     document.getElementById('id-ncbSelectVerse').style.display = "none";
     document.getElementById('id-ncbVersePointer').textContent = '▼';
-
 
     document.getElementById('id-ncbDefaultVersion').style.display = "none";
     document.getElementById('id-ncbDefaultVersionPointer').textContent = '▼';

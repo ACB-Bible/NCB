@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="id-ncbIntro">New Christian Bible - Read the Bible Online - NewChristianBible.com</title>
 
-    <base href="./">
+    <base id="id-ncbBase" href="./">
     <link async href="CSS/index.css" rel="stylesheet" type="text/css">
     <link async href="CSS/search.css" rel="stylesheet" type="text/css">
     <link async href="CSS/side-panel.css" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
         <img async src="IMAGES/dots.png" class="cs-ncbDots" onclick="ncbSwapPanel()" title="Settings">
     </div>
 
-    <div id="id-ncbFixedPanel" onclick="acbOpenClose()" class="cs-ncbFixedPanel"></div>
+    <!--<div id="id-ncbFixedPanel" onclick="acbOpenClose()" class="cs-ncbFixedPanel"></div>-->
 
     <div id="id-ncbMainText" class="cs-ncbMainText" onscroll="ncbClose()">
 
@@ -45,14 +45,12 @@
                 <span id="id-ncbBookText">Genesis</span>
             </span>
 
-            <span id="id-ncbChapter" class="cs-ncbMenuSelect cs-ncbMenu3" title="Change Chapter"
-                onclick="ncbOpenChapter()">
+            <span id="id-ncbChapter" class="cs-ncbMenuSelect cs-ncbMenu3" title="Change Chapter" onclick="ncbOpenChapter()">
                 <span id="id-ncbChapterPointer" class="cs-ncbPointer">▼</span>
                 <span id="id-ncbChapterText">1 :</span>
             </span>
 
-            <span id="id-ncbVerse" class="cs-ncbMenuSelect cs-ncbMenu4" title="Change Verse"
-                onclick="ncbOpenVerse()">
+            <span id="id-ncbVerse" class="cs-ncbMenuSelect cs-ncbMenu4" title="Select a Verse" onclick="ncbOpenVerse()">
                 <span id="id-ncbVersePointer" class="cs-ncbPointer">▼</span>
                 <span id="id-ncbVerseText">1</span>
             </span>
@@ -335,10 +333,11 @@
     </div>
 
     <div id="id-ncbChangeBook" class="cs-ncbSelector cs-ncbChangeBook">
-        <div class="cs-ncbBookLine">
-            <span class="cs-ncbBookSpan">Genesis</span>
-            <span class="cs-ncbBookSpan1">Matthew</span>
+        <div id="id-ncbBookLine0" class="cs-ncbBookLine">
+            <span id="id-ncbBk0" class="cs-ncbBookSpan">Genesis</span>
+            <span id="id-ncbBk39" class="cs-ncbBookSpan1">Matthew</span>
         </div>
+
         <div class="cs-ncbBookLine">
             <span class="cs-ncbBookSpan">Song of Solomon</span>
             <span class="cs-ncbBookSpan1">1 Thessalonians</span>
@@ -373,11 +372,11 @@
         </div>
     </div>
 
-    <div id="id-ncbChangeChapter" class="cs-ncbSelector">
+    <div id="id-ncbChangeChapter" class="cs-ncbSelector cs-ncbChangeChapter" data-chapters="50">
 
     </div>
 
-    <div id="id-ncbSelectVerse" class="cs-ncbSelector">
+    <div id="id-ncbSelectVerse" class="cs-ncbSelector cs-ncbSelectVerse" data-verses="31">
 
     </div>
 

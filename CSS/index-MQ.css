@@ -12,7 +12,6 @@
     }
 
     .cs-ncbFirstNumber { margin-top: .07em; }
-
     .cs-ncbNumber { font-size: .93rem; margin-top: 1.5em; }
 
     .cs-ncbFooter { top: 14%; }
@@ -52,15 +51,14 @@
     .cs-ncbChangeVersion {
         position: absolute;
         left: 12%;
-        top: 18%;
+        top: 17.5%;
         height: 30.5%;
     }
     .cs-ncbChangeDefaultVersion { height: 30.55%; }
 
-
     .cs-ncbChangeBookHeader {
         left: 31.3%;
-        top: 17.95%;
+        top: 17.25%;
         height: 6%;
         width: 18.2%;
         font-weight: 550;
@@ -74,11 +72,31 @@
         left: 31.3%;
         top: 24%;
         height: 40%;
-        width: 18.8%;
+        width: 18.75%;
     }
-    .cs-ncbBookLine { height: 13.95%; width: 100%; font-size: .90rem; }
-    .cs-ncbBookSpan { width: 48%; height: 100%; }
-    .cs-ncbBookSpan1 { left: 50%; height: 10.2%; }
+    .cs-ncbBookLine {
+        height: 14.25%;
+        width: 100%;
+        font-size: .90rem;
+    }
+    .cs-ncbBookSpan { width: 48%; height: 72%; }
+    .cs-ncbBookSpan1 { left: 50%; height: 10.25%; }
+
+    .cs-ncbChangeChapter {
+        left: 44.8%;
+        top: 17.5%;
+        height: 32.5%;
+        width: 15.2%;
+    }
+    .cs-ncbSelectVerse {
+        left: 51.4%;
+        top: 17.5%;
+        height: 32.5%;
+        width: 15.2%;
+    }
+
+    .cs-ncbToSelect { height: 82%; width: 12%; }
+
 }
 
 @media (max-width: 770px) {
