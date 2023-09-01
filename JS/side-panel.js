@@ -41,14 +41,18 @@ function ncbOpenDefaultVersion() {
 
 async function ncbDefaultVersion() {
 
-    var id = this.event.target.id;
-    var version = document.getElementById(id).dataset.version;
+    let id = this.event.target.id;
+    let version = document.getElementById(id).dataset.version;
+    let versionidx = document.getElementById(id).dataset.versionidx;
+
     document.getElementById('id-ncbVersion').dataset.version = version;
+    document.getElementById('id-ncbVersion').dataset.versionidx = versionidx;
     document.getElementById('id-ncbDefaultVersionSpan').textContent = version;
+    document.getElementById('id-ncbDefaultVersionSpan').dataset.versionidx = versionidx;
     document.getElementById('id-ncbVersionText').textContent = version;
     document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
 
-    localStorage.setItem("version", version);
+    localStorage.setItem("versionidx", versionidx);
     ncbClose();
 };
 
@@ -90,14 +94,17 @@ function ncbClose() {
 
     openID = false;
 
+    document.getElementById('id-ncbChangeVersionHeader').style.display = "none";
     document.getElementById('id-ncbChangeVersion').style.display = "none";
     document.getElementById('id-ncbVersionPointer').textContent = '▼';
     document.getElementById('id-ncbChangeBookHeader').style.display = "none";
     document.getElementById('id-ncbChangeBookHeaderPointer').textContent = '▼';
     document.getElementById('id-ncbChangeBook').style.display = "none";
     document.getElementById('id-ncbBookPointer').textContent = '▼';
+    document.getElementById('id-ncbChangeChapterHeader').style.display = "none";
     document.getElementById('id-ncbChangeChapter').style.display = "none";
     document.getElementById('id-ncbChapterPointer').textContent = '▼';
+    document.getElementById('id-ncbSelectVerseHeader').style.display = "none";
     document.getElementById('id-ncbSelectVerse').style.display = "none";
     document.getElementById('id-ncbVersePointer').textContent = '▼';
 

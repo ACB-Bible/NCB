@@ -3,7 +3,9 @@
     html { font-size: 90%; }
 
     .cs-ncbMenuImg { left: 7.6%; }
+
     .cs-ncbMainText { top: 9.5%; }
+
     .cs-ncbTitle {
         left: 15%;
         top: -.1em;
@@ -12,9 +14,11 @@
     }
 
     .cs-ncbFirstNumber { margin-top: .07em; }
+
     .cs-ncbNumber { font-size: .93rem; margin-top: 1.5em; }
 
     .cs-ncbFooter { top: 14%; }
+
     .cs-ncbCopyright { margin: 0; left: 21.9%; }
 
     .cs-ncbSearchBar {
@@ -23,7 +27,9 @@
         width: 82%;
         font-size: 1.2rem;
     }
-    .cs-ncbSearchLbl { width: 79%;}
+
+    .cs-ncbSearchLbl { width: 79%; }
+
     .cs-ncbSearchImg {
         display: block;
         position: relative;
@@ -40,75 +46,146 @@
         font-size: 1rem;
         width: 77%;
     }
+
     .cs-ncbPanelLbl2 { top: 8%; }
+
     .cs-ncbPanelLbl3 { top: 9%; }
+
     .cs-ncbPanelP1,
     .cs-ncbPanelP2 { top: 7%; }
-    .cs-ncbSelector { top: 50.5%; width: 14%; left: 82.2%; }
-    .cs-ncbThemeSelector { top: 59.4%; height: 9.5%;}
-    .cs-ncbClear { top: 2%; }
 
-    .cs-ncbChangeVersion {
-        position: absolute;
+    .cs-ncbSelector { position: absolute; width: 14%; left: 82.2%; }
+
+    .cs-ncbDefaultVersion {
+        left: 7.8%;
+        top: 37.5%;
+        height: 60%;
+        width: 84%;
+    }
+    .cs-ncbVersion {
+        font-size: .83em;
+        padding: .4em;
+        padding-left: .8em;
+    }
+    .cs-ncbDefaultTheme {
+        left: 7.8%;
+        top: 54.1%;
+        height: 22.4%;
+        width: 84%;
+    }
+    .cs-ncbTheme {
+        font-size: .83em;
+        padding: .4em;
+        padding-left: .8em;
+    }
+    .cs-ncbClear {
+        top: 2%;
+    }
+    .cs-ncbChangeVersionHeader {
+        padding-left: .9em;
+        padding-bottom: .5em;
         left: 12%;
-        top: 17.5%;
+        top: 17.3%;
+        width: 13%;
+    }
+    .cs-ncbChangeVersion {
+        left: 12%;
+        top: 23.8%;
         height: 30.5%;
     }
-    .cs-ncbChangeDefaultVersion { height: 30.55%; }
 
+    .cs-ncbNew {
+        position: absolute;
+        left: 82%;
+    }
+    .cs-ncbChangeBookSortPointer {
+        font-size: .83em;
+    }
+    .cs-ncbSort {
+        left: 28%;
+        top: 18%;
+    }
     .cs-ncbChangeBookHeader {
         left: 31.3%;
         top: 17.25%;
-        height: 6%;
-        width: 18.2%;
-        font-weight: 550;
-        padding-top: .6em;
-        padding-left: .5em;
+        height: 4.25%;
+        width: 16%;
     }
-    .cs-ncbNew { position: absolute; left: 82%;}
-    .cs-ncbChangeBookSortPointer { font-size: .83em; }
-    .cs-ncbSort { left: 28%; top: 18%; }
     .cs-ncbChangeBook {
         left: 31.3%;
-        top: 24%;
-        height: 40%;
-        width: 18.75%;
+        top: 23.4%;
+        height: 38.5%;
+        width: 16.57%;
     }
     .cs-ncbBookLine {
-        height: 14.25%;
+        height: 16%;
         width: 100%;
         font-size: .90rem;
     }
-    .cs-ncbBookSpan { width: 48%; height: 72%; }
-    .cs-ncbBookSpan1 { left: 50%; height: 10.25%; }
+    .cs-ncbBookSpan {
+        width: 48%;
+        height: 72%;
+    }
+    .cs-ncbBookSpan1 {
+        left: 50%;
+        height: 11.5%;
+    }
 
+    .cs-ncbChangeChapterHeader {
+        left: 44.8%;
+        top: 17.25%;
+        height: 4.25%;
+        width: 15.2%;
+    }
     .cs-ncbChangeChapter {
         left: 44.8%;
-        top: 17.5%;
-        height: 32.5%;
+        top: 23.4%;
+        height: 34.5%;
+        width: 15.82%;
+    }
+
+    .cs-ncbSelectVerseHeader {
+        left: 51.5%;
+        top: 17.25%;
+        height: 4.25%;
         width: 15.2%;
     }
     .cs-ncbSelectVerse {
-        left: 51.4%;
-        top: 17.5%;
-        height: 32.5%;
-        width: 15.2%;
+        left: 51.5%;
+        top: 23.4%;
+        height: 34.5%;
+        width: 15.8%;
     }
 
-    .cs-ncbToSelect { height: 82%; width: 12%; }
+    .cs-ncbToSelect {
+        height: 82%;
+        width: 12%;
+    }
 
 }
 
 @media (max-width: 770px) {
-    body { margin: 0; padding: 0; }
+    body {
+        margin: 0;
+        padding: 0;
+    }
 
-    .cs-ncbBreak1 { display: none; }
+    .cs-ncbBreak1 {
+        display: none;
+    }
 
-    .cs-ncbSelectContainer { display: none; }
+    .cs-ncbSelectContainer {
+        display: none;
+    }
 
-    .cs-ncbTitle { width: 60%; left: 3%; }
+    .cs-ncbTitle {
+        width: 60%;
+        left: 3%;
+    }
 
-    .cs-ncbWebLink { display: none; }
+    .cs-ncbWebLink {
+        display: none;
+    }
 
     .cs-ncbMainText {
         left: 0;
@@ -119,22 +196,40 @@
         margin-bottom: 5%;
     }
 
-    .cs-ncbMenu1 { left: 2%; }
+    .cs-ncbMenu1 {
+        left: 2%;
+    }
 
-    .cs-ncbMenu2 { left: 12%; }
+    .cs-ncbMenu2 {
+        left: 12%;
+    }
 
-    .cs-ncbMenu3 { left: 20%; }
+    .cs-ncbMenu3 {
+        left: 20%;
+    }
 
-    .cs-ncbMenu4 { left: 25%; }
+    .cs-ncbMenu4 {
+        left: 25%;
+    }
 
-    .cs-ncbSharePage { left: 0; }
+    .cs-ncbSharePage {
+        left: 0;
+    }
 }
 
 @media (max-width: 690px) {
-    .cs-ncbSharePage { left: 2%; }
+    .cs-ncbSharePage {
+        left: 2%;
+    }
 }
 
 @media (max-width: 515px) {
-    .cs-ncbCopyright { margin: 0; left: 30%; }
-    .cs-ncbFooter { top: 4%; }
+    .cs-ncbCopyright {
+        margin: 0;
+        left: 30%;
+    }
+
+    .cs-ncbFooter {
+        top: 4%;
+    }
 }

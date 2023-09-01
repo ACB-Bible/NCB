@@ -7,6 +7,7 @@ function ncbOpenVersion() {
         ncbClose();
     } else {
         ncbClose();
+        document.getElementById('id-ncbChangeVersionHeader').style.display = "block";
         document.getElementById('id-ncbChangeVersion').style.display = "block";
         document.getElementById('id-ncbVersionPointer').textContent = '▲';
         document.getElementById('id-ncbChangeVersion').scrollTop = 0;
@@ -75,6 +76,7 @@ function ncbOpenChapter() {
         ncbClose();
     } else {
         ncbClose();
+        document.getElementById('id-ncbChangeChapterHeader').style.display = "block";
         document.getElementById('id-ncbChangeChapter').style.display = "block";
         document.getElementById('id-ncbChapterPointer').textContent = '▲';
         document.getElementById('id-ncbChapterPointer').scrollTop = 0;
@@ -95,6 +97,7 @@ function ncbOpenVerse() {
         ncbClose();
     } else {
         ncbClose();
+        document.getElementById('id-ncbSelectVerseHeader').style.display = "block";
         document.getElementById('id-ncbSelectVerse').style.display = "block";
         document.getElementById('id-ncbVersePointer').textContent = '▲';
         document.getElementById('id-ncbVersePointer').scrollTop = 0;
@@ -113,3 +116,13 @@ function ncbAbout() {
 function ncbSharePage() {
 
 };
+
+function ncbSettingsReset() {
+
+    document.getElementById('id-ncbDefaultTheme').dataset.theme = 1;
+    ncbApplyVersion(1);
+    ncbApplyTheme();
+    localStorage.removeItem('theme');
+    localStorage.removeItem('versionidx');
+    ncbClose();
+}

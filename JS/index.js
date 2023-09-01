@@ -3,33 +3,37 @@ window.onload = async () => {
 
     document.getElementById("id-ncbIntro").textContent = "New Christian Bible";
     mainPath = document.getElementById("id-ncbBase").href;
-    
-    if (sidePanelLoaded) {
-        var theme = localStorage.getItem("theme");
-        if (!theme) {theme = 'Light'};
-        var version = localStorage.getItem("version");
-        if (!version) {version = 'TWF'};
-
-        document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
-        document.getElementById('id-ncbDefaultVersion').dataset.version = version;
-        document.getElementById('id-ncbVersion').dataset.version = version;
-
-        ncbStartup();
-    };
+    if (sidePanelLoaded) { ncbStartup(); };
 }
 
 async function ncbStartup() {
 
+    let theme = localStorage.getItem("theme");
+    let versionidx = localStorage.getItem("versionidx");
+
     let res = false;
-    ncbApplyTheme();
+
     res = await ncbLoadVersions();
-    if (res) { ncbApplyVersion() };
+    if (!theme) {theme = '1'};
+    document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
+    if(!versionidx) { versionidx = 1; };
+    if (res) { ncbApplyTheme() };
+    if (res) { ncbApplyVersion(versionidx) };
     if (res) { ncbLoadBooks() };
     if (res) { ncbLoadChapters() };
+    if (res) { ncbLoadVerses() };
 };
 
-async function ncbApplyVersion() {
+async function ncbApplyVersion(versionidx) {
 
+    let version = document.getElementById(`id-ncbChangeVersion${versionidx}`).dataset.version;
+    document.getElementById('id-ncbDefaultVersion').dataset.version = version;
+    document.getElementById('id-ncbDefaultVersion').dataset.versionidx = versionidx;
+    document.getElementById('id-ncbDefaultVersionSpan').textContent = version;
+    document.getElementById('id-ncbVersion').dataset.version = version;
+    document.getElementById('id-ncbVersion').dataset.versionidx = versionidx;
+    document.getElementById('id-ncbVersionText').textContent = version;
+    document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(`id-ncbChangeVersion${versionidx}`).textContent;
 };
 
 async function ncbLoadVersions() {
@@ -45,14 +49,14 @@ async function ncbLoadVersions() {
           });
         div.id = `id-ncbDefaultVersion${version.id}`;
         div.textContent = version.vn;
+        div.dataset.versionidx = version.id;
         div.dataset.version = version.ar;
         div.dataset.loaded = false;
         div.classList.add('cs-ncbVersion');
         document.getElementById('id-ncbDefaultVersion').appendChild(div);
-          // #endregion load the default version dropdown box
+        // #endregion load the default version dropdown box
 
         // #region load the change version dropdown box
-
         div = document.createElement("div");
         div.addEventListener('click', function(event) {
             event.stopPropagation();
@@ -62,14 +66,15 @@ async function ncbLoadVersions() {
           });
         div.id = `id-ncbChangeVersion${version.id}`;
         div.textContent = version.vn;
+        div.dataset.versionidx = version.id;
         div.dataset.version = version.ar;
         div.dataset.loaded = false;
         div.classList.add('cs-ncbVersion');
         div.classList.add('cs-ncbChangeVersionSelect');
         document.getElementById('id-ncbChangeVersion').appendChild(div);
-
+        // #endregion load the change version dropdown box
     });
-    // #endregion load the change version dropdown box
+
     return Promise.resolve(true);
 };
 
@@ -165,41 +170,45 @@ async function ncbLoadChapters() {
     return Promise.resolve(true);
 };
 
-async function acbLoadVerses(bid, cn) {
+async function ncbLoadVerses() {
 
+    let i = 1;
     let x = 0;
-    let y = 0;
     let newLine = 1;
-    var verseIndx = 0;
+    let verseIndx = 0;
+    let count = Number(document.getElementById('id-ncbSelectVerse').dataset.verses);
 
-    acbRemoveItems('id-ncbSelectVerse');
-    let i = verses.findIndex(vrs => vrs.bid === bid && vrs.cn === cn);
-    while (verses[i].bid === bid && verses[i].cn === cn) {
+    ncbClose();
+    ncbRemoveItems(`id-ncbSelectVerse`);
+    while (i <= count) {
         if (newLine) {
             let d = document.createElement("div");
-            d.id = `id-ncbVrss${verseIndx}`;
+            d.id = `id-ncbVrse${verseIndx}`;
             d.classList.add('cs-ncbSelectLine');
             document.getElementById(`id-ncbSelectVerse`).appendChild(d);
             newLine = 0;
         };
         let sp = document.createElement("span");
-        sp.addEventListener("click", ncbGoToVerse, true);
-        sp.id = `id-ncbVrs${y}`;
-        sp.textContent = verses[i].vn;
-        sp.dataset.bid = verses[i].bid;
-        sp.dataset.cn = verses[i].cn;
-        sp.dataset.vn = verses[i].vn;
-        sp.classList.add('cs-ncbSelector');
-        document.getElementById(`id-ncbVrss${verseIndx}`).appendChild(sp);
+        sp.addEventListener('click', function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            ncbSelectVerse();
+        });
+        sp.id = `id-ncbVrs${i}`;
+        sp.textContent = i;
+        sp.dataset.cn = i;
+        sp.classList.add('cs-ncbToSelect');
+        document.getElementById(`id-ncbVrse${verseIndx}`).appendChild(sp);
         if (x < 4) { x++; } else { x = 0; newLine = 1; verseIndx++; };
         i++;
-        y++;
     };
     let d = document.createElement("div");
-    d.id = `id-acbVrss${verseIndx + 1}`;
+    d.id = `id-ncbVrse${verseIndx + 1}`;
     d.textContent = ' ... ';
-    d.classList.add('cs-acbSelectLine');
+    d.classList.add('cs-ncbSelectLine');
     document.getElementById(`id-ncbSelectVerse`).appendChild(d);
+    return Promise.resolve(true);
 };
 
 async function fetchJson(url) {
@@ -218,10 +227,10 @@ async function fetchJson(url) {
 async function ncbApplyTheme() {
 
     const ncbNumber = document.getElementsByClassName("cs-ncbNumber");
-    const theme = document.getElementById('id-ncbDefaultTheme').dataset.theme;
-    switch (theme) {
-        case 'Light':
-            document.getElementById('id-ncbDefaultThemeSpan').textContent = theme;
+    const theme = Number(document.getElementById('id-ncbDefaultTheme').dataset.theme);
+        switch (theme) {
+        case 1:
+            document.getElementById('id-ncbDefaultThemeSpan').textContent = document.getElementById(`id-ncbDefaultTheme${theme}`).textContent;
             document.getElementById('id-ncbMainText').classList.remove('cs-ncbMainTextDark');
             for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#9e6105'; };
             document.getElementById('id-ncbTextTitle2').style.color = '#720D0D';
@@ -232,8 +241,8 @@ async function ncbApplyTheme() {
             document.getElementById('id-ncbPanelP2').style.backgroundColor = '#dfdcdc';
             document.getElementById('id-ncbPanelP2').style.backgroundColor = '#f3f3f3';
             break;
-        case 'Dark':
-            document.getElementById('id-ncbDefaultThemeSpan').textContent = theme;
+        case 2:
+            document.getElementById('id-ncbDefaultThemeSpan').textContent = document.getElementById(`id-ncbDefaultTheme${theme}`).textContent;;
             document.getElementById('id-ncbMainText').classList.add('cs-ncbMainTextDark');
             for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#b88a48'; };
             document.getElementById('id-ncbTextTitle2').style.color = "white";

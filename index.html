@@ -30,8 +30,6 @@
         <img async src="IMAGES/dots.png" class="cs-ncbDots" onclick="ncbSwapPanel()" title="Settings">
     </div>
 
-    <!--<div id="id-ncbFixedPanel" onclick="acbOpenClose()" class="cs-ncbFixedPanel"></div>-->
-
     <div id="id-ncbMainText" class="cs-ncbMainText" onscroll="ncbClose()">
 
         <div class="cs-ncbMenu">
@@ -299,11 +297,22 @@
                 <span id="id-ncbDefaultVersionPointer" class="cs-ncbPointer">▼</span> Version:
                 <span id="id-ncbDefaultVersionSpan" class="cs-ncbMoveVersion">TWF</span>
             </span>
+            <div id="id-ncbDefaultVersion" class="cs-ncbSelector cs-ncbDefaultVersion">
+            </div>
 
             <span class="cs-ncbSidePanelSelect cs-ncbSidePanelTheme" onclick="ncbOpenDefaultTheme()">
                 <span id="id-ncbDefaultThemePointer" class="cs-ncbPointer">▼</span> Theme:
                     <span id="id-ncbDefaultThemeSpan" class="cs-ncbMoveTheme">Light</span>
             </span>
+
+            <div id="id-ncbDefaultTheme" class="cs-ncbSelector cs-ncbDefaultTheme">
+                <div id="id-ncbDefaultTheme1" class="cs-ncbTheme" data-theme="1" onclick="ncbDefaultTheme()">Light</div>
+                <div id="id-ncbDefaultTheme2" class="cs-ncbTheme" data-theme="2" onclick="ncbDefaultTheme()">Dark</div>
+            </div>
+            <span class="cs-ncbSidePanelSelect cs-ncbSidePanelReset" onclick="ncbSettingsReset()" title="Rest all Settings to their defaults">
+                Reset
+            </span>
+
         </div>
 
         <label class="cs-ncbPanelLbl cs-ncbPanelLbl2 cs-ncbPanelLblCursor">Statement of Faith</label>
@@ -320,11 +329,13 @@
 
     <!-- #region All Dropdowns -->
 
+    <div id="id-ncbChangeVersionHeader" class="cs-ncbDropHeader cs-ncbChangeVersionHeader">
+        Version
+    </div>
     <div id="id-ncbChangeVersion" class="cs-ncbSelector cs-ncbChangeVersion">
-
     </div>
 
-    <div id="id-ncbChangeBookHeader" class="cs-ncbChangeBookHeader">
+    <div id="id-ncbChangeBookHeader" class="cs-ncbDropHeader cs-ncbChangeBookHeader">
         <span class="cs-ncbOld">Old</span>
 
         <span id="id-ncbSort" class="cs-ncbSort" onclick="ncbSortBooks()" title="Sort Alphabetically" data-sorted="0">
@@ -333,61 +344,20 @@
     </div>
 
     <div id="id-ncbChangeBook" class="cs-ncbSelector cs-ncbChangeBook">
-        <div id="id-ncbBookLine0" class="cs-ncbBookLine">
-            <span id="id-ncbBk0" class="cs-ncbBookSpan">Genesis</span>
-            <span id="id-ncbBk39" class="cs-ncbBookSpan1">Matthew</span>
-        </div>
-
-        <div class="cs-ncbBookLine">
-            <span class="cs-ncbBookSpan">Song of Solomon</span>
-            <span class="cs-ncbBookSpan1">1 Thessalonians</span>
-        </div>
-        <div class="cs-ncbBookLine">
-            <span class="cs-ncbBookSpan">1 Corinthians</span>
-            <span class="cs-ncbBookSpan1">2 Thessalonians</span>
-        </div>
-        <div class="cs-ncbBookLine">
-            <span class="cs-ncbBookSpan">Genesis</span>
-            <span class="cs-ncbBookSpan1">Matthew</span>
-        </div>
-        <div class="cs-ncbBookLine">
-            <span class="cs-ncbBookSpan">Song of Solomon</span>
-            <span class="cs-ncbBookSpan1">1 Thessalonians</span>
-        </div>
-        <div class="cs-ncbBookLine">
-            <span class="cs-ncbBookSpan">1 Corinthians</span>
-            <span class="cs-ncbBookSpan1">2 Thessalonians</span>
-        </div>
-        <div class="cs-ncbBookLine">
-            <span class="cs-ncbBookSpan">Genesis</span>
-            <span class="cs-ncbBookSpan1 cs-ncbNoBookHover"></span>
-        </div>
-        <div class="cs-ncbBookLine">
-            <span class="cs-ncbBookSpan">Song of Solomon</span>
-            <span class="cs-ncbBookSpan1 cs-ncbNoBookHover"></span>
-        </div>
-        <div class="cs-ncbBookLine">
-            <span class="cs-ncbBookSpan">1 Corinthians</span>
-            <span class="cs-ncbBookSpan1 cs-ncbNoBookHover"></span>
-        </div>
     </div>
 
+    <div id="id-ncbChangeChapterHeader" class="cs-ncbDropHeader cs-ncbChangeChapterHeader">
+        Chapter
+    </div>
     <div id="id-ncbChangeChapter" class="cs-ncbSelector cs-ncbChangeChapter" data-chapters="50">
-
     </div>
 
+    <div id="id-ncbSelectVerseHeader" class="cs-ncbDropHeader cs-ncbSelectVerseHeader">
+        Verse
+    </div>
     <div id="id-ncbSelectVerse" class="cs-ncbSelector cs-ncbSelectVerse" data-verses="31">
-
     </div>
 
-    <div id="id-ncbDefaultVersion" class="cs-ncbSelector cs-ncbChangeDefaultVersion">
-
-    </div>
-
-    <div id="id-ncbDefaultTheme" class="cs-ncbSelector cs-ncbThemeSelector">
-        <div id="id-ncbDefaultTheme1" class="cs-ncbTheme" data-theme="Light" onclick="ncbDefaultTheme()">Light</div>
-        <div id="id-ncbDefaultTheme2" class="cs-ncbTheme" data-theme="Dark" onclick="ncbDefaultTheme()">Dark</div>
-    </div>
     <!-- #endregion All Dropdowns -->
 </body>
 
