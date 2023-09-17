@@ -74,16 +74,18 @@ body::-webkit-scrollbar {
     overflow: hidden;
 }
 .cs-ncbMainTextDark { background-color: #333333; color: #cccccc; }
-.cs-ncbChapter { margin-top: -5%;}
+.cs-ncbChapter { margin-top: -5%; padding-bottom: 2em; }
 
 .cs-ncbNumber {
     font-size: .75rem;
     font-weight: 600;
     padding-right: .15em;
+    padding-bottom: .25em;
     margin-left: .22em;
     color: #9e6105;
-    vertical-align: .2em;
+    vertical-align: .15em;
 }
+.cs-ncbNumber1 { color:#720D0D; }
 
 .cs-ncbMenu {
     position: absolute;
@@ -233,6 +235,6 @@ body::-webkit-scrollbar {
     height: 2.3rem;
     width: 2.3rem;
 }
-
+.cs-ncbJQ { color: #3d0efb; }
 ::selection { background: #cdddfc; }
 

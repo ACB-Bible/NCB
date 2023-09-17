@@ -43,19 +43,20 @@ async function ncbDefaultVersion() {
 
     let id = this.event.target.id;
     let version = document.getElementById(id).dataset.version;
+    let versionid = document.getElementById(id).dataset.versionid;
     let versionidx = document.getElementById(id).dataset.versionidx;
 
     document.getElementById('id-ncbVersion').dataset.version = version;
     document.getElementById('id-ncbVersion').dataset.versionidx = versionidx;
     document.getElementById('id-ncbDefaultVersionSpan').textContent = version;
-    document.getElementById('id-ncbDefaultVersionSpan').dataset.versionidx = versionidx;
+
     document.getElementById('id-ncbVersionText').textContent = version;
     document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
 
-    localStorage.setItem("versionidx", versionidx);
+    localStorage.setItem("versionid", versionid);
+    ncbLoadAVersion(`id-ncbChangeVersion${versionid}`);
     ncbClose();
 };
-
 
 function ncbOpenDefaultTheme() {
     this.event.preventDefault();
@@ -129,4 +130,4 @@ function ncbSearch() {
     document.getElementById('id-ncbClear').style.visibility = 'visible'
 }
 
-// container.insertAdjacentHTML('beforeend', '<p>This is a dynamically created paragraph using insertAdjacentHTML.</p>');
+

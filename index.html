@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="id-ncbIntro">New Christian Bible - Read the Bible Online - NewChristianBible.com</title>
 
+    <!--<base id="id-ncbBase" href="https://newchristianbible.com">-->
     <base id="id-ncbBase" href="./">
+
     <link async href="CSS/index.css" rel="stylesheet" type="text/css">
     <link async href="CSS/search.css" rel="stylesheet" type="text/css">
     <link async href="CSS/side-panel.css" rel="stylesheet" type="text/css">
@@ -32,8 +34,10 @@
 
     <div id="id-ncbMainText" class="cs-ncbMainText" onscroll="ncbClose()">
 
-        <div class="cs-ncbMenu">
+        <div id="id-ncbMenu" class="cs-ncbMenu" data-bid="1" data-cn="1" data-idx="0" data-chapters="50" data-verses="31" data-vid="">
+
             <span id="id-ncbVersion" class="cs-ncbMenuSelect cs-ncbMenu1" title="Change Version" onclick="ncbOpenVersion()">
+
                 <span id="id-ncbVersionPointer" class="cs-ncbPointer">▼</span>
                 <span id="id-ncbVersionText">TWF</span>
             </span>
@@ -63,193 +67,6 @@
 
             <div id="id-ncbChapterPage">
 
-                <p id="id-ncbP0" class="cs-ncbP">
-                    <span id="id-ncbSP1-2" onclick="ncbClickedP(event)">
-                        In the beginning, God created heaven and earth.
-                    </span>
-                    <span id="id-ncbSP2" class="cs-ncbNumber">2</span>
-                    <span id="id-ncbSP2-2" onclick="ncbClickedP(event)">
-                        The earth was void and without form, darkness covered the face of the deep, and God's Spirit
-                        moved
-                        over
-                        the waters.
-                    </span>
-                    <span id="id-ncbSP3" class="cs-ncbNumber">3</span>
-                    <span id="id-ncbSP3-2" onclick="ncbClickedP(event)">
-                        And God said, "Let there be light," and there was light."
-                    </span>
-                    <span id="id-ncbSP4" class="cs-ncbNumber">4</span>
-                    <span id="id-ncbSP4-2" onclick="ncbClickedP(event)">
-                        God saw that the light was good, and He separated the light from the darkness.
-                    </span>
-                    <span id="id-ncbSP5" class="cs-ncbNumber">5</span>
-                    <span id="id-ncbSP5-2" onclick="ncbClickedP(event)">
-                        God called the light day and He called the darkness night, and that morning and that evening
-                        were
-                        the
-                        first day.
-                    </span>
-                </p>
-
-                <p id="id-ncbP1" class="cs-ncbP">
-                    <span id="id-ncbSP6" class="cs-ncbNumber">6</span>
-                    <span id="id-ncbSP6-2" onclick="ncbClickedP(event)">
-                        And God said, "Let there be a firmament in the middle of the waters,
-                        and it'll divide the waters from the waters."
-                    </span>
-                    <span id="id-ncbSP7" class="cs-ncbNumber">7</span>
-                    <span id="id-ncbSP7-2" onclick="ncbClickedP(event)">
-                        Then God made the firmament and divided the waters under the firmament from the waters above the
-                        firmament, and it was so.
-                    </span>
-                    <span id="id-ncbSP8" class="cs-ncbNumber">8</span>
-                    <span id="id-ncbSP8-2" onclick="ncbClickedP(event)">
-                        God called the firmament heaven, and that morning and that evening were the second day.
-                    </span>
-                </p>
-
-                <p id="id-ncbP2" class="cs-ncbP">
-                    <span id="id-ncbSP9" class="cs-ncbNumber">9</span>
-                    <span id="id-ncbSP9-2" onclick="ncbClickedP(event)">
-                        And God said, "Let the waters under heaven be gathered together into one place and let the dry
-                        land
-                        appear, " and it was so.
-                    </span>
-                    <span id="id-ncbSP10" class="cs-ncbNumber">10</span>
-                    <span id="id-ncbSP10-2" onclick="ncbClickedP(event)">
-                        Then God named the dry land earth and he named the waters the seas, and God saw that it was
-                        good.
-                    </span>
-                    <span id="id-ncbSP11" class="cs-ncbNumber">11</span>
-                    <span id="id-ncbSP11-2" onclick="ncbClickedP(event)">
-                        And God said, "Let the earth bring forth every kind of seed bearing
-                        plant, including grass, herbs, and fruit trees, each with their own kind of seed," and it was
-                        so.
-                    </span>
-                    <span id="id-ncbSP12" class="cs-ncbNumber">12</span>
-                    <span id="id-ncbSP12-2" onclick="ncbClickedP(event)">
-                        And the earth brought forth all the seed bearing plants, including
-                        every kind of grass, herb, and fruit tree that there was, and God saw that it was good.
-                    </span>
-                    <span id="id-ncbSP13" class="cs-ncbNumber">13</span>
-                    <span id="id-ncbSP13-2" onclick="ncbClickedP(event)">
-                        And that morning and that evening were the third day.
-                    </span>
-                </p>
-
-                <p id="id-ncbP3" class="cs-ncbP">
-                    <span id="id-ncbSP14" class="cs-ncbNumber">14</span>
-                    <span id="id-ncbSP14-2" onclick="ncbClickedP(event)">
-                        And God said, "Let there be lights in the heavens to divide the day
-                        from the night and let them be a sign for the seasons, to seperate the days, months, and years.
-                    </span>
-                    <span id="id-ncbSP15" class="cs-ncbNumber">15</span>
-                    <span id="id-ncbSP15-2" onclick="ncbClickedP(event)">
-                        Let the lights in the heavens give light on the earth," and it was so.
-                    </span>
-                    <span id="id-ncbSP16" class="cs-ncbNumber">16</span>
-                    <span id="id-ncbSP16-2" onclick="ncbClickedP(event)">
-                        Then God made two great lights, the sun to rule the day, and the moon and stars to rule the
-                        night.
-                    </span>
-                    <span id="id-ncbSP17" class="cs-ncbNumber">17</span>
-                    <span id="id-ncbSP17-2" onclick="ncbClickedP(event)">
-                        God placed the lights in the heavens to give light to the earth.
-                    </span>
-                    <span id="id-ncbSP18" class="cs-ncbNumber">18</span>
-                    <span id="id-ncbSP18-2" onclick="ncbClickedP(event)">
-                        And to divide the light from the darkness and rule over the days and nights, and God saw that it
-                        was
-                        good.
-                    </span>
-                    <span id="id-ncbSP19" class="cs-ncbNumber">19</span>
-                    <span id="id-ncbSP19-2" onclick="ncbClickedP(event)">
-                        And that morning and that evening were the fourth day.
-                    </span>
-                </p>
-
-                <p id="id-ncbP4" class="cs-ncbP">
-                    <span id="id-ncbSP20" class="cs-ncbNumber">20</span>
-                    <span id="id-ncbSP20-2" onclick="ncbClickedP(event)">
-                        And God said, "Let the waters bring forth abundant life with living creatures that move and
-                        birds
-                        that
-                        fly in the heavens above the earth."
-                    </span>
-                    <span id="id-ncbSP21" class="cs-ncbNumber">21</span>
-                    <span id="id-ncbSP21-2" onclick="ncbClickedP(event)">
-                        Then God created an abundance of great whales and every kind of living moving creature that
-                        lived in
-                        the
-                        waters, plus every type of winged bird that
-                        flew above the earth, and God saw that it was good.
-                    </span>
-                    <span id="id-ncbSP22" class="cs-ncbNumber">22</span>
-                    <span id="id-ncbSP22-2" onclick="ncbClickedP(event)">
-                        And God blessed them and said, "Be fruitful, multiply, and fill the waters of the seas with
-                        abundant
-                        life, and let the birds multiply abundantly upon the earth."
-                    </span>
-                    <span id="id-ncbSP23" class="cs-ncbNumber">23</span>
-                    <span id="id-ncbSP23-2" onclick="ncbClickedP(event)">
-                        And that morning and that evening were the fifth day.
-                    </span>
-                </p>
-
-                <p id="id-ncbP5" class="cs-ncbP">
-                    <span id="id-ncbSP24" class="cs-ncbNumber">24</span>
-                    <span id="id-ncbSP24-2" onclick="ncbClickedP(event)">
-                        And God said, "Let the earth bring forth every kind of living creature
-                        including cattle, animals, creeping things, and every other living thing on earth," and it was
-                        so.
-                    </span>
-                    <span id="id-ncbSP25" class="cs-ncbNumber">25</span>
-                    <span id="id-ncbSP25-2" onclick="ncbClickedP(event)">
-                        God created animals of every kind, including cattle, creeping things,
-                        and every other living thing on the earth, and God saw that it was good.
-                    </span>
-                </p>
-
-                <p id="id-ncbP6" class="cs-ncbP">
-                    <span id="id-ncbSP26" class="cs-ncbNumber">26</span>
-                    <span id="id-ncbSP26-2" onclick="ncbClickedP(event)">
-                        And God said, "Let's make man in our image, a man who looks like us, and man will preserve and
-                        control
-                        all the fish, birds, cattle, creeping things, and every other living thing on earth."
-                    </span>
-                    <span id="id-ncbSP27" class="cs-ncbNumber">27</span>
-                    <span id="id-ncbSP27-2" onclick="ncbClickedP(event)">
-                        So God created man in his image, both male and female.
-                    </span>
-                    <span id="id-ncbSP28" class="cs-ncbNumber">28</span>
-                    <span id="id-ncbSP28-2" onclick="ncbClickedP(event)">
-                        Then God blessed them and said, "Be fruitful, multiply, and replenish the earth; Take control of
-                        the
-                        fish, birds, and every other living thing on earth."
-                    </span>
-                </p>
-
-                <p id="id-ncbP7" class="cs-ncbP">
-                    <span id="id-ncbSP29" class="cs-ncbNumber">29</span>
-                    <span id="id-ncbSP29-2" onclick="ncbClickedP(event)">
-                        And God said, "Behold, I've given you every seed-bearing herb and fruit tree on the earth for
-                        you to
-                        eat.
-                    </span>
-                    <span id="id-ncbSP30" class="cs-ncbNumber">30</span>
-                    <span id="id-ncbSP30-2" onclick="ncbClickedP(event)">
-                        I've given you every living thing on the earth, including every beast and bird, the creeping
-                        things,
-                        green herbs for food, and every other living thing on the earth," and it was so.
-                    </span>
-                    <span id="id-ncbSP31" class="cs-ncbNumber">31</span>
-                    <span id="id-ncbSP31-2" onclick="ncbClickedP(event)">
-                        And God saw that everything He'd created was very good, and that morning and that evening were
-                        the
-                        sixth
-                        day.
-                    </span>
-                </p>
             </div>
         </div>
 
@@ -273,16 +90,14 @@
         </p>
         <img async src="IMAGES/search.png" class="cs-ncbSearchImg" onclick="ncbSearch()" title="Search">
 
-        <label id="id-ncbPanelLbl1" class="cs-ncbPanelLbl cs-ncbPanelLbl1">Daily Verse</label>
+        <label id="id-ncbPanelLbl1" class="cs-ncbPanelLbl cs-ncbPanelLbl1">Random Verses</label>
         <div id="id-ncbPanelP1" class="cs-ncbPanelP1">
             <span id="id-ncbSidePanelSelect" class="cs-ncbSidePanelSelect" onclick="ncbReadChapter()">
                 Read Whole Chapter
             </span>
-            <span id="id-ncbDailyVerse" class="cs-ncbDailyVerse">Genesis 1:31</span>
+            <span id="id-ncbDailyVerse" class="cs-ncbDailyVerse"></span>
             <span id="id-ncbDailyVerseText">
-                And God saw that everything He'd created was very good, and that morning and that evening were the sixth
-                day. And God saw that everything that He'd created was very good, and that morning and that evening were
-                the sixth day. And God saw that everything that He'd created was very good, and that morning and that evening were the sixth day.
+
             </span>
             <img async src="IMAGES/share.png" class="cs-ncbShare" onclick="ncbShareChapter()" title="Share this verse">
         </div>
@@ -349,16 +164,17 @@
     <div id="id-ncbChangeChapterHeader" class="cs-ncbDropHeader cs-ncbChangeChapterHeader">
         Chapter
     </div>
-    <div id="id-ncbChangeChapter" class="cs-ncbSelector cs-ncbChangeChapter" data-chapters="50">
+    <div id="id-ncbChangeChapter" class="cs-ncbSelector cs-ncbChangeChapter">
     </div>
 
     <div id="id-ncbSelectVerseHeader" class="cs-ncbDropHeader cs-ncbSelectVerseHeader">
         Verse
     </div>
-    <div id="id-ncbSelectVerse" class="cs-ncbSelector cs-ncbSelectVerse" data-verses="31">
+    <div id="id-ncbSelectVerse" class="cs-ncbSelector cs-ncbSelectVerse">
     </div>
     <!-- #endregion Dropdowns -->
 
 </body>
 
+<!--<button onclick="test()">Click Me</button>-->
 </html>

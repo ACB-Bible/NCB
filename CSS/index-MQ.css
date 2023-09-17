@@ -15,7 +15,13 @@
 
     .cs-ncbFirstNumber { margin-top: .07em; }
 
-    .cs-ncbNumber { font-size: .93rem; margin-top: 1.5em; }
+    .cs-ncbNumber {
+        vertical-align: .15em;
+        padding-bottom: .23em;
+        padding-left: .3em;
+        font-size: .93rem;
+        margin-top: 1.5em;
+    }
 
     .cs-ncbFooter { top: 14%; }
 

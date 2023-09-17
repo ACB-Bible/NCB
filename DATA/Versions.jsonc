@@ -1,11 +1,14 @@
-
-/* SQLIte3 ACB-Bible.db Map Legend BibleVersions table field to Versions.jsonc key names
-BibleVersions:
-    Key     Field
-    -------------------
-    ar      Abreviation
-    id      VersionID
-    vn      VersionName
+/*
+SQLIte3 ACB-Bible.db Map Legend BibleVerses table field to WBTVerses.jsonc key names
+    Key:    Field:
+    -------------------------
+    bid      BookID
+    cn       ChapterNumber
+    jq       JesusQuote
+    pn       ParagraphNumber
+    vid      VerseID
+    vn       VerseNumber
+    vt       VerseText
 */
 [
     {
@@ -29,14 +32,14 @@ BibleVersions:
         "vn": "King James Version"
     },
     {
+        "ar": "NWB",
+        "id": 6,
+        "vn": "Noah Webster's Bible"
+    },
+    {
         "ar": "TWF",
         "id": 1,
         "vn": "Twenty-First Century Bible"
-    },
-    {
-        "ar": "NWB",
-        "id": 6,
-        "vn": "Webster's Bible"
     },
     {
         "ar": "WEB",
