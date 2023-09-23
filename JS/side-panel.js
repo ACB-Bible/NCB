@@ -15,8 +15,59 @@ function ncbSwapPanel() {
     };
 };
 
-function ncbReadChapter() {
+async function ncbReadChapter() {
 
+    let eMenu = document.getElementById('id-ncbMenu');
+    let eRandom = document.getElementById('id-ncbPanelLbl1');
+    let head = eRandom.dataset.t;
+    let res = false;
+
+    let bid = Number(eRandom.dataset.bid);
+    if (bid < 40) {
+        book = oldBooks;
+    } else {
+        book = newBooks;
+    };
+
+    eMenu.dataset.bid = eRandom.dataset.bid;
+    eMenu.dataset.cn = eRandom.dataset.cn;
+
+    eRandom.dataset.search = 1;
+    res = await ncbChangeBook();
+    eRandom.dataset.search = 0;
+
+    let i = book.findIndex(books => books.id === bid);
+    eMenu.dataset.chapters = book[i].c;
+    document.getElementById('id-ncbBookText').textContent = head;
+    document.getElementById('id-ncbChapterText').textContent = `${eRandom.dataset.cn} :`;
+    head += ` ${eRandom.dataset.cn}`;
+    document.getElementById('id-ncbTextTitle2').textContent = head;
+    if (res) {
+        if ( eMenu.dataset.vn  !== '' ) {
+            let i = 0;
+            let vn = Number(eMenu.dataset.vn);
+            let sp = 'id-ncbSP';
+            let pID = `${sp}${vn}`;
+            let pID2 = `${pID}-2`;
+            eMenu.dataset.vid = pID;
+            let eParagraph = document.getElementById(pID);
+            eParagraph.scrollIntoView({ block: 'center' });
+
+            while (i <= 2) {
+                eParagraph = document.getElementById(pID);
+                eParagraph.style.backgroundColor = "#aed0fc";
+                eParagraph.style.color = '#720D0D';
+                let eParagraph2 = document.getElementById(pID2);
+                eParagraph2.style.backgroundColor = "#aed0fc";
+                eParagraph2.style.paddingRight = '.3em';
+                vn++;
+                pID = `${sp}${vn}`;
+                pID2 = `${pID}-2`;
+                i++;
+            };
+        };
+    };
+    ncbLoadChapters();
 };
 
 function ncbShareChapter() {
@@ -54,7 +105,8 @@ async function ncbDefaultVersion() {
     document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
 
     localStorage.setItem("versionid", versionid);
-    ncbLoadAVersion(`id-ncbChangeVersion${versionid}`);
+    //ncbLoadAVersion(`id-ncbChangeVersion${versionid}`);
+    ncbChangeVersion(versionid);
     ncbClose();
 };
 
@@ -76,11 +128,13 @@ function ncbDefaultTheme() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
-    var theme = document.getElementById(this.event.target.id).dataset.theme;
+    theme = document.getElementById(this.event.target.id).dataset.theme;
     document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
     ncbApplyTheme();
+    setRandTheme()
     localStorage.setItem("theme", theme);
     ncbClose();
+
 };
 
 function ncbRemoveItems(id) {

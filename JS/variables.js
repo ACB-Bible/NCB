@@ -6,6 +6,10 @@ var panelSwapped = true;
 var spanHover = true;
 var openID = false;
 var allVerses = [];
+var theme = Number(localStorage.getItem("theme"));
+var versionid = localStorage.getItem("versionid");
+if (!theme) { theme = 1 };
+if (!versionid) { versionid = 1; };
 
 // #region Data for Books and Versions
 //id = bookID, c = chapters, t = title

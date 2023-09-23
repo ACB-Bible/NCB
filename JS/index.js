@@ -6,23 +6,16 @@ window.onload = async () => {
 }
 
 async function ncbStartup() {
-
-    let theme = localStorage.getItem("theme");
-    //localStorage.removeItem("versionid");
-    //localStorage.removeItem("versionidx");
-    let versionid = localStorage.getItem("versionid");
     let res = false;
-
     res = await ncbLoadVersions();
-    if (!theme) { theme = '1' };
+
     document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
-    if (!versionid) { versionid = 1; };
     if (res) { ncbApplyTheme() };
     if (res) { ncbApplyDefaultVersion(versionid) };
     if (res) { ncbLoadBooks() };
     if (res) { ncbLoadChapters() };
     if (res) { ncbLoadVerses() };
-    if (res) { ncbChangeVersion(versionid) };
+      if (res) { ncbChangeVersion(versionid) };
 };
 
 async function ncbApplyDefaultVersion(versionid) {
@@ -50,9 +43,9 @@ async function ncbApplyDefaultVersion(versionid) {
 async function ncbApplyTheme() {
 
     const ncbNumber = document.getElementsByClassName("cs-ncbNumber");
-    const theme = Number(document.getElementById('id-ncbDefaultTheme').dataset.theme);
+    //const atheme = Number(document.getElementById('id-ncbDefaultTheme').dataset.theme);
     switch (theme) {
-        case 1:
+        case '1':
             document.getElementById('id-ncbDefaultThemeSpan').textContent = document.getElementById(`id-ncbDefaultTheme${theme}`).textContent;
             document.getElementById('id-ncbMainText').classList.remove('cs-ncbMainTextDark');
             for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#9e6105'; };
@@ -63,9 +56,10 @@ async function ncbApplyTheme() {
             document.getElementById('id-ncbPanelP2').style.color = '#333333';
             document.getElementById('id-ncbPanelP2').style.backgroundColor = '#dfdcdc';
             document.getElementById('id-ncbPanelP2').style.backgroundColor = '#f3f3f3';
+            theme = 1;
             break;
-        case 2:
-            document.getElementById('id-ncbDefaultThemeSpan').textContent = document.getElementById(`id-ncbDefaultTheme${theme}`).textContent;;
+        case '2':
+            document.getElementById('id-ncbDefaultThemeSpan').textContent = document.getElementById(`id-ncbDefaultTheme${theme}`).textContent;
             document.getElementById('id-ncbMainText').classList.add('cs-ncbMainTextDark');
             for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#b88a48'; };
             document.getElementById('id-ncbTextTitle2').style.color = "white";
@@ -76,10 +70,11 @@ async function ncbApplyTheme() {
             document.getElementById('id-ncbPanelP2').style.color = 'white';
             document.getElementById('id-ncbTextTitle2').style.color = '#b8afaf';
             document.getElementById('id-ncbDailyVerse').style.color = 'white';
+            //document.getElementById('id-ncbDailyVerse').style.color = '#dfdcdc';
+            theme = 2;
             break;
-    }
-
-}
+    };
+};
 
 async function ncbLoadVersions() {
 
@@ -259,27 +254,26 @@ async function ncbLoadAVersion(id) {
 
     let res = false;
     let eMenu = document.getElementById('id-ncbMenu');
-    let i = Number(eMenu.dataset.idx);
     let eVersion = document.getElementById(id);
+    let loaded = Number(eVersion.dataset.loaded);
 
-    res = await ncbFetch(eVersion.dataset.version);
-    if (res) {
+    if (!loaded) {
+        res = await ncbFetch(eVersion.dataset.version);
+        let i = Number(eMenu.dataset.idx);
+        if (!startup) { eMenu.dataset.idx = i+ 1 };
+        eVersion.dataset.versionidx = eMenu.dataset.idx;
         eVersion.dataset.loaded = 1;
-
-        if (startup) {
-            eMenu.dataset.idx = i;
-            eVersion.dataset.versionidx = i;
-            startup = false;
-            ncbLoadText();
-        } else {
-            i++;
-            eMenu.dataset.idx = i;
-            eVersion.dataset.versionidx = i;
-            ncbLoadText();
-        };
-
+    } else {
+        res = true;
     };
-    return Promise.resolve(true);
+
+    if (res) {
+        eMenu.dataset.versionidx = eVersion.dataset.versionidx;
+        res = false;
+        res = await ncbLoadText();
+    };
+
+    if (res) { startup = false; return Promise.resolve(true); };
 };
 
 async function ncbFetch(version) {
@@ -289,7 +283,10 @@ async function ncbFetch(version) {
     let url = `${mainPath}DATA/${version}/${version}Verses.json`;
     const res = await fetch(url, { mode: 'cors' });
     const file = await res.json();
-    if (file) { allVerses.push(file); ncbRandomVerse(file); };
+    if (file) {
+        allVerses.push(file);
+        if (startup) {ncbRandomVerse(file);};
+    };
     document.getElementById('id-ncbBody').style.cursor = 'default';
     document.getElementById('id-ncbBody').style.pointerEvents = 'auto';
 
@@ -301,7 +298,7 @@ async function ncbLoadText() {
     let eMenu = document.getElementById('id-ncbMenu');
     let bid = Number(eMenu.dataset.bid);
     let cn = Number(eMenu.dataset.cn);
-    let idx = Number(eMenu.dataset.idx);
+    let idx = Number(eMenu.dataset.versionidx);
     let newLine = 0;
     let pID = 0;
     let x = 0;
@@ -371,6 +368,7 @@ async function ncbLoadText() {
         i++;
     };
     document.getElementById('id-ncbMenu').dataset.verses = x;
+    return Promise.resolve(true);
 };
 
 async function ncbRandomVerse(verses) {
@@ -379,14 +377,18 @@ async function ncbRandomVerse(verses) {
     var endSpan = '</span>';
 
     let book = [];
+    let randbk;
+    let abk = [];
     let min = 1;
     let max = 66;
     let x = 0;
     let verse = '';
     let head = ''
 
+    let eMenu = document.getElementById('id-ncbMenu');
+    let eRandom = document.getElementById('id-ncbPanelLbl1');
     let bid = Math.floor(Math.random() * (max - min + 1) + min);
-
+    eRandom.dataset.bid = bid;
     if (bid < 40) {
         book = oldBooks;
     } else {
@@ -394,31 +396,35 @@ async function ncbRandomVerse(verses) {
     };
     let i = book.findIndex(books => books.id === bid);
     head = book[i].t;
+    eRandom.dataset.t = book[i].t;
     max = book[i].c;
+
     let cn = Math.floor(Math.random() * (max - min + 1) + min);
-    max = 0;
+    eRandom.dataset.cn = cn;
     let y = verses.findIndex(vrs => vrs.bid === bid && vrs.cn === cn);
+    eRandom.dataset.vn = verses[y].vn;
     while (verses[y].bid === bid && verses[y].cn === cn) {
-        max++;
+        randbk = {bid: `${verses[y].bid}`, cn: `${verses[y].cn}`, jq: `${verses[y].jq}`, vn: `${verses[y].vn}`, vt: `${verses[y].vt}`};
+        abk.push(randbk);
         y++;
     };
-    x = Math.floor(Math.random() * (max - min + 1) + min);
-    i = verses.findIndex(vrs => vrs.bid === bid && vrs.cn === cn);
-    i += x;
-    x = 0;
-    let end = Number(verses[i].vn) + 2;
-    head += ` ${verses[i].cn}:${verses[i].vn}-${end}`;
+
+    max = abk.length;
+    if (max > 2) {max = max - 3};
+    i = Math.floor(Math.random() * (max - min + 1) + min);
+    eMenu.dataset.rndidx = i;
+    eMenu.dataset.vn = abk[i].vn;
+    head += ` ${abk[i].cn}:${abk[i].vn}-${Number(abk[i].vn) + 2}`;
     verse = "<p>";
-    if (verses[i + 3].cn !== cn) { i = i - 6 };
-    if (verses[i - 3].cn !== cn) { i = i + 3 };
+    y = y - 1;
     while ( x <= 2 ) {
-        if (verses[i].cn === cn) {
-            let aVerse = verses[i].vt;
-            if (Number(verses[i].jq) === 1) {
+        if (Number(abk[i].cn) === cn && Number(abk[i].bid) === bid) {
+            let aVerse = abk[i].vt;
+            if (Number(abk[i].jq) === 1) {
                 aVerse = aVerse.replace('`', span);
                 aVerse = aVerse.replace('´', endSpan);
             };
-            verse += `<span class="cs-ncbNumber cs-ncbNumber1">${verses[i].vn}</span><span>${aVerse}</span> `;
+            verse += `<span id="id-ncbNumber${x}" class="cs-ncbNumber cs-ncbNumber1">${abk[i].vn}</span><span id="id-ncbNumber${x}-2">${aVerse}</span> `;
         };
         x++;
         i++;

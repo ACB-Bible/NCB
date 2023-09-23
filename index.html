@@ -72,8 +72,8 @@
 
         <div class="cs-ncbTextFooter">
             <span class="cs-ncbBookFooter">Genesis 1</span>
-            <div class="cs-ncbLast cs-ncbLeftLast" title="Previous Chapter">◄ Previous</div>
-            <div class="cs-ncbLast cs-ncbRightLast" title="Next Chapter">Next ►</div>
+            <div id="id-ncbPrevious" class="cs-ncbLast cs-ncbLeftLast" title="Previous Chapter">◄ Previous</div>
+            <div id="id-ncbNext" class="cs-ncbLast cs-ncbRightLast" title="Next Chapter">Next ►</div>
         </div>
 
     </div>
@@ -90,7 +90,7 @@
         </p>
         <img async src="IMAGES/search.png" class="cs-ncbSearchImg" onclick="ncbSearch()" title="Search">
 
-        <label id="id-ncbPanelLbl1" class="cs-ncbPanelLbl cs-ncbPanelLbl1">Random Verses</label>
+        <label id="id-ncbPanelLbl1" class="cs-ncbPanelLbl cs-ncbPanelLbl1" data-search="0">Random Verses</label>
         <div id="id-ncbPanelP1" class="cs-ncbPanelP1">
             <span id="id-ncbSidePanelSelect" class="cs-ncbSidePanelSelect" onclick="ncbReadChapter()">
                 Read Whole Chapter
@@ -137,7 +137,7 @@
     <div class="cs-ncbFooter">
         <span class="cs-ncbAbout" onclick="ncbAbout()">About</span>
 
-        <span class="cs-ncbCopyright" title="God's Word is not Copyrighted">Copyright © 2019-Forever Free - by God</span>
+        <span class="cs-ncbCopyright" title="God's Word is not Copyrighted">Copyright © Free - Inspired by God</span>
 
         <img async src="IMAGES/share.png" class="cs-ncbSharePage" onclick="ncbSharePage()" title="Share this Page"><br>
     </div>

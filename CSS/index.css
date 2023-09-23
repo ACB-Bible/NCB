@@ -82,7 +82,7 @@ body::-webkit-scrollbar {
     padding-right: .15em;
     padding-bottom: .25em;
     margin-left: .22em;
-    color: #9e6105;
+    color: rgb(158, 97, 5);
     vertical-align: .15em;
 }
 .cs-ncbNumber1 { color:#720D0D; }
