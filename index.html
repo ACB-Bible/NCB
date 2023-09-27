@@ -34,7 +34,7 @@
 
     <div id="id-ncbMainText" class="cs-ncbMainText" onscroll="ncbClose()">
 
-        <div id="id-ncbMenu" class="cs-ncbMenu" data-bid="1" data-cn="1" data-idx="0" data-chapters="50" data-verses="31" data-vid="">
+        <div id="id-ncbMenu" class="cs-ncbMenu" data-bid="1" data-cn="1" data-idx="0" data-chapters="50" data-verses="31" data-vid="" data-vids="">
 
             <span id="id-ncbVersion" class="cs-ncbMenuSelect cs-ncbMenu1" title="Change Version" onclick="ncbOpenVersion()">
 
@@ -71,9 +71,9 @@
         </div>
 
         <div class="cs-ncbTextFooter">
-            <span class="cs-ncbBookFooter">Genesis 1</span>
-            <div id="id-ncbPrevious" class="cs-ncbLast cs-ncbLeftLast" title="Previous Chapter">◄ Previous</div>
-            <div id="id-ncbNext" class="cs-ncbLast cs-ncbRightLast" title="Next Chapter">Next ►</div>
+            <span id ="id-ncbBookFooter" class="cs-ncbBookFooter">Genesis 1</span>
+            <div id="id-ncbLast" class="cs-ncbNav cs-ncbNavLast" title="Last Chapter" onclick="ncbNav(0)">◄ Last</div>
+            <div id="id-ncbNext" class="cs-ncbNav cs-ncbNavNext" title="Next Chapter" onclick="ncbNav(1)">Next ►</div>
         </div>
 
     </div>
@@ -137,9 +137,9 @@
     <div class="cs-ncbFooter">
         <span class="cs-ncbAbout" onclick="ncbAbout()">About</span>
 
-        <span class="cs-ncbCopyright" title="God's Word is not Copyrighted">Copyright © Free - Inspired by God</span>
+        <span class="cs-ncbCopyright" title="God's Word is not For Sale">Copyright © Free - Inspired by God</span>
 
-        <img async src="IMAGES/share.png" class="cs-ncbSharePage" onclick="ncbSharePage()" title="Share this Page"><br>
+        <img id="id-ncbShare" async src="IMAGES/share.png" class="cs-ncbSharePage" onclick="ncbSharePage()" title="Share this Page"><br>
     </div>
 
     <!-- #region Dropdowns -->

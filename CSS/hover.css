@@ -2,13 +2,7 @@
 .cs-ncbAbout:hover { color: white; cursor: pointer; }
 
 .cs-ncbPanelLblCursor:hover { cursor: pointer; color: #e6c79a; }
-/*
-.cs-ncbSidePanelSelectMsg:hover {
-    background-color: #fafad1;
-    color: #504c4c;
-    cursor: default;
-}
-*/
+
 .cs-ncbSharePage:hover,
 .cs-ncbShare:hover,
 .cs-ncbDots:hover {
@@ -21,7 +15,9 @@
 .cs-ncbMenu2:hover,
 .cs-ncbMenu3:hover,
 .cs-ncbMenu4:hover,
-.cs-ncbLast:hover { color: white; cursor: pointer; }
+.cs-ncbNav:hover,
+.cs-ncbNavLast:hover,
+.cs-ncbNavNext:hover { color: white; cursor: pointer; }
 
 .cs-ncbArrow:hover { opacity: 1; }
 

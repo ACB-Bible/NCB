@@ -168,14 +168,14 @@ body::-webkit-scrollbar {
     background-color: #c3c3c3;
 }
 
-.cs-ncbLast {
+.cs-ncbNav {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
     color: #720D0D;
 }
-.cs-ncbLeftLast { display: none; left: 6%; }
-.cs-ncbRightLast { right: 6%; }
+.cs-ncbNavLast { display: none; left: 6%; }
+.cs-ncbNavNext { right: 6%; }
 
 .cs-ncbBookFooter {
     position: absolute;
@@ -236,5 +236,5 @@ body::-webkit-scrollbar {
     width: 2.3rem;
 }
 .cs-ncbJQ { color: #3d0efb; }
-::selection { background: #cdddfc; }
+::selection { background: #cdddfc; color: black; }
 

@@ -15,7 +15,7 @@ async function ncbStartup() {
     if (res) { ncbLoadBooks() };
     if (res) { ncbLoadChapters() };
     if (res) { ncbLoadVerses() };
-      if (res) { ncbChangeVersion(versionid) };
+    if (res) { ncbChangeVersion(versionid) };
 };
 
 async function ncbApplyDefaultVersion(versionid) {
@@ -43,9 +43,8 @@ async function ncbApplyDefaultVersion(versionid) {
 async function ncbApplyTheme() {
 
     const ncbNumber = document.getElementsByClassName("cs-ncbNumber");
-    //const atheme = Number(document.getElementById('id-ncbDefaultTheme').dataset.theme);
     switch (theme) {
-        case '1':
+        case 1:
             document.getElementById('id-ncbDefaultThemeSpan').textContent = document.getElementById(`id-ncbDefaultTheme${theme}`).textContent;
             document.getElementById('id-ncbMainText').classList.remove('cs-ncbMainTextDark');
             for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#9e6105'; };
@@ -56,9 +55,10 @@ async function ncbApplyTheme() {
             document.getElementById('id-ncbPanelP2').style.color = '#333333';
             document.getElementById('id-ncbPanelP2').style.backgroundColor = '#dfdcdc';
             document.getElementById('id-ncbPanelP2').style.backgroundColor = '#f3f3f3';
+            document.getElementById('id-ncbDailyVerse').style.color = '#720D0D';
             theme = 1;
             break;
-        case '2':
+        case 2:
             document.getElementById('id-ncbDefaultThemeSpan').textContent = document.getElementById(`id-ncbDefaultTheme${theme}`).textContent;
             document.getElementById('id-ncbMainText').classList.add('cs-ncbMainTextDark');
             for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#b88a48'; };
@@ -70,7 +70,6 @@ async function ncbApplyTheme() {
             document.getElementById('id-ncbPanelP2').style.color = 'white';
             document.getElementById('id-ncbTextTitle2').style.color = '#b8afaf';
             document.getElementById('id-ncbDailyVerse').style.color = 'white';
-            //document.getElementById('id-ncbDailyVerse').style.color = '#dfdcdc';
             theme = 2;
             break;
     };
@@ -175,7 +174,9 @@ async function ncbLoadChapters() {
     let x = 0;
     let newLine = 1;
     let chapterIndx = 0;
-    let count = Number(document.getElementById('id-ncbMenu').dataset.chapters);
+    let eChapter = document.getElementById(`id-ncbChangeChapter`);
+    let eMenu = document.getElementById('id-ncbMenu');
+    let count = Number(eMenu.dataset.chapters);
 
     ncbRemoveItems(`id-ncbChangeChapter`);
     while (i <= count) {
@@ -183,7 +184,7 @@ async function ncbLoadChapters() {
             let d = document.createElement("div");
             d.id = `id-ncbChpt${chapterIndx}`;
             d.classList.add('cs-ncbSelectLine');
-            document.getElementById(`id-ncbChangeChapter`).appendChild(d);
+            eChapter.appendChild(d);
             newLine = 0;
         };
         let sp = document.createElement("span");
@@ -201,12 +202,12 @@ async function ncbLoadChapters() {
         if (x < 4) { x++; } else { x = 0; newLine = 1; chapterIndx++; };
         i++;
     };
-    document.getElementById('id-ncbMenu').dataset.chapters = (i - 1);
+    eMenu.dataset.chapters = (i - 1);
     let d = document.createElement("div");
     d.id = `id-ncbChpt${chapterIndx + 1}`;
     d.textContent = ' ... ';
     d.classList.add('cs-ncbSelectLine');
-    document.getElementById(`id-ncbChangeChapter`).appendChild(d);
+    eChapter.appendChild(d);
     return Promise.resolve(true);
 };
 
@@ -216,7 +217,8 @@ async function ncbLoadVerses() {
     let x = 0;
     let newLine = 1;
     let verseIndx = 0;
-    let count = Number(document.getElementById('id-ncbMenu').dataset.verses);
+    let eMenu = document.getElementById('id-ncbMenu');
+    let count = Number(eMenu.dataset.verses);
 
     ncbRemoveItems(`id-ncbSelectVerse`);
     while (i <= count) {
@@ -273,7 +275,8 @@ async function ncbLoadAVersion(id) {
         res = await ncbLoadText();
     };
 
-    if (res) { startup = false; return Promise.resolve(true); };
+    //if (res) { startup = false; return Promise.resolve(true); };
+    if (res) { return Promise.resolve(true); };
 };
 
 async function ncbFetch(version) {
@@ -310,6 +313,7 @@ async function ncbLoadText() {
     ncbRemoveItems('id-ncbChapterPage');
 
     let verses = allVerses[idx];
+    let lngth = verses.length;
     let i = verses.findIndex(vrs => vrs.bid === bid && vrs.cn === cn);
 
     let p = document.createElement("p");
@@ -322,7 +326,6 @@ async function ncbLoadText() {
         ncbClickP();
     });
     document.getElementById('id-ncbChapterPage').appendChild(p);
-
     let pn = Number(verses[i].pn);
     while (verses[i].bid === bid && verses[i].cn === cn) {
         x++;
@@ -337,11 +340,12 @@ async function ncbLoadText() {
 
         // Add verse number to verse
         sp = document.createElement("span");
-        if (verses[i].vn !== 1) { sp.textContent = verses[i].vn };
-        sp.id = `id-ncbSP${verses[i].vn}`;
-        sp.classList.add('cs-ncbNumber');
-        document.getElementById(`id-ncbP${pID}`).appendChild(sp);
-
+        if (verses[i].vn !== 1) {
+            sp.textContent = verses[i].vn;
+            sp.id = `id-ncbSP${verses[i].vn}`;
+            sp.classList.add('cs-ncbNumber');
+            document.getElementById(`id-ncbP${pID}`).appendChild(sp);
+        };
         // Add text to verse
         sp = document.createElement("span");
         sp.id = `id-ncbSP${verses[i].vn}-2`;
@@ -366,8 +370,9 @@ async function ncbLoadText() {
             sp.textContent = verseText;
         };
         i++;
+        if (i === lngth) { eMenu.dataset.verses = 21; return Promise.resolve(true); };
     };
-    document.getElementById('id-ncbMenu').dataset.verses = x;
+    eMenu.dataset.verses = x;
     return Promise.resolve(true);
 };
 

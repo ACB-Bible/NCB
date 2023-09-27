@@ -10,7 +10,7 @@ function ncbSwapPanel() {
     } else {
         document.getElementById('id-ncbPanelP1').style.display = "block";
         document.getElementById('id-ncbPanelP2').style.display = "none";
-        document.getElementById('id-ncbPanelLbl1').textContent = sidePanelChapter;
+        document.getElementById('id-ncbPanelLbl1').textContent = 'Random Verses';
         panelSwapped = true;
     };
 };
@@ -39,6 +39,7 @@ async function ncbReadChapter() {
     let i = book.findIndex(books => books.id === bid);
     eMenu.dataset.chapters = book[i].c;
     document.getElementById('id-ncbBookText').textContent = head;
+    document.getElementById('id-ncbVerseText').textContent = 1;
     document.getElementById('id-ncbChapterText').textContent = `${eRandom.dataset.cn} :`;
     head += ` ${eRandom.dataset.cn}`;
     document.getElementById('id-ncbTextTitle2').textContent = head;
@@ -49,22 +50,27 @@ async function ncbReadChapter() {
             let sp = 'id-ncbSP';
             let pID = `${sp}${vn}`;
             let pID2 = `${pID}-2`;
-            eMenu.dataset.vid = pID;
-            let eParagraph = document.getElementById(pID);
-            eParagraph.scrollIntoView({ block: 'center' });
 
-            while (i <= 2) {
+            eMenu.dataset.vid = pID;
+            eMenu.dataset.vids = 1;
+            let eParagraph = document.getElementById(pID);
+            let eParagraph2 = document.getElementById(pID2);
+
+            while (i <= 3) {
                 eParagraph = document.getElementById(pID);
                 eParagraph.style.backgroundColor = "#aed0fc";
                 eParagraph.style.color = '#720D0D';
-                let eParagraph2 = document.getElementById(pID2);
+                eParagraph2 = document.getElementById(pID2);
                 eParagraph2.style.backgroundColor = "#aed0fc";
+                eParagraph2.style.color = 'black';
                 eParagraph2.style.paddingRight = '.3em';
-                vn++;
+
                 pID = `${sp}${vn}`;
                 pID2 = `${pID}-2`;
                 i++;
+                vn++;
             };
+            eParagraph.scrollIntoView({ block: 'center' });
         };
     };
     ncbLoadChapters();
@@ -105,9 +111,9 @@ async function ncbDefaultVersion() {
     document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
 
     localStorage.setItem("versionid", versionid);
-    //ncbLoadAVersion(`id-ncbChangeVersion${versionid}`);
     ncbChangeVersion(versionid);
     ncbClose();
+
 };
 
 function ncbOpenDefaultTheme() {
@@ -127,14 +133,25 @@ function ncbOpenDefaultTheme() {
 function ncbDefaultTheme() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
-
+    //Stopped here DailyVerse disappearing
+    let test = document.getElementById('id-ncbDailyVerse').textContent;
+    let eMenu = document.getElementById('id-ncbMenu');
+    let eVersion = document.getElementById('id-ncbVersion');
+    let vid = document.getElementById('id-ncbVersion').dataset.versionid;
     theme = document.getElementById(this.event.target.id).dataset.theme;
+    theme = Number(theme);
     document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
     ncbApplyTheme();
-    setRandTheme()
     localStorage.setItem("theme", theme);
     ncbClose();
-
+    let p = eMenu.dataset.vid;
+    let ps = eMenu.dataset.vids;
+    ncbClickP();
+    eMenu.dataset.vid = p;
+    eMenu.dataset.vids = ps;
+    eVersion.dataset.deftheme = 1;
+    ncbChangeVersion(vid);
+    eVersion.dataset.deftheme = '';
 };
 
 function ncbRemoveItems(id) {
