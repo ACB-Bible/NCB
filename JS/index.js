@@ -11,17 +11,18 @@ async function ncbStartup() {
 
     document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
     if (res) { ncbApplyTheme() };
-    if (res) { ncbApplyDefaultVersion(versionid) };
+    //if (res) { ncbApplyDefaultVersion(versionid) };
+    if (res) { ncbApplyDefaultVersion() };
     if (res) { ncbLoadBooks() };
     if (res) { ncbLoadChapters() };
     if (res) { ncbLoadVerses() };
     if (res) { ncbChangeVersion(versionid) };
 };
 
-async function ncbApplyDefaultVersion(versionid) {
+async function ncbApplyDefaultVersion() {
 
-    let eChngVersion = document.getElementById(`id-ncbChangeVersion${versionid}`);
-    let version = eChngVersion.dataset.version;
+    let eChVersion = document.getElementById(`id-ncbChangeVersion${versionid}`);
+    let version = eChVersion.dataset.version;
     let eMenu = document.getElementById('id-ncbMenu');
     let versionidx = Number(eMenu.dataset.idx);
 
@@ -37,7 +38,7 @@ async function ncbApplyDefaultVersion(versionid) {
     eVersion.dataset.version = version;
     eVersion.dataset.versionid = versionid;
     eVersion.dataset.versionidx = versionidx;
-    document.getElementById('id-ncbTextTitle1').textContent = eChngVersion.textContent;
+    document.getElementById('id-ncbTextTitle1').textContent = eChVersion.textContent;
     document.getElementById('id-ncbVersionText').textContent = version;
 };
 async function ncbApplyTheme() {

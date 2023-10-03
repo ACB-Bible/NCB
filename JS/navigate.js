@@ -16,7 +16,6 @@ function ncbOpenVersion() {
 };
 //Change Version
 async function ncbChangeVersion(vid) {
-
     let id;
     let res = false;
     if (!vid) { id = this.event.target.id; }
@@ -413,10 +412,10 @@ function ncbSelectVerse() {
 
 function ncbSettingsReset() {
     document.getElementById('id-ncbDefaultTheme').dataset.theme = 1;
-    ncbApplyVersion(1);
+    ncbChangeVersion(1);
     ncbApplyTheme();
     localStorage.removeItem('theme');
-    localStorage.removeItem('versionidx');
+    localStorage.removeItem('versionid');
     ncbClose();
 }
 

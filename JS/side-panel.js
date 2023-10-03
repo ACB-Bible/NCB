@@ -100,9 +100,10 @@ async function ncbDefaultVersion() {
 
     let id = this.event.target.id;
     let version = document.getElementById(id).dataset.version;
-    let versionid = document.getElementById(id).dataset.versionid;
+    //let versionid = document.getElementById(id).dataset.versionid;
     let versionidx = document.getElementById(id).dataset.versionidx;
 
+    versionid = document.getElementById(id).dataset.versionid;
     document.getElementById('id-ncbVersion').dataset.version = version;
     document.getElementById('id-ncbVersion').dataset.versionidx = versionidx;
     document.getElementById('id-ncbDefaultVersionSpan').textContent = version;
@@ -111,6 +112,7 @@ async function ncbDefaultVersion() {
     document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
 
     localStorage.setItem("versionid", versionid);
+    //ncbChangeVersion(versionid);
     ncbChangeVersion(versionid);
     ncbClose();
 
@@ -133,8 +135,7 @@ function ncbOpenDefaultTheme() {
 function ncbDefaultTheme() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
-    //Stopped here DailyVerse disappearing
-    let test = document.getElementById('id-ncbDailyVerse').textContent;
+
     let eMenu = document.getElementById('id-ncbMenu');
     let eVersion = document.getElementById('id-ncbVersion');
     let vid = document.getElementById('id-ncbVersion').dataset.versionid;
