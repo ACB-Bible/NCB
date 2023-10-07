@@ -1,0 +1,19 @@
+Title				Abrv	ID	Verses
+------------------------------------------------------
+Authorized King James Version	AKJVx	23	31102
+American Standard Version	ASV	2	31102
+Bishop's Bible			BBBx	20	31102
+Bible in Basic English		BBE	3	31102
+Berean Standard Bible		BSBx	16	31102
+Coverdale Bible			CBVx	21	31102
+Catholic Public Domain Version	CPD	17
+Darby English Bible		DBY	4	31099
+Douay-Rheims Bible		DRBx	15	31102
+Geneva Bible			GNVx	22	31102
+King James Version		KJV	5	31102
+Noah Webster's Bible		NWB	6	31106
+Smith's Literal Translation	SLTx	18	31102
+Twenty-First Century Bible	TWF	1	31102
+Tyndale Bible			TYNx	9	13928
+World English Bible		WEB	7	31102
+Young's Literal Translation	YLT	8	31103
