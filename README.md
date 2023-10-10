@@ -1,4 +1,4 @@
-# Aerican-Computerized-Bible (ACB)
+# American-Computerized-Bible (ACB)
 
 This is My Mission:<br>
 My mission is to reach out and preach the gospel to the whole internet because
