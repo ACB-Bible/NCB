@@ -407,6 +407,7 @@ async function ncbRandomVerse(verses) {
     eRandom.dataset.cn = cn;
     let y = verses.findIndex(vrs => vrs.bid === bid && vrs.cn === cn);
     eRandom.dataset.vn = verses[y].vn;
+    // bid = BookID, cn = ChapterNumber, jq = Jesus Quotes, vn = VerseNumber, vt = VerseText
     while (verses[y].bid === bid && verses[y].cn === cn) {
         randbk = {bid: `${verses[y].bid}`, cn: `${verses[y].cn}`, jq: `${verses[y].jq}`, vn: `${verses[y].vn}`, vt: `${verses[y].vt}`};
         abk.push(randbk);
