@@ -164,8 +164,6 @@ async function ncbLoadBooks() {
         ii++;
         i++;
     });
-
-
     return Promise.resolve(true);
 };
 

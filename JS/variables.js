@@ -19,6 +19,3 @@ var newBooks = [{"c":28,"id":40,"t":"Matthew"},{"c":16,"id":41,"t":"Mark"},{"c":
 
 const versions = [{"ar":"ASV","id":2,"vn":"American Standard Version(ASV)"},{"ar":"AKJ","id":23,"vn":"Authorized King James Version(AKJ)"},{"ar":"BSB","id":16,"vn":"Berean Standard Bible(BSB)"},{"ar":"BBE","id":3,"vn":"Bible in Basic English(BBE)"},{"ar":"BBB","id":20,"vn":"Bishop's-Bible(BBB)"},{"ar":"CBV","id":21,"vn":"Coverdale Bible(CBV)"},{"ar":"DBY","id":4,"vn":"Darby English Bible(DBY)"},{"ar":"DRB","id":15,"vn":"Douay-Rheims Bible(DRB)"},{"ar":"GNV","id":22,"vn":"Geneva Bible(GNV)"},{"ar":"KJV","id":5,"vn":"King James Version(KJV)"},{"ar":"NWB","id":6,"vn":"Noah Webster's Bible(NWB)"},{"ar":"SLT","id":18,"vn":"Smith's Literal Translation(SLT)"},{"ar":"TWF","id":1,"vn":"Twenty-First Century Bible(TWF)"},{"ar":"WEB","id":7,"vn":"World English Bible(WEB)"},{"ar":"YLT","id":8,"vn":"Young's Literal Translation(YLT)"}]
 // #endregion Data for Books and Versions
-
-
-
