@@ -106,95 +106,12 @@ async function ncbChangeVersion(vid) {
             };
         };
     };
-        //eMenu.dataset.vids = '';
-        //eMenu.dataset.vids = '';
     };
     startup = false;
     ncbDisplayPrevious();
     return Promise.resolve(true);
 };
 
-/** async function ncbChangeVersion(vid) {
-
-    let id;
-    let res = false;
-
-    if (!vid) { id = this.event.target.id; }
-    else { id = `id-ncbChangeVersion${vid}`; };
-    let eVersion = document.getElementById(id);
-    let version = eVersion.dataset.version;
-    let content = eVersion.textContent;
-
-    //if (startup || eVersion.dataset.deftheme === '1') {
-        res = await ncbLoadAVersion(id);
-    //} else {
-        //res = true;
-    //};
-    ncbClose();
-    if (res) {
-        let eMenu = document.getElementById('id-ncbMenu');
-        document.getElementById('id-ncbVersionText').textContent = version;
-        document.getElementById('id-ncbTextTitle1').textContent = content;
-        content = document.getElementById(`id-ncbBk${eMenu.dataset.bid}`).textContent;
-        let content1 = document.getElementById(`id-ncbChp${eMenu.dataset.cn}`).textContent;
-        document.getElementById('id-ncbTextTitle2').textContent = `${content} ${content1}`;
-
-        if ( eMenu.dataset.vid  !== '' ) {
-
-            let eParagraph;
-            let eParagraph2;
-            let eParagraph3;
-            let avid = eMenu.dataset.vid;
-
-            if ( eMenu.dataset.vids === '0') {
-                if (avid !== 'id-ncbSP1') {
-                    eParagraph = document.getElementById(avid);
-                    eParagraph.style.backgroundColor = "#aed0fc";
-                    eParagraph.style.color = "black";
-                };
-                eParagraph2 = document.getElementById(`${avid}-2`);
-                eParagraph2.style.backgroundColor = "#aed0fc";
-                eParagraph2.style.color = "black";
-                eParagraph2.style.paddingRight = '.3em';
-            } else {
-                let i = 0;
-                let pID;
-                let pID2;
-                let pID3;
-                let vn = Number(eMenu.dataset.vn);
-                let sp = 'id-ncbSP';
-                let sp2 = 'id-ncbNumber';
-
-                while (i <= 2) {
-                    pID = `${sp}${vn}`;
-                    pID2 = `${pID}-2`;
-                    pID3 = `${sp2}${i}-2`;
-
-                    eParagraph = document.getElementById(pID);
-                    eParagraph2 = document.getElementById(pID2);
-                    eParagraph3 = document.getElementById(pID3);
-
-                    eParagraph.style.backgroundColor = "#aed0fc";
-                    eParagraph.style.color = "black";
-                    eParagraph2.style.backgroundColor = "#aed0fc";
-                    eParagraph2.style.color = "black";
-                    eParagraph2.style.paddingRight = '.3em';
-                    eParagraph3.textContent = eParagraph2.textContent;
-                    vn++;
-                    i++;
-                };
-                document.getElementById('id-ncbVerseText').textContent = 1;
-                eParagraph2.scrollIntoView({ block: 'center' });
-        };
-
-    };
-        //eMenu.dataset.vids = '';
-        //eMenu.dataset.vids = '';
-    };
-
-    ncbDisplayPrevious();
-    return Promise.resolve(true);
-}; */
 function ncbDisplayPrevious() {
     let eMenu = document.getElementById('id-ncbMenu');
     if (eMenu.dataset.bid === '1' && eMenu.dataset.cn === '1') {
@@ -412,10 +329,14 @@ function ncbSelectVerse() {
 
 function ncbSettingsReset() {
     document.getElementById('id-ncbDefaultTheme').dataset.theme = 1;
-    ncbChangeVersion(1);
-    ncbApplyTheme();
     localStorage.removeItem('theme');
     localStorage.removeItem('versionid');
+    theme = 1;
+    versionid = 1;
+
+    ncbApplyTheme();
+    ncbApplyDefaultVersion();
+    ncbChangeVersion(versionid);
     ncbClose();
 }
 

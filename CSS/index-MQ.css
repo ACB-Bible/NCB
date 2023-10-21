@@ -168,6 +168,8 @@
         width: 12%;
     }
 
+    .cs-ncbSidePanelReset { top: 15%; width: 25%;}
+
     .cs-ncbNavLast { display: none; left: 11%; }
 }
 
@@ -222,12 +224,16 @@
     .cs-ncbSharePage {
         left: 0;
     }
+
 }
+
+@media (max-width: 725px) { .cs-ncbSidePanelReset { width: 28%;} }
 
 @media (max-width: 690px) {
     .cs-ncbSharePage {
         left: 2%;
     }
+    .cs-ncbSidePanelReset { width: 28%; }
 }
 
 @media (max-width: 515px) {

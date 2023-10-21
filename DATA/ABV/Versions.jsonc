@@ -8,76 +8,85 @@ SQLIte3 Bible.db field names from ABibleVersions
 */
 [
     {
+        "Selected": 1,
         "ar": "ASV",
         "id": 2,
         "vn": "American Standard Version(ASV)"
     },
     {
-        "ar": "AKJV",
-        "id": 23,
-        "vn": "Authorized King James Version(AKJ)"
-    },
-    {
+        "Selected": 1,
         "ar": "BSB",
         "id": 16,
         "vn": "Berean Standard Bible(BSB)"
     },
     {
+        "Selected": 1,
         "ar": "BBE",
         "id": 3,
         "vn": "Bible in Basic English(BBE)"
     },
     {
+        "Selected": 1,
         "ar": "BBB",
         "id": 20,
         "vn": "Bishop's-Bible(BBB)"
     },
     {
+        "Selected": 1,
         "ar": "CBV",
         "id": 21,
         "vn": "Coverdale Bible(CBV)"
     },
     {
+        "Selected": 1,
         "ar": "DBY",
         "id": 4,
         "vn": "Darby English Bible(DBY)"
     },
     {
+        "Selected": 1,
         "ar": "DRB",
         "id": 15,
         "vn": "Douay-Rheims Bible(DRB)"
     },
     {
+        "Selected": 1,
         "ar": "GNV",
         "id": 22,
         "vn": "Geneva Bible(GNV)"
     },
     {
+        "Selected": 1,
         "ar": "KJV",
         "id": 5,
         "vn": "King James Version(KJV)"
     },
     {
+        "Selected": 1,
         "ar": "NWB",
         "id": 6,
         "vn": "Noah Webster's Bible(NWB)"
     },
     {
+        "Selected": 1,
         "ar": "SLT",
         "id": 18,
         "vn": "Smith's Literal Translation(SLT)"
     },
     {
+        "Selected": 1,
         "ar": "TWF",
         "id": 1,
         "vn": "Twenty-First Century Bible(TWF)"
     },
     {
+        "Selected": 1,
         "ar": "WEB",
         "id": 7,
         "vn": "World English Bible(WEB)"
     },
     {
+        "Selected": 1,
         "ar": "YLT",
         "id": 8,
         "vn": "Young's Literal Translation(YLT)"
