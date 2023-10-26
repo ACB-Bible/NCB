@@ -3,7 +3,6 @@ html {
     height: 100%;
     width: 100%;
     overflow: hidden;
-
 }
 
 body {
@@ -236,6 +235,7 @@ body::-webkit-scrollbar {
     height: 2.3rem;
     width: 2.3rem;
 }
+.cs-ncbMissionPage { margin-top: -8%; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 .cs-ncbJQ { color: #3d0efb; }
 ::selection { background: #cdddfc; color: black; }
 

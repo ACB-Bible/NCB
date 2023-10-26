@@ -100,9 +100,7 @@ async function ncbDefaultVersion() {
 
     let id = this.event.target.id;
     let version = document.getElementById(id).dataset.version;
-    //let versionid = document.getElementById(id).dataset.versionid;
     let versionidx = document.getElementById(id).dataset.versionidx;
-
     versionid = document.getElementById(id).dataset.versionid;
     document.getElementById('id-ncbVersion').dataset.version = version;
     document.getElementById('id-ncbVersion').dataset.versionidx = versionidx;
@@ -112,7 +110,6 @@ async function ncbDefaultVersion() {
     document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
 
     localStorage.setItem("versionid", versionid);
-    //ncbChangeVersion(versionid);
     ncbChangeVersion(versionid);
     ncbClose();
 
@@ -190,16 +187,95 @@ function ncbClose() {
 function ncbClearSearch() {
     document.getElementById('id-ncbSearchLbl').textContent = 'Search is not working';
     document.getElementById('id-ncbClear').style.visibility = 'hidden'
-}
+};
 function ncbRemoveSearch() {
     document.getElementById('id-ncbSearchLbl').textContent = '';
     document.getElementById('id-ncbClear').style.visibility = 'visible'
 
-}
+};
 function ncbSearch() {
     document.getElementById('id-ncbSearchLbl').textContent = 'Temporary';
     document.getElementById('id-ncbClear').style.visibility = 'hidden'
     document.getElementById('id-ncbClear').style.visibility = 'visible'
-}
+};
 
+async function fetchCode(url) {
 
+    const res = await fetch(url, { mode: 'cors' });
+    const text = await res.text();
+    const code = eval(text);
+    return code;
+};
+
+async function ncbMission() {
+
+    if (missionClicks > 0) { return; };
+    state.innerHTML.push(document.getElementById('id-ncbMainText').innerHTML);
+    let variablesHTML = document.getElementById('id-ncbVariableScript').innerHTML;
+    state.variablesHTML.push(variablesHTML);
+    if (missionHTML === '') {
+        let url = `${mainPath}/ASSETS/mission.txt`;
+        missionHTML = await fetchCode(url);
+    };
+    state.innerHTML.push(missionHTML);
+    state.variablesHTML.push(variablesHTML);
+    ncbRemoveItems('id-ncbMainText');
+    document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", missionHTML);
+    window.history.pushState(state, null, null);
+    missionClicks++;
+    aClick++;
+};
+
+async function ncbStatement() {
+
+    if (statementClicks > 0) { return; }
+    state.innerHTML.push(document.getElementById('id-ncbMainText').innerHTML);
+    variablesHTML = document.getElementById('id-ncbVariableScript').innerHTML;
+    if (statementHTML === '') {
+        let url = `${mainPath}/ASSETS/statement.txt`;
+        statementHTML = await fetchCode(url);
+    };
+    state.innerHTML.push(statementHTML);
+    state.variablesHTML.push(variablesHTML);
+    ncbRemoveItems('id-ncbMainText');
+    document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", statementHTML);
+    window.history.pushState(state, null, null);
+    statementClicks++;
+    aClick++;
+};
+
+function pushPage() {
+    state.innerHTML.push(document.getElementById('id-ncbMainText').innerHTML);
+    variablesHTML = document.getElementById('id-ncbVariableScript').innerHTML;
+    state.variablesHTML.push(variablesHTML);
+    window.history.pushState(state, null, null);
+    aClick++;
+};
+
+window.addEventListener('popstate', function(event) {
+
+    if (aClick > -1) {
+        event.stopPropagation();
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        ncbRemoveItems('id-ncbMainText');
+        ncbRemoveItems('id-ncbVariableScript');
+        state.innerHTML.splice(aClick, 1);
+        state.variablesHTML.splice(aClick, 1);
+        aClick--;
+        document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", state.innerHTML[aClick]);
+        document.getElementById('id-ncbVariableScript').insertAdjacentHTML("afterbegin", state.variablesHTML[aClick]);
+        missionClicks = 0;
+        statementClicks = 0;
+    };
+});
+
+window.addEventListener("beforeunload", function(event) {
+
+    if (event.target.location.href === "about:blank") {
+        event.stopPropagation();
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        return;
+    }
+  });

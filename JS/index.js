@@ -11,12 +11,30 @@ async function ncbStartup() {
 
     document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
     if (res) { ncbApplyTheme() };
-    //if (res) { ncbApplyDefaultVersion(versionid) };
     if (res) { ncbApplyDefaultVersion() };
     if (res) { ncbLoadBooks() };
     if (res) { ncbLoadChapters() };
     if (res) { ncbLoadVerses() };
     if (res) { ncbChangeVersion(versionid) };
+    if (res) { ncbAddEvents() };
+};
+
+async function ncbAddEvents() {
+
+    let lbl = document.getElementById('id-ncbPanelbl2');
+    lbl.addEventListener('click', function (event) {
+        event.stopPropagation();
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        ncbStatement();
+    });
+    lbl = document.getElementById('id-ncbPanelbl3');
+    lbl.addEventListener('click', function (event) {
+        event.stopPropagation();
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        ncbMission();
+    });
 };
 
 async function ncbApplyDefaultVersion() {
@@ -41,6 +59,7 @@ async function ncbApplyDefaultVersion() {
     document.getElementById('id-ncbTextTitle1').textContent = eChVersion.textContent;
     document.getElementById('id-ncbVersionText').textContent = version;
 };
+
 async function ncbApplyTheme() {
 
     const ncbNumber = document.getElementsByClassName("cs-ncbNumber");

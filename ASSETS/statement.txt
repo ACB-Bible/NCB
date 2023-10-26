@@ -1,0 +1,6 @@
+`<div class="cs-ncbMissionPage">
+  <h4 id="the-new-christian-bible-statement-of-faith">The New Christian Bible Statement of Faith </h4>
+  <hr>
+  <p>I.  I believe there is only one God, who is, was, and always will be, and I believe that God is the Holy Trinity: Father, Son and the Holy Spirit.</p>
+  <p>II. And, I believe that Jesus said, "If you have seen me you have seen the Father."</p>
+</div>`
