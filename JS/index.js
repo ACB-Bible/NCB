@@ -99,7 +99,6 @@ async function ncbLoadVersions() {
 
     versions.forEach(version => {
         // #region load the default version dropdown box
-        if ( version.Selected === 1 ) {
         let div = document.createElement("div");
         div.addEventListener('click', function (event) {
             event.stopPropagation();
@@ -132,7 +131,6 @@ async function ncbLoadVersions() {
         div.classList.add('cs-ncbVersion');
         div.classList.add('cs-ncbChangeVersionSelect');
         document.getElementById('id-ncbChangeVersion').appendChild(div);
-    };
         // #endregion load the change version dropdown box
     });
 
