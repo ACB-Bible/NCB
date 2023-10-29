@@ -112,6 +112,7 @@ async function ncbLoadVersions() {
         div.dataset.version = version.ar;
         div.dataset.loaded = 0;
         div.classList.add('cs-ncbVersion');
+        div.classList.add('cs-ncbEventVersion');
         document.getElementById('id-ncbDefaultVersion').appendChild(div);
         // #endregion load the default version dropdown box
 

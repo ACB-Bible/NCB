@@ -63,7 +63,7 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: auto;
     margin-bottom: 6%;
-    padding: .1em;
+    padding: .2em;
     padding-left: .5em;
     padding-right: .5em;
     background-color: #b8afaf;
@@ -100,7 +100,7 @@
     width: 20%;
     padding-right: .75em;
 }
-.cs-ncbDefaultVersion { height: 33.5%; }
+
 .cs-ncbMoveVersion { display: inline; position: relative; left: 12%; width: 99%;}
 .cs-ncbMoveTheme { position: relative; left: 12%;}
 
@@ -132,26 +132,26 @@
 /* Hide scrollbar for Chrome, Safari and Opera */
 .cs-ncbSelector::-webkit-scrollbar { display: none; }
 
-.cs-ncbDefaultTheme { top: 53.6%; height: 6.8%; }
-
 .cs-ncbVersion {
-    padding: .7em;
+    padding: .8em;
     padding-left: .8em;
-    font-size: .9rem;
+    font-size: .8rem;
     border-bottom: 1px solid #dfdcdc;
 }
+.cs-ncbEventVersion { padding: .3em; }
+.cs-ncbDefaultVersion { height: 34.0362%; top: 46.3%; width: 13.8%; }
+.cs-ncbDefaultTheme { top: 54.34%; height: 7.65%; width: 13.8%; }
 .cs-ncbTheme {
-    padding: .3em;
+    padding: .15em;
     padding-left: .8rem;
     border-bottom: 1px solid #dfdcdc;
     font-size: .9rem;
 }
-
 .cs-ncbDropHeader {
     display: none;
     position: absolute;
     top: 16.1%;
-    height: 3.3%;
+    height: 2.9%;
     width: 14.7%;
     background-color: #c65d5d;
     color: #f0ecc9;
@@ -167,27 +167,27 @@
 .cs-ncbChangeVersionHeader {
     padding-left: .9em;
     padding-bottom: .5em;
-    left: 12%;
-    top: 17.3%;
+    left: 14%;
+    top: 16.15%;
     width: 13%;
 }
 .cs-ncbChangeVersion {
     position: absolute;
-    left: 13%;
-    top: 20.3%;
-    height: 33.5%;
+    left: 13.95%;
+    top: 21.35%;
+    height: 35.1%;
 }
 
-.cs-ncbChangeBookHeader { left: 31%; }
+.cs-ncbChangeBookHeader { left: 30.5%; height: 4%; }
 .cs-ncbChangeBook {
     position: absolute;
-    left: 36%;
-    top: 20.6%;
-    height: 32.5%;
-    width: 14.2%;
+    left: 30.5%;
+    top: 21.5%;
+    height: 35.9%;
+    width: 15.2%;
 }
 .cs-ncbBookLine {
-    height: 12.2%;
+    height: 12.6%;
     width: 100%;
     font-size: .90rem;
     overflow: hidden;
@@ -198,10 +198,11 @@
     padding-left: .5em;
     padding-top: .6em;
     width: 48%;
-    height: 100%;
+    height: 68.1%;
     overflow: hidden;
     border-right: 1px solid #bcbaba;
     border-bottom: 1px solid #bcbaba;
+
 }
 .cs-ncbBookSpan1 {
     display: inline-block;
@@ -231,32 +232,32 @@
 }
 
 .cs-ncbChangeChapterHeader {
-    left: 44.8%;
-    top: 17.25%;
-    height: 4.25%;
+    left: 42.5%;
+    top: 16.1%;
+    height: 3.9%;
     width: 15.2%;
 }
 .cs-ncbChangeChapter {
     position: absolute;
-    left: 11%;
-    top: 20.6%;
+    left: 42.5%;
+    top: 20.8%;
     height: 32.5%;
-    width: 40%;
+    width: 15.7%;
     padding-top: .3em;
 }
 
 .cs-ncbSelectVerseHeader {
-    left: 51.5%;
-    top: 17.25%;
-    height: 4.25%;
+    left: 48.5%;
+    top: 16.1%;
+    height: 3.9%;
     width: 15.2%;
 }
 .cs-ncbSelectVerse {
     position: absolute;
-    left: 51.4%;
-    top: 17.5%;
+    left: 48.5%;
+    top: 20.8%;
     height: 32.5%;
-    width: 15.2%;
+    width: 15.65%;
     padding-top: .3em;
 }
 
@@ -270,9 +271,11 @@
     overflow: hidden;
 }
 .cs-ncbToSelect {
-    text-align: center;
     height: 82%;
     width: 12%;
     border: 2px solid rgba(194, 192, 192, .2);
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
