@@ -27,7 +27,7 @@
         document.getElementById('test').textContent = `Random Number: ${getRandomInt(4)}`;
     };
 
-   
+
 
     showNumber();
     getQueryString();
@@ -35,3 +35,10 @@
 </script>
 
 </html>
+
+<style>
+    .cs-ncbSearchLbl[spellcheck="true"]::spelling-error {
+        text-decoration: underline crimson solid 3px;
+        background-color: yellow;
+    }
+</style>
