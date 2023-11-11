@@ -1,7 +1,7 @@
 .cs-ncbSearchBar {
     position: relative;
     top: 5%;
-    height: 3.8%;
+    height: 4%;
     width: 78%;
     margin: auto;
     text-align: left;
@@ -19,6 +19,7 @@
     display: block;
     position: absolute;
     left: .5em;
+    top: .12rem;
     opacity: .45;
     height: 100%;
     width: 84%;
