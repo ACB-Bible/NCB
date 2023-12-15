@@ -7,8 +7,8 @@
         <p>The <strong>New Christian Bible (NCB)</strong> is part of a ministry that God has given me. It's the
           computerized part of this ministry, and it includes all the source code that operates the <strong>NCB</strong>
           website. The <strong>NCB</strong> will contain many different historical versions of the Bible, plus a brand
-          new version called the <strong>Twenty-First Century Bible (TWF)</strong>.</p>
-        <p>The <strong>Twenty-First Century Bible (TWF)</strong> is another part of this ministry. The
+          new version called the <strong>Twenty-First Century Version (TWF)</strong>.</p>
+        <p>The <strong>Twenty-First Century version (TWF)</strong> is another part of this ministry. The
           <strong>TWF</strong> Bible is a modern, new, twenty-first century version of the Bible that's not yet
           finished, but it's currently being translated from various biblical texts. I hope you find this work to be a
           high quality and useful online Bible for your worship services, and your Biblical studies. I hope it helps you
