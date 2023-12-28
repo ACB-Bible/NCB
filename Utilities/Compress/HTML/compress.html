@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../IMAGES/favicon.png" rel="icon" type="image/x-icon">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .test {
+            position: relative;
+            height: 85%;
+            width: 50%;
+            top: 10%;
+            background-color: aquamarine;
+            padding-left: 1rem;
+            padding-top: 1rem;
+            margin: auto;
+            overflow-y: auto;
+        }
+    </style>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js" integrity="sha512-qtX0GLM3qX8rxJN1gyDfcnMFFrKvixfoEOwbBib9VafR5vbChV5LeE5wSI/x+IlCkTY5ZFddFDCCfaVJJNnuKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+
+    <script id="id-ncbVariableScript">
+        var workVersions = [];
+        var versionidx = 10;
+    </script>
+    <script async src="../jspako.min.js" type="text/javascript"></script>
+
+    <script async>
+
+        window.addEventListener("load", async (event) => {
+            let res = await startUp();
+        });
+
+        async function startUp() {
+
+            console.log('Start:');
+            let path = `../DATA/1-Misc/`;
+            const vrs = await fetch(`${path}WorkVersions.json`, { mode: 'cors' });
+            workVersions = await vrs.json();
+            let vrabr = workVersions[versionidx].ar;
+            path = `../DATA/${vrabr}/${vrabr}`;
+            //if (workVersions.length > 0) { console.time("Timer"); };
+            const file = await fetch(`${path}Verses.json`, { mode: 'cors' });
+            const verses = await JSON.stringify(await file.json());
+            let res = await compressStr(verses);
+            let uz;
+            if (res) { uz = await decompressStr(res) };
+            if (uz) { print(uz) };
+            //if (res) { console.timeEnd('Timer'); console.log('Finished!'); };
+        };
+
+        async function compressStr(str) {
+            //var zipped = pako.gzip(str, { to: 'string' });
+            //Promise.resolve(zipped);
+            try {
+                const zipped = await pako.gzip(str, { to: 'string' });
+                return Promise.resolve(zipped); // Explicitly return the resolved promise
+            } catch (error) {
+                // Handle any errors during compression
+                console.error('Error compressing string:', error);
+                throw error; // Re-throw the error to propagate it
+            };
+        };
+
+        async function decompressStr(str) {
+
+            try {
+                const unzipped = await pako.ungzip(str, { to: 'string' });
+                return Promise.resolve(unzipped);
+            } catch (error) {
+                console.error('Error compressing string:', error);
+                throw error; // Re-throw the error to propagate it
+            }
+        };
+
+        function print(compressed) {
+            document.getElementById("id-ncbChapterPage").textContent = compressed;
+        };
+        /*
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js').then(function (registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function (err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        };*/
+    </script>
+</head>
+<button onclick="search()">Search</button>
+
+<body>
+    <div id="id-ncbChapterPage" class="test"></div>
+</body>
+
+</html>

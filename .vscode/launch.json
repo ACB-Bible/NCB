@@ -11,6 +11,21 @@
             "url": "http://127.0.0.1:5501/index.html",
             "webRoot": "${workspaceFolder}"
         },
-
+        {
+            "name": "Chrome compress.html",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://127.0.0.1:5501/Utilities/Compress/HTML/compress.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Node compress-node.js Launch",
+            "program": "${workspaceFolder}/Utilities/Compress/JS/compress-node.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+        }
     ]
 }

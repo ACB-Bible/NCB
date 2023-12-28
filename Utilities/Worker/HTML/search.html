@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../IMAGES/favicon.png" rel="icon" type="image/x-icon">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .test {
+            position: relative;
+            height: 85%;
+            width: 50%;
+            top: 10%;
+            background-color: aquamarine;
+            padding-left: 1rem;
+            padding-top: 1rem;
+            margin: auto;
+            overflow-y: auto;
+        }
+    </style>
+
+    <script async src="../JS/elasticlunr.js" type="text/javascript"></script>
+    <script async>
+
+        //** AElasticSearch.js */
+        var workVersions = [];
+        var versionidx = 10;
+
+        window.addEventListener("load", async (event) => {
+            let res = await startUp();
+        });
+
+        async function startUp() {
+            let path = `../DATA/1-Misc/`;
+            const vrs = await fetch(`${path}WorkVersions.json`, { mode: 'cors' });
+            workVersions = await vrs.json();
+            let vrabr = workVersions[versionidx].ar;
+            path = `../DATA/${vrabr}/${vrabr}`;
+            if (workVersions.length > 0) { console.time("time") };
+            let index = await new elasticlunr();
+            let res = await buildIndex(path, index);
+            if (res) { console.timeEnd("time"); };
+            if (res) { search('In the beginning', res) };
+            if (res) { console.log('Finished!') };
+        };
+
+        async function buildIndex(path, index) {
+
+            const vrs = await fetch(`${path}Verses.json`, { mode: 'cors' });
+            const verses = await await vrs.json();
+            index.addField('vid');
+            index.addField('vt');
+            index.setRef('vt');
+            verses.forEach((verse) => {
+                index.addDoc(verse);
+            }, this);
+            const indexSizeInBytes = JSON.stringify(index).length / 1048576;
+            console.log(`Index Size: ${indexSizeInBytes} MB`);
+            return index;
+        };
+
+        async function search(phrase, index) {
+
+            let aphrase = phrase;
+            let results = index.search(aphrase, { phrase: true, field: ['vt'] });
+            results.sort(function (a, b) {
+                return b.score - a.score;
+            });
+            for (const result of results) {
+                let doc = index.documentStore.getDoc(result.ref);
+                if (doc.vt.includes(aphrase)) {
+                    console.log(`ID:${doc.vid}  Verse: ${doc.vt}`);
+                };
+            };
+        };
+
+        function test() {
+            document.getElementById("id-ncbChapterPage").textContent = '';
+        };
+        /*
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('sw.js').then(function (registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function (err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        };*/
+    </script>
+</head>
+<button onclick="search()">Search</button>
+
+<body>
+    <div id="id-ncbChapterPage" class="test"></div>
+</body>
+
+</html>
