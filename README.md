@@ -9,4 +9,4 @@ The **Twenty-First Century Version (TWF)** of the Bible is another part of this 
 
 *God loves you, Jesus loves you, I love you, and this is God's free gift to you .....*
 
-<span align="center" title="God's Word is not For Sale">Copyright © Free - Inspired by God</span>
+<span align="center" title="God's Word is not For Sale">No Copyright © It's Free - Inspired by God</span>
