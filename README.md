@@ -5,7 +5,7 @@ The "New Christian Bible" Project is an online bible project that offers various
 
 1. [American Computerized Bible Project](https://github.com/ACB-Bible/AmericanComputerizedBible)
 2. [BibleDB Project](https://github.com/ACB-Bible/BibleDB)
-3. [Project Documentation](https://github.com/ACB-Bible/BibleDB/tree/main/Documentation) - Documentation for all projects.
+3. [Project Documentation](https://github.com/ACB-Bible/DOC) - Documentation for all projects.
 ---
 
 <br>
