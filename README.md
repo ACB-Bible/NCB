@@ -1,12 +1,14 @@
-# New Christian Bible (NCB)
+<h3 align="center">The New Christian Bible</h3>
 
-This is My Mission:<br>
-My mission is to reach out and preach the gospel to the whole internet because Jesus said, 'Go out into all the world, and preach the gospel to every living creature.' I see this mission as an important mission, because the internet is a whole new world being created by God.
+---
+The "New Christian Bible" Project is an online bible project that offers various versions of the Bible that uses data from the "BibleDB" Project. The "BibleDB" project is a database project that stores various Bible versions in various data formats. The "American Computerized Bible" is aless complex online Bible project, with fewer features that uses the data from the "BibleDB" Project. All the data and source code for each of these projects is in the public domain and free of copyrights, therefore it's free for you to use in your own ministry or Bible project. If you use or alter any of this data or source code, please change the name of your project so people don't get confused.
 
-The **New Christian Bible (NCB)** is part of a ministry that God has given me. It's the computerized part of this ministry, and it includes all the source code that operates the **NCB** website. The **NCB** will contain many different historical versions of the Bible, plus a brand new version called the **Twenty-First Century Version (TWF)**.
+1. [American Computerized Bible Project](https://github.com/ACB-Bible/AmericanComputerizedBible)
+2. [BibleDB Project](https://github.com/ACB-Bible/BibleDB)
+3. [Project Documentation](https://github.com/ACB-Bible/BibleDB/tree/main/Documentation) - Documentation for all projects.
+---
 
-The **Twenty-First Century Version (TWF)** of the Bible is another part of this ministry. The **TWF** Bible is a modern, new, twenty-first century version of the Bible that's not yet finished, but it's currently being translated from various biblical texts. I hope you find this work to be a high quality and useful online Bible for your worship services, and your Biblical studies. I hope it helps you with your mission to preach God's word to the entire world. If anyone finds salvation through these efforts, no matter if it's one person or millions, then I believe I'll have accomplished the mission that God entrusted me with.
+<br>
 
-*God loves you, Jesus loves you, I love you, and this is God's free gift to you .....*
-
-<span align="center" title="God's Word is not For Sale">No Copyright © It's Free - Inspired by God</span>
+<h6 align="center" title="God's Word Is Not For Sale">American Computerized Bible - Copyright © Free - Inspired by God!</h3>
+<h6 align="center">Good luck with your efforts!</h6>
