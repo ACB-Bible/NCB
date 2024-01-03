@@ -1,6 +1,17 @@
 `<div class="cs-ncbMissionPage">
   <h4 id="the-new-christian-bible-statement-of-faith">The New Christian Bible Statement of Faith </h4>
   <hr>
-  <p>I.  I believe there is only one God, who is, was, and always will be, and I believe that God is the Holy Trinity: Father, Son and the Holy Spirit.</p>
-  <p>II. And, I believe that Jesus said, "If you have seen me you have seen the Father."</p>
+  <p>I.    I believe there is only one God, who is, was, and always will be, and I believe that God is the Holy Trinity: Father, Son and the Holy Spirit.</p>
+  <p>II.   I believe that Jesus said, 'If you have seen me you have seen the Father.'</p>
+  <p>III.  I believe that Jesus Christ was immacuately conceived by the Holy Spirit and was born of a virgin named Mary in a little town named Bethlehem.
+  <p>IV.   I believe that Jesus is the only begotten son of God, and that he came to earth not to judge the world, but to save the world.</p>
+  <p>V.    I believe that Jesus Christ is the savior of the world.</p>
+  <p>VI.   I believe that Jesus Christ lived, was crucified, died, and rose back to life on the third day after he was buried.</p>
+  <p>VII.  I believe that Jesus said, 'I am the Way, the Truth, and the Life.'</p>
+  <p>VIII. I believe that Jesus said, 'The time has been fulfilled, and the kingdom of God is at hand; repent and believe in the gospel.'
+  <p>IX.   I believe that Jesus said, 'Truly, I say to you, there are some standing here who will not taste death until they see the kingdom of God after it has come with power.'</p>
+  <p>X.    I believe that Jesus said, 'Truly, I say to you, unless one is born again he cannot see the kingdom of God.'</p>
+  <p>XI.   I believe that the Kingdom of Heaven is here, now because I have seen it.</p>
+  <br>
+  <p align="center"><em>God loves you, Jesus loves you, I love you, and this is God's free gift to you .....</em></p>
 </div>`
