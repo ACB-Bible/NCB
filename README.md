@@ -15,9 +15,8 @@ The "Bible Code" GitHub repositories that are actively being developed.
 2. [BibleDB](https://github.com/ACB-Bible/BibleDB) - The "BibleDB" project contains the master SQLite3 database and other data files for multiple versions of the Bible.
 3. [Bible Code Documentation](https://github.com/ACB-Bible/DOC) - Complete documentation for all "Bible Code" projects.
 
-The operational webpages can be viewed here.
+Operational webpages can be viewed here:
 1.  [ACB Webpage](https://acbible.com)
-2.  [NCB Webpage](https://acbible.com)
 
 [Back to Top](#top)
 
