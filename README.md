@@ -1,21 +1,26 @@
+<a id="top"></a>
 <h3 align="center">The New Christian Bible</h3>
 
 ---
 
-* The "New Christian Bible" Project is part of the "Bible Code" Project. It's an online Bible project that offers various versions of the Bible that uses data from the "BibleDB" Project.
-
-1. The "BibleDB" project is a database project that stores various Bible versions in various data formats.
-
-2. The "American Computerized Bible" is a less complex online Bible project, with fewer features that uses data from the "BibleDB" Project.
-
-3. All the data and source code for each of these projects is in the public domain and free of copyrights, therefore it's free for you to use in your own ministry or Bible project. If you use or alter any of this data or source code, please change the name of your project so people don't get confused.
+The "New Christian Bible" project is part of the "Bible Code" Project which is a collection of GitHub repositories containing source code and data that can be used to develop your own computerized Bible project. All the data and source code for each of these projects is in the public domain and free of copyrights, therefore it's free for you to use in your own ministry or Bible project. If you use or alter any of this data or source code, please change the name of your project so people don't get confused.
 
 ---
 
-#### Other Active Bible Code Projects:
-1. [American Computerized Bible Project](https://github.com/ACB-Bible/AmericanComputerizedBible) - Source code for an online Bible.
-2. [BibleDB](https://github.com/ACB-Bible/BibleDB) - The master SQLite3 database and other data files for multiple versions of the Bible.
-4. [Bible Code Project Documentation](https://github.com/ACB-Bible/DOC) - Complete documentation for all projects.
+#### Other Active Bible Code Repositories
+
+The "Bible Code" GitHub repositories that are actively being developed.
+
+1. [American Computerized Bible](https://github.com/ACB-Bible/AmericanComputerizedBible) - The "American Computerized Bible" is a project with complete CSS, HTML, Javascript source code, and Json file  examples that use data from the "BibleDB" project for developing an online Bible.
+2. [BibleDB](https://github.com/ACB-Bible/BibleDB) - The "BibleDB" project contains the master SQLite3 database and other data files for multiple versions of the Bible.
+3. [Bible Code Documentation](https://github.com/ACB-Bible/DOC) - Complete documentation for all "Bible Code" projects.
+
+The operational webpages can be viewed here.
+1.  [ACB Webpage](https://acbible.com)
+2.  [NCB Webpage](https://acbible.com)
+
+[Back to Top](#top)
+
 ---
 
 <br>
