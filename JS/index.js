@@ -3,7 +3,7 @@ window.onload = async () => {
     document.getElementById("id-ncbIntro").textContent = "New Christian Bible";
     mainPath = document.getElementById("id-ncbBase").href;
     if (sidePanelLoaded) { ncbStartup(); };
-}
+};
 
 async function ncbStartup() {
     let res = false;
@@ -26,14 +26,21 @@ async function ncbAddEvents() {
         event.stopPropagation();
         event.preventDefault();
         event.stopImmediatePropagation();
-        ncbStatement();
+        ncbPage();
     });
     lbl = document.getElementById('id-ncbPanelbl3');
     lbl.addEventListener('click', function (event) {
         event.stopPropagation();
         event.preventDefault();
         event.stopImmediatePropagation();
-        ncbMission();
+        ncbPage();
+    });
+    lbl = document.getElementById('id-ncbPanelbl4');
+    lbl.addEventListener('click', function (event) {
+        event.stopPropagation();
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        ncbPage();
     });
 };
 

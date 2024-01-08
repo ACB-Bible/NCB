@@ -162,8 +162,8 @@ function ncbRemoveItems(id) {
 
 function ncbClose() {
 
+    if (!document.body.contains(document.getElementById('id-ncbMenu'))) { return; }
     openID = false;
-
     document.getElementById('id-ncbChangeVersionHeader').style.display = "none";
     document.getElementById('id-ncbChangeVersion').style.display = "none";
     document.getElementById('id-ncbVersionPointer').textContent = '▼';
@@ -207,40 +207,49 @@ async function fetchCode(url) {
     return code;
 };
 
-async function ncbMission() {
+async function ncbPage() {
 
-    if (missionClicks > 0) { return; };
-    state.innerHTML.push(document.getElementById('id-ncbMainText').innerHTML);
-    let variablesHTML = document.getElementById('id-ncbVariableScript').innerHTML;
-    state.variablesHTML.push(variablesHTML);
-    if (missionHTML === '') {
-        let url = `${mainPath}/ASSETS/mission.txt`;
-        missionHTML = await fetchCode(url);
+    let id = this.event.target.id;
+    let html = '';
+    switch (id) {
+        case 'id-ncbPanelbl2':
+            if (statementClicks > 0) { return; };
+            if (statementHTML === '') {
+                let url = `${mainPath}/ASSETS/statement.txt`;
+                statementHTML = await fetchCode(url);
+            };
+            html = statementHTML;
+            statementClicks++;
+            break;
+        case 'id-ncbPanelbl3':
+            if (missionClicks > 0) { return; };
+            if (missionHTML === '') {
+                let url = `${mainPath}/ASSETS/mission.txt`;
+                missionHTML = await fetchCode(url);
+            };
+            html = missionHTML;
+            missionClicks++;
+            break;
+        case 'id-ncbPanelbl4':
+            if (mediaClicks > 0) { return; };
+            if (mediaHTML === '') {
+                let url = `${mainPath}/ASSETS/TRIVIA/media.txt`;
+                mediaHTML = await fetchCode(url);
+            };
+            html = mediaHTML;
+            mediaClicks++;
+            break;
+        default:
+            break;
     };
-    state.innerHTML.push(missionHTML);
-    state.variablesHTML.push(variablesHTML);
-    ncbRemoveItems('id-ncbMainText');
-    document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", missionHTML);
-    window.history.pushState(state, null, null);
-    missionClicks++;
-    aClick++;
-};
 
-async function ncbStatement() {
-
-    if (statementClicks > 0) { return; }
     state.innerHTML.push(document.getElementById('id-ncbMainText').innerHTML);
-    variablesHTML = document.getElementById('id-ncbVariableScript').innerHTML;
-    if (statementHTML === '') {
-        let url = `${mainPath}/ASSETS/statement.txt`;
-        statementHTML = await fetchCode(url);
-    };
-    state.innerHTML.push(statementHTML);
-    state.variablesHTML.push(variablesHTML);
+    state.variablesHTML.push(document.getElementById('id-ncbVariableScript').innerHTML);
+    //state.innerHTML.push(html);
+    //state.variablesHTML.push(variablesHTML);
     ncbRemoveItems('id-ncbMainText');
-    document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", statementHTML);
+    document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", html);
     window.history.pushState(state, null, null);
-    statementClicks++;
     aClick++;
 };
 
@@ -254,28 +263,24 @@ function pushPage() {
 
 window.addEventListener('popstate', function(event) {
 
-    if (aClick > -1) {
-        event.stopPropagation();
-        event.preventDefault();
-        event.stopImmediatePropagation();
+    event.stopPropagation();
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    if (aClick > 0) {
         ncbRemoveItems('id-ncbMainText');
         ncbRemoveItems('id-ncbVariableScript');
-        state.innerHTML.splice(aClick, 1);
-        state.variablesHTML.splice(aClick, 1);
         aClick--;
         document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", state.innerHTML[aClick]);
         document.getElementById('id-ncbVariableScript').insertAdjacentHTML("afterbegin", state.variablesHTML[aClick]);
         missionClicks = 0;
         statementClicks = 0;
+        mediaClicks = 0;
+        //** How to remove a pushState array */
+        //state.innerHTML.splice(aClick, 1);
+        //state.variablesHTML.splice(aClick, 1);
     };
 });
 
 window.addEventListener("beforeunload", function(event) {
 
-    if (event.target.location.href === "about:blank") {
-        event.stopPropagation();
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        return;
-    }
   });
