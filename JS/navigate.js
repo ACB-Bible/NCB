@@ -83,7 +83,7 @@ async function ncbChangeVersion(vid) {
 
     } else {
         if (!startup) {
-            let eRandom = document.getElementById('id-ncbPanelLbl1');
+            let eRandom = document.getElementById('id-ncbPanelLbl');
             let x = 0;
             let bid = Number(eRandom.dataset.bid);
             //bid = Number(bid);
@@ -157,7 +157,7 @@ async function ncbChangeBook(bid) {
     else { id = `id-ncbBk${bid}`; };
     let eBook = document.getElementById(id);
     let eMenu = document.getElementById('id-ncbMenu');
-    let eRandom = document.getElementById('id-ncbPanelLbl1');
+    let eRandom = document.getElementById('id-ncbPanelLbl');
     let content;
     if (eRandom.dataset.search === '0') {
         if (!bid) {
@@ -222,7 +222,7 @@ function ncbNav(nav) {
     document.getElementById('id-ncbBookText').textContent = eBook.textContent;
     document.getElementById('id-ncbTextTitle2').textContent = `${eBook.textContent} ${eMenu.dataset.cn}`;
     document.getElementById('id-ncbBookFooter').textContent = `${eBook.textContent} ${eMenu.dataset.cn}`;
-    document.getElementById('id-ncbShare').scrollIntoView(false);
+    document.getElementById('bottom').scrollIntoView(false);
 };
 
 function ncbSortBooks() {
@@ -301,6 +301,7 @@ function ncbOpenVerse() {
     };
 
 };
+
 function ncbSelectVerse() {
     let id;
     let pID;
@@ -328,17 +329,23 @@ function ncbSelectVerse() {
 };
 
 function ncbSettingsReset() {
+
     document.getElementById('id-ncbDefaultTheme').dataset.theme = 1;
+    document.getElementById('id-ncbChapterPage').style.fontSize = '1rem';
     localStorage.removeItem('theme');
     localStorage.removeItem('versionid');
+    localStorage.removeItem('fontsize');
+    theFont = 0;
     theme = 1;
     versionid = 1;
 
     ncbApplyTheme();
     ncbApplyDefaultVersion();
     ncbChangeVersion(versionid);
+    ncbApplyDefaultFont();
+    ncbModalSave('Settings Reset!')
     ncbClose();
-}
+};
 
 function ncbClickP() {
 
@@ -375,13 +382,122 @@ function ncbClickP() {
     eMenu.dataset.vids = '';
 };
 
-function ncbAbout() {
+function ncbFooter() {
 
+    if (footerOpen) {
+        footerOpen = false;
+        document.getElementById('id-ncbFooter').style.display = 'none';
+        document.getElementById('id-ncbSelectContainer').removeAttribute('class');
+        document.getElementById('id-ncbSelectContainer').setAttribute('class', 'cs-ncbSelectContainer');
+    } else {
+        footerOpen = true;
+        document.getElementById('id-ncbFooter').style.display = 'block';
+        document.getElementById('id-ncbSelectContainer').removeAttribute('class');
+        document.getElementById('id-ncbSelectContainer').setAttribute('class', 'cs-ncbSelectContainerOpen');
+    };
 };
 
 function ncbSharePage() {
-
+    alert('test sharePage');
 };
 
+async function fetchCode(url) {
 
+    const res = await fetch(url, { mode: 'cors' });
+    const text = await res.text();
+    const code = await eval(text);
+    return Promise.resolve(code);
+};
+
+function changePage(html) {
+    ncbRemoveItems('id-ncbMainText');
+    document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", html);
+};
+
+async function ncbPage() {
+
+    this.event.stopPropagation();
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+    let id = this.event.target.id;
+    let html = '';
+
+    switch (id) {
+
+        case 'id-ncbFooter1':
+            ncbSharePage()
+            return;
+        case 'id-ncbFooter2':
+            if (aboutHTML === '') {
+                let url = `${mainPath}/ASSETS/about.txt`;
+                aboutHTML = await fetchCode(url);
+            };
+            html = aboutHTML;
+            aboutClicks++;
+            break;
+        case 'id-ncbFooter3':
+            if (mediaHTML === '') {
+                let url = `${mainPath}/ASSETS/TRIVIA/media.txt`;
+                mediaHTML = await fetchCode(url);
+            };
+            html = mediaHTML;
+            mediaClicks++;
+            break;
+        case 'id-ncbFooter4':
+            if (missionHTML === '') {
+                let url = `${mainPath}/ASSETS/mission.txt`;
+                missionHTML = await fetchCode(url);
+            };
+            html = missionHTML;
+            missionClicks++;
+            break;
+
+        case 'id-ncbFooter5':
+            if (statementHTML === '') {
+                let url = `${mainPath}/ASSETS/statement.txt`;
+                statementHTML = await fetchCode(url);
+            };
+            html = statementHTML;
+            statementClicks++;
+            break;
+        default:
+            break;
+    };
+    pushPage(html);
+};
+
+function pushPage(html) {
+    state.innerHTML.push(document.getElementById('id-ncbMainText').innerHTML);
+    state.variablesHTML.push(document.getElementById('id-ncbVariableScript').innerHTML);
+    window.history.pushState(state, null, null);
+    changePage(html);
+    document.getElementById('top').scrollIntoView(true);
+    aClick++;
+};
+
+window.addEventListener('popstate', function(event) {
+
+    event.stopPropagation();
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    if (aClick > 0) {
+        ncbRemoveItems('id-ncbMainText');
+        ncbRemoveItems('id-ncbVariableScript');
+        aClick--;
+        document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", state.innerHTML[aClick]);
+        document.getElementById('id-ncbVariableScript').insertAdjacentHTML("afterbegin", state.variablesHTML[aClick]);
+        shareClicks = 0;
+        aboutClicks = 0;
+        missionClicks = 0;
+        statementClicks = 0;
+        mediaClicks = 0;
+        //** How to remove a pushState array */
+        //state.innerHTML.splice(aClick, 1);
+        //state.variablesHTML.splice(aClick, 1);
+    };
+});
+
+window.addEventListener("beforeunload", function(event) {
+
+});
 //eMenu.dataset.vid = pID2.slice(0, -2);

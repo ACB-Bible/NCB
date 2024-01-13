@@ -1,9 +1,27 @@
+// #region Events
+function moveDivs() {
+    x = this.event.screenX;
+    y = this.event.screenY;
+};
+
 window.onload = async () => {
 
     document.getElementById("id-ncbIntro").textContent = "New Christian Bible";
     mainPath = document.getElementById("id-ncbBase").href;
     if (sidePanelLoaded) { ncbStartup(); };
 };
+
+var slider = document.getElementById('id-ncbRange');
+slider.oninput = function() {
+
+    let afontSize = Number(this.value);
+    document.getElementById('id-ncbDefaultFontlbl').textContent = `Font Size:   ${afontSize}%`;
+    afontSize = afontSize / 100;
+    //afontSize = afontSize + .1;
+    theFont = `${afontSize}rem`;
+    document.getElementById('id-ncbChapterPage').style.fontSize = theFont;
+};
+// #endregion Events
 
 async function ncbStartup() {
     let res = false;
@@ -16,32 +34,31 @@ async function ncbStartup() {
     if (res) { ncbLoadChapters() };
     if (res) { ncbLoadVerses() };
     if (res) { ncbChangeVersion(versionid) };
-    if (res) { ncbAddEvents() };
+    if (res) { ncbApplyDefaultFont() };
 };
 
-async function ncbAddEvents() {
+async function ncbApplyDefaultFont() {
 
-    let lbl = document.getElementById('id-ncbPanelbl2');
-    lbl.addEventListener('click', function (event) {
-        event.stopPropagation();
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        ncbPage();
-    });
-    lbl = document.getElementById('id-ncbPanelbl3');
-    lbl.addEventListener('click', function (event) {
-        event.stopPropagation();
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        ncbPage();
-    });
-    lbl = document.getElementById('id-ncbPanelbl4');
-    lbl.addEventListener('click', function (event) {
-        event.stopPropagation();
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        ncbPage();
-    });
+    let afont = localStorage.getItem('fontsize');
+    if (afont === null) {
+        let element = document.documentElement;
+        let style = window.getComputedStyle(element);
+        let defaultFontSize = style.getPropertyValue('font-size');
+        defaultFontSize = parseFloat(defaultFontSize);
+        defaultFontSize = defaultFontSize / 16;
+        defaultFontSize = defaultFontSize.toFixed(2);
+        defaultFontSize = Number(defaultFontSize.replace('.', ''));
+        document.getElementById('id-ncbDefaultFontlbl').textContent = `Font Size:   ${defaultFontSize}%`
+        document.getElementById('id-ncbRange'). value = defaultFontSize;
+        document.getElementById('id-ncbChapterPage').style.fontSize = '1.1rem';
+
+    } else {
+        document.getElementById('id-ncbChapterPage').style.fontSize = afont;
+        afont = Number(parseFloat(afont.replace('.', '')));
+        document.getElementById('id-ncbDefaultFontlbl').textContent = `Font Size:   ${afont}%`
+        document.getElementById('id-ncbRange'). value = afont;
+    };
+
 };
 
 async function ncbApplyDefaultVersion() {
@@ -417,7 +434,7 @@ async function ncbRandomVerse(verses) {
     let head = ''
 
     let eMenu = document.getElementById('id-ncbMenu');
-    let eRandom = document.getElementById('id-ncbPanelLbl1');
+    let eRandom = document.getElementById('id-ncbPanelLbl');
     let bid = Math.floor(Math.random() * (max - min + 1) + min);
     eRandom.dataset.bid = bid;
     if (bid < 40) {
@@ -465,5 +482,4 @@ async function ncbRandomVerse(verses) {
     document.getElementById('id-ncbDailyVerse').textContent = head;
     document.getElementById('id-ncbDailyVerseText').textContent = '';
     document.getElementById(`id-ncbDailyVerseText`).insertAdjacentHTML('beforeend', verse);
-
 };

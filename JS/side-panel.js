@@ -5,12 +5,12 @@ function ncbSwapPanel() {
     if (panelSwapped) {
         document.getElementById('id-ncbPanelP1').style.display = "none";
         document.getElementById('id-ncbPanelP2').style.display = "block";
-        document.getElementById('id-ncbPanelLbl1').textContent = "Settings";
+        document.getElementById('id-ncbPanelLbl').textContent = "Settings";
         panelSwapped = false;
     } else {
         document.getElementById('id-ncbPanelP1').style.display = "block";
         document.getElementById('id-ncbPanelP2').style.display = "none";
-        document.getElementById('id-ncbPanelLbl1').textContent = 'Random Verses';
+        document.getElementById('id-ncbPanelLbl').textContent = 'Random Verses';
         panelSwapped = true;
     };
 };
@@ -18,7 +18,7 @@ function ncbSwapPanel() {
 async function ncbReadChapter() {
 
     let eMenu = document.getElementById('id-ncbMenu');
-    let eRandom = document.getElementById('id-ncbPanelLbl1');
+    let eRandom = document.getElementById('id-ncbPanelLbl');
     let head = eRandom.dataset.t;
     let res = false;
 
@@ -152,6 +152,26 @@ function ncbDefaultTheme() {
     eVersion.dataset.deftheme = '';
 };
 
+function ncbDefaultFont() {
+
+    if (theFont === 0) { return; }
+    localStorage.setItem("fontsize", theFont);
+    ncbModalSave('Font Saved!')
+};
+
+function ncbModalSave(msg) {
+
+    document.getElementById('id-ncbModalSave').textContent = msg;
+    document.getElementById("id-ncbModalSave").style.left = `${x - 150}px`;
+    document.getElementById("id-ncbModalSave").style.top = `${y - 120.5}px`;
+    document.getElementById('id-ncbModalSave').setAttribute('class', 'cs-ncbModalSave');
+    document.getElementById('id-ncbModalSave').style.display = 'block';
+    setTimeout(() => {
+        document.getElementById('id-ncbModalSave').classList.remove("cs-ncbModalSave");
+        document.getElementById('id-ncbModalSave').style.display = 'none';
+      }, "1100");
+};
+
 function ncbRemoveItems(id) {
 
     let el = document.getElementById(id);
@@ -199,88 +219,3 @@ function ncbSearch() {
     document.getElementById('id-ncbClear').style.visibility = 'visible'
 };
 
-async function fetchCode(url) {
-
-    const res = await fetch(url, { mode: 'cors' });
-    const text = await res.text();
-    const code = eval(text);
-    return code;
-};
-
-async function ncbPage() {
-
-    let id = this.event.target.id;
-    let html = '';
-    switch (id) {
-        case 'id-ncbPanelbl2':
-            if (statementClicks > 0) { return; };
-            if (statementHTML === '') {
-                let url = `${mainPath}/ASSETS/statement.txt`;
-                statementHTML = await fetchCode(url);
-            };
-            html = statementHTML;
-            statementClicks++;
-            break;
-        case 'id-ncbPanelbl3':
-            if (missionClicks > 0) { return; };
-            if (missionHTML === '') {
-                let url = `${mainPath}/ASSETS/mission.txt`;
-                missionHTML = await fetchCode(url);
-            };
-            html = missionHTML;
-            missionClicks++;
-            break;
-        case 'id-ncbPanelbl4':
-            if (mediaClicks > 0) { return; };
-            if (mediaHTML === '') {
-                let url = `${mainPath}/ASSETS/TRIVIA/media.txt`;
-                mediaHTML = await fetchCode(url);
-            };
-            html = mediaHTML;
-            mediaClicks++;
-            break;
-        default:
-            break;
-    };
-
-    state.innerHTML.push(document.getElementById('id-ncbMainText').innerHTML);
-    state.variablesHTML.push(document.getElementById('id-ncbVariableScript').innerHTML);
-    //state.innerHTML.push(html);
-    //state.variablesHTML.push(variablesHTML);
-    ncbRemoveItems('id-ncbMainText');
-    document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", html);
-    window.history.pushState(state, null, null);
-    aClick++;
-};
-
-function pushPage() {
-    state.innerHTML.push(document.getElementById('id-ncbMainText').innerHTML);
-    variablesHTML = document.getElementById('id-ncbVariableScript').innerHTML;
-    state.variablesHTML.push(variablesHTML);
-    window.history.pushState(state, null, null);
-    aClick++;
-};
-
-window.addEventListener('popstate', function(event) {
-
-    event.stopPropagation();
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    if (aClick > 0) {
-        ncbRemoveItems('id-ncbMainText');
-        ncbRemoveItems('id-ncbVariableScript');
-        aClick--;
-        document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", state.innerHTML[aClick]);
-        document.getElementById('id-ncbVariableScript').insertAdjacentHTML("afterbegin", state.variablesHTML[aClick]);
-        missionClicks = 0;
-        statementClicks = 0;
-        mediaClicks = 0;
-        //** How to remove a pushState array */
-        //state.innerHTML.splice(aClick, 1);
-        //state.variablesHTML.splice(aClick, 1);
-    };
-});
-
-window.addEventListener("beforeunload", function(event) {
-
-  });

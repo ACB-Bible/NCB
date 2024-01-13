@@ -1,7 +1,8 @@
 .cs-ncbSidePanelSelect:hover { cursor: pointer; opacity: 1; }
-.cs-ncbAbout:hover { color: white; cursor: pointer; }
-
-.cs-ncbPanelLblCursor:hover { cursor: pointer; color: #e6c79a; }
+.cs-ncbFooter1:hover,
+.cs-ncbFooter2:hover,
+.cs-ncbFooter3:hover,
+.cs-ncbFooter4:hover { color: white; cursor: pointer; }
 
 .cs-ncbSharePage:hover,
 .cs-ncbShare:hover,
@@ -35,6 +36,8 @@
     cursor: pointer;
 }
 .cs-ncbNoBookHover:hover { background-color: #f3f3f3; cursor: default; }
+.cs-ncbOpenFooter:hover,
+.cs-ncbSaveDefaultFont:hover { background-color: #cfddf9; cursor: pointer; }
 
 .cs-ncbToSelect:hover {
     color: white !important;

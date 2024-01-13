@@ -1,7 +1,5 @@
 @media (max-height: 730px) {
-
-    html { font-size: 90%; }
-
+    html { font-size: 95%; }
     .cs-ncbMenuImg { left: 7.6%; }
 
     .cs-ncbMainText { top: 9.5%; }
@@ -23,10 +21,6 @@
         margin-top: 1.5em;
     }
 
-    .cs-ncbFooter { top: 14%; }
-
-    .cs-ncbCopyright { margin: 0; left: 18%; }
-
     .cs-ncbSearchBar {
         top: 3%;
         height: 6.5%;
@@ -45,28 +39,19 @@
     }
 
     .cs-ncbPanelLbl {
-        left: -.5%;
-        top: 6%;
-        padding: .4em;
-        padding-bottom: .65em;
-        font-size: 1rem;
-        width: 77%;
+        top: 7%;
+        line-height: 2.3rem;
+        font-size: 1.2rem;
+        width: 81%;
     }
-
-    .cs-ncbPanelLbl2 { top: 8%; }
-
-    .cs-ncbPanelLbl3 { top: 9%; }
-
-    .cs-ncbPanelP1,
-    .cs-ncbPanelP2 { top: 7%; }
 
     .cs-ncbSelector { position: absolute; width: 14%; left: 82.2%; }
 
     .cs-ncbDefaultVersion {
-        left: 7.8%;
-        top: 37.5%;
+        left: 11%;
+        top: 41%;
         height: 60%;
-        width: 84%;
+        width: 77%;
     }
     .cs-ncbVersion {
         font-size: .83em;
@@ -74,10 +59,10 @@
         padding-left: .8em;
     }
     .cs-ncbDefaultTheme {
-        left: 7.8%;
-        top: 54.1%;
+        left: 11%;
+        top: 57.75%;
         height: 22.4%;
-        width: 84%;
+        width: 77%;
     }
     .cs-ncbTheme {
         font-size: .83em;
@@ -91,12 +76,12 @@
         padding-left: .9em;
         padding-bottom: .5em;
         left: 12%;
-        top: 17.3%;
+        top: 17.7%;
         width: 13%;
     }
     .cs-ncbChangeVersion {
         left: 12%;
-        top: 23.8%;
+        top: 24%;
         height: 30.5%;
     }
 
@@ -113,13 +98,13 @@
     }
     .cs-ncbChangeBookHeader {
         left: 31.3%;
-        top: 17.25%;
+        top: 17.7%;
         height: 4.25%;
         width: 16%;
     }
     .cs-ncbChangeBook {
         left: 31.3%;
-        top: 23.4%;
+        top: 24%;
         height: 38.5%;
         width: 16.57%;
     }
@@ -139,26 +124,26 @@
 
     .cs-ncbChangeChapterHeader {
         left: 44.8%;
-        top: 17.25%;
+        top: 17.7%;
         height: 4.25%;
         width: 15.2%;
     }
     .cs-ncbChangeChapter {
         left: 44.8%;
-        top: 23.4%;
+        top: 24%;
         height: 34.5%;
         width: 15.82%;
     }
 
     .cs-ncbSelectVerseHeader {
         left: 51.5%;
-        top: 17.25%;
+        top: 17.7%;
         height: 4.25%;
         width: 15.2%;
     }
     .cs-ncbSelectVerse {
         left: 51.5%;
-        top: 23.4%;
+        top: 24%;
         height: 34.5%;
         width: 15.8%;
     }
@@ -168,7 +153,7 @@
         width: 12%;
     }
 
-    .cs-ncbSidePanelReset { top: 15%; width: 25%;}
+    .cs-ncbSidePanelReset { top: 10%; width: 25%;}
 
     .cs-ncbNavLast { display: none; left: 11%; }
 }
@@ -195,6 +180,7 @@
     .cs-ncbWebLink {
         display: none;
     }
+
 
     .cs-ncbMainText {
         left: 0;
@@ -237,12 +223,5 @@
 }
 
 @media (max-width: 515px) {
-    .cs-ncbCopyright {
-        margin: 0;
-        left: 30%;
-    }
 
-    .cs-ncbFooter {
-        top: 4%;
-    }
 }
