@@ -331,7 +331,9 @@ function ncbSelectVerse() {
 function ncbSettingsReset() {
 
     document.getElementById('id-ncbDefaultTheme').dataset.theme = 1;
-    document.getElementById('id-ncbChapterPage').style.fontSize = '1rem';
+    if (document.getElementById('id-ncbChapterPage')) { document.getElementById('id-ncbChapterPage').style.fontSize = '1rem'; }
+    if (document.getElementById('id-ncbPage')) { document.getElementById('id-ncbPage').style.fontSize = '1rem'; }
+    //document.getElementById('id-ncbChapterPage').style.fontSize = '1rem';
     localStorage.removeItem('theme');
     localStorage.removeItem('versionid');
     localStorage.removeItem('fontsize');
@@ -400,7 +402,7 @@ function ncbFooter() {
 function ncbSharePage() {
     alert('test sharePage');
 };
-
+// #region Scripts for media.txt, about.txt, mission.txt, statement.txt
 async function fetchCode(url) {
 
     const res = await fetch(url, { mode: 'cors' });
@@ -409,10 +411,19 @@ async function fetchCode(url) {
     return Promise.resolve(code);
 };
 
-function changePage(html) {
-    ncbRemoveItems('id-ncbMainText');
-    document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", html);
+var openMovieList = false;
+function openList(id) {
+    if (openMovieList === false) {
+        document.getElementById(id).style.display = "block";
+        openMovieList = true;
+    } else {
+        document.getElementById(id).style.display = "none";
+        openMovieList = false;
+    }
 };
+function scrollPage(id) {
+    document.getElementById(id).scrollIntoView(true)
+ };
 
 async function ncbPage() {
 
@@ -439,6 +450,7 @@ async function ncbPage() {
             if (mediaHTML === '') {
                 let url = `${mainPath}/ASSETS/TRIVIA/media.txt`;
                 mediaHTML = await fetchCode(url);
+                sessionStorage.setItem('movies', true);
             };
             html = mediaHTML;
             mediaClicks++;
@@ -466,7 +478,18 @@ async function ncbPage() {
     pushPage(html);
 };
 
+function changePage(html) {
+    ncbRemoveItems('id-ncbMainText');
+    document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", html);
+    if (theFont === 0) {
+        document.getElementById('id-ncbPage').style.fontSize = '1.1rem';
+    } else {
+        document.getElementById('id-ncbPage').style.fontSize = theFont;
+    };
+};
+
 function pushPage(html) {
+
     state.innerHTML.push(document.getElementById('id-ncbMainText').innerHTML);
     state.variablesHTML.push(document.getElementById('id-ncbVariableScript').innerHTML);
     window.history.pushState(state, null, null);
@@ -480,24 +503,39 @@ window.addEventListener('popstate', function(event) {
     event.stopPropagation();
     event.preventDefault();
     event.stopImmediatePropagation();
+    
     if (aClick > 0) {
         ncbRemoveItems('id-ncbMainText');
         ncbRemoveItems('id-ncbVariableScript');
         aClick--;
         document.getElementById('id-ncbMainText').insertAdjacentHTML("afterbegin", state.innerHTML[aClick]);
         document.getElementById('id-ncbVariableScript').insertAdjacentHTML("afterbegin", state.variablesHTML[aClick]);
+
+        if (document.getElementById('id-ncbChapterPage')) {
+            if (theFont === 0) {
+                document.getElementById('id-ncbChapterPage').style.fontSize = '1.1rem';
+            } else {
+                document.getElementById('id-ncbChapterPage').style.fontSize = theFont;
+            };
+        };
+        if (document.getElementById('id-ncbPage')) {
+            if (theFont === 0) {
+                document.getElementById('id-ncbPage').style.fontSize = '1.1rem';
+            } else {
+                document.getElementById('id-ncbPage').style.fontSize = theFont;
+            };
+        };
+
         shareClicks = 0;
         aboutClicks = 0;
         missionClicks = 0;
         statementClicks = 0;
         mediaClicks = 0;
+        document.getElementById('top').scrollIntoView(true);
         //** How to remove a pushState array */
         //state.innerHTML.splice(aClick, 1);
         //state.variablesHTML.splice(aClick, 1);
     };
 });
-
-window.addEventListener("beforeunload", function(event) {
-
-});
 //eMenu.dataset.vid = pID2.slice(0, -2);
+// #endregion Scripts for media.txt, about.txt, mission.txt, statement.txt

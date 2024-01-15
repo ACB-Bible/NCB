@@ -2,6 +2,7 @@ var sidePanelLoaded = true;
 var sidePanelChapter = 'Genesis 1:31'
 
 function ncbSwapPanel() {
+    //if (document.getElementById('id-ncbPage')) { panelSwapped = true; return; };
     if (panelSwapped) {
         document.getElementById('id-ncbPanelP1').style.display = "none";
         document.getElementById('id-ncbPanelP2').style.display = "block";

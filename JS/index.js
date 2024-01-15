@@ -17,9 +17,9 @@ slider.oninput = function() {
     let afontSize = Number(this.value);
     document.getElementById('id-ncbDefaultFontlbl').textContent = `Font Size:   ${afontSize}%`;
     afontSize = afontSize / 100;
-    //afontSize = afontSize + .1;
     theFont = `${afontSize}rem`;
-    document.getElementById('id-ncbChapterPage').style.fontSize = theFont;
+    if (document.getElementById('id-ncbChapterPage')) { document.getElementById('id-ncbChapterPage').style.fontSize = theFont; }
+    if (document.getElementById('id-ncbPage')) { document.getElementById('id-ncbPage').style.fontSize = theFont; }
 };
 // #endregion Events
 
@@ -35,6 +35,9 @@ async function ncbStartup() {
     if (res) { ncbLoadVerses() };
     if (res) { ncbChangeVersion(versionid) };
     if (res) { ncbApplyDefaultFont() };
+    document.getElementById('id-ncbBody').addEventListener('onmousemove', function (event) {
+        moveDivs();
+    });
 };
 
 async function ncbApplyDefaultFont() {
@@ -51,7 +54,6 @@ async function ncbApplyDefaultFont() {
         document.getElementById('id-ncbDefaultFontlbl').textContent = `Font Size:   ${defaultFontSize}%`
         document.getElementById('id-ncbRange'). value = defaultFontSize;
         document.getElementById('id-ncbChapterPage').style.fontSize = '1.1rem';
-
     } else {
         document.getElementById('id-ncbChapterPage').style.fontSize = afont;
         afont = Number(parseFloat(afont.replace('.', '')));

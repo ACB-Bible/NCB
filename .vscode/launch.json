@@ -5,10 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Chrome",
+            "name": "Chrome index.html",
             "request": "launch",
             "type": "chrome",
             "url": "http://127.0.0.1:5501/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Chrome textpage.html",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://127.0.0.1:5501/ASSETS/textpage.html",
             "webRoot": "${workspaceFolder}"
         },
         {

@@ -51,14 +51,6 @@ body::-webkit-scrollbar {
     cursor: default;
 }
 
-.cs-ncbMenuImg {
-    display: none;
-    position: absolute;
-    left: 6.8%;
-    top: 23%;
-    height: 50%;
-}
-
 .cs-ncbMainText {
     position: relative;
     top: 10.2%;
