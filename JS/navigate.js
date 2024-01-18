@@ -447,15 +447,6 @@ async function ncbPage() {
             aboutClicks++;
             break;
         case 'id-ncbFooter3':
-            if (mediaHTML === '') {
-                let url = `${mainPath}/ASSETS/TRIVIA/media.txt`;
-                mediaHTML = await fetchCode(url);
-                sessionStorage.setItem('movies', true);
-            };
-            html = mediaHTML;
-            mediaClicks++;
-            break;
-        case 'id-ncbFooter4':
             if (missionHTML === '') {
                 let url = `${mainPath}/ASSETS/mission.txt`;
                 missionHTML = await fetchCode(url);
@@ -463,14 +454,45 @@ async function ncbPage() {
             html = missionHTML;
             missionClicks++;
             break;
-
-        case 'id-ncbFooter5':
+        case 'id-ncbFooter4':
             if (statementHTML === '') {
                 let url = `${mainPath}/ASSETS/statement.txt`;
                 statementHTML = await fetchCode(url);
             };
             html = statementHTML;
             statementClicks++;
+            break;
+        case 'id-ncbFooter5':
+            if (movieHTML === '') {
+                let url = `${mainPath}/ASSETS/TRIVIA/movie.txt`;
+                movieHTML = await fetchCode(url);
+            };
+            html = movieHTML;
+            movieClicks++;
+            break;
+        case 'id-ncbFooter6':
+            if (musicHTML === '') {
+                let url = `${mainPath}/ASSETS/TRIVIA/music.txt`;
+                musicHTML = await fetchCode(url);
+            };
+            html = musicHTML;
+            musicClicks++;
+            break;
+        case 'id-ncbFooter7':
+            if (showHTML === '') {
+                let url = `${mainPath}/ASSETS/TRIVIA/show.txt`;
+                showHTML = await fetchCode(url);
+            };
+            html = showHTML;
+            showClicks++;
+            break;
+        case 'id-ncbFooter8':
+            if (testimonialHTML === '') {
+                let url = `${mainPath}/ASSETS/TRIVIA/testimonial.txt`;
+                testimonialHTML = await fetchCode(url);
+            };
+            html = testimonialHTML;
+            testimonialClicks++;
             break;
         default:
             break;
@@ -503,7 +525,7 @@ window.addEventListener('popstate', function(event) {
     event.stopPropagation();
     event.preventDefault();
     event.stopImmediatePropagation();
-    
+
     if (aClick > 0) {
         ncbRemoveItems('id-ncbMainText');
         ncbRemoveItems('id-ncbVariableScript');

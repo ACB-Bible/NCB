@@ -3,20 +3,25 @@
 
 ---
 
-The "New Christian Bible" project is part of the "Bible Code" Project which is a collection of GitHub repositories containing source code and data that can be used to develop your own computerized Bible project. All the data and source code for each of these projects is in the public domain and free of copyrights, therefore it's free for you to use in your own ministry or Bible project. If you use or alter any of this data or source code, please change the name of your project so people don't get confused.
+The "New Christian Bible" is part of the "Bible Code Project" which is a collection of GitHub repositories containing source code and data that can be used to develop your own computerized Bible project. All the data and source code for each of these projects is in the public domain and free of copyrights, therefore it's free for you to use in your own ministry or Bible project. If you use or alter any of this data or source code, please change the name of your project so people don't get confused.
 
 ---
 
 #### Other Active Bible Code Repositories
 
-The "Bible Code" GitHub repositories that are actively being developed.
+The "Bible Code Project" GitHub repositories that are actively being developed.
 
 1. [American Computerized Bible](https://github.com/ACB-Bible/AmericanComputerizedBible) - The "American Computerized Bible" is a project with complete CSS, HTML, Javascript source code, and Json file  examples that use data from the "BibleDB" project for developing an online Bible.
 2. [BibleDB](https://github.com/ACB-Bible/BibleDB) - The "BibleDB" project contains the master SQLite3 database and other data files for multiple versions of the Bible.
-3. [Bible Code Documentation](https://github.com/ACB-Bible/DOC) - Complete documentation for all "Bible Code" projects.
+4. [Twenty-First Century Bible Project](https://github.com/ACB-Bible/TWF) - The "Twenty-First Century Bible" is a Bible translation project to create a new paraphrased Bible in modern twenty first century English with the help of God's AI aka Artificial Intelligence.
+4. [Bible Code Documentation](https://github.com/ACB-Bible/DOC) - Complete documentation for all "Bible Code" projects.
 
-Operational webpages can be viewed here:
-1.  [ACB Webpage](https://acbible.com)
+[Back to Top](#top)
+
+---
+
+These operational websites can be viewed here:
+1.  [American Computerized Bible](https://acbible.com)
 
 [Back to Top](#top)
 
