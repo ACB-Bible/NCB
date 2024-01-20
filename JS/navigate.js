@@ -494,6 +494,14 @@ async function ncbPage() {
             html = testimonialHTML;
             testimonialClicks++;
             break;
+        case 'id-ncbFooter9':
+            if (ministryHTML === '') {
+                let url = `${mainPath}/ASSETS/TRIVIA/ministry.txt`;
+                ministryHTML = await fetchCode(url);
+            };
+            html = ministryHTML;
+            ministryClicks++;
+            break;
         default:
             break;
     };

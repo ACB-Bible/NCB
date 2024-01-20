@@ -33,27 +33,31 @@
 
         const state = { innerHTML: [], variablesHTML: [] };
         var aClick = 0;
-        var shareHTML = '';
-        var aboutHTML = '';
-        var missionHTML = '';
-        var movieHTML = '';
-        var musicHTML = '';
-        var showHTML = '';
-        var testimonialHTML = '';
-        var statementHTML = '';
-        var variablesHTML = '';
-        var shareClicks = 0;
         var aboutClicks = 0;
+        var ministryClicks = 0;
         var missionClicks = 0;
         var movieClicks = 0;
         var musicClicks = 0;
+        var shareClicks = 0;
         var showClicks = 0;
         var statementClicks = 0;
         var testimonialClicks = 0;
+
+        var aboutHTML = '';
+        var ministryHTML = '';
+        var missionHTML = '';
+        var movieHTML = '';
+        var musicHTML = '';
+        var shareHTML = '';
+        var showHTML = '';
+        var statementHTML = '';
+        var testimonialHTML = '';
+        var variablesHTML = '';
+
         var opened = true;
         var footerOpen = false;
         var theFont = 0;
-        // x ^ y are mouse x & y locations
+        // x & y are the mouse cursor x & y locations
         var x = 0;
         var y = 0;
 
@@ -224,13 +228,22 @@
 
         <div class="cs-ncbFooters">
             <span id="id-ncbFooter1" class="cs-ncbFooters1" onclick="ncbPage()">Share</span>
+            <span id="id-ncbDot"  class="cs-ncbFooters1"> • </span>
             <span id="id-ncbFooter2" class="cs-ncbFooters1" onclick="ncbPage()">About</span>
+            <span id="id-ncbDot"  class="cs-ncbFooters1"> • </span>
             <span id="id-ncbFooter3" class="cs-ncbFooters1" onclick="ncbPage()">Mission</span>
-            <span id="id-ncbFooter4" class="cs-ncbFooters1" onclick="ncbPage()">Statement of Faith</span>
+            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
+            <span id="id-ncbFooter4" class="cs-ncbFooters1" onclick="ncbPage()">Statement<span style="visibility: hidden;">¤</span>of<span style="visibility: hidden;">¤</span>Faith</span>
+            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
             <span id="id-ncbFooter5" class="cs-ncbFooters1" onclick="ncbPage()">Movies</span>
+            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
             <span id="id-ncbFooter6" class="cs-ncbFooters1" onclick="ncbPage()">Music</span>
-            <span id="id-ncbFooter7" class="cs-ncbFooters1" onclick="ncbPage()">TV Shows</span>
+            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
+            <span id="id-ncbFooter7" class="cs-ncbFooters1" onclick="ncbPage()">TV<span style="visibility: hidden;">¤</span>Shows</span>
+            <span id="id-ncbDot" class="cs-ncbFooters1"> • </span>
             <span id="id-ncbFooter8" class="cs-ncbFooters1" onclick="ncbPage()">Testimonials</span>
+            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
+            <span id="id-ncbFooter9" class="cs-ncbFooters1" onclick="ncbPage()">Ministries</span>
         </div>
         <div id="id-ncbCopy">
             <span title="God's Word Is Not For Sale">New Christian Bible - Copyright © Free - Inspired by God!</span>
