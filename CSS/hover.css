@@ -33,7 +33,7 @@
     cursor: pointer;
 }
 .cs-ncbNoBookHover:hover { background-color: #f3f3f3; cursor: default; }
-.cs-ncbOpenFooter:hover,
+.cs-ncbOpenFooter:hover { background-color: #e7effc;  cursor: pointer; }
 .cs-ncbSaveDefaultFont:hover { background-color: #cfddf9; cursor: pointer; }
 
 .cs-ncbToSelect:hover {

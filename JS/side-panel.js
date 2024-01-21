@@ -6,12 +6,12 @@ function ncbSwapPanel() {
     if (panelSwapped) {
         document.getElementById('id-ncbPanelP1').style.display = "none";
         document.getElementById('id-ncbPanelP2').style.display = "block";
-        document.getElementById('id-ncbPanelLbl').textContent = "Settings";
+        document.getElementById('id-ncbPanelLbl1').textContent = "Settings";
         panelSwapped = false;
     } else {
         document.getElementById('id-ncbPanelP1').style.display = "block";
         document.getElementById('id-ncbPanelP2').style.display = "none";
-        document.getElementById('id-ncbPanelLbl').textContent = 'Random Verses';
+        document.getElementById('id-ncbPanelLbl1').textContent = 'Random Verses';
         panelSwapped = true;
     };
 };

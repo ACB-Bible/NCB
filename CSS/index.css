@@ -183,7 +183,7 @@ body::-webkit-scrollbar {
 .cs-ncbDots {
     position: absolute;
     right: 6%;
-    top: 30%;
+    top: 10%;
     height: 1.8rem;
     width: 1.8rem;
 }
@@ -202,7 +202,7 @@ body::-webkit-scrollbar {
     height: 2rem;
     width: 2rem;
     z-index: 1;
-    background-color: #f5f7fb;
+    background-color: #cfddf9;
     position: fixed;
     left: 0;
     top: 89.8%;
