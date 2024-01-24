@@ -1,39 +1,12 @@
-@media ((max-height: 640px) and (max-width: 360px)) {
-
-    .cs-ncbSelectContainerOpen {
-        display: block;
-        top: 9%;
-        height: 95%;
-        width: 100%;
-    }
-}
-
-@media (max-width: 450px) {
-    .cs-ncbMenu1 { left: 0%;}
-    .cs-ncbMenu2 { left: 17%; }
-    .cs-ncbMenu3 { left: 25%; }
-}
-
-@media (max-width: 550px) {
-    .cs-ncbChapter { margin-top: 2.5em; padding-bottom: 2em; }
-    .cs-ncbMainText {
-        left: 0;
-        width: 86%;
-    }
-    .cs-ncbSelectContainer {
-        display: none;
-    }
-    .cs-ncbMenu4 { display: none; }
-}
-
 @media (max-height: 730px) {
-
     html { font-size: 95%; }
-    body { margin: 0; padding: 0; }
-    .cs-ncbMainText { top: 11%; }
+
+    .cs-ncbMainText { top: 9.5%; }
 
     .cs-ncbTitle {
-        width: 70%;
+        left: 15%;
+        top: -.1em;
+        width: 50%;
         font-size: 1.6rem;
     }
 
@@ -71,22 +44,14 @@
         width: 81%;
     }
 
-    .cs-ncbSelector {
-        position: absolute;
-        width: 14.15%;
-        left: 82.2%;
-        top: 25.5%;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+    .cs-ncbSelector { position: absolute; width: 14%; left: 82.2%; }
 
     .cs-ncbDefaultVersion {
         left: 11%;
-        top: 39.9%;
+        top: 41%;
         height: 60%;
         width: 77%;
     }
-
     .cs-ncbVersion {
         font-size: .83em;
         padding: .4em;
@@ -94,7 +59,7 @@
     }
     .cs-ncbDefaultTheme {
         left: 11%;
-        top: 56.6%;
+        top: 57.75%;
         height: 22.4%;
         width: 77%;
     }
@@ -106,18 +71,17 @@
     .cs-ncbClear {
         top: 2%;
     }
-    .cs-ncbDropHeader {
-        top: 19.2%;
-    }
     .cs-ncbChangeVersionHeader {
         padding-left: .9em;
         padding-bottom: .5em;
         left: 12%;
+        top: 17.7%;
         width: 13%;
     }
     .cs-ncbChangeVersion {
-        left: 11.95%;
-        height: 37%;
+        left: 12%;
+        top: 24%;
+        height: 30.5%;
     }
 
     .cs-ncbNew {
@@ -133,13 +97,15 @@
     }
     .cs-ncbChangeBookHeader {
         left: 31.3%;
+        top: 17.7%;
         height: 4.25%;
         width: 16%;
     }
     .cs-ncbChangeBook {
         left: 31.3%;
+        top: 24%;
         height: 38.5%;
-        width: 16.6%;
+        width: 16.57%;
     }
     .cs-ncbBookLine {
         height: 16%;
@@ -157,22 +123,26 @@
 
     .cs-ncbChangeChapterHeader {
         left: 44.8%;
+        top: 17.7%;
         height: 4.25%;
         width: 15.2%;
     }
     .cs-ncbChangeChapter {
         left: 44.8%;
+        top: 24%;
         height: 34.5%;
         width: 15.82%;
     }
 
     .cs-ncbSelectVerseHeader {
         left: 51.5%;
+        top: 17.7%;
         height: 4.25%;
         width: 15.2%;
     }
     .cs-ncbSelectVerse {
         left: 51.5%;
+        top: 24%;
         height: 34.5%;
         width: 15.8%;
     }
@@ -185,4 +155,64 @@
     .cs-ncbSidePanelReset { top: 10%; width: 25%;}
 
     .cs-ncbNavLast { display: none; left: 11%; }
+}
+
+@media (max-width: 770px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .cs-ncbSelectContainer {
+        display: none;
+    }
+
+    .cs-ncbTitle {
+        width: 60%;
+        left: 3%;
+    }
+
+    .cs-ncbWebLink {
+        display: none;
+    }
+
+
+    .cs-ncbMainText {
+        left: 0;
+        width: 90%;
+        border-radius: 0;
+        padding: 5%;
+        padding-top: 15%;
+        margin-bottom: 5%;
+    }
+
+    .cs-ncbMenu1 {
+        left: 2%;
+    }
+
+    .cs-ncbMenu2 {
+        left: 12%;
+    }
+
+    .cs-ncbMenu3 {
+        left: 20%;
+    }
+
+    .cs-ncbMenu4 {
+        left: 25%;
+    }
+
+    .cs-ncbSharePage {
+        left: 0;
+    }
+
+}
+
+@media (max-width: 725px) { .cs-ncbSidePanelReset { width: 28%;} }
+
+@media (max-width: 690px) {
+    .cs-ncbSharePage {
+        left: 2%;
+    }
+    .cs-ncbSidePanelReset { width: 28%; }
 }

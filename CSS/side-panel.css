@@ -15,7 +15,7 @@
     top: 10.2%;
     right: 0;
     width: 20.5%;
-    height: 69.7%;
+    height: 61.6%;
     overflow: hidden;
     background-color: #cbcaca;
 }
@@ -40,7 +40,7 @@
     display: block;
     position: relative;
     top: 8%;
-    height: 60%;
+    height: 58%;
     width: 70%;
     margin: auto;
     padding: 1em;
@@ -307,11 +307,13 @@
     align-items: center;
 }
 
-.cs-ncbModalSave {
+.cs-ncbModal {
+    display: none;
     position: fixed;
     background-color: #f0ecc9;
     border: 1px solid #6f6f6f;
     border-radius: 6px;
     width: max-content;
     padding: .5em;
+    z-index: 1;
 }

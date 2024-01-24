@@ -38,10 +38,11 @@ async function ncbChangeVersion(vid) {
     let eParagraph2;
     let eParagraph3;
 
+    if (version === 'AKJ' || version === 'ASV' || version === 'TWF') { content += ' Version' };
     document.getElementById('id-ncbVersionText').textContent = version;
     document.getElementById('id-ncbTextTitle1').textContent = content;
     content = document.getElementById(`id-ncbBk${eMenu.dataset.bid}`).textContent;
-    document.getElementById('id-ncbTextTitle2').textContent = `${content} ${content1}`;
+    //document.getElementById('id-ncbTextTitle2').textContent = `${content} ${content1}`;
 
     res = await ncbLoadAVersion(id);
 
@@ -183,11 +184,11 @@ async function ncbChangeBook(bid) {
     ncbDisplayPrevious();
     if (!bid) {
         document.getElementById('id-ncbTextTitle2').textContent = `${content} 1`;
-        document.getElementById('id-ncbChapterText').textContent = '1 :';
+        document.getElementById('id-ncbChapterText').textContent = '1';
         document.getElementById('id-ncbBookFooter').textContent = `${content} 1`;
     } else {
         document.getElementById('id-ncbTextTitle2').textContent = `${content} ${eMenu.dataset.cn}`;
-        document.getElementById('id-ncbChapterText').textContent = `${eMenu.dataset.cn} :`;
+        document.getElementById('id-ncbChapterText').textContent = `${eMenu.dataset.cn}`;
         document.getElementById('id-ncbBookFooter').textContent = `${content} ${eMenu.dataset.cn}`;
     };
     return Promise.resolve(true);
@@ -222,7 +223,7 @@ function ncbNav(nav) {
     document.getElementById('id-ncbBookText').textContent = eBook.textContent;
     document.getElementById('id-ncbTextTitle2').textContent = `${eBook.textContent} ${eMenu.dataset.cn}`;
     document.getElementById('id-ncbBookFooter').textContent = `${eBook.textContent} ${eMenu.dataset.cn}`;
-    document.getElementById('bottom').scrollIntoView(false);
+    document.getElementById('top').scrollIntoView(true);
 };
 
 function ncbSortBooks() {
@@ -273,7 +274,7 @@ function ncbChangeChapter() {
 
     eMenu.dataset.cn = eChapter.dataset.cn
     document.getElementById('id-ncbTextTitle2').textContent = `${eBook.textContent} ${eChapter.dataset.cn}`;
-    document.getElementById('id-ncbChapterText').textContent = `${eChapter.dataset.cn} :`;
+    document.getElementById('id-ncbChapterText').textContent = `${eChapter.dataset.cn}`;
     document.getElementById('id-ncbBookFooter').textContent = `${eBook.textContent} ${eChapter.dataset.cn}`;
     document.getElementById('id-ncbVerseText').textContent = '1';
 
@@ -333,10 +334,11 @@ function ncbSettingsReset() {
     document.getElementById('id-ncbDefaultTheme').dataset.theme = 1;
     if (document.getElementById('id-ncbChapterPage')) { document.getElementById('id-ncbChapterPage').style.fontSize = '1rem'; }
     if (document.getElementById('id-ncbPage')) { document.getElementById('id-ncbPage').style.fontSize = '1rem'; }
-    //document.getElementById('id-ncbChapterPage').style.fontSize = '1rem';
-    localStorage.removeItem('theme');
-    localStorage.removeItem('versionid');
-    localStorage.removeItem('fontsize');
+
+    if (localStorage.getItem('theme')) {localStorage.removeItem('theme')};
+    if (localStorage.getItem('versionid')) {localStorage.removeItem('versionid')};
+    if (localStorage.getItem('fontsize')) {localStorage.removeItem('fontsize')};
+
     theFont = 0;
     theme = 1;
     versionid = 1;
@@ -345,7 +347,7 @@ function ncbSettingsReset() {
     ncbApplyDefaultVersion();
     ncbChangeVersion(versionid);
     ncbApplyDefaultFont();
-    ncbModalSave('Settings Reset!')
+    ncbModal('Settings Reset!');
     ncbClose();
 };
 
@@ -506,6 +508,7 @@ async function ncbPage() {
             break;
     };
     pushPage(html);
+    ncbFooter();
 };
 
 function changePage(html) {

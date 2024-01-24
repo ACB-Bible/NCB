@@ -57,11 +57,8 @@
         var opened = true;
         var footerOpen = false;
         var theFont = 0;
-        // x & y are the mouse cursor x & y locations
-        var x = 0;
-        var y = 0;
 
-        // listOpen() function is used with the media page
+        // listOpen() function is used with the footer pages
         var listOpen = false;
         function openList(id) {
             if (listOpen === false) {
@@ -78,15 +75,16 @@
     <script async src="JS/side-panel.js" type="text/javascript"></script>
     <script async src="JS/index.js" type="text/javascript"></script>
     <script defer src="JS/navigate.js" type="text/javascript"></script>
-    <link href="./IMAGES/favicon.ico" rel="icon" type="image/icon">
+
+    <link href="./IMAGES/FAVICONS/favicon16.png" rel="icon" type="image/png" sizes="16x16">
+    <link href="./IMAGES/FAVICONS/favicon96.png" rel="shortcut icon" type="image/icon" sizes="96x96">
     <!--<link href="https://acb-bible.github.io/NCB/IMAGES/favicon.ico" rel="icon" type="image/icon">-->
 </head>
 <a id="top"></a>
 <body id="id-ncbBody" onclick="ncbClose()">
-        <div id="id-ncbHeader" class="cs-ncbHeader">
 
+        <div id="id-ncbHeader" class="cs-ncbHeader">
             <h1 class="cs-ncbTitle">New <span class="cs-ncbGold">Christian </span>Bible</h1>
-            <h1 class="cs-ncbWebLink">NewChristianBible.com</h1>
         </div>
         <div id="id-ncbMainText" class="cs-ncbMainText" onscroll="ncbClose()">
 
@@ -105,7 +103,7 @@
 
                 <span id="id-ncbChapter" class="cs-ncbMenuSelect cs-ncbMenu3" title="Change Chapter" onclick="ncbOpenChapter()">
                     <span id="id-ncbChapterPointer" class="cs-ncbPointer">▼</span>
-                    <span id="id-ncbChapterText">1 :</span>
+                    <span id="id-ncbChapterText">1</span>
                 </span>
 
                 <span id="id-ncbVerse" class="cs-ncbMenuSelect cs-ncbMenu4" title="Select a Verse" onclick="ncbOpenVerse()">
@@ -133,7 +131,7 @@
                 <div id="id-ncbNext" class="cs-ncbNav cs-ncbNavNext" title="Next Chapter" onclick="ncbNav(1)">Next ►</div>
             </div>
         </div>
-        <br><br><br><br><br><br><br><br><br><br><br id="bottom">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br id="bottom">
     <div id="id-ncbSelectContainer" class="cs-ncbSelectContainer">
 
         <span id="id-ncbClear" class="cs-ncbClear">
@@ -152,10 +150,7 @@
                 Read Whole Chapter
             </span>
             <span id="id-ncbDailyVerse" class="cs-ncbDailyVerse"></span>
-            <span id="id-ncbDailyVerseText">
-
-            </span>
-            <img async src="IMAGES/share.png" class="cs-ncbShare" onclick="ncbShareChapter()" title="Share this verse">
+            <span id="id-ncbDailyVerseText"></span>
         </div>
 
         <div id="id-ncbPanelP2" class="cs-ncbPanelP2">
@@ -186,10 +181,10 @@
                 <input id="id-ncbRange" type="range" min="36" max="180" value="100" style="width: 100%;" class="slider">
             </div>
 
-            <span class="cs-ncbSidePanelSelect cs-ncbSidePanelReset" onclick="ncbSettingsReset()" title="Rest all Settings to their defaults">
+            <span id="id-ncbReset" class="cs-ncbSidePanelSelect cs-ncbSidePanelReset" onclick="ncbSettingsReset()" title="Rest all Settings to their defaults">
                 Reset
             </span>
-            <br>
+            <br><br><br><br><br>
         </div>
 
     </div>
@@ -222,7 +217,7 @@
     <div id="id-ncbSelectVerse" class="cs-ncbSelector cs-ncbSelectVerse">
     </div>
     <!-- #endregion  End of Dropdowns from the top menu -->
-    <label id="id-ncbOpenFooter" class="cs-ncbOpenFooter" data-open="0" onclick="ncbFooter()">╲╱</label>
+    <label id="id-ncbOpenFooter" class="cs-ncbOpenFooter" onclick="ncbFooter()">╲╱</label>
     <div ID="id-ncbFooter" class="cs-ncbFooter">
 
         <div class="cs-ncbFooters">
@@ -250,7 +245,7 @@
         <br><br><br>
     </div>
 </body>
-<div id="id-ncbModalSave"></div>
+<div id="id-ncbModal" class="cs-ncbModal"></div>
 </html>
 
 <!--<link href="" rel="stylesheet" style="css" media="screen and (min-width: 900px) and (max-height: 720px)>-->

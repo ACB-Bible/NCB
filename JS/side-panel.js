@@ -41,7 +41,7 @@ async function ncbReadChapter() {
     eMenu.dataset.chapters = book[i].c;
     document.getElementById('id-ncbBookText').textContent = head;
     document.getElementById('id-ncbVerseText').textContent = 1;
-    document.getElementById('id-ncbChapterText').textContent = `${eRandom.dataset.cn} :`;
+    document.getElementById('id-ncbChapterText').textContent = `${eRandom.dataset.cn}`;
     head += ` ${eRandom.dataset.cn}`;
     document.getElementById('id-ncbTextTitle2').textContent = head;
     if (res) {
@@ -75,10 +75,6 @@ async function ncbReadChapter() {
         };
     };
     ncbLoadChapters();
-};
-
-function ncbShareChapter() {
-
 };
 
 function ncbOpenDefaultVersion() {
@@ -157,19 +153,21 @@ function ncbDefaultFont() {
 
     if (theFont === 0) { return; }
     localStorage.setItem("fontsize", theFont);
-    ncbModalSave('Font Saved!')
+    ncbModal('Font Saved!')
 };
 
-function ncbModalSave(msg) {
+function ncbModal(msg) {
 
-    document.getElementById('id-ncbModalSave').textContent = msg;
-    document.getElementById("id-ncbModalSave").style.left = `${x - 150}px`;
-    document.getElementById("id-ncbModalSave").style.top = `${y - 120.5}px`;
-    document.getElementById('id-ncbModalSave').setAttribute('class', 'cs-ncbModalSave');
-    document.getElementById('id-ncbModalSave').style.display = 'block';
+    //let id = this.event.target.id;
+    let left = '78%';
+    let top =  '65%';
+
+    document.getElementById('id-ncbModal').textContent = msg;
+    document.getElementById('id-ncbModal').style.left = left;
+    document.getElementById('id-ncbModal').style.top = top;
+    document.getElementById('id-ncbModal').style.display = 'block';
     setTimeout(() => {
-        document.getElementById('id-ncbModalSave').classList.remove("cs-ncbModalSave");
-        document.getElementById('id-ncbModalSave').style.display = 'none';
+        document.getElementById('id-ncbModal').style.display = 'none';
       }, "1100");
 };
 

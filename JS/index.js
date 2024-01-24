@@ -1,8 +1,4 @@
 // #region Events
-function moveDivs() {
-    x = this.event.screenX;
-    y = this.event.screenY;
-};
 
 window.onload = async () => {
 
@@ -35,9 +31,7 @@ async function ncbStartup() {
     if (res) { ncbLoadVerses() };
     if (res) { ncbChangeVersion(versionid) };
     if (res) { ncbApplyDefaultFont() };
-    document.getElementById('id-ncbBody').addEventListener('onmousemove', function (event) {
-        moveDivs();
-    });
+    
 };
 
 async function ncbApplyDefaultFont() {
@@ -66,6 +60,7 @@ async function ncbApplyDefaultFont() {
 async function ncbApplyDefaultVersion() {
 
     let eChVersion = document.getElementById(`id-ncbChangeVersion${versionid}`);
+    let content = eChVersion.textContent;
     let version = eChVersion.dataset.version;
     let eMenu = document.getElementById('id-ncbMenu');
     let versionidx = Number(eMenu.dataset.idx);
@@ -82,8 +77,10 @@ async function ncbApplyDefaultVersion() {
     eVersion.dataset.version = version;
     eVersion.dataset.versionid = versionid;
     eVersion.dataset.versionidx = versionidx;
-    document.getElementById('id-ncbTextTitle1').textContent = eChVersion.textContent;
+    if (version === 'AKJ' || version === 'ASV' || version === 'TWF') { content += ' Version' };
+    document.getElementById('id-ncbTextTitle1').textContent = content;
     document.getElementById('id-ncbVersionText').textContent = version;
+    return Promise.resolve(true);
 };
 
 async function ncbApplyTheme() {
