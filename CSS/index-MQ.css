@@ -1,38 +1,3 @@
-@media ((max-height: 640px) and (max-width: 360px)) {
-
-    .cs-ncbSelectContainerOpen {
-        display: block;
-        top: 9%;
-        height: 95%;
-        width: 100%;
-    }
-
-    .cs-ncbSelector {
-        left: 82.3%;
-        top: 35%;
-        height: 30%;
-        width: 13.9%;
-    }
-}
-
-@media (max-width: 450px) {
-    .cs-ncbMenu1 { left: 0%;}
-    .cs-ncbMenu2 { left: 17%; }
-    .cs-ncbMenu3 { left: 25%; }
-}
-
-@media (max-width: 550px) {
-    .cs-ncbChapter { margin-top: 2.5em; padding-bottom: 2em; }
-    .cs-ncbMainText {
-        left: 0;
-        width: 86%;
-    }
-    .cs-ncbSelectContainer {
-        display: none;
-    }
-    .cs-ncbMenu4 { display: none; }
-}
-
 @media (max-height: 730px) {
 
     html { font-size: 95%; }
@@ -192,4 +157,53 @@
     .cs-ncbSidePanelReset { top: 10%; width: 25%;}
 
     .cs-ncbNavLast { display: none; left: 11%; }
+}
+
+@media (max-width: 550px) {
+    .cs-ncbChapter { margin-top: 2.5em; padding-bottom: 2em; }
+    .cs-ncbMainText {
+        left: 0;
+        width: 86%;
+    }
+    .cs-ncbSelectContainer {
+        display: none;
+    }
+    .cs-ncbMenu4 { display: none; }
+}
+
+@media (max-width: 450px) {
+    .cs-ncbMenu1 { left: 0%;}
+    .cs-ncbMenu2 { left: 17%; }
+    .cs-ncbMenu3 { left: 25%; }
+}
+
+@media (max-height: 640px) and (max-width: 360px) {
+
+    .cs-ncbSelectContainerOpen {
+        display: block;
+        top: 9%;
+        height: 95%;
+        width: 100%;
+    }
+
+    .cs-ncbDropHeader {
+        top: 18.1%;
+        height: 2.9%;
+        width: 40%;
+    }
+
+    .cs-ncbSelector {
+        top: 23.9%;
+        height: 30%;
+        width: 43.75%;
+    }
+
+    .cs-ncbChangeVersionHeader { left: 4%; }
+    .cs-ncbVersion { font-size: .95rem; line-height: 1.5rem; }
+    .cs-ncbChangeVersion { left: 4%; }
+
+    .cs-ncbChangeBookHeader { left: 30.5%; width: 49%; padding-bottom: .6rem; }
+    .cs-ncbChangeBook { left: 30.4%; width: 51.5%; }
+    .cs-ncbChangeChapterHeader { left: 42.5%; top: 18.1%; width: 42%; height: 4.1%; }
+    .cs-ncbChangeChapter { left: 42.8%; top: 23.9%; width: 44.1%; }
 }
