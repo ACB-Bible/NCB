@@ -6,6 +6,13 @@
         height: 95%;
         width: 100%;
     }
+
+    .cs-ncbSelector {
+        left: 82.3%;
+        top: 35%;
+        height: 30%;
+        width: 13.9%;
+    }
 }
 
 @media (max-width: 450px) {
