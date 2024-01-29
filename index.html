@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html id="id-ncbHtml" lang="en">
+<html id="id-html" lang="en">
 
 <head>
     <!--<meta charset="UTF-8">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="id-ncbIntro">New Christian Bible - Read the Bible Online - NewChristianBible.com</title>
+    <title id="id-intro">New Christian Bible - Read the Bible Online - NewChristianBible.com</title>
 
-    <base id="id-ncbBase" href="./">
-    <!--<base id="id-ncbBase" href="https://acb-bible.github.io/NCB/">
+    <base id="id-base" href="./">
+    <!--<base id="id-base" href="https://acb-bible.github.io/NCB/">
     <link async href="CSS/MAIN/main-min.css" rel="stylesheet" type="text/css">-->
 
     <link async href="CSS/index.css" rel="stylesheet" type="text/css">
@@ -16,8 +16,8 @@
     <link async href="CSS/hover.css" rel="stylesheet" type="text/css">
     <link async href="CSS/index-MQ.css" rel="stylesheet" type="text/css">
 
-    <script id="id-ncbVariableScript">
-        /** The id-ncbVariableScript element contains all the global variables and loads before all other Javascript links ----- Do not change the mainPath variable url unless the host location changes **/
+    <script id="id-variableScript">
+        /** The id-variableScript element contains all the global variables and loads before all other Javascript links ----- Do not change the mainPath variable url unless the host location changes **/
 
         var mainPath = "";
         var startup = true;
@@ -83,108 +83,108 @@
     <!--<link href="https://acb-bible.github.io/NCB/IMAGES/favicon.ico" rel="icon" type="image/icon">-->
 </head>
 <a id="top"></a>
-<body id="id-ncbBody" onclick="ncbClose()">
+<body id="id-body" onclick="ncbClose()">
 
-        <div id="id-ncbHeader" class="cs-ncbHeader">
-            <h1 class="cs-ncbTitle">New <span class="cs-ncbGold">Christian </span>Bible</h1>
+        <div id="id-header" class="cs-header">
+            <h1 class="cs-title">New <span class="cs-gold">Christian </span>Bible</h1>
         </div>
-        <div id="id-ncbMainText" class="cs-ncbMainText" onscroll="ncbClose()">
+        <div id="id-mainText" class="cs-mainText" onclick="ncbClose()">
 
-            <div id="id-ncbMenu" class="cs-ncbMenu" data-bid="1" data-cn="1" data-idx="0" data-chapters="50" data-verses="31" data-vid="" data-vids="">
+            <div id="id-menu" class="cs-menu" data-bid="1" data-cn="1" data-idx="0" data-chapters="50" data-verses="31" data-vid="" data-vids="">
 
-                <span id="id-ncbVersion" class="cs-ncbMenuSelect cs-ncbMenu1" title="Change Version" onclick="ncbOpenVersion()">
+                <span id="id-version" class="cs-menuSelect cs-menu1" title="Change Version" onclick="openVersion()">
 
-                    <span id="id-ncbVersionPointer" class="cs-ncbPointer">▼</span>
-                    <span id="id-ncbVersionText">TWF</span>
+                    <span id="id-versionPointer" class="cs-pointer">▼</span>
+                    <span id="id-versionText">TWF</span>
                 </span>
 
-                <span id="id-ncbBook" class="cs-ncbMenuSelect cs-ncbMenu2" title="Change Book" onclick="ncbOpenBook()">
-                    <span id="id-ncbBookPointer" class="cs-ncbPointer">▼</span>
-                    <span id="id-ncbBookText">Genesis</span>
+                <span id="id-book" class="cs-menuSelect cs-menu2" title="Change Book" onclick="openBook()">
+                    <span id="id-bookPointer" class="cs-pointer">▼</span>
+                    <span id="id-bookText">Genesis</span>
                 </span>
 
-                <span id="id-ncbChapter" class="cs-ncbMenuSelect cs-ncbMenu3" title="Change Chapter" onclick="ncbOpenChapter()">
-                    <span id="id-ncbChapterPointer" class="cs-ncbPointer">▼</span>
-                    <span id="id-ncbChapterText">1</span>
+                <span id="id-chapter" class="cs-menuSelect cs-menu3" title="Change Chapter" onclick="openChapter()">
+                    <span id="id-chapterPointer" class="cs-pointer">▼</span>
+                    <span id="id-chapterText">1</span>
                 </span>
 
-                <span id="id-ncbVerse" class="cs-ncbMenuSelect cs-ncbMenu4" title="Select a Verse" onclick="ncbOpenVerse()">
-                    <span id="id-ncbVersePointer" class="cs-ncbPointer">▼</span>
-                    <span id="id-ncbVerseText">1</span>
+                <span id="id-verse" class="cs-menuSelect cs-menu4" title="Select a Verse" onclick="openVerse()">
+                    <span id="id-versePointer" class="cs-pointer">▼</span>
+                    <span id="id-verseText">1</span>
                 </span>
 
             </div>
 
-            <div class="cs-ncbChapter">
-                <p id="id-ncbTextTitle1" class="cs-ncbTextTitle">Twenty-First Century Version</p>
-                <p id="id-ncbTextTitle2" class="cs-ncbTextTitle cs-ncbTextTitleColor2">Genesis 1</p>
+            <div class="cs-chapter">
+                <p id="id-textTitle1" class="cs-textTitle">Twenty-First Century Version</p>
+                <p id="id-textTitle2" class="cs-textTitle cs-textTitleColor2">Genesis 1</p>
 
-                <span id="id-ncbSP1" class="cs-ncbFirstNumber">1</span>
+                <span id="id-sP1" class="cs-firstNumber">1</span>
 
-                <div id="id-ncbChapterPage">
+                <div id="id-chapterPage">
 
                 </div>
 
             </div>
 
-            <div class="cs-ncbTextFooter">
-                <span id ="id-ncbBookFooter" class="cs-ncbBookFooter">Genesis 1</span>
-                <div id="id-ncbLast" class="cs-ncbNav cs-ncbNavLast" title="Last Chapter" onclick="ncbNav(0)">◄ Last</div>
-                <div id="id-ncbNext" class="cs-ncbNav cs-ncbNavNext" title="Next Chapter" onclick="ncbNav(1)">Next ►</div>
+            <div class="cs-textFooter">
+                <span id ="id-bookFooter" class="cs-bookFooter">Genesis 1</span>
+                <div id="id-last" class="cs-nav cs-navLast" title="Last Chapter" onclick="nav(0)">◄ Last</div>
+                <div id="id-next" class="cs-nav cs-navNext" title="Next Chapter" onclick="nav(1)">Next ►</div>
             </div>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br id="bottom">
-    <div id="id-ncbSelectContainer" class="cs-ncbSelectContainer">
+    <div id="id-selectContainer" class="cs-selectContainer">
 
-        <span id="id-ncbClear" class="cs-ncbClear">
-            <span id="id-ncbClearSearch" class="cs-ncbClearSearch" onclick="ncbClearSearch()"
+        <span id="id-clear" class="cs-clear">
+            <span id="id-clearSearch" class="cs-clearSearch" onclick="clearSearch()"
                 title="Clear Search">clear</span>
         </span>
-        <p class="cs-ncbSearchBar" type="text" onclick="ncbRemoveSearch()">
-            <label id="id-ncbSearchLbl" class="cs-ncbSearchLbl" onclick="ncbSearch()" contenteditable="true"  spellcheck="true"
+        <p class="cs-searchBar" type="text" onclick="removeSearch()">
+            <label id="id-searchLbl" class="cs-searchLbl" onclick="search()" contenteditable="true"  spellcheck="true"
             title="Search is not working yet, but it will someday !">Search is not working</label>
         </p>
-        <img async src="IMAGES/search.png" class="cs-ncbSearchImg" onclick="ncbSearch()" title="Search">
+        <img async src="IMAGES/search.png" class="cs-searchImg" onclick="search()" title="Search">
 
-        <label id="id-ncbPanelLbl" class="cs-ncbPanelLbl" data-search="0"><span id="id-ncbPanelLbl1">Random Verses</span> &nbsp;<img async src="IMAGES/dots.png" class="cs-ncbDots" onclick="ncbSwapPanel()" title="Settings"></label>
-        <div id="id-ncbPanelP1" class="cs-ncbPanelP1">
-            <span id="id-ncbSidePanelSelect" class="cs-ncbSidePanelSelect" onclick="ncbReadChapter()">
+        <label id="id-panelLbl" class="cs-panelLbl" data-search="0"><span id="id-panelLbl1">Random Verses</span> &nbsp;<img async src="IMAGES/dots.png" class="cs-dots" onclick="swapPanel()" title="Settings"></label>
+        <div id="id-panelP1" class="cs-panelP1">
+            <span id="id-sidePanelSelect" class="cs-sidePanelSelect" onclick="readChapter()">
                 Read Whole Chapter
             </span>
-            <span id="id-ncbDailyVerse" class="cs-ncbDailyVerse"></span>
-            <span id="id-ncbDailyVerseText"></span>
+            <span id="id-dailyVerse" class="cs-dailyVerse"></span>
+            <span id="id-dailyVerseText"></span>
             <br><br><br><br><br>
         </div>
 
-        <div id="id-ncbPanelP2" class="cs-ncbPanelP2">
-            <span class="cs-ncbSidePanelSelect cs-ncbSidePanelStorage">
+        <div id="id-panelP2" class="cs-panelP2">
+            <span class="cs-sidePanelSelect cs-sidePanelStorage">
                 The default settings must use local storage on your machine. If you don't want to store them locally, then don't set them.
             </span><br>
 
-            <span class="cs-ncbSidePanelSelect cs-ncbSidePanelVersion" onclick="ncbOpenDefaultVersion()">
-                <span id="id-ncbDefaultVersionPointer" class="cs-ncbDefaultPointer">▼</span> Version:
-                <span id="id-ncbDefaultVersionSpan" class="cs-ncbMoveVersion">TWF</span>
+            <span class="cs-sidePanelSelect cs-sidePanelVersion" onclick="openDefaultVersion()">
+                <span id="id-defaultVersionPointer" class="cs-defaultPointer">▼</span> Version:
+                <span id="id-defaultVersionSpan" class="cs-moveVersion">TWF</span>
             </span>
-            <div id="id-ncbDefaultVersion" class="cs-ncbSelector cs-ncbDefaultVersion">
+            <div id="id-defaultVersion" class="cs-selector cs-defaultVersion">
             </div>
 
-            <span class="cs-ncbSidePanelSelect cs-ncbSidePanelTheme" onclick="ncbOpenDefaultTheme()">
-                <span id="id-ncbDefaultThemePointer" class="cs-ncbDefaultPointer">▼</span> Theme:
-                    <span id="id-ncbDefaultThemeSpan" class="cs-ncbMoveTheme">Light</span>
+            <span class="cs-sidePanelSelect cs-sidePanelTheme" onclick="openDefaultTheme()">
+                <span id="id-defaultThemePointer" class="cs-defaultPointer">▼</span> Theme:
+                    <span id="id-defaultThemeSpan" class="cs-moveTheme">Light</span>
             </span>
 
-            <div id="id-ncbDefaultTheme" class="cs-ncbSelector cs-ncbDefaultTheme">
-                <div id="id-ncbDefaultTheme1" class="cs-ncbTheme" data-theme="1" onclick="ncbDefaultTheme()">Light</div>
-                <div id="id-ncbDefaultTheme2" class="cs-ncbTheme" data-theme="2" onclick="ncbDefaultTheme()">Dark</div>
+            <div id="id-defaultTheme" class="cs-selector cs-defaultTheme">
+                <div id="id-defaultTheme1" class="cs-theme" data-theme="1" onclick="defaultTheme()">Light</div>
+                <div id="id-defaultTheme2" class="cs-theme" data-theme="2" onclick="defaultTheme()">Dark</div>
             </div>
 
-            <label id="id-ncbDefaultFontlbl"></label>
-            <label id="id-ncbSaveDefaultFont" class="cs-ncbSaveDefaultFont" onclick="ncbDefaultFont()">Save</label>
-            <div id="id-ncbSlider" class="sidePanelSlideContainer">
-                <input id="id-ncbRange" type="range" min="36" max="180" value="100" style="width: 100%;" class="slider">
+            <label id="id-defaultFontlbl"></label>
+            <label id="id-saveDefaultFont" class="cs-saveDefaultFont" onclick="defaultFont()">Save</label>
+            <div id="id-slider" class="sidePanelSlideContainer">
+                <input id="id-range" type="range" min="36" max="180" value="100" style="width: 100%;" class="slider">
             </div>
 
-            <span id="id-ncbReset" class="cs-ncbSidePanelSelect cs-ncbSidePanelReset" onclick="ncbSettingsReset()" title="Rest all Settings to their defaults">
+            <span id="id-reset" class="cs-sidePanelSelect cs-sidePanelReset" onclick="settingsReset()" title="Rest all Settings to their defaults">
                 Reset
             </span>
             <br><br><br><br><br>
@@ -192,64 +192,64 @@
 
     </div>
 
-    <div id="id-ncbChangeVersionHeader" class="cs-ncbDropHeader cs-ncbChangeVersionHeader">
+    <div id="id-changeVersionHeader" class="cs-dropHeader cs-changeVersionHeader">
         Version
     </div>
-    <div id="id-ncbChangeVersion" class="cs-ncbSelector cs-ncbChangeVersion">
+    <div id="id-changeVersion" class="cs-selector cs-changeVersion">
     </div>
 
-    <div id="id-ncbChangeBookHeader" class="cs-ncbDropHeader cs-ncbChangeBookHeader">
-        <span class="cs-ncbOld">Old</span>
+    <div id="id-changeBookHeader" class="cs-dropHeader cs-changeBookHeader">
+        <span class="cs-old">Old</span>
 
-        <span id="id-ncbSort" class="cs-ncbSort" onclick="ncbSortBooks()" title="Sort Alphabetically" data-sorted="0">
-            <span id="id-ncbChangeBookHeaderPointer" class="cs-ncbPointer cs-ncbChangeBookSortPointer">▼</span> sort</span>
-        <span class="cs-ncbNew"> New</span>
+        <span id="id-sort" class="cs-sort" onclick="sortBooks()" title="Sort Alphabetically" data-sorted="0">
+            <span id="id-changeBookHeaderPointer" class="cs-pointer cs-changeBookSortPointer">▼</span> sort</span>
+        <span class="cs-new"> New</span>
     </div>
 
-    <div id="id-ncbChangeBook" class="cs-ncbSelector cs-ncbChangeBook">
+    <div id="id-changeBook" class="cs-selector cs-changeBook">
     </div>
 
-    <div id="id-ncbChangeChapterHeader" class="cs-ncbDropHeader cs-ncbChangeChapterHeader">
+    <div id="id-changeChapterHeader" class="cs-dropHeader cs-changeChapterHeader">
         Chapter
     </div>
-    <div id="id-ncbChangeChapter" class="cs-ncbSelector cs-ncbChangeChapter">
+    <div id="id-changeChapter" class="cs-selector cs-changeChapter">
     </div>
 
-    <div id="id-ncbSelectVerseHeader" class="cs-ncbDropHeader cs-ncbSelectVerseHeader">
+    <div id="id-selectVerseHeader" class="cs-dropHeader cs-selectVerseHeader">
         Verse
     </div>
-    <div id="id-ncbSelectVerse" class="cs-ncbSelector cs-ncbSelectVerse">
+    <div id="id-selectVerse" class="cs-selector cs-selectVerse">
     </div>
     <!-- #endregion  End of Dropdowns from the top menu -->
-    <label id="id-ncbOpenFooter" class="cs-ncbOpenFooter" onclick="ncbFooter()">╲╱</label>
-    <div ID="id-ncbFooter" class="cs-ncbFooter">
+    <label id="id-openFooter" class="cs-openFooter" onclick="footer()">╲╱</label>
+    <div ID="id-footer" class="cs-footer">
 
-        <div class="cs-ncbFooters">
-            <span id="id-ncbFooter1" class="cs-ncbFooters1" onclick="ncbPage()">Share</span>
-            <span id="id-ncbDot"  class="cs-ncbFooters1"> • </span>
-            <span id="id-ncbFooter2" class="cs-ncbFooters1" onclick="ncbPage()">About</span>
-            <span id="id-ncbDot"  class="cs-ncbFooters1"> • </span>
-            <span id="id-ncbFooter3" class="cs-ncbFooters1" onclick="ncbPage()">Mission</span>
-            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
-            <span id="id-ncbFooter4" class="cs-ncbFooters1" onclick="ncbPage()">Statement<span style="visibility: hidden;">¤</span>of<span style="visibility: hidden;">¤</span>Faith</span>
-            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
-            <span id="id-ncbFooter5" class="cs-ncbFooters1" onclick="ncbPage()">Movies</span>
-            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
-            <span id="id-ncbFooter6" class="cs-ncbFooters1" onclick="ncbPage()">Music</span>
-            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
-            <span id="id-ncbFooter7" class="cs-ncbFooters1" onclick="ncbPage()">TV<span style="visibility: hidden;">¤</span>Shows</span>
-            <span id="id-ncbDot" class="cs-ncbFooters1"> • </span>
-            <span id="id-ncbFooter8" class="cs-ncbFooters1" onclick="ncbPage()">Testimonials</span>
-            <span id="id-ncbFooter1" class="cs-ncbFooters1"> • </span>
-            <span id="id-ncbFooter9" class="cs-ncbFooters1" onclick="ncbPage()">Ministries</span>
+        <div class="cs-footers">
+            <span id="id-footer1" class="cs-footers1" onclick="page()">Share</span>
+            <span id="id-dot"  class="cs-footers1"> • </span>
+            <span id="id-footer2" class="cs-footers1" onclick="page()">About</span>
+            <span id="id-dot"  class="cs-footers1"> • </span>
+            <span id="id-footer3" class="cs-footers1" onclick="page()">Mission</span>
+            <span id="id-footer1" class="cs-footers1"> • </span>
+            <span id="id-footer4" class="cs-footers1" onclick="page()">Statement<span style="visibility: hidden;">¤</span>of<span style="visibility: hidden;">¤</span>Faith</span>
+            <span id="id-footer1" class="cs-footers1"> • </span>
+            <span id="id-footer5" class="cs-footers1" onclick="page()">Movies</span>
+            <span id="id-footer1" class="cs-footers1"> • </span>
+            <span id="id-footer6" class="cs-footers1" onclick="page()">Music</span>
+            <span id="id-footer1" class="cs-footers1"> • </span>
+            <span id="id-footer7" class="cs-footers1" onclick="page()">TV<span style="visibility: hidden;">¤</span>Shows</span>
+            <span id="id-dot" class="cs-footers1"> • </span>
+            <span id="id-footer8" class="cs-footers1" onclick="page()">Testimonials</span>
+            <span id="id-footer1" class="cs-footers1"> • </span>
+            <span id="id-footer9" class="cs-footers1" onclick="page()">Ministries</span>
         </div>
-        <div id="id-ncbCopy">
+        <div id="id-copy">
             <span title="God's Word Is Not For Sale">New Christian Bible - Copyright © Free - Inspired by God!</span>
         </div>
         <br><br><br>
     </div>
 </body>
-<div id="id-ncbModal" class="cs-ncbModal"></div>
+<div id="id-modal" class="cs-modal"></div>
 </html>
 
 <!--<link href="" rel="stylesheet" style="css" media="screen and (min-width: 900px) and (max-height: 720px)>-->

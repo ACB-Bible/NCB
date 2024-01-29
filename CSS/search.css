@@ -1,4 +1,4 @@
-.cs-ncbSearchBar {
+.cs-searchBar {
     position: relative;
     top: 5%;
     height: 4%;
@@ -15,7 +15,7 @@
     cursor: text;
     overflow: hidden;
 }
-.cs-ncbSearchLbl {
+.cs-searchLbl {
     display: block;
     position: absolute;
     left: .5em;
@@ -32,9 +32,9 @@
     outline: none;
 
 }
-.cs-ncbSearchLbl:focus { opacity: 1; }
-.cs-ncbSearchText { width: 90%; }
-.cs-ncbSearchImg {
+.cs-searchLbl:focus { opacity: 1; }
+.cs-searchText { width: 90%; }
+.cs-searchImg {
     display: block;
     position: relative;
     padding: .25em;
@@ -46,16 +46,16 @@
     opacity: .5;
     border-radius: 50%;
 }
-.cs-ncbSearchImg:hover { cursor: pointer; opacity: .7; background-color: #ece7e7; }
-.cs-ncbClearSearch {
+.cs-searchImg:hover { cursor: pointer; opacity: .7; background-color: #ece7e7; }
+.cs-clearSearch {
     font-size: .8em;
     padding: .3em;
     border-radius: 1.625rem;
     background-color: #ece7e7;
     opacity: .5;
 }
-.cs-ncbClearSearch:hover { opacity: 1; cursor: pointer; }
-.cs-ncbClear {
+.cs-clearSearch:hover { opacity: 1; cursor: pointer; }
+.cs-clear {
     display: block;
     visibility: hidden;
     position: relative;

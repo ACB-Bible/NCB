@@ -1,4 +1,4 @@
-.cs-ncbSelectContainer {
+.cs-selectContainer {
     display: block;
     position: fixed;
     top: 10.2%;
@@ -9,7 +9,7 @@
     background-color: #cbcaca;
 }
 
-.cs-ncbSelectContainerOpen {
+.cs-selectContainerOpen {
     display: block;
     position: fixed;
     top: 10.2%;
@@ -20,7 +20,7 @@
     background-color: #cbcaca;
 }
 
-.cs-ncbPanelLbl {
+.cs-panelLbl {
     position: relative;
     display: block;
     top: 10%;
@@ -35,8 +35,8 @@
     user-select: none;
 }
 
-.cs-ncbPanelP1,
-.cs-ncbPanelP2 {
+.cs-panelP1,
+.cs-panelP2 {
     display: block;
     position: relative;
     top: 8%;
@@ -58,10 +58,10 @@
     /* Firefox */
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
-.cs-ncbPanelP1::-webkit-scrollbar,
-.cs-ncbPanelP2::-webkit-scrollbar { display: none; }
-.cs-ncbPanelP2 { display: none; }
-.cs-ncbSidePanelSelect {
+.cs-panelP1::-webkit-scrollbar,
+.cs-panelP2::-webkit-scrollbar { display: none; }
+.cs-panelP2 { display: none; }
+.cs-sidePanelSelect {
     display: block;
     position: relative;
     width: 90%;
@@ -76,7 +76,7 @@
     user-select: none;
 }
 
-.cs-ncbDailyVerse {
+.cs-dailyVerse {
     display: block;
     position: relative;
     width: 99%;
@@ -86,7 +86,7 @@
     color: #720D0D;
 }
 
-.cs-ncbSidePanelStorage {
+.cs-sidePanelStorage {
     background-color: #fafad1;
     color: #504c4c;
     border-radius: 6px;
@@ -99,9 +99,9 @@
     padding: .5em;
 }
 
-.cs-ncbSidePanelVersion { text-align: left; top: -8%; user-select: none; }
-.cs-ncbSidePanelTheme { text-align: left; top: -4%;  user-select: none; }
-.cs-ncbSidePanelReset {
+.cs-sidePanelVersion { text-align: left; top: -8%; user-select: none; }
+.cs-sidePanelTheme { text-align: left; top: -4%;  user-select: none; }
+.cs-sidePanelReset {
     text-align: center;
     top: 30%;
     width: 20%;
@@ -110,11 +110,11 @@
     user-select: none;
 }
 
-.cs-ncbMoveVersion { display: inline; position: relative; left: 12%; width: 99%;}
-.cs-ncbMoveTheme { position: relative; left: 12%;}
+.cs-moveVersion { display: inline; position: relative; left: 12%; width: 99%;}
+.cs-moveTheme { position: relative; left: 12%;}
 
 .sidePanelSlideContainer { width: 100%; top: 1%; margin-top: .8em; }
-.cs-ncbSaveDefaultFont {
+.cs-saveDefaultFont {
     position: absolute;
     float: right;
     right: 6%;
@@ -130,13 +130,9 @@
     user-select: none;
 }
 
-.cs-ncbSelector {
+.cs-selector {
     display: none;
-    position: fixed;
-    left: 82.3%;
-    top: 45.8%;
-    height: 30%;
-    width: 13.9%;
+    position: absolute;
     background-color: white;
     color: #504c4c;
     overflow: hidden;
@@ -147,7 +143,7 @@
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     font-family: Arial, Helvetica, sans-serif;
-    box-shadow: 0 10px 10px rgba(112, 111, 111, .25);
+    box-shadow: 0 10px 10px rgba(94, 94, 94, 0.25);
     overscroll-behavior: contain;
     -ms-overflow-style: none;
     /* IE and Edge */
@@ -156,30 +152,27 @@
     z-index: 1;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
-.cs-ncbSelector::-webkit-scrollbar { display: none; }
+.cs-selector::-webkit-scrollbar { display: none; }
 
-.cs-ncbVersion {
-    padding: .8em;
+.cs-version {
+    padding: .9em;
     padding-left: .8em;
-    font-size: .8rem;
+    font-size: .9rem;
     border-bottom: 1px solid #dfdcdc;
 }
-.cs-ncbEventVersion { padding: .3em; }
-.cs-ncbDefaultVersion { height: 34.0362%; top: 46.3%; width: 13.8%; }
-.cs-ncbDefaultTheme { top: 54.34%; height: 7.65%; width: 13.8%; }
-.cs-ncbDefaultPointer { padding-left: 1.5em; font-size: .5em; margin-right: -.2em; }
-.cs-ncbTheme {
+.cs-eventVersion { padding: .3em; }
+.cs-defaultVersion { height: 34.0362%; top: 46.3%; width: 13.8%; }
+.cs-defaultTheme { top: 54.34%; height: 7.65%; width: 13.8%; }
+.cs-defaultPointer { padding-left: 1.5em; font-size: .5em; margin-right: -.2em; }
+.cs-theme {
     padding: .15em;
     padding-left: .8rem;
     border-bottom: 1px solid #dfdcdc;
     font-size: .9rem;
 }
-.cs-ncbDropHeader {
+.cs-dropHeader {
     display: none;
     position: absolute;
-    top: 16.1%;
-    height: 2.9%;
-    width: 14.7%;
     background-color: #c65d5d;
     color: #f0ecc9;
     font-family: Arial, Helvetica, sans-serif;
@@ -189,31 +182,29 @@
     border-left: 1px solid #6f6f6f;
     border-right: 1px solid #6f6f6f;
     border-bottom: 1px solid #bcbaba;
-    box-shadow: 0 10px 10px rgba(112, 111, 111, .25);
 }
-.cs-ncbChangeVersionHeader {
+.cs-changeVersionHeader {
     padding-left: .9em;
     padding-bottom: .5em;
     left: 14%;
     top: 16.15%;
     width: 13%;
 }
-.cs-ncbChangeVersion {
-    position: absolute;
+.cs-changeVersion {
     left: 13.95%;
     top: 21.35%;
     height: 35.1%;
+    width: 14.7%;
 }
 
-.cs-ncbChangeBookHeader { left: 30.5%; height: 4%; }
-.cs-ncbChangeBook {
-    position: absolute;
+.cs-changeBookHeader { left: 30.5%; height: 4%; }
+.cs-changeBook {
     left: 30.5%;
     top: 21.5%;
     height: 35.9%;
     width: 15.2%;
 }
-.cs-ncbBookLine {
+.cs-bookLine {
     height: 12.6%;
     width: 100%;
     font-size: .90rem;
@@ -221,7 +212,7 @@
     box-sizing: border-box;
 }
 
-.cs-ncbBookSpan {
+.cs-bookSpan {
     display: inline-block;
     position: relative;
     padding-left: .5em;
@@ -232,7 +223,7 @@
     border-right: 1px solid #bcbaba;
     border-bottom: 1px solid #a5a3a3;
 }
-.cs-ncbBookSpan1 {
+.cs-bookSpan1 {
     display: inline-block;
     position: absolute;
     left: 50%;
@@ -243,10 +234,10 @@
     overflow: hidden;
     border-bottom: 1px solid #a5a3a3;
 }
-.cs-ncbOld { position: absolute; padding-left: .15em;}
-.cs-ncbNew { position: absolute; left: 83%;;}
-.cs-ncbChangeBookSortPointer { font-size: .83em; }
-.cs-ncbSort {
+.cs-old { position: absolute; padding-left: .15em;}
+.cs-new { position: absolute; left: 83%;;}
+.cs-changeBookSortPointer { font-size: .83em; }
+.cs-sort {
     position: absolute;
     left: 29%;
     top: 18%;
@@ -259,14 +250,13 @@
     font-size: .8em;
 }
 
-.cs-ncbChangeChapterHeader {
+.cs-changeChapterHeader {
     left: 42.5%;
     top: 16.1%;
     height: 3.9%;
     width: 15.2%;
 }
-.cs-ncbChangeChapter {
-    position: absolute;
+.cs-changeChapter {
     left: 42.5%;
     top: 20.8%;
     height: 32.5%;
@@ -274,14 +264,13 @@
     padding-top: .3em;
 }
 
-.cs-ncbSelectVerseHeader {
+.cs-selectVerseHeader {
     left: 48.5%;
     top: 16.1%;
     height: 3.9%;
     width: 15.2%;
 }
-.cs-ncbSelectVerse {
-    position: absolute;
+.cs-selectVerse {
     left: 48.5%;
     top: 20.8%;
     height: 32.5%;
@@ -289,7 +278,7 @@
     padding-top: .3em;
 }
 
-.cs-ncbSelectLine {
+.cs-selectLine {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: .35em;
@@ -298,7 +287,7 @@
     font-size: .90rem;
     overflow: hidden;
 }
-.cs-ncbToSelect {
+.cs-toSelect {
     height: 82%;
     width: 12%;
     border: 2px solid rgba(194, 192, 192, .2);
@@ -308,7 +297,7 @@
     align-items: center;
 }
 
-.cs-ncbModal {
+.cs-modal {
     display: none;
     position: fixed;
     background-color: #f0ecc9;

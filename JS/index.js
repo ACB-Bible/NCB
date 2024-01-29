@@ -2,39 +2,39 @@
 
 window.onload = async () => {
 
-    document.getElementById("id-ncbIntro").textContent = "New Christian Bible";
-    mainPath = document.getElementById("id-ncbBase").href;
-    if (sidePanelLoaded) { ncbStartup(); };
+    document.getElementById("id-intro").textContent = "New Christian Bible";
+    mainPath = document.getElementById("id-base").href;
+    if (sidePanelLoaded) { startup(); };
 };
 
-var slider = document.getElementById('id-ncbRange');
+var slider = document.getElementById('id-range');
 slider.oninput = function() {
 
     let afontSize = Number(this.value);
-    document.getElementById('id-ncbDefaultFontlbl').textContent = `Font Size:   ${afontSize}%`;
+    document.getElementById('id-defaultFontlbl').textContent = `Font Size:   ${afontSize}%`;
     afontSize = afontSize / 100;
     theFont = `${afontSize}rem`;
-    if (document.getElementById('id-ncbChapterPage')) { document.getElementById('id-ncbChapterPage').style.fontSize = theFont; }
-    if (document.getElementById('id-ncbPage')) { document.getElementById('id-ncbPage').style.fontSize = theFont; }
+    if (document.getElementById('id-chapterPage')) { document.getElementById('id-chapterPage').style.fontSize = theFont; }
+    if (document.getElementById('id-page')) { document.getElementById('id-page').style.fontSize = theFont; }
 };
 // #endregion Events
 
-async function ncbStartup() {
+async function startup() {
     let res = false;
-    res = await ncbLoadVersions();
+    res = await loadVersions();
 
-    document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
-    if (res) { ncbApplyTheme() };
-    if (res) { ncbApplyDefaultVersion() };
-    if (res) { ncbLoadBooks() };
-    if (res) { ncbLoadChapters() };
-    if (res) { ncbLoadVerses() };
-    if (res) { ncbChangeVersion(versionid) };
-    if (res) { ncbApplyDefaultFont() };
+    document.getElementById('id-defaultTheme').dataset.theme = theme;
+    if (res) { applyTheme() };
+    if (res) { applyDefaultVersion() };
+    if (res) { loadBooks() };
+    if (res) { loadChapters() };
+    if (res) { loadVerses() };
+    if (res) { changeVersion(versionid) };
+    if (res) { applyDefaultFont() };
 
 };
 
-async function ncbApplyDefaultFont() {
+async function applyDefaultFont() {
 
     let afont = localStorage.getItem('fontsize');
     if (afont === null) {
@@ -45,80 +45,80 @@ async function ncbApplyDefaultFont() {
         defaultFontSize = defaultFontSize / 16;
         defaultFontSize = defaultFontSize.toFixed(2);
         defaultFontSize = Number(defaultFontSize.replace('.', ''));
-        document.getElementById('id-ncbDefaultFontlbl').textContent = `Font Size:   ${defaultFontSize}%`
-        document.getElementById('id-ncbRange'). value = defaultFontSize;
-        document.getElementById('id-ncbChapterPage').style.fontSize = '1.1rem';
+        document.getElementById('id-defaultFontlbl').textContent = `Font Size:   ${defaultFontSize}%`
+        document.getElementById('id-range'). value = defaultFontSize;
+        document.getElementById('id-chapterPage').style.fontSize = '1.1rem';
     } else {
-        document.getElementById('id-ncbChapterPage').style.fontSize = afont;
+        document.getElementById('id-chapterPage').style.fontSize = afont;
         afont = Number(parseFloat(afont.replace('.', '')));
-        document.getElementById('id-ncbDefaultFontlbl').textContent = `Font Size:   ${afont}%`
-        document.getElementById('id-ncbRange'). value = afont;
+        document.getElementById('id-defaultFontlbl').textContent = `Font Size:   ${afont}%`
+        document.getElementById('id-range'). value = afont;
     };
 
 };
 
-async function ncbApplyDefaultVersion() {
+async function applyDefaultVersion() {
 
-    let eChVersion = document.getElementById(`id-ncbChangeVersion${versionid}`);
+    let eChVersion = document.getElementById(`id-changeVersion${versionid}`);
     let content = eChVersion.textContent;
     let version = eChVersion.dataset.version;
-    let eMenu = document.getElementById('id-ncbMenu');
+    let eMenu = document.getElementById('id-menu');
     let versionidx = Number(eMenu.dataset.idx);
 
-    let eDefVersion = document.getElementById('id-ncbDefaultVersion');
+    let eDefVersion = document.getElementById('id-defaultVersion');
     eDefVersion.dataset.version = version;
     eDefVersion.dataset.versionid = versionid;
     eDefVersion.dataset.versionidx = versionidx;
 
-    let eDefVersion1 = document.getElementById('id-ncbDefaultVersionSpan');
+    let eDefVersion1 = document.getElementById('id-defaultVersionSpan');
     eDefVersion1.textContent = version;
 
-    let eVersion = document.getElementById('id-ncbVersion');
+    let eVersion = document.getElementById('id-version');
     eVersion.dataset.version = version;
     eVersion.dataset.versionid = versionid;
     eVersion.dataset.versionidx = versionidx;
     if (version === 'AKJ' || version === 'ASV' || version === 'TWF') { content += ' Version' };
-    document.getElementById('id-ncbTextTitle1').textContent = content;
-    document.getElementById('id-ncbVersionText').textContent = version;
+    document.getElementById('id-textTitle1').textContent = content;
+    document.getElementById('id-versionText').textContent = version;
     return Promise.resolve(true);
 };
 
-async function ncbApplyTheme() {
+async function applyTheme() {
 
-    const ncbNumber = document.getElementsByClassName("cs-ncbNumber");
+    const number = document.getElementsByClassName("cs-number");
     switch (theme) {
         case 1:
-            document.getElementById('id-ncbDefaultThemeSpan').textContent = document.getElementById(`id-ncbDefaultTheme${theme}`).textContent;
-            document.getElementById('id-ncbMainText').classList.remove('cs-ncbMainTextDark');
-            for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#9e6105'; };
-            document.getElementById('id-ncbTextTitle2').style.color = '#720D0D';
-            document.getElementById('id-ncbSelectContainer').style.backgroundColor = '#cbcaca';
-            document.getElementById('id-ncbPanelP1').style.color = '#333333';
-            document.getElementById('id-ncbPanelP1').style.backgroundColor = 'white';
-            document.getElementById('id-ncbPanelP2').style.color = '#333333';
-            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#dfdcdc';
-            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#f3f3f3';
-            document.getElementById('id-ncbDailyVerse').style.color = '#720D0D';
+            document.getElementById('id-defaultThemeSpan').textContent = document.getElementById(`id-defaultTheme${theme}`).textContent;
+            document.getElementById('id-mainText').classList.remove('cs-mainTextDark');
+            for (let i = 0; i < number.length; i++) { number[i].style.color = '#9e6105'; };
+            document.getElementById('id-textTitle2').style.color = '#720D0D';
+            document.getElementById('id-selectContainer').style.backgroundColor = '#cbcaca';
+            document.getElementById('id-panelP1').style.color = '#333333';
+            document.getElementById('id-panelP1').style.backgroundColor = 'white';
+            document.getElementById('id-panelP2').style.color = '#333333';
+            document.getElementById('id-panelP2').style.backgroundColor = '#dfdcdc';
+            document.getElementById('id-panelP2').style.backgroundColor = '#f3f3f3';
+            document.getElementById('id-dailyVerse').style.color = '#720D0D';
             theme = 1;
             break;
         case 2:
-            document.getElementById('id-ncbDefaultThemeSpan').textContent = document.getElementById(`id-ncbDefaultTheme${theme}`).textContent;
-            document.getElementById('id-ncbMainText').classList.add('cs-ncbMainTextDark');
-            for (let i = 0; i < ncbNumber.length; i++) { ncbNumber[i].style.color = '#b88a48'; };
-            document.getElementById('id-ncbTextTitle2').style.color = "white";
-            document.getElementById('id-ncbSelectContainer').style.backgroundColor = '#333333';
-            document.getElementById('id-ncbPanelP1').style.backgroundColor = '#5e5c5c';
-            document.getElementById('id-ncbPanelP1').style.color = 'white';
-            document.getElementById('id-ncbPanelP2').style.backgroundColor = '#5e5c5c';
-            document.getElementById('id-ncbPanelP2').style.color = 'white';
-            document.getElementById('id-ncbTextTitle2').style.color = '#b8afaf';
-            document.getElementById('id-ncbDailyVerse').style.color = 'white';
+            document.getElementById('id-defaultThemeSpan').textContent = document.getElementById(`id-defaultTheme${theme}`).textContent;
+            document.getElementById('id-mainText').classList.add('cs-mainTextDark');
+            for (let i = 0; i < number.length; i++) { number[i].style.color = '#b88a48'; };
+            document.getElementById('id-textTitle2').style.color = "white";
+            document.getElementById('id-selectContainer').style.backgroundColor = '#333333';
+            document.getElementById('id-panelP1').style.backgroundColor = '#5e5c5c';
+            document.getElementById('id-panelP1').style.color = 'white';
+            document.getElementById('id-panelP2').style.backgroundColor = '#5e5c5c';
+            document.getElementById('id-panelP2').style.color = 'white';
+            document.getElementById('id-textTitle2').style.color = '#b8afaf';
+            document.getElementById('id-dailyVerse').style.color = 'white';
             theme = 2;
             break;
     };
 };
 
-async function ncbLoadVersions() {
+async function loadVersions() {
 
     versions.forEach(version => {
         // #region load the default version dropdown box
@@ -127,16 +127,16 @@ async function ncbLoadVersions() {
             event.stopPropagation();
             event.preventDefault();
             event.stopImmediatePropagation();
-            ncbDefaultVersion();
+            defaultVersion();
         });
-        div.id = `id-ncbDefaultVersion${version.id}`;
+        div.id = `id-defaultVersion${version.id}`;
         div.textContent = version.vn;
         div.dataset.versionid = version.id;
         div.dataset.version = version.ar;
         div.dataset.loaded = 0;
-        div.classList.add('cs-ncbVersion');
-        div.classList.add('cs-ncbEventVersion');
-        document.getElementById('id-ncbDefaultVersion').appendChild(div);
+        div.classList.add('cs-version');
+        div.classList.add('cs-eventVersion');
+        document.getElementById('id-defaultVersion').appendChild(div);
         // #endregion load the default version dropdown box
 
         // #region load the change version dropdown box
@@ -145,64 +145,64 @@ async function ncbLoadVersions() {
             event.stopPropagation();
             event.preventDefault();
             event.stopImmediatePropagation();
-            ncbChangeVersion();
+            changeVersion();
         });
-        div.id = `id-ncbChangeVersion${version.id}`;
+        div.id = `id-changeVersion${version.id}`;
         div.textContent = version.vn;
         div.dataset.versionid = version.id;
         div.dataset.version = version.ar;
         div.dataset.loaded = 0;
-        div.classList.add('cs-ncbVersion');
-        div.classList.add('cs-ncbChangeVersionSelect');
-        document.getElementById('id-ncbChangeVersion').appendChild(div);
+        div.classList.add('cs-version');
+        div.classList.add('cs-changeVersionSelect');
+        document.getElementById('id-changeVersion').appendChild(div);
         // #endregion load the change version dropdown box
     });
 
     return Promise.resolve(true);
 };
 
-async function ncbLoadBooks() {
+async function loadBooks() {
 
     let i = 0;
     let ii = 0;
     let div;
     let span;
 
-    ncbRemoveItems('id-ncbChangeBook');
+    removeItems('id-changeBook');
     oldBooks.forEach(book => {
         div = document.createElement("div");
-        div.id = `id-ncbBookLine${i}`;
-        div.classList.add('cs-ncbBookLine');
-        document.getElementById("id-ncbChangeBook").appendChild(div);
+        div.id = `id-bookLine${i}`;
+        div.classList.add('cs-bookLine');
+        document.getElementById("id-changeBook").appendChild(div);
 
         span = document.createElement("span");
-        span.id = `id-ncbBk${book.id}`;
+        span.id = `id-bk${book.id}`;
         span.textContent = book.t;
         span.dataset.bid = book.id;
         span.dataset.c = book.c;
-        span.classList.add('cs-ncbBookSpan');
+        span.classList.add('cs-bookSpan');
         span.addEventListener('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
             event.stopImmediatePropagation();
-            ncbChangeBook();
+            changeBook();
         });
-        document.getElementById(`id-ncbBookLine${i}`).appendChild(span);
+        document.getElementById(`id-bookLine${i}`).appendChild(span);
 
         if (ii < 27) {
             span = document.createElement("span");
-            span.id = `id-ncbBk${newBooks[ii].id}`;
+            span.id = `id-bk${newBooks[ii].id}`;
             span.textContent = newBooks[ii].t;
             span.dataset.bid = newBooks[ii].id;
             span.dataset.c = newBooks[ii].c;
-            span.classList.add('cs-ncbBookSpan1');
+            span.classList.add('cs-bookSpan1');
             span.addEventListener('click', function (event) {
                 event.stopPropagation();
                 event.preventDefault();
                 event.stopImmediatePropagation();
-                ncbChangeBook();
+                changeBook();
             });
-            document.getElementById(`id-ncbBookLine${i}`).appendChild(span);
+            document.getElementById(`id-bookLine${i}`).appendChild(span);
         };
         ii++;
         i++;
@@ -210,22 +210,22 @@ async function ncbLoadBooks() {
     return Promise.resolve(true);
 };
 
-async function ncbLoadChapters() {
+async function loadChapters() {
 
     let i = 1;
     let x = 0;
     let newLine = 1;
     let chapterIndx = 0;
-    let eChapter = document.getElementById(`id-ncbChangeChapter`);
-    let eMenu = document.getElementById('id-ncbMenu');
+    let eChapter = document.getElementById(`id-changeChapter`);
+    let eMenu = document.getElementById('id-menu');
     let count = Number(eMenu.dataset.chapters);
 
-    ncbRemoveItems(`id-ncbChangeChapter`);
+    removeItems(`id-changeChapter`);
     while (i <= count) {
         if (newLine) {
             let d = document.createElement("div");
-            d.id = `id-ncbChpt${chapterIndx}`;
-            d.classList.add('cs-ncbSelectLine');
+            d.id = `id-chpt${chapterIndx}`;
+            d.classList.add('cs-selectLine');
             eChapter.appendChild(d);
             newLine = 0;
         };
@@ -234,41 +234,41 @@ async function ncbLoadChapters() {
             event.stopPropagation();
             event.preventDefault();
             event.stopImmediatePropagation();
-            ncbChangeChapter();
+            changeChapter();
         });
-        sp.id = `id-ncbChp${i}`;
+        sp.id = `id-chp${i}`;
         sp.textContent = i;
         sp.dataset.cn = i;
-        sp.classList.add('cs-ncbToSelect');
-        document.getElementById(`id-ncbChpt${chapterIndx}`).appendChild(sp);
+        sp.classList.add('cs-toSelect');
+        document.getElementById(`id-chpt${chapterIndx}`).appendChild(sp);
         if (x < 4) { x++; } else { x = 0; newLine = 1; chapterIndx++; };
         i++;
     };
     eMenu.dataset.chapters = (i - 1);
     let d = document.createElement("div");
-    d.id = `id-ncbChpt${chapterIndx + 1}`;
+    d.id = `id-chpt${chapterIndx + 1}`;
     d.textContent = ' ... ';
-    d.classList.add('cs-ncbSelectLine');
+    d.classList.add('cs-selectLine');
     eChapter.appendChild(d);
     return Promise.resolve(true);
 };
 
-async function ncbLoadVerses() {
+async function loadVerses() {
 
     let i = 1;
     let x = 0;
     let newLine = 1;
     let verseIndx = 0;
-    let eMenu = document.getElementById('id-ncbMenu');
+    let eMenu = document.getElementById('id-menu');
     let count = Number(eMenu.dataset.verses);
 
-    ncbRemoveItems(`id-ncbSelectVerse`);
+    removeItems(`id-selectVerse`);
     while (i <= count) {
         if (newLine) {
             let d = document.createElement("div");
-            d.id = `id-ncbVrse${verseIndx}`;
-            d.classList.add('cs-ncbSelectLine');
-            document.getElementById(`id-ncbSelectVerse`).appendChild(d);
+            d.id = `id-vrse${verseIndx}`;
+            d.classList.add('cs-selectLine');
+            document.getElementById(`id-selectVerse`).appendChild(d);
             newLine = 0;
         };
         let sp = document.createElement("span");
@@ -276,28 +276,28 @@ async function ncbLoadVerses() {
             event.stopPropagation();
             event.preventDefault();
             event.stopImmediatePropagation();
-            ncbSelectVerse();
+            selectVerse();
         });
-        sp.id = `id-ncbVrs${i}`;
+        sp.id = `id-vrs${i}`;
         sp.textContent = i;
         sp.dataset.cn = i;
-        sp.classList.add('cs-ncbToSelect');
-        document.getElementById(`id-ncbVrse${verseIndx}`).appendChild(sp);
+        sp.classList.add('cs-toSelect');
+        document.getElementById(`id-vrse${verseIndx}`).appendChild(sp);
         if (x < 4) { x++; } else { x = 0; newLine = 1; verseIndx++; };
         i++;
     };
     let d = document.createElement("div");
-    d.id = `id-ncbVrse${verseIndx + 1}`;
+    d.id = `id-vrse${verseIndx + 1}`;
     d.textContent = ' ... ';
-    d.classList.add('cs-ncbSelectLine');
-    document.getElementById(`id-ncbSelectVerse`).appendChild(d);
+    d.classList.add('cs-selectLine');
+    document.getElementById(`id-selectVerse`).appendChild(d);
     return Promise.resolve(true);
 };
 
-async function ncbLoadAVersion(id) {
+async function loadAVersion(id) {
 
     let res = false;
-    let eMenu = document.getElementById('id-ncbMenu');
+    let eMenu = document.getElementById('id-menu');
     let eVersion = document.getElementById(id);
     let loaded = Number(eVersion.dataset.loaded);
 
@@ -314,33 +314,31 @@ async function ncbLoadAVersion(id) {
     if (res) {
         eMenu.dataset.versionidx = eVersion.dataset.versionidx;
         res = false;
-        res = await ncbLoadText();
+        res = await loadText();
     };
-
-    //if (res) { startup = false; return Promise.resolve(true); };
     if (res) { return Promise.resolve(true); };
 };
 
 async function ncbFetch(version) {
 
-    document.getElementById('id-ncbBody').style.cursor = 'wait';
-    document.getElementById('id-ncbBody').style.pointerEvents = 'none';
+    document.getElementById('id-body').style.cursor = 'wait';
+    document.getElementById('id-body').style.pointerEvents = 'none';
     let url = `${mainPath}DATA/${version}/${version}Verses.json`;
     const res = await fetch(url, { mode: 'cors' });
     const file = await res.json();
     if (file) {
         allVerses.push(file);
-        if (startup) {ncbRandomVerse(file);};
+        if (startup) {randomVerse(file);};
     };
-    document.getElementById('id-ncbBody').style.cursor = 'default';
-    document.getElementById('id-ncbBody').style.pointerEvents = 'auto';
+    document.getElementById('id-body').style.cursor = 'default';
+    document.getElementById('id-body').style.pointerEvents = 'auto';
 
     return Promise.resolve(true);
 };
 
-async function ncbLoadText() {
+async function loadText() {
 
-    let eMenu = document.getElementById('id-ncbMenu');
+    let eMenu = document.getElementById('id-menu');
     let bid = Number(eMenu.dataset.bid);
     let cn = Number(eMenu.dataset.cn);
     let idx = Number(eMenu.dataset.versionidx);
@@ -349,34 +347,34 @@ async function ncbLoadText() {
     let x = 0;
 
     let verseText = '';
-    var span = '<span id="id-ncbSP1-2" class="cs-ncbJQ">';
+    var span = '<span id="id-SP1-2" class="cs-JQ">';
     var endSpan = '</span>';
 
-    ncbRemoveItems('id-ncbChapterPage');
+    removeItems('id-chapterPage');
 
     let verses = allVerses[idx];
     let lngth = verses.length;
     let i = verses.findIndex(vrs => vrs.bid === bid && vrs.cn === cn);
 
     let p = document.createElement("p");
-    p.id = `id-ncbP${pID}`;
-    p.classList.add('cs-ncbP');
+    p.id = `id-p${pID}`;
+    p.classList.add('cs-p');
     p.addEventListener('click', function (event) {
         event.stopPropagation();
         event.preventDefault();
         event.stopImmediatePropagation();
-        ncbClickP();
+        clickP();
     });
-    document.getElementById('id-ncbChapterPage').appendChild(p);
+    document.getElementById('id-chapterPage').appendChild(p);
     let pn = Number(verses[i].pn);
     while (verses[i].bid === bid && verses[i].cn === cn) {
         x++;
         if (verses[i].pn !== pn) { pn = verses[i].pn; newLine = 1; pID++; };
         if (newLine) {
             let p = document.createElement("p");
-            p.id = `id-ncbP${pID}`;
-            p.classList.add('cs-ncbP');
-            document.getElementById(`id-ncbChapterPage`).appendChild(p);
+            p.id = `id-p${pID}`;
+            p.classList.add('cs-p');
+            document.getElementById(`id-chapterPage`).appendChild(p);
             newLine = 0;
         };
 
@@ -384,22 +382,22 @@ async function ncbLoadText() {
         sp = document.createElement("span");
         if (verses[i].vn !== 1) {
             sp.textContent = verses[i].vn;
-            sp.id = `id-ncbSP${verses[i].vn}`;
-            sp.classList.add('cs-ncbNumber');
-            document.getElementById(`id-ncbP${pID}`).appendChild(sp);
+            sp.id = `id-SP${verses[i].vn}`;
+            sp.classList.add('cs-number');
+            document.getElementById(`id-p${pID}`).appendChild(sp);
         };
         // Add text to verse
         sp = document.createElement("span");
-        sp.id = `id-ncbSP${verses[i].vn}-2`;
+        sp.id = `id-SP${verses[i].vn}-2`;
         sp.pid = pID;
-        document.getElementById(`id-ncbP${pID}`).appendChild(sp);
+        document.getElementById(`id-p${pID}`).appendChild(sp);
 
         // Add event listener to verse
-        document.getElementById(`id-ncbSP${verses[i].vn}-2`).addEventListener('click', function (event) {
+        document.getElementById(`id-SP${verses[i].vn}-2`).addEventListener('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
             event.stopImmediatePropagation();
-            ncbClickP();
+            clickP();
         });
 
         //Add color to all quotes by Jesus
@@ -407,7 +405,7 @@ async function ncbLoadText() {
         if (Number(verses[i].jq) === 1) {
             verseText = verseText.replace('`', span);
             verseText = verseText.replace('´', endSpan);
-            document.getElementById(`id-ncbSP${verses[i].vn}-2`).insertAdjacentHTML('beforeend', verseText);
+            document.getElementById(`id-SP${verses[i].vn}-2`).insertAdjacentHTML('beforeend', verseText);
         } else {
             sp.textContent = verseText;
         };
@@ -418,9 +416,9 @@ async function ncbLoadText() {
     return Promise.resolve(true);
 };
 
-async function ncbRandomVerse(verses) {
+async function randomVerse(verses) {
 
-    var span = '<span class="cs-ncbJQ">';
+    var span = '<span class="cs-JQ">';
     var endSpan = '</span>';
 
     let book = [];
@@ -432,8 +430,8 @@ async function ncbRandomVerse(verses) {
     let verse = '';
     let head = ''
 
-    let eMenu = document.getElementById('id-ncbMenu');
-    let eRandom = document.getElementById('id-ncbPanelLbl');
+    let eMenu = document.getElementById('id-menu');
+    let eRandom = document.getElementById('id-panelLbl');
     let bid = Math.floor(Math.random() * (max - min + 1) + min);
     eRandom.dataset.bid = bid;
     if (bid < 40) {
@@ -472,13 +470,13 @@ async function ncbRandomVerse(verses) {
                 aVerse = aVerse.replace('`', span);
                 aVerse = aVerse.replace('´', endSpan);
             };
-            verse += `<span id="id-ncbNumber${x}" class="cs-ncbNumber cs-ncbNumber1">${abk[i].vn}</span><span id="id-ncbNumber${x}-2">${aVerse}</span> `;
+            verse += `<span id="id-number${x}" class="cs-number cs-number1">${abk[i].vn}</span><span id="id-number${x}-2">${aVerse}</span> `;
         };
         x++;
         i++;
     };
     verse += "</p>";
-    document.getElementById('id-ncbDailyVerse').textContent = head;
-    document.getElementById('id-ncbDailyVerseText').textContent = '';
-    document.getElementById(`id-ncbDailyVerseText`).insertAdjacentHTML('beforeend', verse);
+    document.getElementById('id-dailyVerse').textContent = head;
+    document.getElementById('id-dailyVerseText').textContent = '';
+    document.getElementById(`id-dailyVerseText`).insertAdjacentHTML('beforeend', verse);
 };

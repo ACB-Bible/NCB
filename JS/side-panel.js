@@ -1,25 +1,25 @@
 var sidePanelLoaded = true;
 var sidePanelChapter = 'Genesis 1:31'
 
-function ncbSwapPanel() {
-    //if (document.getElementById('id-ncbPage')) { panelSwapped = true; return; };
+function swapPanel() {
+    //if (document.getElementById('id-page')) { panelSwapped = true; return; };
     if (panelSwapped) {
-        document.getElementById('id-ncbPanelP1').style.display = "none";
-        document.getElementById('id-ncbPanelP2').style.display = "block";
-        document.getElementById('id-ncbPanelLbl1').textContent = "Settings";
+        document.getElementById('id-panelP1').style.display = "none";
+        document.getElementById('id-panelP2').style.display = "block";
+        document.getElementById('id-panelLbl1').textContent = "Settings";
         panelSwapped = false;
     } else {
-        document.getElementById('id-ncbPanelP1').style.display = "block";
-        document.getElementById('id-ncbPanelP2').style.display = "none";
-        document.getElementById('id-ncbPanelLbl1').textContent = 'Random Verses';
+        document.getElementById('id-panelP1').style.display = "block";
+        document.getElementById('id-panelP2').style.display = "none";
+        document.getElementById('id-panelLbl1').textContent = 'Random Verses';
         panelSwapped = true;
     };
 };
 
-async function ncbReadChapter() {
+async function readChapter() {
 
-    let eMenu = document.getElementById('id-ncbMenu');
-    let eRandom = document.getElementById('id-ncbPanelLbl');
+    let eMenu = document.getElementById('id-menu');
+    let eRandom = document.getElementById('id-panelLbl');
     let head = eRandom.dataset.t;
     let res = false;
 
@@ -34,21 +34,21 @@ async function ncbReadChapter() {
     eMenu.dataset.cn = eRandom.dataset.cn;
 
     eRandom.dataset.search = 1;
-    res = await ncbChangeBook();
+    res = await changeBook();
     eRandom.dataset.search = 0;
 
     let i = book.findIndex(books => books.id === bid);
     eMenu.dataset.chapters = book[i].c;
-    document.getElementById('id-ncbBookText').textContent = head;
-    document.getElementById('id-ncbVerseText').textContent = 1;
-    document.getElementById('id-ncbChapterText').textContent = `${eRandom.dataset.cn}`;
+    document.getElementById('id-bookText').textContent = head;
+    document.getElementById('id-verseText').textContent = 1;
+    document.getElementById('id-chapterText').textContent = `${eRandom.dataset.cn}`;
     head += ` ${eRandom.dataset.cn}`;
-    document.getElementById('id-ncbTextTitle2').textContent = head;
+    document.getElementById('id-textTitle2').textContent = head;
     if (res) {
         if ( eMenu.dataset.vn  !== '' ) {
             let i = 0;
             let vn = Number(eMenu.dataset.vn);
-            let sp = 'id-ncbSP';
+            let sp = 'id-SP';
             let pID = `${sp}${vn}`;
             let pID2 = `${pID}-2`;
 
@@ -74,10 +74,10 @@ async function ncbReadChapter() {
             eParagraph.scrollIntoView({ block: 'center' });
         };
     };
-    ncbLoadChapters();
+    loadChapters();
 };
 
-function ncbOpenDefaultVersion() {
+function openDefaultVersion() {
 
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
@@ -86,33 +86,33 @@ function ncbOpenDefaultVersion() {
         ncbClose();
     } else {
         ncbClose();
-        document.getElementById('id-ncbDefaultVersion').style.display = "block";
-        document.getElementById('id-ncbDefaultVersionPointer').textContent = '▲';
-        document.getElementById('id-ncbDefaultVersion').scrollTop = 0;
+        document.getElementById('id-defaultVersion').style.display = "block";
+        document.getElementById('id-defaultVersionPointer').textContent = '▲';
+        document.getElementById('id-defaultVersion').scrollTop = 0;
         openID = true;
     };
 };
 
-async function ncbDefaultVersion() {
+async function defaultVersion() {
 
     let id = this.event.target.id;
     let version = document.getElementById(id).dataset.version;
     let versionidx = document.getElementById(id).dataset.versionidx;
     versionid = document.getElementById(id).dataset.versionid;
-    document.getElementById('id-ncbVersion').dataset.version = version;
-    document.getElementById('id-ncbVersion').dataset.versionidx = versionidx;
-    document.getElementById('id-ncbDefaultVersionSpan').textContent = version;
+    document.getElementById('id-version').dataset.version = version;
+    document.getElementById('id-version').dataset.versionidx = versionidx;
+    document.getElementById('id-defaultVersionSpan').textContent = version;
 
-    document.getElementById('id-ncbVersionText').textContent = version;
-    document.getElementById('id-ncbTextTitle1').textContent = document.getElementById(id).textContent;
+    document.getElementById('id-versionText').textContent = version;
+    document.getElementById('id-textTitle1').textContent = document.getElementById(id).textContent;
 
     localStorage.setItem("versionid", versionid);
-    ncbChangeVersion(versionid);
+    changeVersion(versionid);
     ncbClose();
 
 };
 
-function ncbOpenDefaultTheme() {
+function openDefaultTheme() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
@@ -120,58 +120,58 @@ function ncbOpenDefaultTheme() {
         ncbClose();
     } else {
         ncbClose();
-        document.getElementById('id-ncbDefaultTheme').style.display = "block";
-        document.getElementById('id-ncbDefaultThemePointer').textContent = '▲';
+        document.getElementById('id-defaultTheme').style.display = "block";
+        document.getElementById('id-defaultThemePointer').textContent = '▲';
         openID = true;
     };
 };
 
-function ncbDefaultTheme() {
+function defaultTheme() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
-    let eMenu = document.getElementById('id-ncbMenu');
-    let eVersion = document.getElementById('id-ncbVersion');
-    let vid = document.getElementById('id-ncbVersion').dataset.versionid;
+    let eMenu = document.getElementById('id-menu');
+    let eVersion = document.getElementById('id-version');
+    let vid = document.getElementById('id-version').dataset.versionid;
     theme = document.getElementById(this.event.target.id).dataset.theme;
     theme = Number(theme);
-    document.getElementById('id-ncbDefaultTheme').dataset.theme = theme;
-    ncbApplyTheme();
+    document.getElementById('id-defaultTheme').dataset.theme = theme;
+    applyTheme();
     localStorage.setItem("theme", theme);
     ncbClose();
     let p = eMenu.dataset.vid;
     let ps = eMenu.dataset.vids;
-    ncbClickP();
+    clickP();
     eMenu.dataset.vid = p;
     eMenu.dataset.vids = ps;
     eVersion.dataset.deftheme = 1;
-    ncbChangeVersion(vid);
+    changeVersion(vid);
     eVersion.dataset.deftheme = '';
 };
 
-function ncbDefaultFont() {
+function defaultFont() {
 
     if (theFont === 0) { return; }
     localStorage.setItem("fontsize", theFont);
-    ncbModal('Font Saved!')
+    modal('Font Saved!')
 };
 
-function ncbModal(msg) {
+function modal(msg) {
 
     //let id = this.event.target.id;
     let left = '78%';
     let top =  '65%';
 
-    document.getElementById('id-ncbModal').textContent = msg;
-    document.getElementById('id-ncbModal').style.left = left;
-    document.getElementById('id-ncbModal').style.top = top;
-    document.getElementById('id-ncbModal').style.display = 'block';
+    document.getElementById('id-modal').textContent = msg;
+    document.getElementById('id-modal').style.left = left;
+    document.getElementById('id-modal').style.top = top;
+    document.getElementById('id-modal').style.display = 'block';
     setTimeout(() => {
-        document.getElementById('id-ncbModal').style.display = 'none';
+        document.getElementById('id-modal').style.display = 'none';
       }, "1100");
 };
 
-function ncbRemoveItems(id) {
+function removeItems(id) {
 
     let el = document.getElementById(id);
     while (el.firstChild) {
@@ -181,40 +181,40 @@ function ncbRemoveItems(id) {
 
 function ncbClose() {
 
-    if (!document.body.contains(document.getElementById('id-ncbMenu'))) { return; }
+    if (!document.body.contains(document.getElementById('id-menu'))) { return; }
     openID = false;
-    document.getElementById('id-ncbChangeVersionHeader').style.display = "none";
-    document.getElementById('id-ncbChangeVersion').style.display = "none";
-    document.getElementById('id-ncbVersionPointer').textContent = '▼';
-    document.getElementById('id-ncbChangeBookHeader').style.display = "none";
-    document.getElementById('id-ncbChangeBookHeaderPointer').textContent = '▼';
-    document.getElementById('id-ncbChangeBook').style.display = "none";
-    document.getElementById('id-ncbBookPointer').textContent = '▼';
-    document.getElementById('id-ncbChangeChapterHeader').style.display = "none";
-    document.getElementById('id-ncbChangeChapter').style.display = "none";
-    document.getElementById('id-ncbChapterPointer').textContent = '▼';
-    document.getElementById('id-ncbSelectVerseHeader').style.display = "none";
-    document.getElementById('id-ncbSelectVerse').style.display = "none";
-    document.getElementById('id-ncbVersePointer').textContent = '▼';
+    document.getElementById('id-changeVersionHeader').style.display = "none";
+    document.getElementById('id-changeVersion').style.display = "none";
+    document.getElementById('id-versionPointer').textContent = '▼';
+    document.getElementById('id-changeBookHeader').style.display = "none";
+    document.getElementById('id-changeBookHeaderPointer').textContent = '▼';
+    document.getElementById('id-changeBook').style.display = "none";
+    document.getElementById('id-bookPointer').textContent = '▼';
+    document.getElementById('id-changeChapterHeader').style.display = "none";
+    document.getElementById('id-changeChapter').style.display = "none";
+    document.getElementById('id-chapterPointer').textContent = '▼';
+    document.getElementById('id-selectVerseHeader').style.display = "none";
+    document.getElementById('id-selectVerse').style.display = "none";
+    document.getElementById('id-versePointer').textContent = '▼';
 
-    document.getElementById('id-ncbDefaultVersion').style.display = "none";
-    document.getElementById('id-ncbDefaultVersionPointer').textContent = '▼';
-    document.getElementById('id-ncbDefaultTheme').style.display = "none";
-    document.getElementById('id-ncbDefaultThemePointer').textContent = '▼';
+    document.getElementById('id-defaultVersion').style.display = "none";
+    document.getElementById('id-defaultVersionPointer').textContent = '▼';
+    document.getElementById('id-defaultTheme').style.display = "none";
+    document.getElementById('id-defaultThemePointer').textContent = '▼';
 };
 
-function ncbClearSearch() {
-    document.getElementById('id-ncbSearchLbl').textContent = 'Search is not working';
-    document.getElementById('id-ncbClear').style.visibility = 'hidden'
+function clearSearch() {
+    document.getElementById('id-searchLbl').textContent = 'Search is not working';
+    document.getElementById('id-clear').style.visibility = 'hidden'
 };
-function ncbRemoveSearch() {
-    document.getElementById('id-ncbSearchLbl').textContent = '';
-    document.getElementById('id-ncbClear').style.visibility = 'visible'
+function removeSearch() {
+    document.getElementById('id-searchLbl').textContent = '';
+    document.getElementById('id-clear').style.visibility = 'visible'
 
 };
-function ncbSearch() {
-    document.getElementById('id-ncbSearchLbl').textContent = 'Temporary';
-    document.getElementById('id-ncbClear').style.visibility = 'hidden'
-    document.getElementById('id-ncbClear').style.visibility = 'visible'
+function search() {
+    document.getElementById('id-searchLbl').textContent = 'Temporary';
+    document.getElementById('id-clear').style.visibility = 'hidden'
+    document.getElementById('id-clear').style.visibility = 'visible'
 };
 
