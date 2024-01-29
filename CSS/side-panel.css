@@ -218,7 +218,9 @@
     width: 100%;
     font-size: .90rem;
     overflow: hidden;
+    box-sizing: border-box;
 }
+
 .cs-ncbBookSpan {
     display: inline-block;
     position: relative;
@@ -228,8 +230,7 @@
     height: 68.1%;
     overflow: hidden;
     border-right: 1px solid #bcbaba;
-    border-bottom: 1px solid #bcbaba;
-
+    border-bottom: 1px solid #a5a3a3;
 }
 .cs-ncbBookSpan1 {
     display: inline-block;
@@ -240,7 +241,7 @@
     width: 100%;
     height: 8.5%;
     overflow: hidden;
-    border-bottom: 1px solid #bcbaba;
+    border-bottom: 1px solid #a5a3a3;
 }
 .cs-ncbOld { position: absolute; padding-left: .15em;}
 .cs-ncbNew { position: absolute; left: 83%;;}

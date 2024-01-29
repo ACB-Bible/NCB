@@ -31,7 +31,7 @@ async function ncbStartup() {
     if (res) { ncbLoadVerses() };
     if (res) { ncbChangeVersion(versionid) };
     if (res) { ncbApplyDefaultFont() };
-    
+
 };
 
 async function ncbApplyDefaultFont() {
