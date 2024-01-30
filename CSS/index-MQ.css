@@ -74,13 +74,8 @@
 
 @media (max-width: 550px) {
     .cs-chapter { margin-top: 2.5em; padding-bottom: 2em; }
-    .cs-mainText {
-        left: 0;
-        width: 86%;
-    }
-    .cs-selectContainer {
-        display: none;
-    }
+    .cs-mainText { left: 0; width: 86%; }
+    .cs-selectContainer { display: none; }
     .cs-menu4 { display: none; }
 }
 
@@ -92,26 +87,20 @@
 
 @media (max-height: 640px) and (max-width: 360px) {
 
-    .cs-selectContainerOpen {
-        display: block;
-        top: 9%;
-        height: 95%;
-        width: 100%;
-    }
-
+    .cs-selectContainerOpen { display: block; top: 9%; height: 95%; width: 100%; }
     .cs-dropHeader { top: 18.1%; height: 2.9%; width: 40%; }
     .cs-selector { top: 23.9%; height: 30%; width: 43.75%; }
-
-    .cs-changeVersionHeader { left: 4%; }
-    .cs-version { font-size: .95rem; line-height: 1.5rem; }
-    .cs-changeVersion { left: 4%; }
-
+    .cs-changeVersionHeader { left: 4%; width: 46.8%; padding-bottom: .6rem; }
+    .cs-version { font-size: .95rem; line-height: 1.3rem; }
+    .cs-changeVersion { left: 4%; width: 50%; }
     .cs-changeBookHeader { left: 30.5%; width: 62%; padding-bottom: .6rem; }
     .cs-changeBook { left: 30.4%; width: 64.5%; }
-
     .cs-bookSpan { height: 68%; }
     .cs-bookSpan1 { height: 11.1%; }
-
-    .cs-changeChapterHeader { left: 42.5%; top: 18.1%; width: 42%; height: 4.1%; }
+    .cs-changeChapterHeader { left: 42.5%; top: 18.1%; width: 42%; padding-bottom: .6rem; }
     .cs-changeChapter { left: 42.8%; top: 23.9%; width: 44.1%; }
+    .cs-defaultVersionHeader { padding-top: .3em; padding-bottom: .1em; }
+    .cs-defaultVersion { left: 9.8%; width: 80%; top: 34%; }
+    .cs-defaultThemeHeader { top: -10%; padding-top: .3em; padding-bottom: .1em; }
+    .cs-defaultTheme { left: 9.8%; width: 80%; top: 45.5%; height: 19.9%; }
 }

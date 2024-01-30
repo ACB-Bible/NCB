@@ -99,8 +99,8 @@
     padding: .5em;
 }
 
-.cs-sidePanelVersion { text-align: left; top: -8%; user-select: none; }
-.cs-sidePanelTheme { text-align: left; top: -4%;  user-select: none; }
+.cs-defaultVersionHeader { text-align: left; top: -8%; user-select: none; }
+.cs-defaultThemeHeader { text-align: left; top: -4%;  user-select: none; }
 .cs-sidePanelReset {
     text-align: center;
     top: 30%;
@@ -290,7 +290,8 @@
 
 .cs-modal {
     display: none;
-    position: fixed;
+    position: absolute;
+    right: 30%;
     background-color: #f0ecc9;
     border: 1px solid #6f6f6f;
     border-radius: 6px;

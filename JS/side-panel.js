@@ -158,9 +158,11 @@ function defaultFont() {
 
 function modal(msg) {
 
-    //let id = this.event.target.id;
-    let left = '78%';
-    let top =  '65%';
+    let id = this.event.target.id;
+    let element = document.getElementById(id);
+    let rect = element.getBoundingClientRect();
+    let top = `${rect.top * .85}px`;
+    let left = `${rect.left * .85}px`;
 
     document.getElementById('id-modal').textContent = msg;
     document.getElementById('id-modal').style.left = left;
