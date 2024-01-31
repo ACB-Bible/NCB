@@ -40,7 +40,7 @@
     .cs-changeChapter { height: 34.5%; }
     .cs-selectVerse { height: 34.5%; }
     .cs-toSelect { height: 82%; }
-    .cs-sidePanelReset { top: 10%; }
+    .cs-sidePanelReset { top: 6%; }
 }
 
 @media (max-width: 1280px) {
