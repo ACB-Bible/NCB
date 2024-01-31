@@ -8,21 +8,21 @@
             "name": "Chrome index.html",
             "request": "launch",
             "type": "chrome",
-            "url": "http://127.0.0.1:5501/index.html",
+            "url": "http://127.0.0.1:5500/index.html",
             "webRoot": "${workspaceFolder}"
         },
         {
             "name": "Chrome textpage.html",
             "request": "launch",
             "type": "chrome",
-            "url": "http://127.0.0.1:5501/ASSETS/textpage.html",
+            "url": "http://127.0.0.1:5500/ASSETS/textpage.html",
             "webRoot": "${workspaceFolder}"
         },
         {
             "name": "Chrome compress.html",
             "request": "launch",
             "type": "chrome",
-            "url": "http://127.0.0.1:5501/Utilities/Compress/HTML/compress.html",
+            "url": "http://127.0.0.1:5500/Utilities/Compress/HTML/compress.html",
             "webRoot": "${workspaceFolder}"
         },
         {
