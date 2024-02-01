@@ -133,7 +133,7 @@
 .cs-selector {
     display: none;
     position: absolute;
-    top: 36.3%;
+    top: 21.5%;
     background-color: white;
     color: #504c4c;
     overflow: hidden;
@@ -174,7 +174,7 @@
 .cs-dropHeader {
     display: none;
     position: absolute;
-    top: 31.2%;
+    top: 16%;
     background-color: #c65d5d;
     color: #f0ecc9;
     font-family: Arial, Helvetica, sans-serif;
