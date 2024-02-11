@@ -4,20 +4,27 @@
 <p id="screen" style="position: relative; top: 5%; left: 5%; font-size: 110%;"></p>
 
 <script>
-    let x = `Screen Size: <br> Height: ${window.screen.height} <br> Width: ${window.screen.width}<br><br> Without Scrollbars: <br> Inner Height: ${window.innerHeight} <br> Width: ${window.innerWidth} <br><br> With Scrollbars: <br> Outer Height: ${window.outerHeight} <br> Outer Width: ${window.outerWidth}`;
-    document.getElementById('screen').innerHTML = x;
+    window.onload = function () {
+        let x = `Screen Size: <br> Height: ${window.screen.height} <br> Width: ${window.screen.width}<br><br> Without Scrollbars: <br> Inner Height: ${window.innerHeight} <br> Width: ${window.innerWidth} <br><br> With Scrollbars: <br> Outer Height: ${window.outerHeight} <br> Outer Width: ${window.outerWidth}`;
+        document.getElementById('screen').innerHTML = x;
+    }
+    window.onresize = function () {
+        // Setting the current height & width
+        let x = `Screen Size: <br> Height: ${window.screen.height} <br> Width: ${window.screen.width}<br><br> Without Scrollbars: <br> Inner Height: ${window.innerHeight} <br> Width: ${window.innerWidth} <br><br> With Scrollbars: <br> Outer Height: ${window.outerHeight} <br> Outer Width: ${window.outerWidth}`;
+        document.getElementById('screen').innerHTML = x;
+    };
 </script>
 
 
 
 <body>
-    <p id="test" style="font-size: 4rem;">test</p>
+    <!--<p id="test" style="font-size: 4rem;">test</p>
     <p id="test1" style="font-size: 4rem;">test1</p>
-    <p id="test2" style="font-size: 4rem;">test2</p>
+    <p id="test2" style="font-size: 4rem;">test2</p>-->
 </body>
 
 <script>
-
+    // This script is an example of how to generate a random number
     function getRandomInt(max) {
         var num = Math.floor(Math.random() * max);
         if (num === 0) { num = max };
@@ -26,12 +33,8 @@
     function showNumber() {
         document.getElementById('test').textContent = `Random Number: ${getRandomInt(4)}`;
     };
-
-
-
-    showNumber();
-    getQueryString();
-
+    //showNumber();
+    //getQueryString();
 </script>
 
 </html>

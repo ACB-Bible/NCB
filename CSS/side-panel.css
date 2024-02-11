@@ -133,14 +133,12 @@
 .cs-selector {
     display: none;
     position: absolute;
-    top: 21.5%;
+    top: 21.2%;
     background-color: white;
     color: #504c4c;
     overflow: hidden;
     overflow-y: auto;
-    border-left: 1px solid #bcbaba;
-    border-right: 1px solid #bcbaba;
-    border-bottom: 1px solid #bcbaba;
+    border: 1px solid #bcbaba;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     font-family: Arial, Helvetica, sans-serif;

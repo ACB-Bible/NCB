@@ -5,23 +5,9 @@
     .cs-mainText { top: 11%; }
     .cs-title { font-size: 1.6rem; }
     .cs-firstNumber { margin-top: .07em; }
-    .cs-number {
-        vertical-align: .15em;
-        padding-bottom: .23em;
-        font-size: .93rem;
-        margin-top: 1.5em;
-    }
-    .cs-searchBar {
-        top: 3%;
-        height: 6.5%;
-        font-size: 1.2rem;
-    }
-    .cs-searchImg {
-        display: block;
-        position: relative;
-        top: -1rem;
-        padding: .28em;
-    }
+    .cs-number { vertical-align: .15em; padding-bottom: .23em; font-size: .93rem; margin-top: 1.5em; }
+    .cs-searchBar { top: 3%; height: 6.5%; font-size: 1.2rem; }
+    .cs-searchImg { display: block; position: relative; top: -1rem; padding: .28em; }
     .cs-panelLbl { top: 7%; line-height: 2.3rem; font-size: 1.2rem; }
     .cs-selector { top: 25.5%; }
     .cs-defaultVersion { top: 43.3%; height: 58%; font-size: .9rem; }
@@ -83,18 +69,37 @@
     .cs-selectVerseHeader { left: 49%; width: 21.2%; }
     .cs-selectVerse { left: 49%; width: 22%; }
     .cs-mainText { left: 2%; }
-    .cs-selectContainer,
-    .cs-selectContainerOpen { width: 27.5%; }
+    .cs-selectContainer { display: none; }
+    .cs-selectContainerOpen { width: 33%; }
     .cs-panelLbl { width: 83%; }
     .cs-panelP1,
     .cs-panelP2 { width: 76%; }
     .cs-chapter { margin-top: .5em; padding-bottom: 2em; }
 }
 
-@media (max-width: 760px) {
-    .cs-mainText { width: 82%; }
-    .cs-selectContainer { display: none; width: 35% }
-    .cs-selectContainerOpen { width: 35%; }
+@media (max-width: 980px) {
+    html { font-size: 108%;; }
+    .cs-changeVersionHeader { width: 19%; }
+    .cs-changeVersion { width: 21%; left: 11.9%; }
+    .cs-changeBookHeader { width: 30%; }
+    .cs-changeBook { width: 31%; }
+    .cs-bookSpan { height: 67.8%; }
+    .cs-changeChapterHeader { width: 21.2%; }
+    .cs-changeChapter { width: 22%; }
+    .cs-selectVerseHeader { left: 49%; width: 21.2%; }
+    .cs-selectVerse { left: 49%; width: 22%; }
+    .cs-mainText { width: 80.5%; left: 2%; }
+    .cs-selectContainer { display: none; }
+    .cs-selectContainerOpen { width: 33%; }
+    .cs-panelLbl { width: 87%; }
+    .cs-panelP1,
+    .cs-panelP2 { width: 76%; }
+    .cs-chapter { margin-top: .5em; padding-bottom: 2em; }
+}
+@media (max-width: 768px) {
+    .cs-mainText { width: 82%; left: 1%; }
+    .cs-selectContainer { display: none; }
+    .cs-selectContainerOpen { width: 45%; }
 }
 
 @media (max-width: 550px) {
