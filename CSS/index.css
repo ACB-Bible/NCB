@@ -26,8 +26,6 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.cs-break { display: none; }
-
 .cs-header {
     position: fixed;
     top: 0%;
@@ -39,8 +37,6 @@ body::-webkit-scrollbar {
     overflow: hidden;
     z-index: 9;
 }
-
-.cs-gold { color: #bda97e; }
 
 .cs-title {
     position: absolute;
@@ -78,7 +74,7 @@ body::-webkit-scrollbar {
     color: rgb(158, 97, 5);
     vertical-align: .15em;
 }
-.cs-number1 { color:#720D0D; }
+.cs-RandNum { color:#720D0D; }
 
 .cs-menu {
     position: absolute;
@@ -90,15 +86,6 @@ body::-webkit-scrollbar {
     color: whitesmoke;
     background-color: #c3c3c3;
     user-select: none;
-}
-
-.cs-webLink {
-    position: absolute;
-    right: 11.7%;
-    top: 25%;
-    font-size: .8em;
-    color:#cdddfc;
-    cursor: default;
 }
 
 .cs-menuSelect {
@@ -235,15 +222,6 @@ body::-webkit-scrollbar {
     user-select: none;
 }
 
-#id-copy {
-    position: relative;
-    width: 100%;
-    bottom: 22%;
-    text-align: center;
-    font-size: .9rem;
-    color: silver;
-}
-
 .cs-page {
     margin-top: -8%;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
@@ -254,5 +232,16 @@ body::-webkit-scrollbar {
     .atc:hover,
     .spaMovies:hover { cursor: pointer; }
 }
+
+#id-copy {
+    position: relative;
+    width: 100%;
+    bottom: 22%;
+    text-align: center;
+    font-size: .9rem;
+    color: silver;
+}
+
+
 .cs-jQ { color: #3d0efb; }
 ::selection { background: #cdddfc; color: black; }

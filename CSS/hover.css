@@ -1,42 +1,25 @@
-.cs-sidePanelSelect:hover { cursor: pointer; opacity: 1; }
-.cs-footers1:hover { color: white; cursor: pointer; }
-
-.cs-share:hover,
-.cs-dots:hover {
-    cursor: pointer;
-    background-color: #caa874;
-    border-radius: 50%;
-}
-
+.cs-cp-hover  { cursor: pointer; }
 .cs-menu1:hover,
 .cs-menu2:hover,
 .cs-menu3:hover,
 .cs-menu4:hover,
 .cs-nav:hover,
 .cs-navLast:hover,
-.cs-navNext:hover { color: white; cursor: pointer; }
+.cs-navNext:hover,
+.cs-footers1:hover,
+.cs-gear-fill:hover,
+.cs-innerBook:hover,
+.cs-sidePanelSelect:hover { color: white; }
 
-.cs-arrow:hover { opacity: 1; }
-
-.cs-sort:hover {
-    cursor: pointer;
-    background-color: #f5f4f4;
-    color: #494949;
-}
+.cs-theme:hover,
 .cs-version:hover,
-.cs-bookSpan:hover,
-.cs-bookSpan1:hover,
-.cs-theme:hover {
-    color: white !important;
-    background-color: #adb6bb !important;
-    cursor: pointer;
-}
-.cs-noBookHover:hover { background-color: #f3f3f3; cursor: default; }
-.cs-openFooter:hover { background-color: #e7effc;  cursor: pointer; }
-.cs-saveDefaultFont:hover { background-color: #cfddf9; cursor: pointer; }
+.cs-toSelect:hover,
+.cs-innerBook:hover,
+.cs-arrowLeftShort:hover { background-color: #dfdcdc; }
 
-.cs-toSelect:hover {
-    color: white !important;
-    background-color: #adb6bb !important;
-    cursor: pointer;
-}
+.cs-sort:hover,
+.cs-x-circle:hover { color: navy; }
+.cs-x-circle1:hover,
+.cs-searchImg:hover { color: #c1d1f2; }
+.cs-openFooter:hover { background-color: #e7effc; }
+.cs-saveDefaultFont:hover { background-color: #cfddf9; }

@@ -69,8 +69,8 @@
     .cs-selectVerseHeader { left: 49%; width: 21.2%; }
     .cs-selectVerse { left: 49%; width: 22%; }
     .cs-mainText { left: 2%; }
-    .cs-selectContainer { display: none; }
-    .cs-selectContainerOpen { width: 33%; }
+    .cs-randomContainer { display: none; }
+    .cs-randomContainerOpen { width: 33%; }
     .cs-panelLbl { width: 83%; }
     .cs-panelP1,
     .cs-panelP2 { width: 76%; }
@@ -89,8 +89,8 @@
     .cs-selectVerseHeader { left: 49%; width: 21.2%; }
     .cs-selectVerse { left: 49%; width: 22%; }
     .cs-mainText { width: 80.5%; left: 2%; }
-    .cs-selectContainer { display: none; }
-    .cs-selectContainerOpen { width: 33%; }
+    .cs-randomContainer { display: none; }
+    .cs-randomContainerOpen { width: 33%; }
     .cs-panelLbl { width: 87%; }
     .cs-panelP1,
     .cs-panelP2 { width: 76%; }
@@ -98,8 +98,8 @@
 }
 @media (max-width: 768px) {
     .cs-mainText { width: 82%; left: 1%; }
-    .cs-selectContainer { display: none; }
-    .cs-selectContainerOpen { width: 45%; }
+    .cs-randomContainer { display: none; }
+    .cs-randomContainerOpen { width: 45%; }
 }
 
 @media (max-width: 550px) {
@@ -117,7 +117,7 @@
 
 @media (max-width: 360px) and (max-height: 640px)  {
 
-    .cs-selectContainerOpen { display: block; top: 9%; height: 95%; width: 100%; }
+    .cs-randomContainerOpen { display: block; top: 9%; height: 95%; width: 100%; }
     .cs-dropHeader { top: 18.1%; height: 2.9%; width: 40%; }
     .cs-selector { top: 23.9%; height: 30%; width: 43.75%; }
     .cs-changeVersionHeader { left: 4%; width: 46.8%; padding-bottom: .6rem; }

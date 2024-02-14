@@ -1,0 +1,371 @@
+html,
+body { margin: 0; padding: 0; height: 100%; top: 0; left: 0; width: 100%; }
+/** font: font-style font-variant font-weight font-size/line-height font-family; */
+html { font: 100% "Times New Roman", Georgia, Garamond, serif; overflow: hidden; }
+body { position: fixed; background-color: #232e4c; -ms-overflow-style: none; scrollbar-width: none; overflow-x: auto; }
+body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari and Opera */
+
+.cs-header { position: fixed; display: flex; align-items: center;  top: 0%; left: 0%; height: 9.9%; width: 100%; background-color: navy; color: white; overflow: hidden; z-index: 9; }
+.cs-title { position: absolute; left: 5%; width: 99%; font-size: 1.8rem; }
+.cs-searchBar { display: none; position: relative; height: 100%; width: 82%; align-items: center; font: 1.8rem Arial, Helvetica, sans-serif; background-color: #e4e4e4; color: #333333; overflow: hidden; }
+.cs-searchLbl { width: 80%; border: none; cursor: text; padding-left: .5em; white-space: nowrap; outline: none; opacity: .7; overflow: hidden; z-index: 1; }
+.cs-searchImg { position: absolute; right: 5%; height: 1.6rem; width: 1.6rem; color: white; }
+
+/** font: font-style font-variant font-weight font-size/line-height font-family; */
+/** top, right, bottom, and left margins  */
+.cs-mainText { position: relative; top: 9.9%; font-size: 1.1rem; padding-bottom: 5em; width: 100%; text-align: justify; word-break: keep-all; background-color: white; color: #333333; overflow: hidden; }
+.cs-mainTextDark { background-color: #333333; color: #cccccc; }
+
+.cs-menu { display: flex; align-items: center;  position: relative; left: 0; top: 0; height: 3rem; width: 100%; background-color: #c3c3c3; color: whitesmoke; user-select: none; }
+/** font: font-style font-variant font-weight font-size/line-height font-family; */
+.cs-menuSelect { display: flex; align-items: center; position: relative;  color: #010154; font: 1.15rem Arial, Helvetica, sans-serif;}
+.cs-menu1 { left: 4%;}
+.cs-menu2 { left: 10%; }
+.cs-menu3 { left: 15%; }
+.cs-menu4 { left: 20%; }
+.cs-pointer { font-size: .5rem; margin-right: -.2em; }
+.cs-pointer-menu { font-size: .7rem; margin-right: .2em; }
+
+.cs-p { line-height:1.6em; z-index: 1; }
+.cs-chapter { position: relative; top: 30%; width: 88%; margin: auto; }
+.cs-textTitle { font-weight: 550; font-size: 1.5rem; }
+.cs-textTitle2 { margin-top: -4%; }
+.cs-maroon {color: #720D0D; }
+/** font: font-style font-variant font-weight font-size/line-height font-family; */
+.cs-firstNumber { float: left; font-weight: 600; font-size: 3rem; margin: .1em .16em 0 0; padding: .1em .15em .15em .15em; background-color: navy; color: white; background-image: linear-gradient(#0621bb, #010154); }
+
+/** top, right, bottom, and left margins  */
+.cs-number { position: relative; font-size: .95rem; font-weight: 600; padding: 0 .15em .25em 0; margin-left: .22em; color:#720D0D; vertical-align: .2em; }
+.cs-number1 { float: left; margin: -.15em 0 0 -.03em; height: 4.15rem; padding: 0 .15em 0 .15; font: 6rem  "Old English Text MT", Georgia, Garamond, serif;}
+
+.cs-textFooter { display: flex; position: absolute; align-items: center; left: 0; bottom: 0; height: 2.8rem; width: 100%; font: 1.2rem Arial, Helvetica, sans-serif; background-color: #c3c3c3; color: #720D0D; user-select: none; }
+.cs-bookFooter { position: absolute; left: 38%; }
+.cs-navLast { position: absolute; display: none; left: 2%; }
+.cs-navNext {position: absolute;  right: 4%; }
+
+.cs-randomContainer,
+.cs-settingsContainer { position: relative; top: 1%; width: 100%; overflow: hidden; background-color: #cbcaca; font-size: 1.1rem; }
+.cs-settingsContainer { display: none; position: fixed; top: 9.92%; height: 100%; left: 0; }
+
+/** top, right, bottom, and left margins  */
+.cs-panelP1,
+.cs-panelP2 { width: 70%; margin: 13% auto 0 auto; padding: 0 .8em .6em .8em; text-align: justify; word-break: keep-all; overflow: hidden; overflow-y: auto; background-color: #dfdcdc; -ms-overflow-style: none; /* Hide scrollbar IE and Edge */ scrollbar-width: none; }
+.cs-panelP2 { margin-top: 18%; height: 70%; }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.cs-panelP1::-webkit-scrollbar,
+.cs-panelP2::-webkit-scrollbar { display: none; }
+
+.cs-panelLbl { display: flex; align-items: center; justify-content: center; position: absolute; height: 7.5%; background-color: #720D0D; color: white; width: 100%; font-size: 1.4rem; user-select: none;  }
+.cs-rand { height: 9%; }
+.cs-settings {  height: 6.8%; justify-content: left; padding-left: 1em; }
+.cs-x-circle { position: absolute; right: 6%; height: .8em; width: .8em; z-index: 1; }
+.cs-x-circle1 { position: absolute; right: 12%; height: 1.1em; width: 1.1em; }
+/** top, right, bottom, and left margins  */
+
+/** top, right, bottom, and left margins  */
+.cs-dailyVerse { display: block; position: relative; width: 99%; top: 9%; margin: auto; font-size: 1.25rem; font-weight: bold; text-align: center; color: #720D0D; }
+
+.cs-moveLeft12 { position: relative; left: 12%; width: 99%; }
+
+.cs-defaultFontContainer { position: relative; top: 12%; width: 90%; margin: auto; }
+.cs-saveDefaultFont { float: right; height: 2rem; line-height: 2rem; width: 2rem; font-size: .9rem; text-align: center; background-color: #f5f7fb; border-radius: 6px; border: #504c4c 1px solid; user-select: none; }
+.sidePanelSlideContainer { margin: 18% auto 0 auto; width: 100%; }
+
+/** font: font-style font-variant font-weight font-size/line-height font-family; */
+.cs-dropHeader {
+    display: none;
+    position: absolute;
+    top: 17.8%;
+    height: 7%;
+    padding-left: .6em;
+    align-items: center;
+    background-color: navy;
+    color: white;
+    font: 550 1.15rem Arial, Helvetica, sans-serif;
+    box-shadow: 10px 0px 10px rgba(77, 77, 77, 0.25);
+}
+.cs-selector {
+    display: none;
+    position: absolute;
+    top: 24.5%;
+    height: 51.8%;
+    background-color: white;
+    color: #504c4c;
+    overflow: hidden;
+    overflow-y: auto;
+    border-left: 1px solid #bcbaba;
+    border-right: 1px solid #bcbaba;
+    border-bottom: 1px solid #bcbaba;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    font: 1.15rem Arial, Helvetica, sans-serif;
+    box-shadow: 10px 10px 10px rgba(77, 77, 77, 0.25);
+    overscroll-behavior: contain;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    z-index: 1;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.cs-selector::-webkit-scrollbar { display: none; }
+.cs-versionHeader { width: 63.5%; }
+.cs-changeVersion { width: 66%; }
+.cs-bookHeader { width: 83.4%; }
+.cs-changeBook { width: 86%; }
+.cs-bookDivider { top: 0; width: 49.9%; }
+.cs-oldHalf { position: absolute; left: 0; border-right: 1px solid #bcbaba;; }
+.cs-newHalf { position: absolute; right: 0; }
+.cs-innerBook { padding: .5em 0 .5em .5em; border-bottom: 1px solid #bcbaba; }
+.cs-sort { position: absolute; left: 42%; font-size: .75rem; }
+.cs-bookLine { height: 15%; width: 100%; overflow: hidden; box-sizing: border-box; }
+/** top, right, bottom, and left margins  */
+.cs-verseHeader,
+.cs-chapterHeader { left: 0; width: 74%; }
+.cs-selectVerse,
+.cs-changeChapter { left: 0; height: 30%; width: 77%; padding-top: .6em; }
+
+.cs-selectLine { display: flex; justify-content: space-evenly; height: 20%; width: 100%; overflow: hidden; margin-bottom: .5em;}
+.cs-toSelect { height: 82%; width: 12%; border: 2px solid rgba(194, 192, 192, .2); border-radius: 5px; display: flex; padding: .1em; justify-content: center; align-items: center; }
+
+.cs-sidePanelSelect { display: flex; align-items: center; justify-content: center; width: 90%; margin: auto; background-color: #b8afaf; color: #0e2836; user-select: none; }
+
+.cs-sidePanelStorage { margin-top: 5%; background-color: #fafad1; color: #504c4c; border-radius: 6px; text-align: justify; word-break: keep-all; font-size: .95rem; line-height: 1em; padding: .8em; }
+.cs-reset { margin-top: 48%; width: 26%; user-select: none; height: 7%; }
+
+.cs-read { width: 70%; padding: .5em; margin-bottom: 2em; }
+.cs-defaultThemeHeader,
+.cs-defaultVersionHeader { position: relative; top: 2%; height: 8%; width: 90%; padding-left: .6em; margin: auto; }
+.cs-defaultThemeHeader { top: 4%; }
+.cs-defaultTheme,
+.cs-defaultVersion {position: relative; top: 2.1%; height: 64.7%; width: 93.4%; margin: auto; }
+.cs-defaultTheme { top: 4.1%; height: 17%; }
+/** top, right, bottom, and left margins  */
+
+.cs-version { padding: .5em 0 .5em .5em; border-bottom: 1px solid #dfdcdc; }
+.cs-theme { padding: .5em 0 .5em .5em; border-bottom: 1px solid #dfdcdc; }
+
+.cs-modal {
+    display: none;
+    position: absolute;
+    right: 30%;
+    background-color: #f0ecc9;
+    border: 1px solid #6f6f6f;
+    border-radius: 6px;
+    width: max-content;
+    padding: .5em;
+    z-index: 1;
+}
+.cs-openFooter {
+    font-size: .6rem;
+    line-height: 2.3rem;
+    text-align: center;
+    height: 2.3rem;
+    width: 2.3rem;
+    z-index: 1;
+    background-color: #cfddf9;
+    position: fixed;
+    left: 0;
+    top: 77%;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    user-select: none;
+}
+
+.cs-footer {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 30%;
+    width: 100%;
+    background-color: #232e4c;
+    border-top: 10px solid #6f6f6f;
+    font-size: 1.1rem;
+    user-select: none;
+}
+
+/** top, right, bottom, and left margins  */
+.cs-footers {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    left: 12%;
+    top: 8%;
+    padding: 0 4em 0 0;
+    color: silver;
+    user-select: none;
+}
+.cs-footers1 {
+    padding: .5em 1em 0 0;
+    text-align: justify;
+    word-break: keep-all;
+    white-space: nowrap;
+    user-select: none;
+}
+
+/** top, right, bottom, and left margins  */
+
+.cs-copy { position: absolute; width: 100%; bottom: 5%; text-align: center; font-size: .9rem; color: silver; }
+.cs-gear-fill { position: absolute; right: 7%; margin-top: -8.5%; height: 1.25rem; width: 1.25rem; color: white; opacity: .7; }
+
+.cs-JQ { color: red; }
+::selection { background: #cdddfc; color: black; }
+
+/** These styles are for the footer pages in the ASSETS folder */
+.cs-page {
+    margin: 9% auto 0 auto;
+    width: 88%;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif, "Apple Color Emoji","Segoe UI Emoji";
+    .atc { color: #0b49cf; text-decoration: underline; }
+    .olist { display: none; }
+    .spa { display: block; color: #b74c4c; font-weight: 500; margin-bottom: -.6em; }
+    .spaMovies { text-decoration: underline; }
+}
+.cs-midPage { margin-top: -5%; }
+.cs-arrowLeftShort { margin-top: -5%; height: 1.8rem; width: 1.8rem; padding: .2em; border-radius: 50%; }
+
+
+/** top, right, bottom, and left margins  */
+
+@media (max-width: 350px) {
+    .cs-menu { font-size: 1.07rem; }
+    .cs-selector { font-size: 1rem; }
+}
+@media (max-width: 320px) {
+    .cs-title { font-size: 1.45rem; }
+    .cs-mainText { top: 9.5%; }
+    .cs-dropHeader { top: 17%; height: 6%; }
+    .cs-selector { top: 23%; height: 52%; font-size: 1rem; }
+    .cs-versionHeader { width: 65%; }
+    .cs-changeVersion { width: 68%; }
+    .cs-bookHeader { width: 91.5%; }
+    .cs-changeBook { width: 95%; }
+    .cs-verseHeader,
+    .cs-chapterHeader { width: 86.3%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 27%; width: 90%;}
+    .cs-defaultTheme,
+    .cs-defaultVersion { top: 2.5%; height: 62.6%;  }
+    .cs-defaultTheme { top: 4.2%; height: 15.6%; }
+    .cs-rand,
+    cs-settings { height: 7%; }
+    .cs-read { width: 90%; margin-bottom: 1em; }
+    .cs-footer { height: 32%; }
+    .cs-footers { left: 15%; top: 2%; }
+}
+@media (min-width: 375px) {
+    .cs-dropHeader { top: 17.5%; height: 6.8%; }
+    .cs-selector { top: 24.3%; height: 52%; }
+    .cs-versionHeader { width: 60.3%; }
+    .cs-changeVersion { width: 63%; }
+    .cs-bookHeader { width: 83.6%; }
+    .cs-changeBook { width: 86%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 29%; }
+    .cs-defaultThemeHeader,
+    .cs-defaultVersionHeader { top: 3%; height: 9%; }
+    .cs-defaultThemeHeader { top: 5%; }
+    .cs-defaultTheme,
+    .cs-defaultVersion { top: 2.5%; height: 68%; }
+    .cs-defaultTheme { top: 4.2%; height: 17%; }
+}
+
+@media (min-width: 414px) and (min-height: 896px) {
+    .cs-mainText { top: 10%; }
+    .cs-dropHeader { top: 15.3%; height: 5.3%; }
+    .cs-selector { top: 20.8%; }
+    .cs-versionHeader { width: 57.5%; }
+    .cs-changeVersion { height: 37%; width: 60%; }
+    .cs-bookHeader { width: 75.9%; }
+    .cs-changeBook { height: 45.9%; width: 78%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 24%; width: 76.1%; }
+    .cs-footer { display: block; height: 24%; }
+    .cs-randomContainer { top: 4%; }
+    .cs-sidePanelStorage { margin-top: 8%; }
+    .cs-sidePanelSelect { width: 80%; }
+    .cs-rand { height: 10%; }
+    .cs-read { width: 70%; padding: .5em; margin-bottom: 2em; }
+    .cs-defaultFontContainer { top: 11%; width: 80%; }
+    .cs-settings { height: 6%; }
+    .cs-defaultThemeHeader,
+    .cs-defaultVersionHeader { height: 6.8%; }
+    .cs-defaultTheme,
+    .cs-defaultVersion { width: 83%; }
+    .cs-defaultVersion { top: 3.1%; }
+    .cs-defaultTheme { top: 5%; height: 12.5%; }
+    /** top, right, bottom, and left margins  */
+    .cs-theme { padding: .4em 0 .4em .4em; }
+    .cs-reset { width: 40%; }
+    .cs-gear-fill { right: 8%; margin-top: -11%; height: 1.7rem; width: 1.7rem; }
+}
+@media (min-width: 500px) {
+    .cs-textTitle { margin-top: 1.2em; }
+    .cs-textTitle2 { margin-top: -.5em; }
+}
+@media (min-width: 390px) and (min-height: 844px) {
+
+    .cs-chapter { width: 90%; top: 80%; }
+    .cs-dropHeader { top: 15.3%; height: 5.3%; }
+    .cs-selector { top: 20.8%; }
+    .cs-versionHeader { width: 57.5%; }
+    .cs-changeVersion { height: 37%; width: 60%; }
+    .cs-bookHeader { width: 75.9%; }
+    .cs-changeBook { height: 45.9%; width: 78%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 24%; width: 76.1%; }
+    .cs-footer { display: block; height: 24%; }
+    .cs-randomContainer { top: 4%; }
+    .cs-sidePanelStorage { margin-top: 8%; }
+    .cs-sidePanelSelect { width: 80%; }
+    .cs-rand { height: 10%; }
+    .cs-read { width: 70%; padding: .5em; margin-bottom: 2em; }
+    .cs-defaultFontContainer { top: 11%; width: 80%; }
+    .cs-settings { height: 6%; }
+    .cs-defaultThemeHeader,
+    .cs-defaultVersionHeader { height: 6.8%; }
+    .cs-defaultTheme,
+    .cs-defaultVersion { width: 83%; }
+    .cs-defaultVersion { top: 3.1%; }
+    .cs-defaultTheme { top: 5%; height: 12.5%; }
+    .cs-theme { padding: .4em 0 .4em .4em; }
+    .cs-reset { width: 40%; }
+    .cs-gear-fill { right: 8%; margin-top: -11%; height: 1.7rem; width: 1.7rem; }
+}
+@media (min-width: 1024px) {
+    .cs-searchLbl { padding-left: 3em; }
+    .cs-title { font-size: 2.3rem; }
+    .cs-mainText { top: 10.9%;  width: 90%; margin: auto; border-radius: 8px; }
+    .cs-chapterPage { column-count: 2; }
+    .cs-randomContainer { top: 10%; width: 90%; margin: auto; border-radius: 8px; }
+    .cs-panelP1 { margin-top: 3%; width: 90%; border-radius: 6px; }
+    .cs-read {width: 25%; margin-bottom: .5em; }
+    /** top, right, bottom, and left margins  */
+    .cs-firstNumber { margin: .5em .16em 0 0; padding: .1em .15em .15em .15em; }
+    .cs-settingsContainer { width: 30%; height: 70%; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+    .cs-gear-fill { margin-top: -2%; }
+    .cs-page { margin-top: 6%; }
+    .cs-midPage { margin-top: -2%; }
+}
+@media (min-width: 1220px) {
+    .cs-title { left: 18%; }
+    .cs-textTitle2 { margin-top: 0; }
+    .cs-mainText { top: 10.9%;  width: 65%; margin: auto; border-radius: 8px; }
+    .cs-chapter { margin-top: 2.5em; }
+    .cs-chapterPage { column-count: 2; }
+    .cs-randomContainer { top: 10%; width: 65%; margin: auto; border-radius: 8px; }
+    .cs-panelP1 { margin-top: 3%; width: 90%; border-radius: 6px; }
+    .cs-read {width: 30%; margin-bottom: .5em; }
+    .cs-settingsContainer { width: 25%; }
+    .cs-reset { margin-top: 38%; }
+}
+
+@media (min-width: 1920px) {
+    .cs-x-circle { right: 4%; height: 1em; width: 1em; }
+    .cs-randomContainer { width: 55% }
+    .cs-read { width: 20%; margin-bottom: .5em; }
+    .spa { margin-bottom: .3em; }
+    .cs-settingsContainer { width: 18%;  }
+    .cs-midPage { margin-top: 2%; }
+}

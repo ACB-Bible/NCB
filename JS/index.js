@@ -16,6 +16,7 @@ slider.oninput = function() {
     theFont = `${afontSize}rem`;
     if (document.getElementById('id-chapterPage')) { document.getElementById('id-chapterPage').style.fontSize = theFont; }
     if (document.getElementById('id-page')) { document.getElementById('id-page').style.fontSize = theFont; }
+    document.getElementById('id-defaultFontlbl').style.fontSize = theFont;
 };
 // #endregion Events
 
@@ -51,7 +52,8 @@ async function applyDefaultFont() {
     } else {
         document.getElementById('id-chapterPage').style.fontSize = afont;
         afont = Number(parseFloat(afont.replace('.', '')));
-        document.getElementById('id-defaultFontlbl').textContent = `Font Size:   ${afont}%`
+        document.getElementById('id-defaultFontlbl').textContent = `Font Size:   ${afont}%`;
+        document.getElementById('id-defaultFontlbl').style.fontSize = `${afont / 100}rem`;
         document.getElementById('id-range'). value = afont;
     };
 
@@ -90,9 +92,9 @@ async function applyTheme() {
         case 1:
             document.getElementById('id-defaultThemeSpan').textContent = document.getElementById(`id-defaultTheme${theme}`).textContent;
             document.getElementById('id-mainText').classList.remove('cs-mainTextDark');
-            for (let i = 0; i < number.length; i++) { number[i].style.color = '#9e6105'; };
+            for (let i = 0; i < number.length; i++) { number[i].style.color = 'red'; };
             document.getElementById('id-textTitle2').style.color = '#720D0D';
-            document.getElementById('id-selectContainer').style.backgroundColor = '#cbcaca';
+            document.getElementById('id-randomContainer').style.backgroundColor = '#cbcaca';
             document.getElementById('id-panelP1').style.color = '#333333';
             document.getElementById('id-panelP1').style.backgroundColor = 'white';
             document.getElementById('id-panelP2').style.color = '#333333';
@@ -104,9 +106,10 @@ async function applyTheme() {
         case 2:
             document.getElementById('id-defaultThemeSpan').textContent = document.getElementById(`id-defaultTheme${theme}`).textContent;
             document.getElementById('id-mainText').classList.add('cs-mainTextDark');
-            for (let i = 0; i < number.length; i++) { number[i].style.color = '#b88a48'; };
+            for (let i = 0; i < number.length; i++) { number[i].style.color = 'red'; };
             document.getElementById('id-textTitle2').style.color = "white";
-            document.getElementById('id-selectContainer').style.backgroundColor = '#333333';
+            document.getElementById('id-randomContainer').style.backgroundColor = '#333333';
+            document.getElementById('id-saveDefaultFont').style.color = '#333333';
             document.getElementById('id-panelP1').style.backgroundColor = '#5e5c5c';
             document.getElementById('id-panelP1').style.color = 'white';
             document.getElementById('id-panelP2').style.backgroundColor = '#5e5c5c';
@@ -135,7 +138,8 @@ async function loadVersions() {
         div.dataset.version = version.ar;
         div.dataset.loaded = 0;
         div.classList.add('cs-version');
-        div.classList.add('cs-eventVersion');
+        div.classList.add('cs-deftVersion');
+        div.classList.add('cs-cp-hover');
         document.getElementById('id-defaultVersion').appendChild(div);
         // #endregion load the default version dropdown box
 
@@ -152,8 +156,8 @@ async function loadVersions() {
         div.dataset.versionid = version.id;
         div.dataset.version = version.ar;
         div.dataset.loaded = 0;
+        div.classList.add('cs-cp-hover');
         div.classList.add('cs-version');
-        div.classList.add('cs-changeVersionSelect');
         document.getElementById('id-changeVersion').appendChild(div);
         // #endregion load the change version dropdown box
     });
@@ -166,43 +170,41 @@ async function loadBooks() {
     let i = 0;
     let ii = 0;
     let div;
-    let span;
 
-    removeItems('id-changeBook');
+    removeItems('id-oldHalf');
+    removeItems('id-newHalf');
     oldBooks.forEach(book => {
-        div = document.createElement("div");
-        div.id = `id-bookLine${i}`;
-        div.classList.add('cs-bookLine');
-        document.getElementById("id-changeBook").appendChild(div);
 
-        span = document.createElement("span");
-        span.id = `id-bk${book.id}`;
-        span.textContent = book.t;
-        span.dataset.bid = book.id;
-        span.dataset.c = book.c;
-        span.classList.add('cs-bookSpan');
-        span.addEventListener('click', function (event) {
+        div = document.createElement("div");
+        div.id = `id-bk${book.id}`;
+        div.textContent = book.t;
+        div.dataset.bid = book.id;
+        div.dataset.c = book.c;
+        div.classList.add('cs-cp-hover');
+        div.classList.add('cs-innerBook');
+        div.addEventListener('click', function (event) {
             event.stopPropagation();
             event.preventDefault();
             event.stopImmediatePropagation();
             changeBook();
         });
-        document.getElementById(`id-bookLine${i}`).appendChild(span);
+        document.getElementById(`id-oldHalf`).appendChild(div);
 
         if (ii < 27) {
-            span = document.createElement("span");
-            span.id = `id-bk${newBooks[ii].id}`;
-            span.textContent = newBooks[ii].t;
-            span.dataset.bid = newBooks[ii].id;
-            span.dataset.c = newBooks[ii].c;
-            span.classList.add('cs-bookSpan1');
-            span.addEventListener('click', function (event) {
+            div = document.createElement("div");
+            div.id = `id-bk${newBooks[ii].id}`;
+            div.textContent = newBooks[ii].t;
+            div.dataset.bid = newBooks[ii].id;
+            div.dataset.c = newBooks[ii].c;
+            div.classList.add('cs-cp-hover');
+            div.classList.add('cs-innerBook');
+            div.addEventListener('click', function (event) {
                 event.stopPropagation();
                 event.preventDefault();
                 event.stopImmediatePropagation();
                 changeBook();
             });
-            document.getElementById(`id-bookLine${i}`).appendChild(span);
+            document.getElementById(`id-newHalf`).appendChild(div);
         };
         ii++;
         i++;
@@ -239,6 +241,7 @@ async function loadChapters() {
         sp.id = `id-chp${i}`;
         sp.textContent = i;
         sp.dataset.cn = i;
+        sp.classList.add('cs-cp-hover');
         sp.classList.add('cs-toSelect');
         document.getElementById(`id-chpt${chapterIndx}`).appendChild(sp);
         if (x < 4) { x++; } else { x = 0; newLine = 1; chapterIndx++; };
@@ -281,6 +284,7 @@ async function loadVerses() {
         sp.id = `id-vrs${i}`;
         sp.textContent = i;
         sp.dataset.cn = i;
+        sp.classList.add('cs-cp-hover');
         sp.classList.add('cs-toSelect');
         document.getElementById(`id-vrse${verseIndx}`).appendChild(sp);
         if (x < 4) { x++; } else { x = 0; newLine = 1; verseIndx++; };
@@ -328,7 +332,13 @@ async function ncbFetch(version) {
     const file = await res.json();
     if (file) {
         allVerses.push(file);
-        if (startup) {randomVerse(file);};
+
+        if (startup) {
+            let emptyRand = true;
+            while (emptyRand === true) {
+                emptyRand = randomVerse(file);
+            };
+        };
     };
     document.getElementById('id-body').style.cursor = 'default';
     document.getElementById('id-body').style.pointerEvents = 'auto';
@@ -359,12 +369,7 @@ async function loadText() {
     let p = document.createElement("p");
     p.id = `id-p${pID}`;
     p.classList.add('cs-p');
-    p.addEventListener('click', function (event) {
-        event.stopPropagation();
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        clickP();
-    });
+
     document.getElementById('id-chapterPage').appendChild(p);
     let pn = Number(verses[i].pn);
     while (verses[i].bid === bid && verses[i].cn === cn) {
@@ -377,31 +382,27 @@ async function loadText() {
             document.getElementById(`id-chapterPage`).appendChild(p);
             newLine = 0;
         };
-
+        verseText = `${verses[i].vt} `;
         // Add verse number to verse
         sp = document.createElement("span");
-        if (verses[i].vn !== 1) {
-            sp.textContent = verses[i].vn;
-            sp.id = `id-SP${verses[i].vn}`;
-            sp.classList.add('cs-number');
-            document.getElementById(`id-p${pID}`).appendChild(sp);
+        sp.textContent = verses[i].vn;
+        sp.id = `id-SP${verses[i].vn}`;
+        sp.classList.add('cs-number');
+        if (verses[i].vn === 1) {
+            sp.textContent = verseText[0];
+            verseText = verseText.substring(1)
+            sp.classList.add('cs-number1');
         };
+        document.getElementById(`id-p${pID}`).appendChild(sp);
+
         // Add text to verse
         sp = document.createElement("span");
         sp.id = `id-SP${verses[i].vn}-2`;
         sp.pid = pID;
         document.getElementById(`id-p${pID}`).appendChild(sp);
 
-        // Add event listener to verse
-        document.getElementById(`id-SP${verses[i].vn}-2`).addEventListener('click', function (event) {
-            event.stopPropagation();
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            clickP();
-        });
-
         //Add color to all quotes by Jesus
-        verseText = `${verses[i].vt} `;
+
         if (Number(verses[i].jq) === 1) {
             verseText = verseText.replace('`', span);
             verseText = verseText.replace('´', endSpan);
@@ -429,9 +430,10 @@ async function randomVerse(verses) {
     let x = 0;
     let verse = '';
     let head = ''
+    let aVerse = '';
 
     let eMenu = document.getElementById('id-menu');
-    let eRandom = document.getElementById('id-panelLbl');
+    let eRandom = document.getElementById('id-randomLbl');
     let bid = Math.floor(Math.random() * (max - min + 1) + min);
     eRandom.dataset.bid = bid;
     if (bid < 40) {
@@ -465,12 +467,12 @@ async function randomVerse(verses) {
     y = y - 1;
     while ( x <= 2 ) {
         if (Number(abk[i].cn) === cn && Number(abk[i].bid) === bid) {
-            let aVerse = abk[i].vt;
+            aVerse = abk[i].vt;
             if (Number(abk[i].jq) === 1) {
                 aVerse = aVerse.replace('`', span);
                 aVerse = aVerse.replace('´', endSpan);
             };
-            verse += `<span id="id-number${x}" class="cs-number cs-number1">${abk[i].vn}</span><span id="id-number${x}-2">${aVerse}</span> `;
+            verse += `<span id="id-number${x}" class="cs-number cs-maroon">${abk[i].vn}</span><span id="id-number${x}-2">${aVerse}</span> `;
         };
         x++;
         i++;
@@ -479,4 +481,10 @@ async function randomVerse(verses) {
     document.getElementById('id-dailyVerse').textContent = head;
     document.getElementById('id-dailyVerseText').textContent = '';
     document.getElementById(`id-dailyVerseText`).insertAdjacentHTML('beforeend', verse);
+
+    if (aVerse === '') {
+        return true;
+    } else {
+        return false;
+    };
 };

@@ -3,15 +3,15 @@ function openVersion() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
-    if (openID) {
+    if (versionOpen) {
         ncbClose();
     } else {
         ncbClose();
-        document.getElementById('id-changeVersionHeader').style.display = "block";
+        document.getElementById('id-changeVersionHeader').style.display = "flex";
         document.getElementById('id-changeVersion').style.display = "block";
         document.getElementById('id-versionPointer').textContent = '▲';
         document.getElementById('id-changeVersion').scrollTop = 0;
-        openID = true;
+        versionOpen = true;
     };
 };
 //Change Version
@@ -42,7 +42,6 @@ async function changeVersion(vid) {
     document.getElementById('id-versionText').textContent = version;
     document.getElementById('id-textTitle1').textContent = content;
     content = document.getElementById(`id-bk${eMenu.dataset.bid}`).textContent;
-    //document.getElementById('id-textTitle2').textContent = `${content} ${content1}`;
 
     res = await loadAVersion(id);
 
@@ -84,7 +83,7 @@ async function changeVersion(vid) {
 
     } else {
         if (!startup) {
-            let eRandom = document.getElementById('id-panelLbl');
+            let eRandom = document.getElementById('id-randomLbl');
             let x = 0;
             let bid = Number(eRandom.dataset.bid);
             //bid = Number(bid);
@@ -139,16 +138,15 @@ function openBook() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
-    if (openID) {
+    if (bookOpen) {
         ncbClose();
-
     } else {
         ncbClose();
         document.getElementById('id-changeBook').style.display = "block";
         document.getElementById('id-bookPointer').textContent = '▲';
-        document.getElementById('id-changeBookHeader').style.display = "block";
+        document.getElementById('id-changeBookHeader').style.display = "flex";
         document.getElementById('id-changeBook').scrollTop = 0;
-        openID = true;
+        bookOpen = true;
     };
 };
 async function changeBook(bid) {
@@ -158,7 +156,7 @@ async function changeBook(bid) {
     else { id = `id-bk${bid}`; };
     let eBook = document.getElementById(id);
     let eMenu = document.getElementById('id-menu');
-    let eRandom = document.getElementById('id-panelLbl');
+    let eRandom = document.getElementById('id-randomLbl');
     let content;
     if (eRandom.dataset.search === '0') {
         if (!bid) {
@@ -205,7 +203,7 @@ function nav(nav) {
     let chapters = Number(eMenu.dataset.chapters);
     let id;
     let eBook;
-    // 0 = Last, 1 = Next
+    // 0 = Last Chapter, 1 = Next Chapter
     if (nav === 0) {
         cn = cn - 1;
         if (cn < 1) { bid = bid - 1; };
@@ -253,15 +251,15 @@ function openChapter() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
-    if (openID) {
+    if (chapterOpen) {
         ncbClose();
     } else {
         ncbClose();
-        document.getElementById('id-changeChapterHeader').style.display = "block";
+        document.getElementById('id-changeChapterHeader').style.display = "flex";
         document.getElementById('id-changeChapter').style.display = "block";
         document.getElementById('id-chapterPointer').textContent = '▲';
         document.getElementById('id-chapterPointer').scrollTop = 0;
-        openID = true;
+        chapterOpen = true;
     };
 
 };
@@ -290,15 +288,15 @@ function openVerse() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
-    if (openID) {
+    if (verseOpen) {
         ncbClose();
     } else {
         ncbClose();
-        document.getElementById('id-selectVerseHeader').style.display = "block";
+        document.getElementById('id-selectVerseHeader').style.display = "flex";
         document.getElementById('id-selectVerse').style.display = "block";
         document.getElementById('id-versePointer').textContent = '▲';
         document.getElementById('id-versePointer').scrollTop = 0;
-        openID = true;
+        verseOpen = true;
     };
 
 };
@@ -320,7 +318,6 @@ function selectVerse() {
     let eParagraph = document.getElementById(pID);
     let eParagraph2 = document.getElementById(pID2);
     eParagraph.scrollIntoView({ block: 'center' });
-    eParagraph.style.backgroundColor = "#aed0fc";
     eParagraph2.style.backgroundColor = "#aed0fc";
     eParagraph2.style.color = "black";
     eParagraph2.style.paddingRight = '.3em';
@@ -356,9 +353,14 @@ function clickP() {
     let x = 1;
     let bgc;
     let col = '#9e6105';
-    let color;
+    let color, num, num2;
+
+    this.event.stopPropagation();
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+
     let eMenu = document.getElementById('id-menu');
-    let verses = Number(eMenu.dataset.verses);
+    let verse = Number(eMenu.dataset.verses);
     document.getElementById('id-verseText').textContent = 1;
 
     if (theme === 1) {
@@ -370,10 +372,10 @@ function clickP() {
     };
 
     if (eMenu.dataset.vid !== "") {
-        for (let i = 0; i < verses; i++) {
+        for (let i = 0; i < verse; i++) {
             num = `id-SP${x}`;
             num2 = `${num}-2`;
-            if (num !== 1) {
+            if (i > 0) {
                 document.getElementById(num).style.backgroundColor = bgc;
                 document.getElementById(num).style.color = col;
             };
@@ -384,21 +386,27 @@ function clickP() {
     };
     eMenu.dataset.vid = '';
     eMenu.dataset.vids = '';
+    ncbClose();
+};
+
+function closeFooter() {
+
+    if (footerOpen) {
+        ncbClose();
+        footerOpen = false;
+        document.getElementById('id-footer').style.display = 'none';
+    } else {
+        ncbClose();
+        footerOpen = true;
+        document.getElementById('id-footer').style.display = 'block';
+    };
 };
 
 function footer() {
 
-    if (footerOpen) {
-        footerOpen = false;
-        document.getElementById('id-footer').style.display = 'none';
-        document.getElementById('id-selectContainer').removeAttribute('class');
-        document.getElementById('id-selectContainer').setAttribute('class', 'cs-selectContainer');
-    } else {
-        footerOpen = true;
-        document.getElementById('id-footer').style.display = 'block';
-        document.getElementById('id-selectContainer').removeAttribute('class');
-        document.getElementById('id-selectContainer').setAttribute('class', 'cs-selectContainerOpen');
-    };
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+    closeFooter();
 };
 
 function sharePage() {
@@ -413,19 +421,17 @@ async function fetchCode(url) {
     return Promise.resolve(code);
 };
 
-var openMovieList = false;
 function openList(id) {
-    if (openMovieList === false) {
+    if (listOpen === false) {
         document.getElementById(id).style.display = "block";
-        openMovieList = true;
+        listOpen = true;
     } else {
         document.getElementById(id).style.display = "none";
-        openMovieList = false;
+        listOpen = false;
     }
 };
-function scrollPage(id) {
-    document.getElementById(id).scrollIntoView(true)
- };
+
+function scrollPage(id) { document.getElementById(id).scrollIntoView(true) };
 
 async function page() {
 
@@ -508,7 +514,8 @@ async function page() {
             break;
     };
     pushPage(html);
-    footer();
+    closeFooter();
+    if(settingsOpen === true) { openSettings(); };
 };
 
 function changePage(html) {
@@ -530,6 +537,15 @@ function pushPage(html) {
     document.getElementById('top').scrollIntoView(true);
     aClick++;
 };
+
+
+
+function navBack(){
+    this.event.stopPropagation();
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+    window.history.back();
+}
 
 window.addEventListener('popstate', function(event) {
 

@@ -1,4 +1,4 @@
-.cs-selectContainer {
+.cs-randomContainer {
     display: block;
     position: fixed;
     top: 10.2%;
@@ -9,7 +9,7 @@
     background-color: #cbcaca;
 }
 
-.cs-selectContainerOpen {
+.cs-randomContainerOpen {
     display: block;
     position: fixed;
     top: 10.2%;
@@ -99,8 +99,9 @@
     padding: .5em;
 }
 
-.cs-defaultVersionHeader { text-align: left; top: -8%; user-select: none; }
-.cs-defaultThemeHeader { text-align: left; top: -4%;  user-select: none; }
+.cs-defaultVersionHeader,
+.cs-defaultThemeHeader { text-align: left; top: -8%; user-select: none; }
+.cs-defaultThemeHeader { top: -4%; }
 .cs-sidePanelReset {
     text-align: center;
     top: 30%;
@@ -160,8 +161,9 @@
     border-bottom: 1px solid #dfdcdc;
 }
 .cs-eventVersion { padding: .3em; }
-.cs-defaultVersion { height: 63%; width: 79.4%; left: 10%; top: 27.5%; }
-.cs-defaultTheme {height: 13.9%; width: 79.4%; left: 10%; top: 42.3%; }
+.cs-defaultVersion,
+.cs-defaultTheme { height: 63%; width: 79.4%; left: 10%; top: 27.5%; }
+.cs-defaultTheme {height: 13.9%; top: 42.3%; }
 .cs-defaultPointer { padding-left: 1.5em; font-size: .5em; margin-right: -.2em; }
 .cs-theme {
     padding: .15em;

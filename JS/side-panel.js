@@ -1,25 +1,9 @@
 var sidePanelLoaded = true;
-var sidePanelChapter = 'Genesis 1:31'
-
-function swapPanel() {
-    //if (document.getElementById('id-page')) { panelSwapped = true; return; };
-    if (panelSwapped) {
-        document.getElementById('id-panelP1').style.display = "none";
-        document.getElementById('id-panelP2').style.display = "block";
-        document.getElementById('id-panelLbl1').textContent = "Settings";
-        panelSwapped = false;
-    } else {
-        document.getElementById('id-panelP1').style.display = "block";
-        document.getElementById('id-panelP2').style.display = "none";
-        document.getElementById('id-panelLbl1').textContent = 'Random Verses';
-        panelSwapped = true;
-    };
-};
 
 async function readChapter() {
 
     let eMenu = document.getElementById('id-menu');
-    let eRandom = document.getElementById('id-panelLbl');
+    let eRandom = document.getElementById('id-randomLbl');
     let head = eRandom.dataset.t;
     let res = false;
 
@@ -59,10 +43,10 @@ async function readChapter() {
 
             while (i <= 3) {
                 eParagraph = document.getElementById(pID);
-                eParagraph.style.backgroundColor = "#aed0fc";
+                eParagraph.style.backgroundColor = '#aed0fc';
                 eParagraph.style.color = '#720D0D';
                 eParagraph2 = document.getElementById(pID2);
-                eParagraph2.style.backgroundColor = "#aed0fc";
+                eParagraph2.style.backgroundColor = '#aed0fc';
                 eParagraph2.style.color = 'black';
                 eParagraph2.style.paddingRight = '.3em';
 
@@ -75,21 +59,23 @@ async function readChapter() {
         };
     };
     loadChapters();
+    document.getElementById('top').scrollIntoView(true);
 };
 
 function openDefaultVersion() {
 
+    this.event.stopPropagation();
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
-    if (openID) {
+    if (defaultVersionOpen) {
         ncbClose();
     } else {
         ncbClose();
-        document.getElementById('id-defaultVersion').style.display = "block";
+        document.getElementById('id-defaultVersion').style.display = 'block';
         document.getElementById('id-defaultVersionPointer').textContent = '▲';
         document.getElementById('id-defaultVersion').scrollTop = 0;
-        openID = true;
+        defaultVersionOpen = true;
     };
 };
 
@@ -106,27 +92,28 @@ async function defaultVersion() {
     document.getElementById('id-versionText').textContent = version;
     document.getElementById('id-textTitle1').textContent = document.getElementById(id).textContent;
 
-    localStorage.setItem("versionid", versionid);
+    localStorage.setItem('versionid', versionid);
     changeVersion(versionid);
     ncbClose();
-
 };
 
 function openDefaultTheme() {
+    this.event.stopPropagation();
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
-    if (openID) {
+    if (defaultThemeOpen) {
         ncbClose();
     } else {
         ncbClose();
-        document.getElementById('id-defaultTheme').style.display = "block";
+        document.getElementById('id-defaultTheme').style.display = 'block';
         document.getElementById('id-defaultThemePointer').textContent = '▲';
-        openID = true;
+        defaultThemeOpen = true;
     };
 };
 
 function defaultTheme() {
+    this.event.stopPropagation();
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
 
@@ -137,7 +124,7 @@ function defaultTheme() {
     theme = Number(theme);
     document.getElementById('id-defaultTheme').dataset.theme = theme;
     applyTheme();
-    localStorage.setItem("theme", theme);
+    localStorage.setItem('theme', theme);
     ncbClose();
     let p = eMenu.dataset.vid;
     let ps = eMenu.dataset.vids;
@@ -149,10 +136,10 @@ function defaultTheme() {
     eVersion.dataset.deftheme = '';
 };
 
-function defaultFont() {
+function saveDefaultFont() {
 
     if (theFont === 0) { return; }
-    localStorage.setItem("fontsize", theFont);
+    localStorage.setItem('fontsize', theFont);
     modal('Font Saved!')
 };
 
@@ -170,7 +157,7 @@ function modal(msg) {
     document.getElementById('id-modal').style.display = 'block';
     setTimeout(() => {
         document.getElementById('id-modal').style.display = 'none';
-      }, "1100");
+      }, '1100');
 };
 
 function removeItems(id) {
@@ -184,39 +171,103 @@ function removeItems(id) {
 function ncbClose() {
 
     if (!document.body.contains(document.getElementById('id-menu'))) { return; }
-    openID = false;
-    document.getElementById('id-changeVersionHeader').style.display = "none";
-    document.getElementById('id-changeVersion').style.display = "none";
+    versionOpen = false;
+    bookOpen = false;
+    chapterOpen = false;
+    verseOpen = false;
+    defaultVersionOpen = false;
+    defaultThemeOpen = false;
+    footerOpen = false;
+
+    document.getElementById('id-changeVersionHeader').style.display = 'none';
+    document.getElementById('id-changeVersion').style.display = 'none';
     document.getElementById('id-versionPointer').textContent = '▼';
-    document.getElementById('id-changeBookHeader').style.display = "none";
+    document.getElementById('id-changeBookHeader').style.display = 'none';
     document.getElementById('id-changeBookHeaderPointer').textContent = '▼';
-    document.getElementById('id-changeBook').style.display = "none";
+    document.getElementById('id-changeBook').style.display = 'none';
     document.getElementById('id-bookPointer').textContent = '▼';
-    document.getElementById('id-changeChapterHeader').style.display = "none";
-    document.getElementById('id-changeChapter').style.display = "none";
+    document.getElementById('id-changeChapterHeader').style.display = 'none';
+    document.getElementById('id-changeChapter').style.display = 'none';
     document.getElementById('id-chapterPointer').textContent = '▼';
-    document.getElementById('id-selectVerseHeader').style.display = "none";
-    document.getElementById('id-selectVerse').style.display = "none";
+    document.getElementById('id-selectVerseHeader').style.display = 'none';
+    document.getElementById('id-selectVerse').style.display = 'none';
     document.getElementById('id-versePointer').textContent = '▼';
-
-    document.getElementById('id-defaultVersion').style.display = "none";
+    document.getElementById('id-defaultVersion').style.display = 'none';
     document.getElementById('id-defaultVersionPointer').textContent = '▼';
-    document.getElementById('id-defaultTheme').style.display = "none";
+    document.getElementById('id-defaultTheme').style.display = 'none';
     document.getElementById('id-defaultThemePointer').textContent = '▼';
+    document.getElementById('id-footer').style.display = 'none';
+};
+function openSettings() {
+    if (settingsOpen) {
+        ncbClose();
+        document.getElementById('id-settingsContainer').style.display = 'none';
+        settingsOpen = false;
+    } else {
+        ncbClose();
+        document.getElementById('id-settingsContainer').style.display = 'block';
+        settingsOpen = true;
+    };
+    if (footerOpen === true) { closeFooter(); };
 };
 
-function clearSearch() {
-    document.getElementById('id-searchLbl').textContent = 'Search is not working';
-    document.getElementById('id-clear').style.visibility = 'hidden'
-};
-function removeSearch() {
-    document.getElementById('id-searchLbl').textContent = '';
-    document.getElementById('id-clear').style.visibility = 'visible'
+function settings() {
+    this.event.stopPropagation();
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+    openSettings();
+}
+function openSearch(search = true) {
 
-};
-function search() {
-    document.getElementById('id-searchLbl').textContent = 'Temporary';
-    document.getElementById('id-clear').style.visibility = 'hidden'
-    document.getElementById('id-clear').style.visibility = 'visible'
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+    this.event.stopPropagation();
+
+    if (searchOpen) {
+
+        if (document.getElementById('id-searchLbl').textContent !== 'Search ...') {
+            if (search === true) {
+                var test = document.getElementById('id-searchLbl').textContent;
+                alert(`Search:  ${test}`);
+            };
+        };
+
+        document.getElementById('id-searchBar').style.display = 'none';
+        document.getElementById('id-searchLbl').textContent = '';
+        // do search here
+        searchOpen = false;
+        searchKey = false;
+        ncbClose();
+    } else {
+        ncbClose();
+        document.getElementById('id-searchBar').style.display = 'flex';
+        document.getElementById('id-searchLbl').style.opacity = '.7';
+        document.getElementById('id-searchLbl').textContent = 'Search ...';
+        document.getElementById('id-searchLbl').focus();
+        searchOpen = true;
+    };
 };
 
+function searchLbl() {
+    this.event.preventDefault();
+    this.event.stopImmediatePropagation();
+    this.event.stopPropagation();
+
+    if (document.getElementById('id-searchLbl').textContent === 'Search ...' && !searchKey) { document.getElementById('id-searchLbl').textContent = ''; };
+    document.getElementById('id-searchLbl').style.opacity = '1';
+}
+
+var input = document.getElementById('id-searchLbl');
+input.addEventListener('keydown', (event) => {
+
+    if (input.textContent === 'Search ...' && !searchKey) { input.textContent = ''; };
+    input.style.opacity = '1';
+    searchKey = true;
+    if (event.key === 'Enter' && input.textContent === '') {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        event.stopPropagation();
+    } else if (event.key === 'Enter') {
+      openSearch();
+    };
+});

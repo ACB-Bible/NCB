@@ -15,8 +15,7 @@
     cursor: text;
     overflow: hidden;
 }
-.cs-searchLbl {
-    display: block;
+.cs-searchLbl { display: block;
     position: absolute;
     left: .5em;
     top: .12rem;
@@ -33,7 +32,7 @@
 
 }
 .cs-searchLbl:focus { opacity: 1; }
-.cs-searchText { width: 90%; }
+
 .cs-searchImg {
     display: block;
     position: relative;
@@ -55,13 +54,11 @@
     opacity: .5;
 }
 .cs-clearSearch:hover { opacity: 1; cursor: pointer; }
-.cs-clear {
-    display: block;
-    visibility: hidden;
+/* Check display position*/
+.cs-clear { display: block; visibility: hidden;
     position: relative;
     top: 4.5%;
     width: 99%;
     margin: auto;
     text-align: center;
 }
-

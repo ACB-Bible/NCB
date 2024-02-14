@@ -2,22 +2,37 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="googlebot" content="noindex, nofollow">
 <p id="screen" style="position: relative; top: 5%; left: 5%; font-size: 110%;"></p>
-
+<style>
+    :root {
+        --primary-color: #007bff;
+    }
+    body {
+        background-color: var(--primary-color);
+    }
+</style>
 <script>
     window.onload = function () {
         let x = `Screen Size: <br> Height: ${window.screen.height} <br> Width: ${window.screen.width}<br><br> Without Scrollbars: <br> Inner Height: ${window.innerHeight} <br> Width: ${window.innerWidth} <br><br> With Scrollbars: <br> Outer Height: ${window.outerHeight} <br> Outer Width: ${window.outerWidth}`;
         document.getElementById('screen').innerHTML = x;
+
+        document.querySelector('button').addEventListener('click', () => {
+            document.documentElement.style.setProperty('--primary-color', 'green');
+        });
+
     }
     window.onresize = function () {
         // Setting the current height & width
         let x = `Screen Size: <br> Height: ${window.screen.height} <br> Width: ${window.screen.width}<br><br> Without Scrollbars: <br> Inner Height: ${window.innerHeight} <br> Width: ${window.innerWidth} <br><br> With Scrollbars: <br> Outer Height: ${window.outerHeight} <br> Outer Width: ${window.outerWidth}`;
         document.getElementById('screen').innerHTML = x;
     };
+
+
 </script>
 
 
 
 <body>
+    <button>Test Var</button>
     <!--<p id="test" style="font-size: 4rem;">test</p>
     <p id="test1" style="font-size: 4rem;">test1</p>
     <p id="test2" style="font-size: 4rem;">test2</p>-->
