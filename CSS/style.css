@@ -31,12 +31,11 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 .cs-textTitle { font-weight: 550; font-size: 1.5rem; }
 .cs-textTitle2 { margin-top: -4%; }
 .cs-maroon {color: #720D0D; }
-/** font: font-style font-variant font-weight font-size/line-height font-family; */
-.cs-firstNumber { float: left; font-weight: 600; font-size: 3rem; margin: .1em .16em 0 0; padding: .1em .15em .15em .15em; background-color: navy; color: white; background-image: linear-gradient(#0621bb, #010154); }
 
+/** font: font-style font-variant font-weight font-size/line-height font-family; */
 /** top, right, bottom, and left margins  */
 .cs-number { position: relative; font-size: .95rem; font-weight: 600; padding: 0 .15em .25em 0; margin-left: .22em; color:#720D0D; vertical-align: .2em; }
-.cs-number1 { float: left; margin: -.15em 0 0 -.03em; height: 4.15rem; padding: 0 .15em 0 .15; font: 6rem  "Old English Text MT", Georgia, Garamond, serif;}
+.cs-number1 { float: left; margin: .3em 0 0 -.03em; height: 1.8rem; padding: 0 .15em 0 .15; font-size: 6rem; }
 
 .cs-textFooter { display: flex; position: absolute; align-items: center; left: 0; bottom: 0; height: 2.8rem; width: 100%; font: 1.2rem Arial, Helvetica, sans-serif; background-color: #c3c3c3; color: #720D0D; user-select: none; }
 .cs-bookFooter { position: absolute; left: 38%; }
