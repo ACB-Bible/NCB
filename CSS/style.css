@@ -135,7 +135,7 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 .cs-sidePanelStorage { margin-top: .8em; background-color: #fafad1; color: #504c4c; border-radius: 6px; text-align: justify; word-break: keep-all; font-size: .95rem; line-height: 1em; padding: .8em; }
 .cs-reset { margin-top: 8em; width: 26%; user-select: none; height: 7%; }
 
-.cs-read { width: 70%; padding: .5em; margin-bottom: 2em; }
+.cs-read { width: 95%; padding: .5em; margin-bottom: 2em; }
 .cs-defaultThemeHeader,
 .cs-defaultVersionHeader { position: relative; top: 2%; height: 8%; width: 90%; padding-left: .6em; margin: auto; }
 .cs-defaultThemeHeader { top: 4%; }
