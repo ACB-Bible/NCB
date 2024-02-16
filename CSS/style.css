@@ -7,8 +7,9 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 
 .cs-header { position: fixed; display: flex; align-items: center;  top: 0%; left: 0%; height: 9.9%; width: 100%; background-color: navy; color: white; overflow: hidden; z-index: 9; }
 .cs-title { position: absolute; left: 5%; width: 99%; font-size: 1.8rem; }
-.cs-searchBar { display: none; position: relative; height: 100%; width: 82%; align-items: center; font: 1.8rem Arial, Helvetica, sans-serif; background-color: #e4e4e4; color: #333333; overflow: hidden; }
-.cs-searchLbl { width: 80%; border: none; cursor: text; padding-left: .5em; white-space: nowrap; outline: none; opacity: .7; overflow: hidden; z-index: 1; }
+.cs-searchBar { display: none; position: relative; height: 100%; width: 82%; align-items: center; font: 1.8rem Arial, Helvetica, sans-serif;  background-color: navy; color: white; overflow: hidden; }
+.cs-searchLbl { position: relative; left: 6%; width: 80%; cursor: text; white-space: nowrap; opacity: .7; border-bottom: 1px solid #bcbaba; outline: none; overflow: hidden; z-index: 1; }
+.cs-x-circle { position: absolute; right: 0; height: .8em; width: .8em; z-index: 1; }
 .cs-searchImg { position: absolute; right: 5%; height: 1.6rem; width: 1.6rem; color: white; }
 
 /** font: font-style font-variant font-weight font-size/line-height font-family; */
@@ -47,7 +48,7 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 
 .cs-randomContainer,
 .cs-settingsContainer { position: relative; top: 1%; width: 100%; overflow: hidden; background-color: #cbcaca; font-size: 1.1rem; }
-.cs-settingsContainer { display: none; position: fixed; top: 9.92%; height: 100%; left: 0; }
+.cs-settingsContainer { display: none; position: fixed; top: 9.92%; height: 100%; }
 
 /** top, right, bottom, and left margins  */
 .cs-panelP1,
@@ -60,7 +61,7 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 .cs-panelLbl { display: flex; align-items: center; justify-content: center; position: absolute; height: 7.5%; background-color: #720D0D; color: white; width: 100%; font-size: 1.4rem; user-select: none;  }
 .cs-rand { height: 9%; }
 .cs-settings {  height: 6.8%; justify-content: left; padding-left: 1em; }
-.cs-x-circle { position: absolute; right: 6%; height: .8em; width: .8em; z-index: 1; }
+
 .cs-x-circle1 { position: absolute; right: 12%; height: 1.1em; width: 1.1em; }
 /** top, right, bottom, and left margins  */
 
@@ -144,8 +145,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 .cs-defaultTheme { top: 4.1%; height: 17%; }
 /** top, right, bottom, and left margins  */
 
+.cs-theme,
 .cs-version { padding: .5em 0 .5em .5em; border-bottom: 1px solid #dfdcdc; }
-.cs-theme { padding: .5em 0 .5em .5em; border-bottom: 1px solid #dfdcdc; }
 
 .cs-modal {
     display: none;
@@ -207,7 +208,6 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 }
 
 /** top, right, bottom, and left margins  */
-
 .cs-copy { position: absolute; width: 100%; bottom: 5%; text-align: center; font-size: .9rem; color: silver; }
 .cs-gear-fill { position: absolute; right: 7%; margin-top: -2.5em; height: 1.25rem; width: 1.25rem; color: white; opacity: .7; }
 
@@ -228,18 +228,13 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 .cs-arrowLeftShort { margin-top: -1em; height: 1.8rem; width: 1.8rem; padding: .2em; border-radius: 50%; }
 
 
-
 /** top, right, bottom, and left margins  */
 
-@media (max-width: 350px) {
-    .cs-menu { font-size: 1.07rem; }
-    .cs-selector { font-size: 1rem; }
-}
 @media (max-width: 320px) {
     .cs-title { font-size: 1.45rem; }
     .cs-mainText { top: 9.5%; }
     .cs-dropHeader { top: 17%; height: 6%; }
-    .cs-selector { top: 23%; height: 52%; font-size: 1rem; }
+    .cs-selector { top: 23%; height: 52%; }
     .cs-versionHeader { width: 65%; }
     .cs-changeVersion { width: 68%; }
     .cs-bookHeader { width: 91.5%; }
@@ -248,7 +243,6 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-chapterHeader { width: 86.3%; }
     .cs-selectVerse,
     .cs-changeChapter { height: 27%; width: 90%;}
-    .cs-defaultTheme,
     .cs-defaultVersion { top: 2.5%; height: 62.6%;  }
     .cs-defaultTheme { top: 4.2%; height: 15.6%; }
     .cs-rand,
@@ -257,28 +251,60 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-footer { height: 32%; }
     .cs-footers { left: 15%; top: 2%; }
 }
+@media (max-width: 280px) {
+    .cs-dropHeader { top: 16.8%; }
+    .cs-selector { top: 22.8%; }
+    .cs-defaultVersion { top: 2.3%; font-size: .95rem; width: 95%; }
+    .cs-defaultTheme { top: 4.2%; }
+}
 @media (min-width: 360px) {
-    .cs-dropHeader { top: 17.5%; height: 6.8%; }
-    .cs-selector { top: 24.3%; height: 52%; }
+    .cs-dropHeader { top: 17.4%; height: 6.8%; }
+    .cs-selector { top: 24.1%; height: 51.7%; }
     .cs-versionHeader { width: 60.3%; }
     .cs-changeVersion { width: 63%; }
     .cs-bookHeader { width: 83.6%; }
     .cs-changeBook { width: 86%; }
+    .cs-verseHeader,
+    .cs-chapterHeader { width: 74.45%; }
     .cs-selectVerse,
     .cs-changeChapter { height: 29%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { top: 3%; height: 9%; }
     .cs-defaultThemeHeader { top: 5%; }
-    .cs-defaultTheme,
     .cs-defaultVersion { top: 2.5%; height: 68%; }
     .cs-defaultTheme { top: 4.2%; height: 17%; }
 }
 
-@media (min-width: 414px) {
+/*! */
+@media (min-width: 375px) {
+    .cs-dropHeader { top: 17.1%; }
+    .cs-selector { top: 23.9%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 29%; }
+    .cs-defaultThemeHeader,
+    .cs-defaultVersionHeader { top: 3%; height: 9%; }
+    .cs-defaultThemeHeader { top: 5%; }
+    .cs-defaultVersion { top: 2.5%; height: 68%; }
+    .cs-defaultTheme { top: 4.2%; height: 17%; }
+    .cs-footer { height: 25%; }
+}
+/***/
+
+@media (min-width: 390px) {
+    .cs-dropHeader { top: 15.6%; height: 5.5%; }
+    .cs-selector { top: 21.1%; }
+    .cs-panelP2 { margin-top: 4.5em; }
+    .cs-defaultThemeHeader,
+    .cs-defaultVersionHeader { height: 7.3%; }
+    .cs-defaultVersion { top: 3.5%; }
+    .cs-defaultTheme { top: 5.4%;  height: 14.1%; }
+    .cs-footer { height: 25%; }
+}
+@media (min-width: 412px) {
     .cs-textTitle { margin-top: 1.5em; font-weight: 550; font-size: 1.7rem; }
     .cs-textTitle2 { margin-top: -.1em; font-size: 1.8rem; }
     .cs-mainText { top: 10%; }
-    .cs-dropHeader { top: 15.3%; height: 5.3%; }
+    .cs-dropHeader { top: 15.3%; }
     .cs-selector { top: 20.8%; }
     .cs-versionHeader { width: 57.5%; }
     .cs-changeVersion { height: 37%; width: 60%; }
@@ -297,22 +323,36 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 6.8%; }
     .cs-defaultTheme,
-    .cs-defaultVersion { width: 83%; }
+    .cs-defaultVersion { width: 83.9%; }
     .cs-defaultVersion { top: 3.1%; }
-    .cs-defaultTheme { top: 5%; height: 12.5%; }
+    .cs-defaultTheme { top: 5%; height: 12%; }
     /** top, right, bottom, and left margins  */
     .cs-theme { padding: .4em 0 .4em .4em; }
     .cs-reset { width: 40%; }
-    .cs-gear-fill { right: 8%; margin-top: -1em; height: 1.7rem; width: 1.7rem; }
+    .cs-gear-fill { right: 8%; margin-top: -3em; height: 1.7rem; width: 1.7rem; }
 }
-@media (min-width: 500px) {
-    .cs-textTitle { margin-top: 1.2em; }
-    .cs-textTitle2 { margin-top: -.5em; }
+@media (min-width: 430px) {
+    .cs-dropHeader { top: 15.1%; }
+    .cs-selector { top: 20.4%; }
+    .cs-defaultVersion { top: 3.2%; }
+    .cs-defaultTheme { top: 5.2%; height: 11.7%; }
 }
 
+/*! **/
+@media (min-width: 540px) {
+
+}
+@media (min-width: 601px) {
+
+}
+/***/
+
 @media (min-width: 768px) {
-    .cs-dropHeader { top: 14.6%; height: 6%; width: 30%; }
-    .cs-selector { top: 20.6%; width: 31%; }
+    .cs-title { font-size: 2.3rem; }
+    .cs-searchBar { width: 88%; }
+    .cs-searchLbl { width: 86%; }
+    .cs-dropHeader { top: 14.6%; height: 5.2%; width: 30%; }
+    .cs-selector { top: 19.8%; width: 31%; }
     .cs-bookHeader { width: 40.9%; }
     .cs-changeBook { height: 44.7%; width: 42%; }
     .cs-verseHeader,
@@ -330,10 +370,39 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-defaultTheme { top: 5%; height: 15.3%; }
     .cs-settings { height: 8%; }
 }
-/** top, right, bottom, and left margins  */
+
+/*! **/
+@media (min-width: 800px) {
+
+}
+
+@media (min-width: 820px) {
+    .cs-header { height: 7%; }
+    .cs-title { font-size: 2.5rem; }
+    .cs-mainText { top: 7%; }
+    .cs-dropHeader { top: 11.1%; height: 4.5%}
+    .cs-selector { top: 20.8%; top: 15.6%; }
+    .cs-versionHeader { width: 28.9%; }
+    .cs-changeVersion { height: 37%; width: 30%; }
+    .cs-bookHeader { width: 37%; }
+    .cs-changeBook { height: 36.8%; width: 38%; }
+    .cs-verseHeader,
+    .cs-chapterHeader { width: 38.8%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 18%; width: 40%; }
+    .cs-defaultVersion { top: 3.4%; height: 64%; width: 94.2%; }
+    .cs-defaultTheme { top: 5%; height: 13.3%; }
+    .cs-panelP1 { margin-top: 1.5em; height: 75%; width: 95%; border-radius: 6px; }
+}
+
+@media (min-width: 926px) {
+
+}
+/***/
+
 @media (min-width: 1024px) {
-    .cs-searchLbl { padding-left: 3em; }
-    .cs-title { font-size: 2.8rem; }
+    .cs-header { height: 10%; }
+    .cs-title { font-size: 2.5rem; }
     .cs-textTitle { font-size: 2rem; }
     .cs-textTitle2 { margin-top: 0; }
     .cs-mainText { top: 10.9%;  width: 90%; margin: auto; border-radius: 8px; }
@@ -347,10 +416,11 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-chapterHeader { width: 29%; }
     .cs-selectVerse,
     .cs-changeChapter { height: 24%;  width: 30%; }
-    .cs-chapterPage { column-count: 2; }
     .cs-bookFooter { left: 45%; }
-
-    .cs-read {width: 25%; margin-bottom: .5em; }
+    .cs-randomContainer { height: 35%; width: 80%; margin: auto; border-radius: 8px; }
+    .cs-rand { height: 15%; }
+    .cs-dailyVerse { margin: -1em 0 1.5em 0; }
+    .cs-read { height: 7%; width: 25%; }
     .cs-settingsContainer { width: 30%; }
     .cs-settings { height: 8%; }
     .cs-defaultThemeHeader,
@@ -364,16 +434,43 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-midPage { margin-top: 1em; }
     .cs-reset { margin-top: 4em; }
 }
+
+@media (min-height: 1366px) {
+    .cs-mainText { top: 8%; }
+    .cs-randomContainer { height: 23%; }
+    .cs-panelP1 { margin-top: 1.9em; }
+    .cs-dropHeader { top: 11.5%; height: 4%; }
+    .cs-selector { top: 15.6%; height: 30.3%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 15%; }
+    .cs-footer { height: 19.5%; }
+    .cs-settingsContainer { width: 32%; height: 45%; }
+    .cs-defaultTheme,
+    .cs-defaultVersion { top: 3.7%; height: 58%; width: 94.2%; }
+    .cs-defaultTheme { top: 5%; height: 14.9%; }
+}
 @media (min-width: 1220px) {
     .cs-chapter { margin-top: 2.5em; }
-    .cs-chapterPage { column-count: 2; }
-    .cs-randomContainer { height: 35%; width: 65%; }
-    .cs-panelP1 { margin-top: .8em; height: 80%; width: 92%; border-radius: 6px; }
-    .cs-read {width: 25%; }
     .cs-settingsContainer { width: 25%; }
 }
 
+/*! **/
+@media (min-width: 1280px) {
+
+}
+@media (min-width: 1366px) {
+
+}
+@media (min-width: 1440px) {
+
+}
+@media (min-width: 1536px) {
+
+}
+/***/
+
 @media (min-width: 1920px) {
+    .cs-mainText { width: 60%; }
     .cs-midPage { margin-top: 1em; }
     .cs-bookFooter { left: 48%; }
     .cs-top { left: 48%; }
@@ -385,18 +482,19 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-chapterHeader { width: 16.5%; }
     .cs-selectVerse,
     .cs-changeChapter { width: 17%; }
+    .cs-searchBar { left: 15%; width: 70%; }
+    .cs-searchLbl { width: 86%; }
     .cs-x-circle { right: 4%; height: 1em; width: 1em; }
     .cs-gear-fill { right: 5%; margin-top: -3em; }
     /** top, right, bottom, and left margins  */
-    .cs-randomContainer { height: 35%; width: 60% }
+    .cs-randomContainer { height: 35%; width: 60%; top: 8%; }
     .cs-rand { height: 7%; }
     .cs-panelP1 { height: 75%; margin-top: 1.8em; width: 90%; padding: 0 2em 0 2em; }
     .cs-panelLbl {  height: 13%; width: 100%; font-size: 1.5rem;  }
     .cs-dailyVerse { margin: -1em 0 1.5em 0; }
     .cs-read { width: 20%; margin-top: 1.5em; }
-
-    .cs-x-circle { position: absolute; right: 6%; height: .8em; width: .8em; z-index: 1; }
-    .cs-x-circle1 { position: absolute; right: 12%; height: 1.1em; width: 1.1em; }
+    .cs-x-circle { right: 0; height: .95em; width: .95em; z-index: 1; }
+    .cs-x-circle1 { height: 1.1em; width: 1.1em; }
     .spa { margin-bottom: .3em; }
     .cs-settingsContainer { width: 18%; }
     .cs-settings { height: 6.8%; justify-content: left; padding-left: 1em; }

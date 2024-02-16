@@ -231,7 +231,7 @@ function openSearch(search = true) {
                 alert(`Search:  ${test}`);
             };
         };
-
+        document.getElementById('id-title').style.display = 'block';
         document.getElementById('id-searchBar').style.display = 'none';
         document.getElementById('id-searchLbl').textContent = '';
         // do search here
@@ -240,6 +240,7 @@ function openSearch(search = true) {
         ncbClose();
     } else {
         ncbClose();
+        document.getElementById('id-title').style.display = 'none';
         document.getElementById('id-searchBar').style.display = 'flex';
         document.getElementById('id-searchLbl').style.opacity = '.7';
         document.getElementById('id-searchLbl').textContent = 'Search ...';
@@ -267,6 +268,7 @@ input.addEventListener('keydown', (event) => {
         event.preventDefault();
         event.stopImmediatePropagation();
         event.stopPropagation();
+        openSearch(false);
     } else if (event.key === 'Enter') {
       openSearch();
     };

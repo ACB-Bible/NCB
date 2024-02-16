@@ -80,9 +80,9 @@
 <body id="id-body" onclick="ncbClose()">
 
     <div id="id-header" class="cs-header">
-        <h1 class="cs-title">New Christian Bible</h1>
+        <h1 id="id-title" class="cs-title">New Christian Bible</h1>
         <div id="id-searchBar" class="cs-searchBar" type="text">
-            <label id="id-searchLbl" onclick="searchLbl()" class="cs-searchLbl" contenteditable="true" spellcheck="true" title="Search is not working yet, but it will someday !"></label>
+            <div id="id-searchLbl" onclick="searchLbl()" class="cs-searchLbl" contenteditable="true" spellcheck="true" title="Search is not working yet, but it will someday !"></div>
             <svg fill="currentColor" class="cs-cp-hover cs-x-circle" onclick="openSearch(false)" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                 <path
@@ -215,6 +215,8 @@
     <div id="id-changeVersionHeader" class="cs-dropHeader cs-versionHeader">
         Version
     </div>
+
+    <!-- #region Dropdowns from the top menu -->
     <div id="id-changeVersion" class="cs-selector cs-changeVersion">
     </div>
 
@@ -243,7 +245,7 @@
     </div>
     <div id="id-selectVerse" class="cs-selector cs-selectVerse">
     </div>
-    <!-- #endregion  End of Dropdowns from the top menu -->
+    <!-- #endregion End of Dropdowns from the top menu -->
 
     <label id="id-openFooter" class="cs-openFooter cs-cp-hover" onclick="footer()">╲╱</label>
     <div ID="id-footer" class="cs-footer">
@@ -272,8 +274,6 @@
     </div>
 
     <br><br><br><br><br><br>
-
-
 
 </body>
 
