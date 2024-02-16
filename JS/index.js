@@ -391,7 +391,7 @@ async function loadText() {
         if (verses[i].vn === 1) {
             sp.textContent = verseText[0];
             verseText = verseText.substring(1)
-            sp.classList.add('cs-number1');
+            sp.classList.add('cs-firstLetter');
         };
         document.getElementById(`id-p${pID}`).appendChild(sp);
 
