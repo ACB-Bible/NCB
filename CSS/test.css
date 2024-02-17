@@ -1,0 +1,32 @@
+cs-selector { background-color: red; }
+
+@media (min-width: 10091px) {
+    .cs-title { font-size: 2.3rem; }
+    .cs-searchBar { width: 90%; }
+    .cs-dropHeader { top: 15.2%; height: 5.4%; }
+    .cs-selector { top: 20.6%; }
+    .cs-versionHeader { width: 32.5%; }
+    .cs-changeVersion { height: 49.1%; width: 34%; }
+    .cs-bookHeader { width: 46.5%; }
+    .cs-changeBook { height: 49.1%; width: 48%; }
+    .cs-sort { left: 44%; }
+    .cs-verseHeader,
+    .cs-chapterHeader { width: 46.3%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 19%; width: 48%; }
+    .cs-top { left: 40%; }
+    .cs-bookFooter { left: 40%; }
+    .cs-panelP1 { margin-top: 1.2em; height: 80%; width: 82%; }
+    .cs-read { height: 8%; width: 36%; }
+    .cs-randomContainer { height: 35%; }
+    .cs-panelP1 { margin-top: 1.5em; height: 75%; }
+    .cs-settingsContainer { height: 62%; width: 51%; }
+    .cs-panelP2 { margin-top: 3.5em; height: 76%; }
+    .cs-defaultThemeHeader,
+    .cs-defaultVersionHeader { height: 8.5%; }
+    .cs-defaultTheme,
+    .cs-defaultVersion { top: 3%; height: 55.7%; width: 94.5%; }
+    .cs-defaultTheme { top: 5%; height: 14.4%; }
+    .cs-reset { margin-top: 4em; }
+}
+

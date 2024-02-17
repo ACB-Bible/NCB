@@ -11,7 +11,7 @@ var slider = document.getElementById('id-range');
 slider.oninput = function() {
 
     let afontSize = Number(this.value);
-    document.getElementById('id-defaultFontlbl').textContent = `Font Size:   ${afontSize}%`;
+    document.getElementById('id-defaultFontlbl').textContent = 'Font Size:';
     afontSize = afontSize / 100;
     theFont = `${afontSize}rem`;
     if (document.getElementById('id-chapterPage')) { document.getElementById('id-chapterPage').style.fontSize = theFont; }
@@ -46,13 +46,13 @@ async function applyDefaultFont() {
         defaultFontSize = defaultFontSize / 16;
         defaultFontSize = defaultFontSize.toFixed(2);
         defaultFontSize = Number(defaultFontSize.replace('.', ''));
-        document.getElementById('id-defaultFontlbl').textContent = `Font Size:   ${defaultFontSize}%`
+        document.getElementById('id-defaultFontlbl').textContent = 'Font Size:'
         document.getElementById('id-range'). value = defaultFontSize;
         document.getElementById('id-chapterPage').style.fontSize = '1.1rem';
     } else {
         document.getElementById('id-chapterPage').style.fontSize = afont;
         afont = Number(parseFloat(afont.replace('.', '')));
-        document.getElementById('id-defaultFontlbl').textContent = `Font Size:   ${afont}%`;
+        document.getElementById('id-defaultFontlbl').textContent = 'Font Size:';
         document.getElementById('id-defaultFontlbl').style.fontSize = `${afont / 100}rem`;
         document.getElementById('id-range'). value = afont;
     };
@@ -138,7 +138,6 @@ async function loadVersions() {
         div.dataset.version = version.ar;
         div.dataset.loaded = 0;
         div.classList.add('cs-version');
-        div.classList.add('cs-deftVersion');
         div.classList.add('cs-cp-hover');
         document.getElementById('id-defaultVersion').appendChild(div);
         // #endregion load the default version dropdown box
