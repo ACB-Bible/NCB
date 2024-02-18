@@ -6,6 +6,7 @@ async function readChapter() {
     let eRandom = document.getElementById('id-randomLbl');
     let head = eRandom.dataset.t;
     let res = false;
+    let scrll = '';
 
     let bid = Number(eRandom.dataset.bid);
     if (bid < 40) {
@@ -35,6 +36,11 @@ async function readChapter() {
             let sp = 'id-SP';
             let pID = `${sp}${vn}`;
             let pID2 = `${pID}-2`;
+            if (vn === 1) {
+                scrll = `${sp}${vn}`;
+            }else {
+                scrll = `${sp}${vn -1}`;
+            };
 
             eMenu.dataset.vid = pID;
             eMenu.dataset.vids = 1;
@@ -59,7 +65,7 @@ async function readChapter() {
         };
     };
     loadChapters();
-    document.getElementById('top').scrollIntoView(true);
+    document.getElementById(scrll).scrollIntoView(true);
 };
 
 function openDefaultVersion() {

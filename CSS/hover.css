@@ -8,9 +8,9 @@
 .cs-navNext:hover,
 .cs-footers1:hover,
 .cs-gear-fill:hover,
-.cs-innerBook:hover,
-.cs-sidePanelSelect:hover { color: white; }
+.cs-innerBook:hover { color: white; }
 
+.cs-sidePanelSelect:hover { color: #c1d1f2; }
 .cs-theme:hover,
 .cs-version:hover,
 .cs-toSelect:hover,
