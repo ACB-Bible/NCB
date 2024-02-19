@@ -234,7 +234,7 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 @media (min-width: 360px) {
     .cs-dropHeader { top: 19.6%; height: 8%; box-shadow: 10px 0px 10px #4d4d4d40;}
     .cs-selector { top: 27.7%;  border-right: 1px solid #bcbaba; border-bottom: 1px solid #bcbaba; border-bottom-right-radius: 8px; box-shadow: 10px 10px 10px #4d4d4d40; }
-    .cs-read { width: 70%; }
+    .cs-read { width: 90%; }
     .cs-footer { height: 45%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 7.6%; }
