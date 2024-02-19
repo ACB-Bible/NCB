@@ -10,7 +10,6 @@
 .cs-gear-fill:hover,
 .cs-innerBook:hover { color: white; }
 
-.cs-sidePanelSelect:hover { color: #c1d1f2; }
 .cs-theme:hover,
 .cs-version:hover,
 .cs-toSelect:hover,
@@ -20,8 +19,9 @@
 .cs-sort:hover,
 .cs-x-circle:hover,
 .cs-x-circle1:hover,
-.cs-searchImg:hover { color: #c1d1f2; }
+.cs-searchImg:hover,
+.cs-read:hover,
+.cs-saveDefaultFont:hover { color: #c1d1f2; }
 .cs-openFooter:hover { background-color: #e7effc; }
-.cs-saveDefaultFont:hover { background-color: #cfddf9; }
 
 .cs-searchLbl:focus { opacity: 1; color: white; }
