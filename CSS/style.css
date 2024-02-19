@@ -247,10 +247,9 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-selector { top: 24.5%; }
     .cs-changeVersion { height: 52%; }
     .cs-changeBook { height: 51.5%; }
-    .cs-verseHeader,
-    .cs-chapterHeader { width: 67.5%; }
     .cs-selectVerse,
-    .cs-changeChapter { height: 22%; width: 70%; }
+    .cs-changeChapter { height: 30%; }
+    .cs-randomContainer { top: 5%; }
     .cs-footer { height: 25%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 7.6%; }
@@ -259,21 +258,20 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-defaultTheme { top: 5.1%; height: 13.3%; }
 }
 @media (min-width: 375px) {
+    .cs-title { font-size: 1.9rem; }
     .cs-dropHeader { top: 19.2%; height: 6.5%; }
     .cs-selector { top: 25.7%; }
-    .cs-versionHeader { width: 52.3%; }
-    .cs-changeVersion { width: 55%; }
-    .cs-bookHeader { width: 72.3%; }
-    .cs-changeBook { width: 75%;  height: 47%; }
+    .cs-changeVersion { height: 49.2%; }
+    .cs-changeBook { height: 49.2%; }
     .cs-selectVerse,
-    .cs-changeChapter { height: 26%; }
+    .cs-changeChapter { height: 30%; }
     .cs-read { width: 70%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { top: 3%; height: 8.7%; }
     .cs-defaultThemeHeader { top: 5%; }
-    .cs-defaultVersion { top: 3%; height: 67.3%; }
-    .cs-defaultTheme { top: 5%; height: 14.8%; }
-    .cs-reset { margin-top: 7em; }
+    .cs-defaultVersion { top: 3%; height: 62.6%; }
+    .cs-defaultTheme { top: 5%; height: 15.8%; }
+    .cs-reset { margin-top: 5em; }
     .cs-footer { height: 25%; }
 }
 @media (min-width: 375px) and (min-height: 812px) {
@@ -281,6 +279,7 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-mainText { top: 10%; }
     .cs-dropHeader { top: 15.8%; height: 6%; }
     .cs-selector { top: 21.8%; }
+    .cs-changeBook { height: 51.6%; }
     .cs-changeVersion { height: 51.6%; }
     .cs-selectVerse,
     .cs-changeChapter { height: 22%; }
@@ -294,20 +293,20 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-defaultTheme,
     .cs-defaultVersion { top: 3%; height: 61.4%; }
     .cs-defaultTheme { top: 6%; height: 12.2%; }
+    .cs-reset { margin-top: 9em; }
 }
 @media (min-width: 390px) {
     .cs-searchBar { width: 83%; }
-    .cs-dropHeader { top: 15.6%; height: 6%; box-shadow: 10px 0px 10px #4d4d4d40; }
-    .cs-selector { border-right: 1px solid #bcbaba; border-bottom: 1px solid #bcbaba; border-bottom-right-radius: 8px; top: 21.5%; box-shadow: 10px 10px 10px #4d4d4d40; }
+    .cs-dropHeader { top: 15.6%; height: 6%; }
+    .cs-selector { top: 21.5%; }
+    .cs-changeBook { height: 49.7%; }
     .cs-changeVersion { height: 49.7%; }
-    .cs-bookHeader { width: 72.9%; }
-    .cs-verseHeader,
-    .cs-chapterHeader { width: 67.4%; }
     .cs-bookFooter { left: 38%; }
     .cs-top { left: 38%; }
     .cs-selectVerse,
     .cs-changeChapter { height: 21%; }
     .cs-randomContainer { top: 3%; }
+    .cs-read { width: 65%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 7.5%; }
     .cs-defaultVersion { top: 3.1%; height: 65.1%; }
@@ -315,23 +314,57 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-reset { margin-top: 7em; }
     .cs-footer { height: 25%; }
 }
-/*! 412 */
-
-
+@media (min-width: 412px) {
+    .cs-textTitle { margin-top: 1.5em; font-weight: 550; font-size: 1.7rem; }
+    .cs-textTitle2 { margin-top: -.1em; font-size: 1.8rem; }
+    .cs-mainText { top: 10%; }
+    .cs-dropHeader { top: 15.2%; }
+    .cs-selector { top: 21%; }
+    .cs-changeVersion { height: 41.9%; }
+    .cs-changeBook { height: 45.9%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 30%; }
+    .cs-randomContainer { top: 4%; }
+    .cs-rand { height: 10%; }
+    .cs-settings { height: 5.5%; }
+    .cs-defaultThemeHeader,
+    .cs-defaultVersionHeader { height: 6.8%; width: 80%; }
+    .cs-defaultTheme,
+    .cs-defaultVersion { width: 83.6%; }
+    .cs-defaultVersion { top: 3%; }
+    .cs-defaultTheme { top: 6%; height: 10.8%; }
+    .cs-reset { width: 40%; }
+    .cs-gear-fill { right: 8%; margin-top: -3em; height: 1.7rem; width: 1.7rem; }
+}
+@media (min-width: 414px) {
+    .cs-mainText { top: 10%; }
+    .cs-textTitle { margin-top: 1.5em; font-weight: 550; font-size: 1.73rem; }
+    .cs-textTitle2 { margin-top: -.1em; font-size: 1.8rem; }
+    .cs-changeVersion { height: 42.8%; }
+    .cs-changeBook { height: 42.8%; }
+    .cs-selectVerse,
+    .cs-changeChapter { height: 30%; }
+    .cs-defaultVersion { top: 3%; height: 66.8%; }
+    .cs-defaultTheme { top: 6%; height: 10.8%; }
+    .cs-reset { width: 40%; }
+    .cs-gear-fill { right: 8%; margin-top: -3em; height: 1.7rem; width: 1.7rem; }
+}
 @media (min-width: 430px) {
-    .cs-versionHeader { width: 47.8%; }
-    .cs-bookHeader { width: 68%; }
-    .cs-dropHeader { top: 15.1%; height: 5.5%; }
-    .cs-selector { top: 20.4%; }
+    .cs-changeVersion,
+    .cs-changeBook { height: 45%; }
     .cs-defaultVersion { top: 2.8%; height: 59%;}
     .cs-defaultTheme { top: 6%; height: 10.6%; }
 }
+
+/*! 540 */
+
 @media (min-width: 540px) {
     .cs-searchBar { width: 90%; }
+    .cs-mainText { top: 12.1%; }
     .cs-x-circle { right: 5%; }
-    .cs-dropHeader { top: 16.7%; height: 6.7%; }
-    .cs-selector { top: 23.4%; }
-    .cs-versionHeader { width: 36.3%; }
+    .cs-dropHeader { top: 18.7%; height: 6.5%; box-shadow: 10px 0px 10px #4d4d4d40; }
+    .cs-selector { top: 25.4%; border-right: 1px solid #bcbaba; border-bottom: 1px solid #bcbaba; border-bottom-right-radius: 8px; box-shadow: 10px 10px 10px #4d4d4d40; }
+    .cs-versionHeader { width: 36%; }
     .cs-changeVersion { height: 43.6%; width: 38%; }
     .cs-bookHeader { width: 51.1%; }
     .cs-changeBook { height: 43.6%; width: 53%; }

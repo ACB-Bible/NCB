@@ -23,29 +23,3 @@ cs-selector { background-color: red; }
 
 }
 
-@media (min-width: 412px) {
-    .cs-textTitle { margin-top: 1.5em; font-weight: 550; font-size: 1.7rem; }
-    .cs-textTitle2 { margin-top: -.1em; font-size: 1.8rem; }
-    .cs-mainText { top: 10%; }
-    .cs-dropHeader { top: 15.2%; }
-    .cs-selector { top: 21%; }
-    .cs-versionHeader { width: 47.5%; }
-    .cs-changeVersion { height: 41.9%; width: 50%; }
-    .cs-bookHeader { width: 67.8%; }
-    .cs-changeBook { height: 45.9%; width: 70%; }
-    .cs-selectVerse,
-    .cs-changeChapter { height: 20%; }
-    .cs-randomContainer { top: 4%; }
-    .cs-rand { height: 10%; }
-    
-    .cs-settings { height: 5.5%; }
-    .cs-defaultThemeHeader,
-    .cs-defaultVersionHeader { height: 6.8%; }
-    .cs-defaultTheme,
-    .cs-defaultVersion { width: 83.6%; }
-    .cs-defaultVersion { top: 3%; }
-    .cs-defaultTheme { top: 6%; height: 10.8%; }
-    .cs-sidePanelSelect { width: 80%; }
-    .cs-reset { width: 40%; }
-    .cs-gear-fill { right: 8%; margin-top: -3em; height: 1.7rem; width: 1.7rem; }
-}
