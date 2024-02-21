@@ -3,7 +3,7 @@
 
 The New Christian Bible website project is part of the Bible Code Project which is a collection of GitHub repositories containing source code and data that can be used to develop your own computerized Bible project. The data files for this project comes from the BibleDB project master SQLite3 database.
 
-[American Computerized Bible Website](https://acBible.com/) - The live operational website for the American Computerized Bible.
+[American Computerized Bible Website](https://acbible.com/) - The live operational website for the American Computerized Bible.
 
 [New Christian Bible Website](https://ACB-Bible.github.io/NCB/) - The live operational website for the New Christian Bible.
 

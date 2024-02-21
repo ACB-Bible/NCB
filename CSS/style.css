@@ -583,6 +583,9 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-selectVerse,
     .cs-changeChapter { height: 25%;  width: 23%; }
     .cs-footers { left: 21%; }
+    .cs-settingsContainer { height: 86%; width: 22%; }
+    .cs-defaultVersion { height: 60.4%; }
+    .cs-defaultTheme { height: 20.3%; }
 }
 @media (min-width: 1280px) and (min-height: 800px) {
     /*? Based on: @media (min-width: 1280px) and (min-height: 800px) {} */
