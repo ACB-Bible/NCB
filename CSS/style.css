@@ -664,10 +664,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-searchBar { left: 15%; width: 70%; }
     .cs-searchLbl { width: 86%; }
     .cs-gear-fill { right: 5%; margin-top: -3em; }
-    .cs-randomContainer { height: 35%; width: 60%; top: 8%; }
-    .cs-panel-1 { height: 75%; margin-top: 1.8em; width: 90%; padding: 0 2em 0 2em; }
+    .cs-randomContainer { width: 60%; top: 8%; }
     .cs-footers { left: 30%; }
-    .cs-dailyVerse { margin: -1em 0 1.5em 0; }
     .cs-x-circle { right: 0; height: .95em; width: .95em; z-index: 1; }
     .spa { margin-bottom: .3em; }
     .cs-settingsContainer { width: 18%; }
