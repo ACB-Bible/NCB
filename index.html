@@ -144,15 +144,15 @@
     <br><br><br><br>
 
     <div id="id-randomContainer" class="cs-randomContainer">
-        <label id="id-randomLbl" class="cs-panelLbl cs-rand" data-search="0">
-            <span id="id-randomLbl1">Three Random Verses</span>
+        <label id="id-randomLbl" class="cs-randomLbl cs-random" data-search="0">
+            Three Random Verses
         </label>
         <br>
-        <div id="id-panelP1" class="cs-panelP1">
+        <div id="id-panel-1" class="cs-panel-1">
             <br>
             <span id="id-dailyVerse" class="cs-dailyVerse"></span>
             <span id="id-dailyVerseText"></span>
-            <div id="id-readChapter" class="cs-sidePanelSelect cs-cp-hover cs-read" onclick="readChapter()">
+            <div id="id-readChapter" class="cs-cp-hover cs-read" onclick="readChapter()">
                 Read the Whole Chapter
             </div>
         </div>
@@ -162,8 +162,7 @@
 
     <div id="id-settingsContainer" class="cs-settingsContainer">
 
-        <label id="id-settingsLbl" class="cs-panelLbl cs-settings" data-search="0">
-            <span id="id-settingsLbl1">Settings</span>
+        <label id="id-settingsLbl" class="cs-settingsLbl cs-settings" data-search="0">Settings
             <svg fill="currentColor" class="cs-cp-hover cs-x-circle1" onclick="settings()" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                 <path
@@ -171,20 +170,19 @@
             </svg>
         </label>
 
-        <div id="id-panelP2" class="cs-panelP2">
-            <div class="cs-sidePanelSelect cs-sidePanelStorage">
-                The default settings must use local storage on your machine. If you don't want to store them locally,
-                then don't set them.
+        <div id="id-panel-2" class="cs-panel-2">
+            <div class="cs-sidePanelStorage">
+                The default settings must use local storage on your machine. If you don't want to store them locally, then don't set them.
             </div>
 
-            <div class="cs-sidePanelSelect cs-cp-hover cs-defaultVersionHeader" onclick="openDefaultVersion()">
+            <div class="cs-cp-hover cs-defaultVersionHeader" onclick="openDefaultVersion()">
                 <span id="id-defaultVersionPointer" class="cs-pointer-menu">▼</span> Version:
                 <span id="id-defaultVersionSpan" class="cs-moveLeft12">TWF</span>
             </div>
             <div id="id-defaultVersion" class="cs-selector cs-defaultVersion">
             </div>
 
-            <div class="cs-sidePanelSelect cs-cp-hover cs-defaultThemeHeader" onclick="openDefaultTheme()">
+            <div class="cs-cp-hover cs-defaultThemeHeader" onclick="openDefaultTheme()">
                 <span id="id-defaultThemePointer" class="cs-pointer-menu">▼</span> Theme:
                 <span id="id-defaultThemeSpan" class="cs-moveLeft12">Light</span>
             </div>

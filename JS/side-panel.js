@@ -36,12 +36,8 @@ async function readChapter() {
             let sp = 'id-SP';
             let pID = `${sp}${vn}`;
             let pID2 = `${pID}-2`;
-            if (vn < 4) {
-                scrll = 'top';
-            }else {
-                scrll = `${sp}${vn - 4}`;
-            };
-
+            
+            scrll = `${sp}${vn}`;
             eMenu.dataset.vid = pID;
             eMenu.dataset.vids = 1;
             let eParagraph = document.getElementById(pID);
@@ -61,11 +57,11 @@ async function readChapter() {
                 i++;
                 vn++;
             };
-            eParagraph.scrollIntoView({ block: 'center' });
+            //eParagraph.scrollIntoView({ block: 'center' });
         };
     };
     loadChapters();
-    document.getElementById(scrll).scrollIntoView(true);
+    document.getElementById(scrll).scrollIntoView({block: 'center'});
 };
 
 function openDefaultVersion() {
