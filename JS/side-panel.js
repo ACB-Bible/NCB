@@ -19,7 +19,7 @@ async function readChapter() {
     eMenu.dataset.cn = eRandom.dataset.cn;
 
     eRandom.dataset.search = 1;
-    res = await changeBook();
+    res = await changeBook(bid);
     eRandom.dataset.search = 0;
 
     let i = book.findIndex(books => books.id === bid);
@@ -36,7 +36,7 @@ async function readChapter() {
             let sp = 'id-SP';
             let pID = `${sp}${vn}`;
             let pID2 = `${pID}-2`;
-            
+
             scrll = `${sp}${vn}`;
             eMenu.dataset.vid = pID;
             eMenu.dataset.vids = 1;
@@ -203,10 +203,12 @@ function ncbClose() {
 function openSettings() {
     if (settingsOpen) {
         ncbClose();
+        document.getElementById('id-settingsScreen').style.display = 'none';
         document.getElementById('id-settingsContainer').style.display = 'none';
         settingsOpen = false;
     } else {
         ncbClose();
+        document.getElementById('id-settingsScreen').style.display = 'block';
         document.getElementById('id-settingsContainer').style.display = 'block';
         settingsOpen = true;
     };
@@ -219,59 +221,3 @@ function settings() {
     this.event.stopImmediatePropagation();
     openSettings();
 }
-function openSearch(search = true) {
-
-    this.event.preventDefault();
-    this.event.stopImmediatePropagation();
-    this.event.stopPropagation();
-
-    if (searchOpen) {
-
-        if (document.getElementById('id-searchLbl').textContent !== 'Search ...') {
-            if (search === true) {
-                var test = document.getElementById('id-searchLbl').textContent;
-                alert(`Search:  ${test}`);
-            };
-        };
-        document.getElementById('id-title').style.display = 'block';
-        document.getElementById('id-searchBar').style.display = 'none';
-        document.getElementById('id-searchLbl').textContent = '';
-        // do search here
-        searchOpen = false;
-        searchKey = false;
-        ncbClose();
-    } else {
-        ncbClose();
-        document.getElementById('id-title').style.display = 'none';
-        document.getElementById('id-searchBar').style.display = 'flex';
-        document.getElementById('id-searchLbl').style.opacity = '.7';
-        document.getElementById('id-searchLbl').textContent = 'Search ...';
-        document.getElementById('id-searchLbl').focus();
-        searchOpen = true;
-    };
-};
-
-function searchLbl() {
-    this.event.preventDefault();
-    this.event.stopImmediatePropagation();
-    this.event.stopPropagation();
-
-    if (document.getElementById('id-searchLbl').textContent === 'Search ...' && !searchKey) { document.getElementById('id-searchLbl').textContent = ''; };
-    document.getElementById('id-searchLbl').style.opacity = '1';
-}
-
-var input = document.getElementById('id-searchLbl');
-input.addEventListener('keydown', (event) => {
-
-    if (input.textContent === 'Search ...' && !searchKey) { input.textContent = ''; };
-    input.style.opacity = '1';
-    searchKey = true;
-    if (event.key === 'Enter' && input.textContent === '') {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        event.stopPropagation();
-        openSearch(false);
-    } else if (event.key === 'Enter') {
-      openSearch();
-    };
-});

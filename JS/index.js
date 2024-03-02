@@ -4,7 +4,7 @@ window.onload = async () => {
 
     document.getElementById("id-intro").textContent = "New Christian Bible";
     mainPath = document.getElementById("id-base").href;
-    if (sidePanelLoaded) { startup(); };
+    if (sidePanelLoaded) { inTheBeginning(); };
 };
 
 var slider = document.getElementById('id-range');
@@ -20,7 +20,7 @@ slider.oninput = function() {
 };
 // #endregion Events
 
-async function startup() {
+async function inTheBeginning() {
     let res = false;
     res = await loadVersions();
 
@@ -32,7 +32,7 @@ async function startup() {
     if (res) { loadVerses() };
     if (res) { changeVersion(versionid) };
     if (res) { applyDefaultFont() };
-
+    if (res) { menuHTML = document.getElementById('id-mainText').innerHTML; };
 };
 
 async function applyDefaultFont() {
@@ -211,14 +211,15 @@ async function loadBooks() {
     return Promise.resolve(true);
 };
 
-async function loadChapters() {
+async function loadChapters(theMenu = null) {
 
     let i = 1;
     let x = 0;
     let newLine = 1;
     let chapterIndx = 0;
+    let eMenu;
     let eChapter = document.getElementById(`id-changeChapter`);
-    let eMenu = document.getElementById('id-menu');
+    if (!theMenu) { eMenu = document.getElementById('id-menu'); } else { eMenu = theMenu };
     let count = Number(eMenu.dataset.chapters);
 
     removeItems(`id-changeChapter`);
@@ -255,13 +256,14 @@ async function loadChapters() {
     return Promise.resolve(true);
 };
 
-async function loadVerses() {
+async function loadVerses(theMenu = null) {
 
     let i = 1;
     let x = 0;
     let newLine = 1;
     let verseIndx = 0;
-    let eMenu = document.getElementById('id-menu');
+    let eMenu;
+    if (!theMenu) { eMenu = document.getElementById('id-menu'); } else { eMenu = theMenu };
     let count = Number(eMenu.dataset.verses);
 
     removeItems(`id-selectVerse`);
@@ -303,11 +305,12 @@ async function loadAVersion(id) {
     let eMenu = document.getElementById('id-menu');
     let eVersion = document.getElementById(id);
     let loaded = Number(eVersion.dataset.loaded);
+    searchVersionidx = eVersion.dataset.version;
 
     if (!loaded) {
         res = await ncbFetch(eVersion.dataset.version);
         let i = Number(eMenu.dataset.idx);
-        if (!startup) { eMenu.dataset.idx = i+ 1 };
+        if (!startup) { eMenu.dataset.idx = i + 1; };
         eVersion.dataset.versionidx = eMenu.dataset.idx;
         eVersion.dataset.loaded = 1;
     } else {
@@ -345,9 +348,10 @@ async function ncbFetch(version) {
     return Promise.resolve(true);
 };
 
-async function loadText() {
+async function loadText(theMenu = null) {
 
-    let eMenu = document.getElementById('id-menu');
+    let eMenu;
+    if (!theMenu) { eMenu = document.getElementById('id-menu'); } else { eMenu = theMenu };
     let bid = Number(eMenu.dataset.bid);
     let cn = Number(eMenu.dataset.cn);
     let idx = Number(eMenu.dataset.versionidx);
@@ -413,6 +417,7 @@ async function loadText() {
         if (i === lngth) { eMenu.dataset.verses = 21; return Promise.resolve(true); };
     };
     eMenu.dataset.verses = x;
+
     return Promise.resolve(true);
 };
 

@@ -18,7 +18,7 @@ function openVersion() {
 async function changeVersion(vid) {
     let id;
     let res = false;
-    if (!vid) { id = this.event.target.id; }
+    if (!vid) { id = this.event.target.id;}
     else { id = `id-changeVersion${vid}`; };
 
     let i = 0;
@@ -33,11 +33,13 @@ async function changeVersion(vid) {
     let eMenu = document.getElementById('id-menu');
     let avid = eMenu.dataset.vid;
     let vn = Number(eMenu.dataset.vn);
-    let content1 = document.getElementById(`id-chp${eMenu.dataset.cn}`).textContent;
+    //let content1 = document.getElementById(`id-chp${eMenu.dataset.cn}`).textContent;
     let eParagraph;
     let eParagraph2;
     let eParagraph3;
 
+    ncbClose();
+    if (!startup) { pushPage(); };
     if (version === 'AKJ' || version === 'ASV' || version === 'TWF') { content += ' Version' };
     document.getElementById('id-versionText').textContent = version;
     document.getElementById('id-textTitle1').textContent = content;
@@ -45,7 +47,7 @@ async function changeVersion(vid) {
 
     res = await loadAVersion(id);
 
-    ncbClose();
+    //ncbClose();
     if (res) {
         if ( eMenu.dataset.vid  !== '' ) {
             if ( eMenu.dataset.vids === '0') {
@@ -86,7 +88,6 @@ async function changeVersion(vid) {
             let eRandom = document.getElementById('id-randomLbl');
             let x = 0;
             let bid = Number(eRandom.dataset.bid);
-            //bid = Number(bid);
             let cn = eRandom.dataset.cn;
             cn = Number(cn);
             let vn = eMenu.dataset.vn
@@ -107,13 +108,15 @@ async function changeVersion(vid) {
         };
     };
     };
-    startup = false;
     displayPrevious();
+    //if (startup) { pushPage(); };
+    startup = false;
     return Promise.resolve(true);
 };
 
-function displayPrevious() {
-    let eMenu = document.getElementById('id-menu');
+function displayPrevious(theMenu = null) {
+    let eMenu;
+    if (!theMenu) { eMenu = document.getElementById('id-menu'); } else { eMenu = theMenu };
     if (eMenu.dataset.bid === '1' && eMenu.dataset.cn === '1') {
         document.getElementById('id-last').style.display = 'none';
     } else if (eMenu.dataset.bid === '66' && eMenu.dataset.cn === '22') {
@@ -149,7 +152,8 @@ function openBook() {
         bookOpen = true;
     };
 };
-async function changeBook(bid) {
+
+async function changeBook(bid = null) {
 
     let id;
     if (!bid) { id = this.event.target.id; }
@@ -158,6 +162,9 @@ async function changeBook(bid) {
     let eMenu = document.getElementById('id-menu');
     let eRandom = document.getElementById('id-randomLbl');
     let content;
+
+    ncbClose();
+    pushPage();
     if (eRandom.dataset.search === '0') {
         if (!bid) {
             eMenu.dataset.cn = 1;
@@ -178,7 +185,7 @@ async function changeBook(bid) {
     loadText();
     loadChapters();
     loadVerses();
-    ncbClose();
+    //ncbClose();
     displayPrevious();
     if (!bid) {
         document.getElementById('id-textTitle2').textContent = `${content} 1`;
@@ -192,7 +199,7 @@ async function changeBook(bid) {
     return Promise.resolve(true);
 };
 
-function nav(nav) {
+function nav(navDirection) {
 
     this.event.stopPropagation();
     this.event.preventDefault();
@@ -201,10 +208,9 @@ function nav(nav) {
     let bid = Number(eMenu.dataset.bid);
     let cn = Number(eMenu.dataset.cn);
     let chapters = Number(eMenu.dataset.chapters);
-    let id;
-    let eBook;
+    let id, eBook;
     // 0 = Last Chapter, 1 = Next Chapter
-    if (nav === 0) {
+    if (navDirection === 0) {
         cn = cn - 1;
         if (cn < 1) { bid = bid - 1; };
     } else {
@@ -217,6 +223,7 @@ function nav(nav) {
     eMenu.dataset.cn = cn;
     eMenu.dataset.bid = eBook.dataset.bid;
     eMenu.dataset.chapters = eBook.dataset.c;
+
     changeBook(bid);
     document.getElementById('id-bookText').textContent = eBook.textContent;
     document.getElementById('id-textTitle2').textContent = `${eBook.textContent} ${eMenu.dataset.cn}`;
@@ -270,6 +277,8 @@ function changeChapter() {
     let eMenu = document.getElementById('id-menu');
     let eBook = document.getElementById('id-bookText');
 
+    ncbClose();
+    pushPage();
     eMenu.dataset.cn = eChapter.dataset.cn
     document.getElementById('id-textTitle2').textContent = `${eBook.textContent} ${eChapter.dataset.cn}`;
     document.getElementById('id-chapterText').textContent = `${eChapter.dataset.cn}`;
@@ -279,7 +288,7 @@ function changeChapter() {
     loadText();
     loadChapters();
     loadVerses();
-    ncbClose();
+    //ncbClose();
     displayPrevious();
 };
 
@@ -441,8 +450,11 @@ async function page() {
     let id = this.event.target.id;
     let html = '';
 
-    switch (id) {
+    document.getElementById('id-randomContainer').style.display = 'none';
+    let eMenu = document.getElementById('id-menu');
+    if (eMenu) { searchVersesidx = Number(eMenu.dataset.versionidx); };
 
+    switch (id) {
         case 'id-footer1':
             sharePage()
             return;
@@ -452,7 +464,6 @@ async function page() {
                 aboutHTML = await fetchCode(url);
             };
             html = aboutHTML;
-            aboutClicks++;
             break;
         case 'id-footer3':
             if (missionHTML === '') {
@@ -460,7 +471,6 @@ async function page() {
                 missionHTML = await fetchCode(url);
             };
             html = missionHTML;
-            missionClicks++;
             break;
         case 'id-footer4':
             if (statementHTML === '') {
@@ -468,7 +478,6 @@ async function page() {
                 statementHTML = await fetchCode(url);
             };
             html = statementHTML;
-            statementClicks++;
             break;
         case 'id-footer5':
             if (movieHTML === '') {
@@ -476,7 +485,6 @@ async function page() {
                 movieHTML = await fetchCode(url);
             };
             html = movieHTML;
-            movieClicks++;
             break;
         case 'id-footer6':
             if (musicHTML === '') {
@@ -484,7 +492,6 @@ async function page() {
                 musicHTML = await fetchCode(url);
             };
             html = musicHTML;
-            musicClicks++;
             break;
         case 'id-footer7':
             if (showHTML === '') {
@@ -492,7 +499,6 @@ async function page() {
                 showHTML = await fetchCode(url);
             };
             html = showHTML;
-            showClicks++;
             break;
         case 'id-footer8':
             if (testimonialHTML === '') {
@@ -500,7 +506,6 @@ async function page() {
                 testimonialHTML = await fetchCode(url);
             };
             html = testimonialHTML;
-            testimonialClicks++;
             break;
         case 'id-footer9':
             if (ministryHTML === '') {
@@ -508,17 +513,34 @@ async function page() {
                 ministryHTML = await fetchCode(url);
             };
             html = ministryHTML;
-            ministryClicks++;
+            break;
+        case 'id-searchImg':
+            if (searchHTML === '') {
+                let url = `${mainPath}/ASSETS/search.txt`;
+                searchHTML = await fetchCode(url);
+            };
+            html = searchHTML;
+            searchVerses = allVerses[searchVersesidx];
             break;
         default:
             break;
     };
-    pushPage(html);
+    pushPage();
+    changePage(html);
     closeFooter();
-    if(settingsOpen === true) { openSettings(); };
+    if (id === 'id-searchImg') {
+        footerOpen = false;
+        document.getElementById('id-footer').style.display = 'none';
+        document.getElementById('id-localSearch').focus();
+        //if (firstSearch) { addSearchEvents(); };
+        addSearchEvents();
+    } else {
+        if(settingsOpen === true) { openSettings(); };
+    };
 };
 
 function changePage(html) {
+
     removeItems('id-mainText');
     document.getElementById('id-mainText').insertAdjacentHTML("afterbegin", html);
     if (theFont === 0) {
@@ -528,17 +550,14 @@ function changePage(html) {
     };
 };
 
-function pushPage(html) {
+function pushPage() {
 
-    state.innerHTML.push(document.getElementById('id-mainText').innerHTML);
-    state.variablesHTML.push(document.getElementById('id-variableScript').innerHTML);
-    window.history.pushState(state, null, null);
-    changePage(html);
+    stateObject.innerHTML.push(document.getElementById('id-mainText').innerHTML);
+    stateObject.variablesHTML.push(document.getElementById('id-variableScript').innerHTML);
+    window.history.pushState(stateObject, null, null);
     document.getElementById('top').scrollIntoView(true);
     aClick++;
 };
-
-
 
 function navBack(){
     this.event.stopPropagation();
@@ -547,18 +566,17 @@ function navBack(){
     window.history.back();
 }
 
-window.addEventListener('popstate', function(event) {
-
-    event.stopPropagation();
-    event.preventDefault();
-    event.stopImmediatePropagation();
+window.addEventListener('popstate', (event) => {
 
     if (aClick > 0) {
+
         removeItems('id-mainText');
         removeItems('id-variableScript');
         aClick--;
-        document.getElementById('id-mainText').insertAdjacentHTML("afterbegin", state.innerHTML[aClick]);
-        document.getElementById('id-variableScript').insertAdjacentHTML("afterbegin", state.variablesHTML[aClick]);
+        document.getElementById('id-mainText').insertAdjacentHTML("afterbegin", stateObject.innerHTML[aClick]);
+        document.getElementById('id-variableScript').insertAdjacentHTML("afterbegin", stateObject.variablesHTML[aClick]);
+        stateObject.innerHTML.pop();
+        stateObject.variablesHTML.pop();
 
         if (document.getElementById('id-chapterPage')) {
             if (theFont === 0) {
@@ -574,17 +592,9 @@ window.addEventListener('popstate', function(event) {
                 document.getElementById('id-page').style.fontSize = theFont;
             };
         };
-
-        shareClicks = 0;
-        aboutClicks = 0;
-        missionClicks = 0;
-        statementClicks = 0;
-        mediaClicks = 0;
         document.getElementById('top').scrollIntoView(true);
-        //** How to remove a pushState array */
-        //state.innerHTML.splice(aClick, 1);
-        //state.variablesHTML.splice(aClick, 1);
     };
+if (document.getElementById('id-searchPage')) { addSearchEvents(); search(); };
+if (aClick === 0)  document.getElementById('id-randomContainer').style.display = 'block';
 });
-//eMenu.dataset.vid = pID2.slice(0, -2);
 // #endregion Scripts for media.txt, about.txt, mission.txt, statement.txt

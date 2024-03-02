@@ -13,62 +13,71 @@
 
     <link async href="CSS/style.css" rel="stylesheet" type="text/css">
     <link defer href="CSS/hover.css" rel="stylesheet" type="text/css">
-    <script id="id-variableScript">
-        /** The id-variableScript element contains all the global variables and loads before all other Javascript links ----- Do not change the mainPath variable url unless the host location changes **/
 
-        var mainPath = "";
+    <script id="id-variableScript">
+        // This script contains global variables that load before all other Javascript links.
+
+        var holdWindow = '';
+        var openID = false;
         var startup = true;
         var spanHover = true;
-        var openID = false;
-        var allVerses = [];
-        var holdWindow = '';
+        var theFont = 0;
+
+        var mainPath = "";  // Contains the main path to all the externat page links, Don't change its value unless the host location changes
+        var allVerses = []; // Array of verse arrays for each Bible version, loaded as each version is fetched
+
         var theme = Number(localStorage.getItem("theme"));
         var versionid = Number(localStorage.getItem("versionid"));
         if (!theme) { theme = 1 };
         if (!versionid) { versionid = 1; };
 
-        const state = { innerHTML: [], variablesHTML: [] };
-        var aClick = 0;
-        var aboutClicks = 0;
-        var ministryClicks = 0;
-        var missionClicks = 0;
-        var movieClicks = 0;
-        var musicClicks = 0;
-        var shareClicks = 0;
-        var showClicks = 0;
-        var statementClicks = 0;
-        var testimonialClicks = 0;
+        // #region Variables the control the opening and closing of dropdown boxes
+            var opened = true;
+            var footerOpen = false;
+            var versionOpen = false;
+            var bookOpen = false;
+            var chapterOpen = false;
+            var verseOpen = false;
+            var defaultVersionOpen = false;
+            var defaultThemeOpen = false;
+            var settingsOpen = false;
+            var listOpen = false;
+        // #endregion Variables the control the opening and closing of dropdown boxes
+    </script>
 
+    <script id="id-pageScript">
+        // Global variables for the page() function
+        var stateObject = { innerHTML: [], variablesHTML: [] };// stateObject is used by the window.history to keep track of navigating between the single page application(SPA)
+        var aClick = 0; // aClick stores the current index of the stateObject arrays
         var aboutHTML = '';
+        var menuHTML = '';
         var ministryHTML = '';
         var missionHTML = '';
         var movieHTML = '';
         var musicHTML = '';
+        var searchHTML = '';
         var shareHTML = '';
         var showHTML = '';
         var statementHTML = '';
         var testimonialHTML = '';
         var variablesHTML = '';
+    </script>
 
-        var opened = true;
-        var footerOpen = false;
-        var versionOpen = false;
-        var bookOpen = false;
-        var chapterOpen = false;
-        var verseOpen = false;
-        var defaultVersionOpen = false;
-        var defaultThemeOpen = false;
-        var searchOpen = false;
-        var settingsOpen = false;
-        var listOpen = false;
-        var searchKey = false;
-        var theFont = 0;
+    <script id="id-searchScript">
+        // Script contains global variables for elasticlunr search.js file
+        var firstSearch = true; // True when the elasticlunr index has not been built the first time
+        var searchIndex;    // Contains the elasticlunr index object
+        var searchVerses;   // Contains the array of verses to be indexed by elasticlunr
+        var searchVersesidx = 0; // Contains the active index for searchVerses array
+        var searchVersionidx = ''; // Contains the Bible version to be indexed by elasticlunr
 
     </script>
 
     <script async src="JS/variables.js" type="text/javascript"></script>
     <script async src="JS/side-panel.js" type="text/javascript"></script>
     <script async src="JS/index.js" type="text/javascript"></script>
+    <script defer src="JS/elasticlunr.js" type="text/javascript"></script>
+    <script defer src="JS/search.js" type="text/javascript"></script>
     <script defer src="JS/navigate.js" type="text/javascript"></script>
 
     <link href="./IMAGES/FAVICONS/favicon16.png" rel="icon" type="image/png" sizes="16x16">
@@ -82,15 +91,7 @@
 
     <div id="id-header" class="cs-header">
         <h1 id="id-title" class="cs-title">New Christian Bible</h1>
-        <div id="id-searchBar" class="cs-searchBar" type="text">
-            <div id="id-searchLbl" onclick="searchLbl()" class="cs-searchLbl" contenteditable="true" spellcheck="true" title="Search is not working yet, but it will someday !"></div>
-            <svg fill="currentColor" class="cs-cp-hover cs-x-circle" onclick="openSearch(false)" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-            </svg>
-        </div>
-        <svg id="id-searchImg" class="cs-cp-hover cs-searchImg" onclick="openSearch()" title="Search"
+        <svg id="id-searchImg" class="cs-cp-hover cs-searchImg" onclick="page()" title="Search"
             fill="currentColor" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
         </svg>
     </div>
@@ -163,10 +164,8 @@
     <div id="id-settingsContainer" class="cs-settingsContainer">
 
         <label id="id-settingsLbl" class="cs-settingsLbl cs-settings" data-search="0">Settings
-            <svg fill="currentColor" class="cs-cp-hover cs-x-circle1" onclick="settings()" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+            <svg fill="currentColor" class="cs-cp-hover cs-x-circle1" onclick="settings()" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
             </svg>
         </label>
 
@@ -199,7 +198,7 @@
                 <label id="id-saveDefaultFont" class="cs-saveDefaultFont cs-cp-hover"
                     onclick="saveDefaultFont()">Save</label>
                 <div id="id-slider" class="sidePanelSlideContainer">
-                    <input id="id-range" type="range" min="36" max="180" value="100" style="width: 100%;--SliderColor: hsl(35%, 100%, 50%);">
+                    <input id="id-range" type="range" min="36" max="180" value="100" style="width: 100%;">
                 </div>
             </div>
             <div id="id-reset" class="cs-sidePanelSelect cs-cp-hover cs-reset" onclick="settingsReset()"
