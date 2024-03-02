@@ -203,12 +203,10 @@ function ncbClose() {
 function openSettings() {
     if (settingsOpen) {
         ncbClose();
-        document.getElementById('id-settingsScreen').style.display = 'none';
         document.getElementById('id-settingsContainer').style.display = 'none';
         settingsOpen = false;
     } else {
         ncbClose();
-        document.getElementById('id-settingsScreen').style.display = 'block';
         document.getElementById('id-settingsContainer').style.display = 'block';
         settingsOpen = true;
     };

@@ -44,7 +44,7 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 
 .cs-randomContainer,
 .cs-settingsContainer { position: relative; top: 3%; width: 100%; overflow: hidden; background-color: #cbcaca; font-size: 1.1rem; }
-.cs-settingsContainer { position: fixed; top: 12%; height: 100%; opacity: 1; z-index: 1; }
+.cs-settingsContainer { display: none; position: fixed; top: 12%; height: 100%; opacity: 1; z-index: 1; }
 
 .cs-panel-1,
 .cs-panel-2 { width: 70%; margin: auto; padding: 0 .8em .6em .8em; text-align: justify; word-break: keep-all; overflow: hidden; overflow-y: auto; background-color: #dfdcdc; -ms-overflow-style: none; /* Hide scrollbar IE and Edge */ scrollbar-width: none; }
