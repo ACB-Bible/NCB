@@ -159,15 +159,14 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
         .atc { width: max-content; color: #0b49cf; text-decoration: underline; }
         .olist { display: none; }
         .spa { display: block; width: max-content; color: #b74c4c; font-weight: 500; margin-bottom: -.6em; }
-        .cs-midPage { margin-top: -1em; }
-        .cs-arrowLeftShort { margin-top: -1em; height: 1.8rem; width: 1.8rem; padding: .2em; border-radius: 50%; }
+        .cs-midPage { margin-top: 4em; }
+        .cs-adjustSearch { margin-top: -1em; }
         .cs-searchLink { display: block; width: max-content; color: #0b49cf; font-weight: 500; margin-bottom: -.6em; text-decoration: underline; }
         .loadResults { width: 100%; }
         .cs-moreResults { display: none; width: max-content; color: #b74c4c;  width: 50%; margin: auto; text-align: center;font-size: 1.2rem; text-decoration: underline; }
         .cs-searchTitle { width: 90%; margin: auto; text-align: center; }
         .cs-caseSensative { font-size: 1rem; font-weight: 400; }
         .cs-searchContainer { display: flex; }
-        .cs-searchArrow { height: 1.8rem; width: 1.8rem; padding: .2em; border-radius: 50%; }
         .cs-localSearch { background-color: gray; color: white; height: 8%; width: 80%; cursor: text; line-height: 2.8rem; font-size: 1.5rem; padding-left: 1em; margin: auto; word-break: keep-all; white-space: nowrap; overflow: hidden; z-index: 1; }
 
         .cs-searchBtn { display: block; text-align: center; width: max-content; border: 2px solid #6f6f6f; border-radius: 8px; line-height: 2.2rem; padding: 0 1em 0 1em; font-size: 1.1rem; margin: auto; user-select: none; background-color: red; color: white; overflow: hidden; }
@@ -536,7 +535,6 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .sidePanelSlideContainer { margin: 1.5em auto 0 auto; width: 100%; }
     .cs-gear-fill { height: 1.9rem; width: 1.9rem;  }
     .cs-page { margin-top: 1.5em; }
-    .cs-arrowLeftShort { margin-top: 1em; height: 1.9rem; width: 1.9rem; }
     .cs-midPage { margin-top: 1em; }
 
 }

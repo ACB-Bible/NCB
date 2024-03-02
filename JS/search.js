@@ -105,6 +105,10 @@
         firstSearch = false;
         document.getElementById('id-localSearch').focus();
 
+        if (i < 30) {
+            resultsLabel('No Results!');
+            return;
+        };
         topLink();
         document.getElementById('id-moreResults').style.display = 'block';
     };
@@ -296,7 +300,7 @@
             resultsLabel('No More Results!');
             document.getElementById('id-moreResults').style.display = 'none';
         };
-        topLink();
+        if (i <= stored.length) { topLink(); };
         document.getElementById('id-localSearch').focus();
         //alert('More Results Test')
     };

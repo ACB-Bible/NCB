@@ -13,9 +13,7 @@
 .cs-theme:hover,
 .cs-version:hover,
 .cs-toSelect:hover,
-.cs-innerBook:hover,
-.cs-searchArrow:hover,
-.cs-arrowLeftShort:hover { background-color: #dfdcdc; }
+.cs-innerBook:hover { background-color: #dfdcdc; }
 
 .cs-sort:hover,
 .cs-x-circle:hover,
