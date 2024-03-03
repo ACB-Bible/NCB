@@ -18,7 +18,7 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 .cs-mainTextDark { background-color: #333333; color: #cccccc; }
 
 .cs-menu { display: flex; align-items: center;  position: relative; left: 0; top: 0; height: 2.8rem; width: 100%; background-color: #c3c3c3; color: whitesmoke; user-select: none; }
-.cs-menuSelect { display: flex; align-items: center; position: relative;  color: #010154; font: 1.15rem Arial, Helvetica, sans-serif;}
+.cs-menuSelect { display: flex; align-items: center; position: relative;  color: #010154; font: 1.15rem Arial, Helvetica, sans-serif; background-color: inherit; border: none; }
 .cs-menu1 { left: 4%;}
 .cs-menu2 { left: 10%; }
 .cs-menu3 { left: 15%; }
@@ -121,27 +121,30 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 .cs-sidePanelStorage,
 .cs-defaultVersionHeader,
 .cs-defaultThemeHeader,
-.cs-reset { display: flex; align-items: center; justify-content: center; margin: auto; background-color: #005991; color: white; user-select: none; }
+.cs-reset { display: flex; align-items: center; border: none; justify-content: center; margin: auto; background-color: #005991; color: white; user-select: none; }
 
 .cs-sidePanelStorage { margin-top: .8em; background-color: #fafad1; color: #504c4c; border-radius: 6px; text-align: justify; word-break: keep-all; font-size: .95rem; line-height: 1em; padding: .8em; }
 .cs-reset { width: 30%; margin-top: 5em; padding: .4em; user-select: none; }
-.cs-read { width: 90%; padding: .4em; margin-bottom: 1.5em; }
+.cs-read { width: 90%; padding: .8em; margin-bottom: 1.5em; }
 
 .cs-defaultVersionHeader,
-.cs-defaultThemeHeader { position: relative; top: 3%; height: 8%; width: 88%; padding-left: .6em; margin: auto; }
+.cs-defaultThemeHeader { position: relative; top: 3%; height: 8%; width: 95.4%; padding-left: .6em; margin: auto; }
 .cs-defaultThemeHeader { top: 5%; }
 
 .cs-defaultVersion,
-.cs-defaultTheme {position: relative; width: 93.4%; margin: auto; border: 1px solid #bcbaba; border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
-.cs-defaultVersion { top: 3.1%; height: 63.4%; }
+.cs-defaultTheme {position: relative; width: 93.4%; margin: auto; border: 1px solid #bcbaba; border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 9px; }
+.cs-defaultVersion { top: 3.2%; height: 63.4%; }
 .cs-defaultTheme { top: 5.1%; height: 15.6%; }
 
 .cs-version,
 .cs-theme { padding: .52em; border-bottom: 1px solid #dfdcdc; }
 
-.cs-openFooter { position: fixed; left: 0; top: 81%; font-size: .6rem; line-height: 2.3rem; text-align: center; height: 2.3rem; width: 2.3rem; background-color: #c1d1f2; border-top-right-radius: 6px; border-bottom-right-radius: 6px; user-select: none; z-index: 1; }
+.cs-toTop { position: fixed; right: 0; top: 81%; font-size: 2.2em; line-height: 2rem; height: 2.3rem; width: 2.3rem; background-color: #c1d1f2; color: #565555; border-top-left-radius: 6px; border-bottom-left-radius: 6px; user-select: none; z-index: 1;text-align: center; text-decoration: none;}
+
+.cs-openFooter { position: fixed; left: 0; top: 81%;  font-size: .6rem; line-height: 2.3rem; height: 2.3rem; width: 2.3rem; background-color: #c1d1f2; color: #565555; border-top-right-radius: 6px; border-bottom-right-radius: 6px; user-select: none; z-index: 1; text-align: center; }
+
 .cs-footer { display: none; position: fixed; left: 0; bottom: 0; height: 50%; width: 100%; background-color: #232e4c; border-top: 10px solid #6f6f6f; font-size: 1.1rem; user-select: none; }
-.cs-footers { display: flex; flex-wrap: wrap; position: relative; left: 12%; top: 8%; padding: 0 4em 0 0; color: silver; user-select: none; }
+.cs-footers { display: flex; flex-wrap: wrap; position: relative;  left: 18%; top: 8%; padding: 0 4em 0 0; color: silver; user-select: none; }
 .cs-footers1 { padding: .5em 1em 0 0; text-align: justify; word-break: keep-all; white-space: nowrap; user-select: none; }
 
 .cs-copy { position: absolute; width: 100%; bottom: 5%; text-align: center; font-size: .9rem; color: silver; }
@@ -153,13 +156,17 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 
 /** #region Styles for the footer pages in the ASSETS folder */
     .cs-page {
-        margin: 2.5em auto 0 auto;
+        display: block;
+        margin: 2.2em auto 0 auto;
         width: 88%;
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif, "Apple Color Emoji","Segoe UI Emoji";
         .atc { width: max-content; color: #0b49cf; text-decoration: underline; }
         .olist { display: none; }
         .spa { display: block; width: max-content; color: #b74c4c; font-weight: 500; margin-bottom: -.6em; }
-        .cs-midPage { margin-top: 4em; }
+        .cs-midPage { margin-top: -1.4em; }
+        .cs-leftArrow,
+        .cs-searchArrow { height: 1.8rem; width: 1.8rem; padding: .2em; border-radius: 50%; }
+        .cs-leftArrow { margin-top: -1em; }
         .cs-adjustSearch { margin-top: -1em; }
         .cs-searchLink { display: block; width: max-content; color: #0b49cf; font-weight: 500; margin-bottom: -.6em; text-decoration: underline; }
         .loadResults { width: 100%; }
@@ -495,7 +502,7 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-panel-1 { width: 90%; }
     .cs-panel-2 { width: 80%; }
     .cs-dailyVerse { margin: .5em 0 1.5em 0; }
-    .cs-read { height: 7%; width: 25%; }
+    .cs-read { height: 7%; width: 23%; }
     .cs-footer { height: 25%; }
     .cs-settingsContainer { top: 55%; width: 29%; height: 80%; }
     .cs-defaultThemeHeader,
@@ -534,9 +541,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-defaultTheme { top: 5.1%; height: 18.3%; }
     .sidePanelSlideContainer { margin: 1.5em auto 0 auto; width: 100%; }
     .cs-gear-fill { height: 1.9rem; width: 1.9rem;  }
-    .cs-page { margin-top: 1.5em; }
+    .cs-page { margin-top: 3em; }
     .cs-midPage { margin-top: 1em; }
-
 }
 /** min-height */
 @media (min-width: 1024px) and (min-height: 1366px) {
@@ -565,8 +571,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 @media (min-width: 1220px) {
     /*? @media (min-width: 1220px) and (min-height: 720px) {} */
     .cs-mainText { width: 75%; }
-    .cs-dropHeader { left: 12.5%; top: 21.3%; height: 5.8%; }
-    .cs-selector { left: 12.5%; top: 27.1%; }
+    .cs-dropHeader { left: 12.5%; top: 23%; height: 7%; }
+    .cs-selector { left: 12.5%; top: 30%; }
     .cs-versionHeader { width: 18.1%; }
     .cs-changeVersion { height: 43.6%; width: 19%; }
     .cs-bookHeader { width: 26.1%; }
@@ -583,18 +589,19 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 
 @media (min-width: 1280px) {
      /*? Based on: @media (min-width: 1280px) and (min-height: 720px) {} */
-    .cs-versionHeader { width: 14.6%; }
-    .cs-changeVersion { width: 15.5%; }
-    .cs-bookHeader { width: 22.1%; }
+    .cs-versionHeader { width: 15.1%; }
+    .cs-changeVersion { width: 15.9%; }
+    .cs-bookHeader { width: 22.3%; }
     .cs-changeBook { width: 23%; }
     .cs-verseHeader,
-    .cs-chapterHeader { width: 22.1%; }
+    .cs-chapterHeader { width: 22.3%; }
     .cs-selectVerse,
-    .cs-changeChapter { height: 25%;  width: 23%; }
+    .cs-changeChapter { height: 25%; width: 23%; }
     .cs-footers { left: 21%; }
-    .cs-settingsContainer { height: 76%; width: 22%; }
+    .cs-settingsContainer { height: 76%; width: 18%; }
     .cs-defaultVersion { height: 60.4%; }
     .cs-defaultTheme { height: 20.3%; }
+
 }
 
 @media (min-width: 1280px) and (min-height: 800px) {
@@ -661,7 +668,6 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
      /*? Based on: @media (min-width: 1912px) and (min-height: 1080px) {} */
     .cs-header{ height: 10%; }
     .cs-mainText { top: 11%; width: 60%; }
-    .cs-midPage { margin-top: 1em; }
     .cs-bookFooter { left: 48%; }
     .cs-top { left: 48%; }
     .cs-dropHeader { left: 20%; top: 15.9%; height: 5.1%; }

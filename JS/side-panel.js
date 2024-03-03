@@ -199,6 +199,8 @@ function ncbClose() {
     document.getElementById('id-defaultTheme').style.display = 'none';
     document.getElementById('id-defaultThemePointer').textContent = '▼';
     document.getElementById('id-footer').style.display = 'none';
+    document.getElementById('id-toTop').style.display = 'block';
+
 };
 function openSettings() {
     if (settingsOpen) {

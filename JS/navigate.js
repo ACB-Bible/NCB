@@ -15,12 +15,12 @@ function openVersion() {
     };
 };
 //Change Version
-async function changeVersion(vid) {
+async function changeVersion(vid = null) {
     let id;
     let res = false;
     if (!vid) { id = this.event.target.id;}
     else { id = `id-changeVersion${vid}`; };
-
+    // Next: Add a query string to the URL
     let i = 0;
     let pID;
     let pID2;
@@ -47,7 +47,6 @@ async function changeVersion(vid) {
 
     res = await loadAVersion(id);
 
-    //ncbClose();
     if (res) {
         if ( eMenu.dataset.vid  !== '' ) {
             if ( eMenu.dataset.vids === '0') {
@@ -404,10 +403,12 @@ function closeFooter() {
         ncbClose();
         footerOpen = false;
         document.getElementById('id-footer').style.display = 'none';
+        document.getElementById('id-toTop').style.display = 'block';
     } else {
         ncbClose();
         footerOpen = true;
         document.getElementById('id-footer').style.display = 'block';
+        document.getElementById('id-toTop').style.display = 'none';
     };
 };
 
@@ -532,6 +533,7 @@ async function page() {
         footerOpen = false;
         document.getElementById('id-footer').style.display = 'none';
         document.getElementById('id-localSearch').focus();
+        document.getElementById('id-toTop').style.display = 'block';
         addSearchEvents();
     } else {
         if(settingsOpen === true) { openSettings(); };
@@ -593,7 +595,7 @@ window.addEventListener('popstate', (event) => {
         };
         document.getElementById('top').scrollIntoView(true);
     };
-if (document.getElementById('id-searchPage')) { addSearchEvents(); search(); };
-if (aClick === 0)  document.getElementById('id-randomContainer').style.display = 'block';
+    if (document.getElementById('id-searchPage')) { addSearchEvents(); search(); };
+    if (aClick === 0)  document.getElementById('id-randomContainer').style.display = 'block';
 });
 // #endregion Scripts for media.txt, about.txt, mission.txt, statement.txt

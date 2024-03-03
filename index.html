@@ -23,13 +23,13 @@
         var spanHover = true;
         var theFont = 0;
 
-        var mainPath = "";  // Contains the main path to all the externat page links, Don't change its value unless the host location changes
-        var allVerses = []; // Array of verse arrays for each Bible version, loaded as each version is fetched
-
+        var mainPath = "";  // mainPath: Contains the main path to all the externat page links, Don't change its value unless the host location changes
+        var allVerses = []; // allVerses: An array that holds all verse arrays for each Bible version, which loaded as each version is fetched
         var theme = Number(localStorage.getItem("theme"));
+        if (!theme) { theme = 1 }; // theme: Contains the theme number. 1 = default theme, 2 = dark theme
+
         var versionid = Number(localStorage.getItem("versionid"));
-        if (!theme) { theme = 1 };
-        if (!versionid) { versionid = 1; };
+        if (!versionid) { versionid = 1; }; // versionid: Contains the value of the id key from the verrsions.json file
 
         // #region Variables the control the opening and closing of dropdown boxes
             var opened = true;
@@ -68,9 +68,8 @@
         var firstSearch = true; // True when the elasticlunr index has not been built the first time
         var searchIndex;    // Contains the elasticlunr index object
         var searchVerses;   // Contains the array of verses to be indexed by elasticlunr
-        var searchVersesidx = 0; // Contains the active index for searchVerses array
-        var searchVersionidx = ''; // Contains the Bible version to be indexed by elasticlunr
-
+        var searchVersesidx = 0; // Contains the active index for the searchVerses array
+        var searchVersionidx = ''; // Contains the Bible version index of the allVerses[] array, to be indexed by elasticlunr
     </script>
 
     <script async src="JS/variables.js" type="text/javascript"></script>
@@ -100,27 +99,27 @@
 
         <div id="id-menu" class="cs-menu" data-bid="1" data-cn="1" data-idx="0" data-chapters="50" data-verses="31" data-vid="" data-vids="">
 
-            <span id="id-version" class="cs-menuSelect cs-menu1 cs-cp-hover" title="Change Version"
+            <button id="id-version" class="cs-menuSelect cs-menu1 cs-cp-hover" title="Change Version"
                 onclick="openVersion()">
                 <span id="id-versionPointer" class="cs-pointer-menu">▼</span>
                 <span id="id-versionText">TWF</span>
-            </span>
+            </button>
 
-            <span id="id-book" class="cs-menuSelect cs-menu2 cs-cp-hover" title="Change Book" onclick="openBook()">
+            <button id="id-book" class="cs-menuSelect cs-menu2 cs-cp-hover" title="Change Book" onclick="openBook()">
                 <span id="id-bookPointer" class="cs-pointer-menu">▼</span>
                 <span id="id-bookText">Genesis</span>
-            </span>
+            </button>
 
-            <span id="id-chapter" class="cs-menuSelect cs-menu3 cs-cp-hover" title="Change Chapter"
+            <button id="id-chapter" class="cs-menuSelect cs-menu3 cs-cp-hover" title="Change Chapter"
                 onclick="openChapter()">
                 <span id="id-chapterPointer" class="cs-pointer-menu">▼</span>
                 <span id="id-chapterText">1</span>
-            </span>
+            </button>
 
-            <span id="id-verse" class="cs-menuSelect cs-menu4 cs-cp-hover" title="Select a Verse" onclick="openVerse()">
+            <button id="id-verse" class="cs-menuSelect cs-menu4 cs-cp-hover" title="Select a Verse" onclick="openVerse()">
                 <span id="id-versePointer" class="cs-pointer-menu">▼</span>
                 <span id="id-verseText">1</span>
-            </span>
+            </button>
 
         </div>
 
@@ -140,7 +139,7 @@
             <div id="id-next" class="cs-navNext cs-cp-hover" title="Next Chapter" onclick="nav(1)">Next ►</div>
         </div>
         <br>
-        <a href="#top" class="cs-top">Back to Top</a>
+        <!--<a href="#top" class="cs-top">Back to Top</a>-->
     </div>
     <br><br><br><br>
 
@@ -153,9 +152,9 @@
             <br>
             <span id="id-dailyVerse" class="cs-dailyVerse"></span>
             <span id="id-dailyVerseText"></span>
-            <div id="id-readChapter" class="cs-cp-hover cs-read" onclick="readChapter()">
+            <button id="id-readChapter" class="cs-cp-hover cs-read" onclick="readChapter()">
                 Read the Whole Chapter
-            </div>
+            </button>
         </div>
         <br><br>
     </div>
@@ -174,17 +173,17 @@
                 The default settings must use local storage on your machine. If you don't want to store them locally, then don't set them.
             </div>
 
-            <div class="cs-cp-hover cs-defaultVersionHeader" onclick="openDefaultVersion()">
+            <button class="cs-cp-hover cs-defaultVersionHeader" onclick="openDefaultVersion()">
                 <span id="id-defaultVersionPointer" class="cs-pointer-menu">▼</span> Version:
                 <span id="id-defaultVersionSpan" class="cs-moveLeft12">TWF</span>
-            </div>
+            </button>
             <div id="id-defaultVersion" class="cs-selector cs-defaultVersion">
             </div>
 
-            <div class="cs-cp-hover cs-defaultThemeHeader" onclick="openDefaultTheme()">
+            <button class="cs-cp-hover cs-defaultThemeHeader" onclick="openDefaultTheme()">
                 <span id="id-defaultThemePointer" class="cs-pointer-menu">▼</span> Theme:
                 <span id="id-defaultThemeSpan" class="cs-moveLeft12">Light</span>
-            </div>
+            </button>
 
             <div id="id-defaultTheme" class="cs-selector cs-defaultTheme">
                 <div id="id-defaultTheme1" class="cs-theme cs-cp-hover" data-theme="1" onclick="defaultTheme()">Light
@@ -201,10 +200,10 @@
                     <input id="id-range" type="range" min="36" max="180" value="100" style="width: 100%;">
                 </div>
             </div>
-            <div id="id-reset" class="cs-sidePanelSelect cs-cp-hover cs-reset" onclick="settingsReset()"
+            <button id="id-reset" class="cs-sidePanelSelect cs-cp-hover cs-reset" onclick="settingsReset()"
                 title="Rest all Settings to their defaults">
                 Reset
-            </div>
+            </button>
 
         </div>
         <br><br>
@@ -245,14 +244,15 @@
     </div>
     <!-- #endregion End of Dropdowns from the top menu -->
 
-    <label id="id-openFooter" class="cs-openFooter cs-cp-hover" onclick="footer()">╲╱</label>
+    <label id="id-openFooter" class="cs-openFooter cs-cp-hover" onclick="footer()" title="Open Menu">╲╱</label>
+    <a id="id-toTop" onclick="scrollPage('top');" class="cs-toTop cs-cp-hover" title="Back To Top">⌂</a>
     <div ID="id-footer" class="cs-footer">
 
         <div class="cs-footers">
             <div id="id-footer1" class="cs-footers1 cs-cp-hover" onclick="page()">Share </div>
             <div id="id-footer2" class="cs-footers1 cs-cp-hover" onclick="page()"> About </div>
             <div id="id-footer3" class="cs-footers1 cs-cp-hover" onclick="page()"> Mission </div>
-            <div id="id-footer4" class="cs-footers1 cs-cp-hover" onclick="page()"> Statement of Faith </div>
+            <div id="id-footer4" class="cs-footers1 cs-cp-hover" onclick="page()"> My Faith </div>
             <div id="id-footer5" class="cs-footers1 cs-cp-hover" onclick="page()"> Movies </div>
             <div id="id-footer6" class="cs-footers1 cs-cp-hover" onclick="page()"> Music </div>
             <div id="id-footer7" class="cs-footers1 cs-cp-hover" onclick="page()"> TV Shows </div>

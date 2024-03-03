@@ -109,7 +109,7 @@
             resultsLabel('No Results!');
             return;
         };
-        topLink();
+        //topLink();
         document.getElementById('id-moreResults').style.display = 'block';
         document.getElementById('id-localSearch').blur();
     };
@@ -301,7 +301,7 @@
             resultsLabel('No More Results!');
             document.getElementById('id-moreResults').style.display = 'none';
         };
-        if (i <= stored.length) { topLink(); };
+        //if (i <= stored.length) { topLink(); };
     };
 
     function resultsLabel(resultText) {
