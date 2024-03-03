@@ -103,7 +103,7 @@
         };
         startSearch = i;
         firstSearch = false;
-        document.getElementById('id-localSearch').focus();
+
 
         if (i < 30) {
             resultsLabel('No Results!');
@@ -111,6 +111,7 @@
         };
         topLink();
         document.getElementById('id-moreResults').style.display = 'block';
+        document.getElementById('id-localSearch').blur();
     };
 
     function topLink() {
@@ -301,8 +302,6 @@
             document.getElementById('id-moreResults').style.display = 'none';
         };
         if (i <= stored.length) { topLink(); };
-        document.getElementById('id-localSearch').focus();
-        //alert('More Results Test')
     };
 
     function resultsLabel(resultText) {

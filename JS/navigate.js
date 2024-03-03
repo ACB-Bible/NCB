@@ -532,7 +532,6 @@ async function page() {
         footerOpen = false;
         document.getElementById('id-footer').style.display = 'none';
         document.getElementById('id-localSearch').focus();
-        //if (firstSearch) { addSearchEvents(); };
         addSearchEvents();
     } else {
         if(settingsOpen === true) { openSettings(); };
