@@ -104,9 +104,8 @@
         startSearch = i;
         firstSearch = false;
 
-
         if (i < 30) {
-            resultsLabel('No Results!');
+            resultsLabel('No More Results!');
             return;
         };
         //topLink();
