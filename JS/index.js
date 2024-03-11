@@ -21,6 +21,7 @@ slider.oninput = function() {
 // #endregion Events
 
 async function inTheBeginning() {
+
     let res = false;
     res = await loadVersions();
 
@@ -352,12 +353,14 @@ async function loadText(theMenu = null) {
 
     let eMenu;
     if (!theMenu) { eMenu = document.getElementById('id-menu'); } else { eMenu = theMenu };
-    let bid = Number(eMenu.dataset.bid);
-    let cn = Number(eMenu.dataset.cn);
-    let idx = Number(eMenu.dataset.versionidx);
+    let bid = Number(eMenu.dataset.bid); // the bookid
+    let cn = Number(eMenu.dataset.cn);  // the chapter number
+    let idx = Number(eMenu.dataset.versionidx);  // the allVerses[] index
     let newLine = 0;
     let pID = 0;
     let x = 0;
+
+    if (!startup) { replacePage(bid,cn,idx,null,null,null); };
 
     let verseText = '';
     var span = '<span id="id-SP1-2" class="cs-JQ">';
@@ -452,8 +455,10 @@ async function randomVerse(verses) {
 
     let cn = Math.floor(Math.random() * (max - min + 1) + min);
     eRandom.dataset.cn = cn;
+
     let y = verses.findIndex(vrs => vrs.bid === bid && vrs.cn === cn);
     eRandom.dataset.vn = verses[y].vn;
+
     // bid = BookID, cn = ChapterNumber, jq = Jesus Quotes, vn = VerseNumber, vt = VerseText
     while (verses[y].bid === bid && verses[y].cn === cn) {
         randbk = {bid: `${verses[y].bid}`, cn: `${verses[y].cn}`, jq: `${verses[y].jq}`, vn: `${verses[y].vn}`, vt: `${verses[y].vt}`};
@@ -466,6 +471,7 @@ async function randomVerse(verses) {
     i = Math.floor(Math.random() * (max - min + 1) + min);
     eMenu.dataset.rndidx = i;
     eMenu.dataset.vn = abk[i].vn;
+    replacePage(null,null,null,bid,cn,abk[i].vn);
     head += ` ${abk[i].cn}:${abk[i].vn}-${Number(abk[i].vn) + 2}`;
     verse = "<p>";
     y = y - 1;

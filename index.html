@@ -72,6 +72,12 @@
         var searchVersionidx = ''; // Contains the Bible version index of the allVerses[] array, to be indexed by elasticlunr
     </script>
 
+    <script id="id-QueryString">
+        // Script contains global variables for querystring for page navigation
+        var qVersion = ''; // Bible version 'TWF', 'KJV', 'ASV', etc. etc.
+        var qbid = ''; // Bible bookID
+        var cn = ''; // Bible chapter number
+    </script>
     <script async src="JS/variables.js" type="text/javascript"></script>
     <script async src="JS/side-panel.js" type="text/javascript"></script>
     <script async src="JS/index.js" type="text/javascript"></script>
@@ -99,8 +105,7 @@
 
         <div id="id-menu" class="cs-menu" data-bid="1" data-cn="1" data-idx="0" data-chapters="50" data-verses="31" data-vid="" data-vids="">
 
-            <button id="id-version" class="cs-menuSelect cs-menu1 cs-cp-hover" title="Change Version"
-                onclick="openVersion()">
+            <button id="id-version" class="cs-menuSelect cs-menu1 cs-cp-hover" title="Change Version" onclick="openVersion()">
                 <span id="id-versionPointer" class="cs-pointer-menu">▼</span>
                 <span id="id-versionText">TWF</span>
             </button>

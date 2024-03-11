@@ -108,7 +108,6 @@ async function changeVersion(vid = null) {
     };
     };
     displayPrevious();
-    //if (startup) { pushPage(); };
     startup = false;
     return Promise.resolve(true);
 };
@@ -558,6 +557,18 @@ function pushPage() {
     window.history.pushState(stateObject, null, null);
     document.getElementById('top').scrollIntoView(true);
     aClick++;
+};
+
+function replacePage(bid, cn, idx, randomBid, randomCN, randomVN) {
+    const url = new URL(window.location.href);
+    if (!url.search) { url.search = '?'; };
+    if (bid) { url.searchParams.set('bid', bid); };
+    if (cn) { url.searchParams.set('cn', cn); };
+    if (idx) { url.searchParams.set('idx', idx); };
+    if (randomBid) { url.searchParams.set('randomBid', randomBid); };
+    if (randomCN) { url.searchParams.set('randomCN', randomCN); };
+    if (randomVN) { url.searchParams.set('randomVN', randomVN); };
+    window.history.replaceState(stateObject, null, url.toString());
 };
 
 function navBack(){

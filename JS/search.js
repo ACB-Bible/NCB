@@ -184,12 +184,11 @@
         searchPage.appendChild(br);
     };
 
-
     async function readSearch() {
 
         let res = false;
         let scrll = '';
-        let bid, bookTitle, chapters, cn, vn, x;
+        let bid, chapters, cn, vn, x;
         let a = document.getElementById(this.event.target.id);
 
         bid = Number(a.dataset.bid);
@@ -273,7 +272,6 @@
         document.getElementById(scrll).scrollIntoView({block: 'center'});
         return Promise.resolve(true);
     };
-
 
     function moreResults() {
 
