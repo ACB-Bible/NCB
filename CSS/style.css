@@ -118,23 +118,23 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
 .cs-toSelect { height: 82%; width: 12%; border: 2px solid #c2c0c033; border-radius: 5px; display: flex; padding: .1em; justify-content: center; align-items: center; }
 
 .cs-read,
+.cs-reset,
 .cs-sidePanelStorage,
-.cs-defaultVersionHeader,
 .cs-defaultThemeHeader,
-.cs-reset { display: flex; align-items: center; border: none; justify-content: center; margin: auto; background-color: #005991; color: white; user-select: none; }
+.cs-defaultVersionHeader { display: flex; align-items: center; border: none; justify-content: center; margin: auto; background-color: #005991; color: white; user-select: none; }
 
 .cs-sidePanelStorage { margin-top: .8em; background-color: #fafad1; color: #504c4c; border-radius: 6px; text-align: justify; word-break: keep-all; font-size: .95rem; line-height: 1em; padding: .8em; }
 .cs-reset { width: 30%; margin-top: 5em; padding: .4em; user-select: none; }
 .cs-read { width: 90%; padding: .8em; margin-bottom: 1.5em; }
 
-.cs-defaultVersionHeader,
-.cs-defaultThemeHeader { position: relative; top: 3%; height: 8%; width: 95.4%; padding-left: .6em; margin: auto; }
+.cs-defaultThemeHeader,
+.cs-defaultVersionHeader { position: relative; top: 3%; height: 8%; width: 95.4%; padding-left: .6em; margin: auto; }
 .cs-defaultThemeHeader { top: 5%; }
 
-.cs-defaultVersion,
-.cs-defaultTheme {position: relative; width: 93.4%; margin: auto; border: 1px solid #bcbaba; border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 9px; }
-.cs-defaultVersion { top: 3.2%; height: 63.4%; }
-.cs-defaultTheme { top: 5.1%; height: 15.6%; }
+.cs-defaultVersionSelector,
+.cs-defaultThemeSelector {position: relative; width: 93.4%; margin: auto; border: 1px solid #bcbaba; border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 9px; }
+.cs-defaultVersionSelector { top: 3.2%; height: 63.4%; }
+.cs-defaultThemeSelector { top: 5.1%; height: 15.6%; }
 
 .cs-version,
 .cs-theme { padding: .52em; border-bottom: 1px solid #dfdcdc; }
@@ -190,8 +190,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-changeBook { height: 49.3%; }
     .cs-selectVerse,
     .cs-changeChapter { height: 32%; }
-    .cs-defaultVersion { top: 3.1%; height: 63%; width: 92.5%; }
-    .cs-defaultTheme { top: 5.2%; height: 15.8%; width: 92.5%; }
+    .cs-defaultVersionSelector { top: 3.1%; height: 63%; width: 92.5%; }
+    .cs-defaultThemeSelector { top: 5.2%; height: 15.8%; width: 92.5%; }
     .cs-read { width: 79%; }
     .cs-footer { height: 32%; }
     .cs-footers { left: 15%; top: 2%; }
@@ -205,8 +205,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 7.6%; }
     .cs-defaultThemeHeader { top: 5%; }
-    .cs-defaultVersion { top: 3.1%; height: 63.4%; width: 91.7%; }
-    .cs-defaultTheme { top: 5.1%; height: 15.4%; width: 91.7%; }
+    .cs-defaultVersionSelector { top: 3.1%; height: 63.4%; width: 91.7%; }
+    .cs-defaultThemeSelector { top: 5.1%; height: 15.4%; width: 91.7%; }
     .cs-read { width: 90%; }
 }
 @media (min-width: 360px) and (min-height: 740px) {
@@ -222,8 +222,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 7.6%; }
     .cs-defaultThemeHeader { top: 5%; }
-    .cs-defaultVersion { top: 3%; height: 68.7%; }
-    .cs-defaultTheme { top: 5%; height: 13.5%; }
+    .cs-defaultVersionSelector { top: 3%; height: 68.7%; }
+    .cs-defaultThemeSelector { top: 5%; height: 13.5%; }
 }
 @media (min-width: 360px) and (min-height: 780px) {
     /*? Based on: @media (min-width: 360px) and (min-height: 780px) {} */
@@ -236,8 +236,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
    .cs-defaultThemeHeader,
    .cs-defaultVersionHeader { height: 7.6%; }
    .cs-defaultThemeHeader { top: 5%; }
-   .cs-defaultVersion { top: 3%; height: 65.1%; }
-   .cs-defaultTheme { top: 5.1%; height: 12.8%; }
+   .cs-defaultVersionSelector { top: 3%; height: 65.1%; }
+   .cs-defaultThemeSelector { top: 5.1%; height: 12.8%; }
 }
 @media (min-width: 375px) {
      /*? Based on: @media (min-width: 375px) and (min-height: 667px) {} */
@@ -252,8 +252,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { top: 3%; height: 8.7%; }
     .cs-defaultThemeHeader { top: 5%; }
-    .cs-defaultVersion { top: 3%; height: 61%; }
-    .cs-defaultTheme { top: 5%; height: 15.2%; }
+    .cs-defaultVersionSelector { top: 3%; height: 61%; }
+    .cs-defaultThemeSelector { top: 5%; height: 15.2%; }
     .cs-footer { height: 25%; }
 }
 @media (min-width: 375px) and (min-height: 812px) {
@@ -271,9 +271,9 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 7%; }
     .cs-defaultThemeHeader { top: 6%; }
-    .cs-defaultTheme,
-    .cs-defaultVersion { top: 3.1%; height: 62.6%; }
-    .cs-defaultTheme { top: 6.1%; height: 12.5%; }
+    .cs-defaultThemeSelector,
+    .cs-defaultVersionSelector { top: 3.1%; height: 62.6%; }
+    .cs-defaultThemeSelector { top: 6.1%; height: 12.5%; }
     .cs-reset { margin-top: 9em; }
 }
 @media (min-width: 390px) {
@@ -291,8 +291,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-read { width: 65%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 7.5%; }
-    .cs-defaultVersion { top: 3%; height: 60.2%; }
-    .cs-defaultTheme { top: 6%; height: 12.1%; }
+    .cs-defaultVersionSelector { top: 3%; height: 60.2%; }
+    .cs-defaultThemeSelector { top: 6%; height: 12.1%; }
     .cs-reset { margin-top: 7em; }
     .cs-footer { height: 25%; }
 }
@@ -310,10 +310,10 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-randomContainer { top: 4%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 6.8%; width: 80%; }
-    .cs-defaultTheme,
-    .cs-defaultVersion { width: 83.6%; }
-    .cs-defaultVersion { top: 2.9%; height: 55.7%; }
-    .cs-defaultTheme { top: 6%; height: 11.1%; }
+    .cs-defaultThemeSelector,
+    .cs-defaultVersionSelector { width: 83.6%; }
+    .cs-defaultVersionSelector { top: 2.9%; height: 55.7%; }
+    .cs-defaultThemeSelector { top: 6%; height: 11.1%; }
     .cs-reset { width: 20%; }
     .cs-gear-fill { right: 8%; margin-top: -3em; height: 1.7rem; width: 1.7rem; }
 }
@@ -326,8 +326,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-changeBook { height: 42.8%; }
     .cs-selectVerse,
     .cs-changeChapter { height: 30%; }
-    .cs-defaultVersion { top: 3%; height: 62.6%; }
-    .cs-defaultTheme { top: 6%; height: 11%; }
+    .cs-defaultVersionSelector { top: 3%; height: 62.6%; }
+    .cs-defaultThemeSelector { top: 6%; height: 11%; }
     .cs-gear-fill { right: 8%; margin-top: -3em; height: 1.7rem; width: 1.7rem; }
 }
 @media (min-width: 430px) {
@@ -339,8 +339,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-mainText { top: 12.1%; }
     .cs-changeVersion  { height: 44.5%; }
     .cs-changeBook  { height: 43.8%; }
-    .cs-defaultVersion { top: 3%; height: 55.6%;}
-    .cs-defaultTheme { top: 5.1%; height: 15.7%; }
+    .cs-defaultVersionSelector { top: 3%; height: 55.6%;}
+    .cs-defaultThemeSelector { top: 5.1%; height: 15.7%; }
     .cs-reset { margin-top: 5em; }
 }
 @media (min-width: 540px) {
@@ -364,10 +364,10 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-settingsContainer { left: 50%; top: 54%; width: 65%; height: 68%; transform: translate(-50%, -50%);  border-radius: 8px; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 8%; }
-    .cs-defaultTheme,
-    .cs-defaultVersion { border-left: 1px solid #bcbaba; }
-    .cs-defaultVersion { top: 3.1%; height: 61.5%;  }
-    .cs-defaultTheme { top: 5%; height: 17.2%; }
+    .cs-defaultThemeSelector,
+    .cs-defaultVersionSelector { border-left: 1px solid #bcbaba; }
+    .cs-defaultVersionSelector { top: 3.1%; height: 61.5%;  }
+    .cs-defaultThemeSelector { top: 5%; height: 17.2%; }
     .sidePanelSlideContainer { margin: 1.5em auto 0 auto; width: 100%; }
     .cs-reset { margin-top: 4em; }
 }
@@ -397,9 +397,9 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-panel-2 { height: 76%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 8.5%; }
-    .cs-defaultTheme,
-    .cs-defaultVersion { top: 3.1%; height: 55.8%; width: 84.6%; }
-    .cs-defaultTheme { top: 6%; height: 16.1%; width: 84.7%; }
+    .cs-defaultThemeSelector,
+    .cs-defaultVersionSelector { top: 3.1%; height: 55.8%; width: 84.6%; }
+    .cs-defaultThemeSelector { top: 6%; height: 16.1%; width: 84.7%; }
     .cs-reset { margin-top: 5em; }
 }
 @media (min-width: 768px) {
@@ -424,8 +424,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-settingsContainer { height: 62%; width: 42%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 8%; }
-    .cs-defaultVersion { top: 3.1%; height: 58.9%; }
-    .cs-defaultTheme { top: 6.1%; height: 14.6%; }
+    .cs-defaultVersionSelector { top: 3.1%; height: 58.9%; }
+    .cs-defaultThemeSelector { top: 6.1%; height: 14.6%; }
     .cs-reset { margin-top: 5.5em; }
 }
 @media (min-width: 800px) {
@@ -449,8 +449,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-settingsContainer { height: 48%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 8%; }
-    .cs-defaultVersion { top: 3%; height: 53.5%; }
-    .cs-defaultTheme { top: 5%; height: 15.7%; }
+    .cs-defaultVersionSelector { top: 3%; height: 53.5%; }
+    .cs-defaultThemeSelector { top: 5%; height: 15.7%; }
 }
 @media (min-width: 820px) {
      /*? Based on: @media (min-width: 820px) and (min-height: 1180px) {} */
@@ -463,8 +463,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-chapterHeader { width: 33.6%; }
     .cs-read { width: 30%; }
     .cs-settingsContainer { height: 55%; width: 42%; }
-    .cs-defaultVersion { top: 2.9%; height: 50.8%; }
-    .cs-defaultTheme { top: 6.1%; height: 14.5%; }
+    .cs-defaultVersionSelector { top: 2.9%; height: 50.8%; }
+    .cs-defaultThemeSelector { top: 6.1%; height: 14.5%; }
 }
 @media (min-width: 912px) {
     /*? Based on @media (min-width: 912px) and (min-height: 1368px) {} */
@@ -480,8 +480,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-selectVerse,
     .cs-changeChapter { height: 15%; }
     .cs-settingsContainer { height: 45%; width: 38.5%; }
-    .cs-defaultVersion { top: 3.1%; height: 59.9%; width: 84%; }
-    .cs-defaultTheme { top: 5.9%; height: 14.9%; width: 84%; }
+    .cs-defaultVersionSelector { top: 3.1%; height: 59.9%; width: 84%; }
+    .cs-defaultThemeSelector { top: 5.9%; height: 14.9%; width: 84%; }
 }
 @media (min-width: 926px) {
      /*? Based on: @media (min-width: 926px) and (min-height: 601px) {} */
@@ -507,10 +507,10 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-settingsContainer { top: 55%; width: 29%; height: 80%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 9%; width:90.2%;}
-    .cs-defaultTheme,
-    .cs-defaultVersion { left: 0; width: 95%; }
-    .cs-defaultVersion { top: 3.1%; height: 57.3%; }
-    .cs-defaultTheme { top: 5.2%; height: 19%; }
+    .cs-defaultThemeSelector,
+    .cs-defaultVersionSelector { left: 0; width: 95%; }
+    .cs-defaultVersionSelector { top: 3.1%; height: 57.3%; }
+    .cs-defaultThemeSelector { top: 5.2%; height: 19%; }
     .cs-reset { margin-top: 4em; }
 }
 @media (min-width: 1024px) {
@@ -536,9 +536,9 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-settingsContainer { top: 57%; width: 26%; height: 85%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 9%; width: 90.5%;}
-    .cs-defaultTheme,
-    .cs-defaultVersion { top: 3%; height: 64.4%; width: 96%; }
-    .cs-defaultTheme { top: 5.1%; height: 18.3%; }
+    .cs-defaultThemeSelector,
+    .cs-defaultVersionSelector { top: 3%; height: 64.4%; width: 96%; }
+    .cs-defaultThemeSelector { top: 5.1%; height: 18.3%; }
     .sidePanelSlideContainer { margin: 1.5em auto 0 auto; width: 100%; }
     .cs-gear-fill { height: 1.9rem; width: 1.9rem;  }
     .cs-page { margin-top: 3em; }
@@ -560,10 +560,10 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-changeChapter { height: 15%; }
     .cs-footer { height: 16%; }
     .cs-settingsContainer { top: 40%; width: 28%; height: 45%; }
-    .cs-defaultTheme,
-    .cs-defaultVersion { width: 94.2%; }
-    .cs-defaultVersion { top: 3.1%; height: 61.3%; }
-    .cs-defaultTheme { top: 5%; height: 15.7%; }
+    .cs-defaultThemeSelector,
+    .cs-defaultVersionSelector { width: 94.2%; }
+    .cs-defaultVersionSelector { top: 3.1%; height: 61.3%; }
+    .cs-defaultThemeSelector { top: 5%; height: 15.7%; }
     .cs-reset { margin-top: 6em; }
 }
 /** End min-height */
@@ -583,8 +583,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-randomContainer { top: 9%; width: 75%; }
     .cs-footers { left: 19%; }
     .cs-settingsContainer { height: 82%; width: 23%; }
-    .cs-defaultVersion { left: 0; top: 3.1%; height: 63.5%; width: 94.4%; }
-    .cs-defaultTheme { left: 0; top: 4.8%; height: 15.8%; width: 94.4%; }
+    .cs-defaultVersionSelector { left: 0; top: 3.1%; height: 63.5%; width: 94.4%; }
+    .cs-defaultThemeSelector { left: 0; top: 4.8%; height: 15.8%; width: 94.4%; }
 }
 
 @media (min-width: 1280px) {
@@ -599,8 +599,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-changeChapter { height: 25%; width: 23%; }
     .cs-footers { left: 21%; }
     .cs-settingsContainer { height: 76%; width: 18%; }
-    .cs-defaultVersion { height: 60.4%; }
-    .cs-defaultTheme { height: 20.3%; }
+    .cs-defaultVersionSelector { height: 60.4%; }
+    .cs-defaultThemeSelector { height: 20.3%; }
 
 }
 
@@ -611,8 +611,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-changeVersion { height: 44.5%; }
     .cs-changeBook { height: 43.8%; }
     .cs-settingsContainer { width: 21.5%; }
-    .cs-defaultVersion { top: 3.1%; height: 64.4%; }
-    .cs-defaultTheme { top: 4.8%; height: 14.3%; }
+    .cs-defaultVersionSelector { top: 3.1%; height: 64.4%; }
+    .cs-defaultThemeSelector { top: 4.8%; height: 14.3%; }
 }
 
 @media (min-width: 1366px) {
@@ -628,8 +628,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-selectVerse,
     .cs-changeChapter { width: 20%; }
     .cs-settingsContainer { height: 75%; }
-    .cs-defaultVersion { top: 2.8%; height: 64.9%; }
-    .cs-defaultTheme { top: 4.8%; height: 16.3%; }
+    .cs-defaultVersionSelector { top: 2.8%; height: 64.9%; }
+    .cs-defaultThemeSelector { top: 4.8%; height: 16.3%; }
     .cs-reset { margin-top: 4em; }
 }
 @media (min-width: 1440px) {
@@ -648,8 +648,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-changeChapter { height: 21%; }
     .cs-read { width: 20%; margin-top: 1.5em; }
     .cs-footers { left: 24%; }
-    .cs-defaultVersion { left: 0; top: 2.8%; height: 62.4%; }
-    .cs-defaultTheme { left: 0; top: 4.8%; height: 13.4%; }
+    .cs-defaultVersionSelector { left: 0; top: 2.8%; height: 62.4%; }
+    .cs-defaultThemeSelector { left: 0; top: 4.8%; height: 13.4%; }
     .cs-reset { margin-top: 8em; }
 }
 /*! Start Here 1536 */
@@ -661,8 +661,8 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-changeBook { height: 52.6%; width: 20%; }
     .cs-verseHeader,
     .cs-chapterHeader { width: 19.35%; }
-    .cs-defaultVersion { width: 94%; height: 60.8%; }
-    .cs-defaultTheme { width: 94%; }
+    .cs-defaultVersionSelector { width: 94%; height: 60.8%; }
+    .cs-defaultThemeSelector { width: 94%; }
 }
 @media (min-width: 1912px) {
      /*? Based on: @media (min-width: 1912px) and (min-height: 1080px) {} */
@@ -690,9 +690,9 @@ body::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome, Safari 
     .cs-settingsContainer { width: 18%; }
     .cs-defaultThemeHeader,
     .cs-defaultVersionHeader { height: 8%; }
-    .cs-defaultTheme,
-    .cs-defaultVersion { left: 0; top: 3%; height: 61.8%; width: 94.2%; font-size: 1rem; }
-    .cs-defaultTheme { top: 5%; height: 13.5%; }
+    .cs-defaultThemeSelector,
+    .cs-defaultVersionSelector { left: 0; top: 3%; height: 61.8%; width: 94.2%; font-size: 1rem; }
+    .cs-defaultThemeSelector { top: 5%; height: 13.5%; }
 }
 
 /*

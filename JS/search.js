@@ -1,11 +1,4 @@
 //** #region search.js */
-
-    // #region Globals for search.js file
-    var stored = [];
-    var searchRes = false;
-    var startSearch = 0;
-    // #endregion Globals for search.js file
-
     function addSearchEvents() {
 
         var input = document.getElementById('id-localSearch');
@@ -59,18 +52,18 @@
 
     async function search() {
 
+        let bulk = [];
         let i = 0;
         let record = '';
-        let bulk = [];
+        let searchRes = false;
 
-        stored = [];
         let aphrase = document.getElementById('id-localSearch').textContent;
         if (aphrase === '') { document.getElementById('id-localSearch').focus(); return; };
-        let idx = versions.findIndex(vrs => vrs.ar === searchVersionidx);
+
         if (firstSearch) { searchRes = await createIndex(); };
         if (!searchRes) {alert('Search Error!'); return; };
 
-        document.getElementById('id-results').textContent = `${versions[idx].ar} - Search Results`;
+        document.getElementById('id-results').textContent = `${versions[gVersionIDX].ar} - Search Results`;
         startSearch = 0;
         let results = searchIndex.search(aphrase, { phrase: true, field: ['vt'] });
         if (results.length === 0) {
@@ -96,7 +89,7 @@
             stored.push(record);
         };
         i = 0;
-        while (i < 30 && i < stored.length) {
+        while (i < 30 && i < stored.length - 1) {
             record = { vid: stored[i].vid,  vt: stored[i].vt };
             loadSearch(record);
             i++;
@@ -108,60 +101,28 @@
             resultsLabel('No More Results!');
             return;
         };
-        //topLink();
+
         document.getElementById('id-moreResults').style.display = 'block';
         document.getElementById('id-localSearch').blur();
     };
 
-    function topLink() {
-        let a = document.createElement('a');
-        a.classList.add('atc');
-        a.classList.add('cs-cp-hover');
-        a.textContent = 'Back to Top';
-        a.addEventListener('click', (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            scrollPage('top');
-        });
-        document.getElementById('id-searchPage').appendChild(a);
-        let br = document.createElement('br');
-        document.getElementById('id-searchPage').appendChild(br);
-
-    };
-
     function loadSearch(record) {
 
-        let bookTitle, chapters, x = 0;
+        let book;
         let searchPage = document.getElementById('id-searchPage');
-        let i = searchVerses.findIndex(verses => verses.vid === record.vid);
-        let aID = `id-searchPage${searchVerses[i].vid}`;
-        let bid = searchVerses[i].bid;
-        let cn = searchVerses[i].cn;
-        let text = searchVerses[i].vt;
-        let vn = searchVerses[i].vn;
+        let vid = Number(record.vid);
+        let i = searchVerses.findIndex(verses => Number(verses.vid) === Number(vid));
 
-        if (bid < 40) {
-            x = oldBooks.findIndex(books => books.id === bid);
-            chapters = oldBooks[x].c;
-            bookTitle = oldBooks[x].t;
-        } else {
-            x = newBooks.findIndex(books => books.id === bid);
-            chapters = newBooks[x].c;
-            bookTitle = newBooks[x].t;
-        };
+        let bid = Number(searchVerses[i].bid);
+        if (bid < 40) { book = oldBooks; } else { book = newBooks; };
+        let idx = book.findIndex(bks => Number(bks.id) === Number(bid));
 
-        let title = `${bookTitle} ${searchVerses[i].cn}:${searchVerses[i].vn}`;
         let a = document.createElement('a');
-        a.id = aID;
+        a.id = `id-searchPage${searchVerses[i].vid}`;
         a.dataset.bid = bid;
-        a.dataset.bookTitle = bookTitle;
-        a.dataset.bookidx = x;
-        a.dataset.chapters = chapters;
-        a.dataset.cn = cn;
-        a.dataset.versesidx = i
-        a.dataset.vn = vn;
-        a.textContent = title;
+        a.dataset.cn = searchVerses[i].cn;
+        a.dataset.vn = searchVerses[i].vn;
+        a.textContent = `${book[idx].t} ${searchVerses[i].cn}:${searchVerses[i].vn}`;
         a.classList.add('cs-searchLink');
         a.classList.add('cs-cp-hover');
         a.addEventListener('click', (e) => {
@@ -175,7 +136,7 @@
         searchPage.appendChild(br);
 
         let div = document.createElement('div');
-        div.textContent = text;
+        div.textContent = searchVerses[i].vt;
         searchPage.appendChild(div);
 
         br = document.createElement('br');
@@ -186,66 +147,46 @@
 
     async function readSearch() {
 
-        let res = false;
-        let scrll = '';
-        let bid, chapters, cn, vn, x;
+        let res=false, scrollID='', vn=0;
         let a = document.getElementById(this.event.target.id);
 
-        bid = Number(a.dataset.bid);
-        bookTitle = a.dataset.bookTitle;
-        chapters = a.dataset.chapters;
-        cn = a.dataset.cn;
-        vn = a.dataset.vn;
-        x = a.dataset.bookidx;
+        gBookID = Number(a.dataset.bid);
+        gChapterNumber = Number(a.dataset.cn);
+        vn = Number(a.dataset.vn);
 
         pushPage();
         removeItems('id-mainText');
         document.getElementById('id-mainText').insertAdjacentHTML("afterbegin", menuHTML);
 
-        if (bid < 40) {
-            book = oldBooks;
-        } else {
-            book = newBooks;
-        };
-        let eMenu = document.getElementById('id-menu');
-        eMenu.dataset.bid = bid;
-        //eMenu.dataset.bookidx = x;
-        eMenu.dataset.chapters = chapters;
-        eMenu.dataset.cn = cn;
-        //eMenu.dataset.t = bookTitle;
-        eMenu.dataset.vn = vn;
-        eMenu.dataset.vid = '';
-        eMenu.dataset.versionidx = searchVersesidx;
+        if (gBookID < 40) { book = oldBooks; } else { book = newBooks; };
+        let idx = oldBooks.findIndex(books => Number(books.id) === Number(gBookID));
 
-        res = loadText(eMenu);
+        res = loadText();
 
-        if (res) { res = await loadChapters(eMenu); };
-        if (res) { res = await loadVerses(eMenu); };
-        if (res) { displayPrevious(eMenu); };
+        if (res) { res = await loadChapters(); };
+        if (res) { res = await loadVerses(); };
+        if (res) { displayPrevious(); };
 
-        //eMenu.dataset.chapters = book[i].c;
-        document.getElementById('id-bookText').textContent = book[x].t;
+        document.getElementById('id-bookText').textContent = book[idx].t;
         document.getElementById('id-verseText').textContent = vn;
-        document.getElementById('id-chapterText').textContent = cn;
-        document.getElementById('id-textTitle2').textContent = `${book[x].t} ${cn}`;
+        document.getElementById('id-chapterText').textContent = gChapterNumber;
+        document.getElementById('id-textTitle2').textContent = `${book[idx].t} ${gChapterNumber}`;
 
         if (res) {
-            //if ( eMenu.dataset.vn  !== '' ) {
-            if ( vn  !== '' ) {
+            if ( vn  !== 0 ) {
                 let i = 0;
-                //let vn = Number(eMenu.dataset.vn);
                 let sp = 'id-SP';
                 let pID = `${sp}${vn}`;
                 let pID2 = `${pID}-2`;
 
-                scrll = `${sp}${vn}`;
-                eMenu.dataset.vid = pID;
-                eMenu.dataset.vids = 1;
+                scrollID = `${sp}${vn}`;
+                gVerseHighlightedID = pID;
+                gVerseIsHighlighted = 1;
                 let eParagraph = document.getElementById(pID);
                 let eParagraph2 = document.getElementById(pID2);
 
                 while (i <= 1) {
-                    if ( vn === '1') {
+                    if ( vn === 1) {
                         eParagraph2 = document.getElementById(pID2);
                         eParagraph2.style.backgroundColor = '#aed0fc';
                         eParagraph2.style.color = 'black';
@@ -265,11 +206,11 @@
                         i++;
                         vn++;
                     };
-                //eParagraph.scrollIntoView({ block: 'center' });
                 };
             };
         };
-        document.getElementById(scrll).scrollIntoView({block: 'center'});
+        document.getElementById(scrollID).scrollIntoView({block: 'center'});
+        document.getElementById('id-randomContainer').style.display = 'block';
         return Promise.resolve(true);
     };
 
@@ -298,7 +239,6 @@
             resultsLabel('No More Results!');
             document.getElementById('id-moreResults').style.display = 'none';
         };
-        //if (i <= stored.length) { topLink(); };
     };
 
     function resultsLabel(resultText) {

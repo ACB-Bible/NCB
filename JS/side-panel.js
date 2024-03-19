@@ -1,147 +1,120 @@
 var sidePanelLoaded = true;
 
-async function readChapter() {
+async function readRandomChapter() {
 
-    let eMenu = document.getElementById('id-menu');
-    let eRandom = document.getElementById('id-randomLbl');
-    let head = eRandom.dataset.t;
     let res = false;
-    let scrll = '';
+    let verses = gAllVerses[gAllVersesIDX];
+    let bid = Number(verses[gRandomVerseIDX].bid);
+    let cn = Number(verses[gRandomVerseIDX].cn);
+    let vn = Number(verses[gRandomVerseIDX].vn);
+    let scrollID = `id-SP${vn}`;
 
-    let bid = Number(eRandom.dataset.bid);
-    if (bid < 40) {
-        book = oldBooks;
-    } else {
-        book = newBooks;
-    };
+    if (bid < 40) { book = oldBooks; } else { book = newBooks; };
+    let idx = book.findIndex(books => Number(books.id) === Number(bid));
+    let head = book[idx].t;
 
-    eMenu.dataset.bid = eRandom.dataset.bid;
-    eMenu.dataset.cn = eRandom.dataset.cn;
-
-    eRandom.dataset.search = 1;
+    gRandomSearchIsHighlighted = 1;
     res = await changeBook(bid);
-    eRandom.dataset.search = 0;
+    gRandomSearchIsHighlighted = 0;
 
-    let i = book.findIndex(books => books.id === bid);
-    eMenu.dataset.chapters = book[i].c;
     document.getElementById('id-bookText').textContent = head;
     document.getElementById('id-verseText').textContent = 1;
-    document.getElementById('id-chapterText').textContent = `${eRandom.dataset.cn}`;
-    head += ` ${eRandom.dataset.cn}`;
+    document.getElementById('id-chapterText').textContent = cn;
+    head += ` ${cn}`;
     document.getElementById('id-textTitle2').textContent = head;
+    if (res) { if (vn !== 0) { res = await randomHighlights(vn); }; };
     if (res) {
-        if ( eMenu.dataset.vn  !== '' ) {
-            let i = 0;
-            let vn = Number(eMenu.dataset.vn);
-            let sp = 'id-SP';
-            let pID = `${sp}${vn}`;
-            let pID2 = `${pID}-2`;
-
-            scrll = `${sp}${vn}`;
-            eMenu.dataset.vid = pID;
-            eMenu.dataset.vids = 1;
-            let eParagraph = document.getElementById(pID);
-            let eParagraph2 = document.getElementById(pID2);
-
-            while (i <= 3) {
-                eParagraph = document.getElementById(pID);
-                eParagraph.style.backgroundColor = '#aed0fc';
-                eParagraph.style.color = '#720D0D';
-                eParagraph2 = document.getElementById(pID2);
-                eParagraph2.style.backgroundColor = '#aed0fc';
-                eParagraph2.style.color = 'black';
-                eParagraph2.style.paddingRight = '.3em';
-
-                pID = `${sp}${vn}`;
-                pID2 = `${pID}-2`;
-                i++;
-                vn++;
-            };
-            //eParagraph.scrollIntoView({ block: 'center' });
-        };
+        loadChapters();
+        document.getElementById(scrollID).scrollIntoView({block: 'center'});
     };
-    loadChapters();
-    document.getElementById(scrll).scrollIntoView({block: 'center'});
+    return Promise.resolve(true);
 };
 
-function openDefaultVersion() {
+async function randomHighlights(vn) {
 
-    this.event.stopPropagation();
-    this.event.preventDefault();
-    this.event.stopImmediatePropagation();
+    let i = 0;
+    let sp = 'id-SP';
+    let pID = `${sp}${vn}`;
+    let pID2 = `${pID}-2`;
 
-    if (defaultVersionOpen) {
-        ncbClose();
-    } else {
-        ncbClose();
-        document.getElementById('id-defaultVersion').style.display = 'block';
-        document.getElementById('id-defaultVersionPointer').textContent = '▲';
-        document.getElementById('id-defaultVersion').scrollTop = 0;
-        defaultVersionOpen = true;
+    gVerseHighlightedID = pID;
+    gVerseIsHighlighted = 1;
+    let eParagraph = document.getElementById(pID);
+    let eParagraph2 = document.getElementById(pID2);
+    while (i <= 3) {
+        eParagraph = document.getElementById(pID);
+        eParagraph.style.backgroundColor = '#aed0fc';
+        eParagraph.style.color = '#720D0D';
+        eParagraph2 = document.getElementById(pID2);
+        eParagraph2.style.backgroundColor = '#aed0fc';
+        eParagraph2.style.color = 'black';
+        eParagraph2.style.paddingRight = '.3em';
+
+        pID = `${sp}${vn}`;
+        pID2 = `${pID}-2`;
+        i++;
+        vn++;
     };
+    return Promise.resolve(true);
 };
 
 async function defaultVersion() {
 
     let id = this.event.target.id;
-    let version = document.getElementById(id).dataset.version;
-    let versionidx = document.getElementById(id).dataset.versionidx;
-    versionid = document.getElementById(id).dataset.versionid;
-    document.getElementById('id-version').dataset.version = version;
-    document.getElementById('id-version').dataset.versionidx = versionidx;
-    document.getElementById('id-defaultVersionSpan').textContent = version;
-
-    document.getElementById('id-versionText').textContent = version;
-    document.getElementById('id-textTitle1').textContent = document.getElementById(id).textContent;
-
-    localStorage.setItem('versionid', versionid);
-    changeVersion(versionid);
+    let vrsnid = Number(id.replace('id-defaultVersion', ''));
+    gVersionIDX = versions.findIndex(vrsn => Number(vrsn.id) === Number(vrsnid));
+    gVersionID = versions[gVersionIDX].id;
+    document.getElementById('id-defaultVersionSpan').textContent = versions[gVersionIDX].ar;
+    document.getElementById('id-versionText').textContent = versions[gVersionIDX].ar;
+    document.getElementById('id-textTitle1').textContent = versions[gVersionIDX].vn;
+    localStorage.setItem('gVersionID', gVersionID);
+    changeVersion(id);
     ncbClose();
-};
-
-function openDefaultTheme() {
-    this.event.stopPropagation();
-    this.event.preventDefault();
-    this.event.stopImmediatePropagation();
-
-    if (defaultThemeOpen) {
-        ncbClose();
-    } else {
-        ncbClose();
-        document.getElementById('id-defaultTheme').style.display = 'block';
-        document.getElementById('id-defaultThemePointer').textContent = '▲';
-        defaultThemeOpen = true;
-    };
 };
 
 function defaultTheme() {
+
     this.event.stopPropagation();
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
-
-    let eMenu = document.getElementById('id-menu');
-    let eVersion = document.getElementById('id-version');
-    let vid = document.getElementById('id-version').dataset.versionid;
-    theme = document.getElementById(this.event.target.id).dataset.theme;
-    theme = Number(theme);
-    document.getElementById('id-defaultTheme').dataset.theme = theme;
+    let id = this.event.target.id;
+    
+    gTheme = Number(id.replace('id-defaultTheme', ''));
     applyTheme();
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('gTheme', gTheme);
     ncbClose();
-    let p = eMenu.dataset.vid;
-    let ps = eMenu.dataset.vids;
+    let p = gVerseHighlightedID;
+    let ps = gVerseIsHighlighted;
     clickP();
-    eMenu.dataset.vid = p;
-    eMenu.dataset.vids = ps;
-    eVersion.dataset.deftheme = 1;
-    changeVersion(vid);
-    eVersion.dataset.deftheme = '';
+    gVerseHighlightedID = p;
+    gVerseIsHighlighted = ps;
+};
+
+function settingsReset() {
+
+    if (document.getElementById('id-chapterPage')) { document.getElementById('id-chapterPage').style.fontSize = '1rem'; }
+    if (localStorage.getItem('gTheme')) {localStorage.removeItem('gTheme')};
+    if (localStorage.getItem('gVersionID')) {localStorage.removeItem('gVersionID')};
+    if (localStorage.getItem('fontsize')) {localStorage.removeItem('fontsize')};
+
+    gFont = 0;
+    gTheme = 1;
+    gVersionID = 1;
+    gVersionIDX = 13;
+    document.getElementById('id-defaultVersionSpan').textContent = versions[gVersionIDX].ar;
+    document.getElementById('id-defaultThemeSpan').textContent = 'Light';
+
+    applyTheme();
+    changeVersion(true);
+    applyDefaultFont();
+    modal('Settings Reset!');
+    ncbClose();
 };
 
 function saveDefaultFont() {
 
-    if (theFont === 0) { return; }
-    localStorage.setItem('fontsize', theFont);
+    if (gFont === 0) { return; }
+    localStorage.setItem('fontsize', gFont);
     modal('Font Saved!')
 };
 
@@ -173,46 +146,48 @@ function removeItems(id) {
 function ncbClose() {
 
     if (!document.body.contains(document.getElementById('id-menu'))) { return; }
-    versionOpen = false;
-    bookOpen = false;
-    chapterOpen = false;
-    verseOpen = false;
-    defaultVersionOpen = false;
-    defaultThemeOpen = false;
-    footerOpen = false;
 
-    document.getElementById('id-changeVersionHeader').style.display = 'none';
-    document.getElementById('id-changeVersion').style.display = 'none';
+    gFooterOpen = false;
+    gListOpen = false;
+
     document.getElementById('id-versionPointer').textContent = '▼';
-    document.getElementById('id-changeBookHeader').style.display = 'none';
-    document.getElementById('id-changeBookHeaderPointer').textContent = '▼';
-    document.getElementById('id-changeBook').style.display = 'none';
+    document.getElementById('id-versionHeader').style.display = 'none';
+    document.getElementById('id-versionSelector').style.display = 'none';
+
     document.getElementById('id-bookPointer').textContent = '▼';
-    document.getElementById('id-changeChapterHeader').style.display = 'none';
-    document.getElementById('id-changeChapter').style.display = 'none';
+    document.getElementById('id-bookHeader').style.display = 'none';
+    document.getElementById('id-bookSelector').style.display = 'none';
+
     document.getElementById('id-chapterPointer').textContent = '▼';
-    document.getElementById('id-selectVerseHeader').style.display = 'none';
-    document.getElementById('id-selectVerse').style.display = 'none';
+    document.getElementById('id-chapterHeader').style.display = 'none';
+    document.getElementById('id-chapterSelector').style.display = 'none';
+
     document.getElementById('id-versePointer').textContent = '▼';
-    document.getElementById('id-defaultVersion').style.display = 'none';
+    document.getElementById('id-verseHeader').style.display = 'none';
+    document.getElementById('id-verseSelector').style.display = 'none';
+
     document.getElementById('id-defaultVersionPointer').textContent = '▼';
-    document.getElementById('id-defaultTheme').style.display = 'none';
+    document.getElementById('id-defaultVersionSelector').style.display = 'none';
+
     document.getElementById('id-defaultThemePointer').textContent = '▼';
+    document.getElementById('id-defaultThemeSelector').style.display = 'none';
+
     document.getElementById('id-footer').style.display = 'none';
     document.getElementById('id-toTop').style.display = 'block';
-
 };
+
 function openSettings() {
-    if (settingsOpen) {
+
+    if (gSettingsOpen) {
         ncbClose();
         document.getElementById('id-settingsContainer').style.display = 'none';
-        settingsOpen = false;
+        gSettingsOpen = false;
     } else {
         ncbClose();
         document.getElementById('id-settingsContainer').style.display = 'block';
-        settingsOpen = true;
+        gSettingsOpen = true;
     };
-    if (footerOpen === true) { closeFooter(); };
+    if (gFooterOpen === true) { closeFooter(); };
 };
 
 function settings() {
@@ -220,4 +195,4 @@ function settings() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
     openSettings();
-}
+};
