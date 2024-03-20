@@ -164,7 +164,7 @@ function nav(navDirection) {
     if (gBookID < 40) { book = oldBooks; } else { book = newBooks; };
     i = book.findIndex(books => Number(books.id) === Number(gBookID));
     let chapters = book[i].c;
-    
+
     // navDirection values: 0 = Last Chapter, 1 = Next Chapter
     if (navDirection === 0) {
         gChapterNumber = gChapterNumber - 1;
@@ -472,6 +472,8 @@ function sharePage() {
         if (gChapterNumber) { url.searchParams.set('gChapterNumber', gChapterNumber); };
         if (gVersionID) { url.searchParams.set('gVersionID', gVersionID); };
         if (gRandomVerseIDX) { url.searchParams.set('gRandomVerseIDX', gRandomVerseIDX); };
+        //if (gRandomSearchIsHighlighted) { url.searchParams.set('gRandomSearchIsHighlighted', gRandomSearchIsHighlighted); };
+
         window.history.replaceState(stateObject, null, url.toString());
     };
 

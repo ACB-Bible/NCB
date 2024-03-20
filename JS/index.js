@@ -36,10 +36,8 @@ async function inTheBeginning() {
     if (!gBookID) { gBookID = 1 };
     gChapterNumber = Number(urlParams.get('gChapterNumber'));
     if (!gChapterNumber) { gChapterNumber = 1 };
-    if (urlParams.has('gRandomVerseIDX')) {
-        gRandomVerseIDX =  Number(urlParams.get('gRandomVerseIDX'));
-        gRandomSearchIsHighlighted = 1;
-    };
+
+    if (urlParams.has('gRandomVerseIDX')) { gRandomVerseIDX =  Number(urlParams.get('gRandomVerseIDX')); };
 
     document.getElementById('id-defaultVersionSpan').textContent = versions[gVersionIDX].ar;
 };
