@@ -78,7 +78,7 @@ function defaultTheme() {
     this.event.preventDefault();
     this.event.stopImmediatePropagation();
     let id = this.event.target.id;
-    
+
     gTheme = Number(id.replace('id-defaultTheme', ''));
     applyTheme();
     localStorage.setItem('gTheme', gTheme);
@@ -188,6 +188,7 @@ function openSettings() {
         gSettingsOpen = true;
     };
     if (gFooterOpen === true) { closeFooter(); };
+    document.getElementById('id-randomContainer').style.display = 'block';
 };
 
 function settings() {

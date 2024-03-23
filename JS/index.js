@@ -30,13 +30,12 @@ async function inTheBeginning() {
     const urlParams = new URLSearchParams(queryString);
     gVersionID = Number(urlParams.get('gVersionID'));
     if (!gVersionID) { gVersionID = Number(localStorage.getItem("gVersionID")); };
-    if (!gVersionID) { gVersionID = 1; };  // gVersionID: 1 is the Twenty-First Century Version TWF
+    if (!gVersionID) { gVersionID = 1; };  // gVersionID: 1 = Twenty-First Century Version TWF, 5 = KJV
     gVersionIDX = versions.findIndex(vrsn => Number(vrsn.id) === Number(gVersionID));
     gBookID = Number(urlParams.get('gBookID'));
     if (!gBookID) { gBookID = 1 };
     gChapterNumber = Number(urlParams.get('gChapterNumber'));
     if (!gChapterNumber) { gChapterNumber = 1 };
-
     if (urlParams.has('gRandomVerseIDX')) { gRandomVerseIDX =  Number(urlParams.get('gRandomVerseIDX')); };
 
     document.getElementById('id-defaultVersionSpan').textContent = versions[gVersionIDX].ar;
@@ -47,12 +46,12 @@ async function letThereBeLight() {
     let res = false;
     res = await loadVersions();
 
-    if (res) { applyTheme() };
     if (res) { loadBooks() };
     if (res) { loadChapters() };
     if (res) { loadVerses() };
-    if (res) { changeVersion(gVersionID); };
+    if (res) { res = await changeVersion(gVersionID); };
     if (res) { applyDefaultFont() };
+    if (res) { applyTheme() };
     if (res) { menuHTML = document.getElementById('id-mainText').innerHTML; };
 };
 
@@ -149,10 +148,11 @@ async function ncbFetch(version) {
 
 async function applyTheme() {
 
-    const number = document.getElementsByClassName("cs-number");
+    let number = document.getElementsByClassName("cs-number");
     switch (gTheme) {
         case 1:
             document.getElementById('id-defaultThemeSpan').textContent = document.getElementById(`id-defaultTheme${gTheme}`).textContent;
+            document.getElementById('id-randomContainer').style.backgroundColor = '#e0e1e1';
             document.getElementById('id-mainText').classList.remove('cs-mainTextDark');
             for (let i = 0; i < number.length; i++) { number[i].style.color = '#720D0D'; };
             document.getElementById('id-textTitle2').style.color = '#720D0D';
@@ -167,8 +167,9 @@ async function applyTheme() {
             break;
         case 2:
             document.getElementById('id-defaultThemeSpan').textContent = document.getElementById(`id-defaultTheme${gTheme}`).textContent;
+            document.getElementById('id-body').style.backgroundColor = '#4c4b4b';
             document.getElementById('id-mainText').classList.add('cs-mainTextDark');
-            for (let i = 0; i < number.length; i++) { number[i].style.color = 'red'; };
+            for (let i = 0; i < number.length; i++) { number[i].style.color = '#a81818'; };
             document.getElementById('id-textTitle2').style.color = "white";
             document.getElementById('id-randomContainer').style.backgroundColor = '#333333';
             document.getElementById('id-saveDefaultFont').style.color = '#333333';
@@ -178,6 +179,8 @@ async function applyTheme() {
             document.getElementById('id-panel-2').style.color = 'white';
             document.getElementById('id-textTitle2').style.color = '#b8afaf';
             document.getElementById('id-dailyVerse').style.color = 'white';
+            let z = number.length - 3;
+            for (let i = z; i < number.length; i++) { number[i].style.color = '#970202'; };
             gTheme = 2;
             break;
     };
