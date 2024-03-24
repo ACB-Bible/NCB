@@ -60,7 +60,8 @@
         let aphrase = document.getElementById('id-localSearch').textContent;
         if (aphrase === '') { document.getElementById('id-localSearch').focus(); return; };
 
-        if (firstSearch) { searchRes = await createIndex(); };
+        if (firstSearch) { searchRes = await createIndex();
+        } else { searchRes = true; };
         if (!searchRes) {alert('Search Error!'); return; };
 
         document.getElementById('id-results').textContent = `${versions[gVersionIDX].ar} - Search Results`;
@@ -159,7 +160,7 @@
         document.getElementById('id-mainText').insertAdjacentHTML("afterbegin", menuHTML);
 
         if (gBookID < 40) { book = oldBooks; } else { book = newBooks; };
-        let idx = oldBooks.findIndex(books => Number(books.id) === Number(gBookID));
+        let idx = book.findIndex(books => Number(books.id) === Number(gBookID));
 
         res = loadText();
 
