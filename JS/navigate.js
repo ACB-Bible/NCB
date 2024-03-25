@@ -351,24 +351,23 @@ function sharePage() {
 
     function scrollPage(id) { document.getElementById(id).scrollIntoView(true) };
 
-    async function page() {
+    async function page(start = false) {
+        //let id = this.event.target.id;
 
-        this.event.stopPropagation();
-        this.event.preventDefault();
-        this.event.stopImmediatePropagation();
-        let id = this.event.target.id;
-
-        /*
         let id;
-        if (this.event.target.id) {
-            id = this.event.target.id;
-            gPageID = id.replace('id-footer', '');
-        } else {
+        if (start) {
             if (gPageID === 10) { id = `id-searchImg${gPageID}`; }
             else { id = `id-footer${gPageID}`; };
-        };*/
+        } else {
+            id = this.event.target.id;
+            this.event.stopPropagation();
+            this.event.preventDefault();
+            this.event.stopImmediatePropagation();
+            id = this.event.target.id;
+            if (id.includes('id-footer')) { gPageID = id.replace('id-footer', '');
+            } else { gPageID = 10; };
+        };
         let html = '';
-
 
         document.getElementById('id-randomContainer').style.display = 'none';
         switch (id) {
@@ -376,67 +375,67 @@ function sharePage() {
                 sharePage()
                 return;
             case 'id-footer2':
-                if (aboutHTML === '') {
+                if (gAboutHTML === '') {
                     let url = `${gMainPath}/ASSETS/about.txt`;
-                    aboutHTML = await fetchCode(url);
+                    gAboutHTML = await fetchCode(url);
                 };
-                html = aboutHTML;
+                html = gAboutHTML;
                 break;
             case 'id-footer3':
-                if (missionHTML === '') {
+                if (gMissionHTML === '') {
                     let url = `${gMainPath}/ASSETS/mission.txt`;
-                    missionHTML = await fetchCode(url);
+                    gMissionHTML = await fetchCode(url);
                 };
-                html = missionHTML;
+                html = gMissionHTML;
                 break;
             case 'id-footer4':
-                if (statementHTML === '') {
+                if (gStatementHTML === '') {
                     let url = `${gMainPath}/ASSETS/statement.txt`;
-                    statementHTML = await fetchCode(url);
+                    gStatementHTML = await fetchCode(url);
                 };
-                html = statementHTML;
+                html = gStatementHTML;
                 break;
             case 'id-footer5':
-                if (movieHTML === '') {
+                if (gMovieHTML === '') {
                     let url = `${gMainPath}/ASSETS/TRIVIA/movie.txt`;
-                    movieHTML = await fetchCode(url);
+                    gMovieHTML = await fetchCode(url);
                 };
-                html = movieHTML;
+                html = gMovieHTML;
                 break;
             case 'id-footer6':
-                if (musicHTML === '') {
+                if (gMusicHTML === '') {
                     let url = `${gMainPath}/ASSETS/TRIVIA/music.txt`;
-                    musicHTML = await fetchCode(url);
+                    gMusicHTML = await fetchCode(url);
                 };
-                html = musicHTML;
+                html = gMusicHTML;
                 break;
             case 'id-footer7':
-                if (showHTML === '') {
+                if (gShowHTML === '') {
                     let url = `${gMainPath}/ASSETS/TRIVIA/show.txt`;
-                    showHTML = await fetchCode(url);
+                    gShowHTML = await fetchCode(url);
                 };
-                html = showHTML;
+                html = gShowHTML;
                 break;
             case 'id-footer8':
-                if (testimonialHTML === '') {
+                if (gTestimonialHTML === '') {
                     let url = `${gMainPath}/ASSETS/TRIVIA/testimonial.txt`;
-                    testimonialHTML = await fetchCode(url);
+                    gTestimonialHTML = await fetchCode(url);
                 };
-                html = testimonialHTML;
+                html = gTestimonialHTML;
                 break;
             case 'id-footer9':
-                if (ministryHTML === '') {
+                if (gMinistryHTML === '') {
                     let url = `${gMainPath}/ASSETS/TRIVIA/ministry.txt`;
-                    ministryHTML = await fetchCode(url);
+                    gMinistryHTML = await fetchCode(url);
                 };
-                html = ministryHTML;
+                html = gMinistryHTML;
                 break;
-            case 'id-searchImg':
-                if (searchHTML === '') {
+            case 'id-searchImg10':
+                if (gSearchHTML === '') {
                     let url = `${gMainPath}/ASSETS/search.txt`;
-                    searchHTML = await fetchCode(url);
+                    gSearchHTML = await fetchCode(url);
                 };
-                html = searchHTML;
+                html = gSearchHTML;
                 searchVerses = gAllVerses[gAllVersesIDX];
                 break;
             default:
@@ -445,15 +444,23 @@ function sharePage() {
         pushPage();
         changePage(html);
         closeFooter();
-        if (id === 'id-searchImg') {
+
+        if (id === 'id-searchImg10') {
             gFooterOpen = false;
-            document.getElementById('id-footer').style.display = 'none';
+            //document.getElementById('id-footer').style.display = 'none';
             document.getElementById('id-localSearch').focus();
-            document.getElementById('id-toTop').style.display = 'block';
+            //document.getElementById('id-toTop').style.display = 'block';
             addSearchEvents();
         } else {
             if(gSettingsOpen === true) { openSettings(); };
         };
+
+        replacePage();
+        gFooterOpen = false;
+        document.getElementById('id-footer').style.display = 'none';
+        //document.getElementById('id-localSearch').focus();
+        document.getElementById('id-toTop').style.display = 'block';
+        return Promise.resolve(true);
     };
 
     function changePage(html) {
@@ -469,11 +476,11 @@ function sharePage() {
 
     function pushPage() {
 
-        stateObject.innerHTML.push(document.getElementById('id-mainText').innerHTML);
-        stateObject.variablesHTML.push(document.getElementById('id-variableScript').innerHTML);
-        window.history.pushState(stateObject, null, null);
+        gStateObject.innerHTML.push(document.getElementById('id-mainText').innerHTML);
+        gStateObject.variablesHTML.push(document.getElementById('id-variableScript').innerHTML);
+        window.history.pushState(gStateObject, null, null);
         document.getElementById('top').scrollIntoView(true);
-        astate++;
+        gState++;
     };
 
     function replacePage() {
@@ -483,10 +490,10 @@ function sharePage() {
         if (gChapterNumber) { url.searchParams.set('gChapterNumber', gChapterNumber); };
         if (gVersionID) { url.searchParams.set('gVersionID', gVersionID); };
         if (gRandomVerseIDX) { url.searchParams.set('gRandomVerseIDX', gRandomVerseIDX); };
-
+        if (gPageID) { url.searchParams.set('gPageID', gPageID); };
         //if (gRandomSearchIsHighlighted) { url.searchParams.set('gRandomSearchIsHighlighted', gRandomSearchIsHighlighted); };
 
-        window.history.replaceState(stateObject, null, url.toString());
+        window.history.replaceState(gStateObject, null, url.toString());
     };
 
     function navBack(){
@@ -496,17 +503,18 @@ function sharePage() {
         window.history.back();
     };
 
+    function headerPage() { window.location.href = `${gMainPath}index.html`; };
 
     window.addEventListener('popstate', (event) => {
 
-        if (astate > 0) {
+        if (gState > 0) {
             removeItems('id-mainText');
             removeItems('id-variableScript');
-            astate--;
-            document.getElementById('id-mainText').insertAdjacentHTML("afterbegin", stateObject.innerHTML[astate]);
-            document.getElementById('id-variableScript').insertAdjacentHTML("afterbegin", stateObject.variablesHTML[astate]);
-            stateObject.innerHTML.pop();
-            stateObject.variablesHTML.pop();
+            gState--;
+            document.getElementById('id-mainText').insertAdjacentHTML("afterbegin", gStateObject.innerHTML[gState]);
+            document.getElementById('id-variableScript').insertAdjacentHTML("afterbegin", gStateObject.variablesHTML[gState]);
+            gStateObject.innerHTML.pop();
+            gStateObject.variablesHTML.pop();
 
             if (document.getElementById('id-chapterPage')) {
                 if (gFont === 0) {
@@ -525,6 +533,6 @@ function sharePage() {
             document.getElementById('top').scrollIntoView(true);
         };
         if (document.getElementById('id-searchPage')) { addSearchEvents(); search(); };
-        if (astate === 0) { document.getElementById('id-randomContainer').style.display = 'block'; };
+        if (gState === 0) { document.getElementById('id-randomContainer').style.display = 'block'; };
     });
 // #endregion Scripts for files in the ASSETS folder such as about.txt, mission.txt, statement.txt, etc

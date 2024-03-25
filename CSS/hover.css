@@ -1,4 +1,5 @@
-.cs-cp-hover  { cursor: pointer; }
+.cs-cp-hover,
+.cs-title  { cursor: pointer; }
 .cs-menu1:hover,
 .cs-menu2:hover,
 .cs-menu3:hover,

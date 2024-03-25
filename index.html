@@ -15,50 +15,68 @@
 
     <script id="id-variableScript">
         // All Global variables are prefixed with "g"
-        // This script contains global variables that load before all other Javascript links.
-        var gAllVerses = []; // Array that holds all verse arrays for each Bible Version verses.json file, that's loaded as each version is fetched
-        var gAllVersesCount = 0; // Count of all verse.json files loaded
-        var gAllVersesIDX = 0; // Active index for the gAllVerses[] array of the verses.json files
-        var gBookID = 0;  // Active id key from either the oldBooks or newBooks array
-        var gBookSorted = 0;
-        var gChapterNumber = 0;  // Active chapter number of Bible Book's active chapter
-        var gFooterOpen = false;  // Footer container is either opened or closed
-        var gListOpen = false;  // Dropdown boxes are either opened or closed
-        var gMainPath = '';  // Contains the main path to all the externat page links, Don't change its value unless the host location changes
 
-        var gRandomSearchIsHighlighted = 0; // Random Verses highlighted in changeBook(); No = 0 yes = 1
-        var gRandomVerseIDX = 0; // Verse index for the first random verse in three random verses
-        var gRandomQuery = 0; // Three random verses were read from a querystring No = 0, Yes = 1;
+        // #region Global variables that load at startup.
+            var gAllVerses = []; // Array that holds all verse arrays for each Bible Version verses.json file, that's loaded as each version is fetched
+            var gAllVersesCount = 0; // Count of all verse.json files loaded
+            var gAllVersesIDX = 0; // Active index for the gAllVerses[] array of the verses.json files
+            var gBookID = 0; // Active id key from either the oldBooks or newBooks array
+            var gBookSorted = 0;
+            var gChapterNumber = 0; // Active chapter number of Bible Book's active chapter
+            var gFooterOpen = false; // Footer container is either opened or closed
+            var gListOpen = false; // Dropdown boxes are either opened or closed
+            var gMainPath = ''; // Contains the main path to all the externat page links, Don't change its value unless the host location changes
+            var gRandomSearchIsHighlighted = 0; // Random Verses highlighted in changeBook(); No = 0 yes = 1
+            var gRandomVerseIDX = 0; // Verse index for the first random verse in three random verses
+            var gRandomQuery = 0; // Three random verses were read from a querystring No = 0, Yes = 1;
+            var gSelectedVerse = ''; // ID for a verse that has been selected in the selectVerse() function
+            var gSettingsOpen = false; // settingsContainer is either visible or not
+            var gStartup = true; // True when the page is first loaded
+            var gFont = 0; // Contains the initial font size: 0 = default fontSize
+            var gTheme = 0; // Active theme number: 1 = default theme, 2 = dark theme
+            var gVerseCount = 31; // Number of verses in active chapter
+            var gVerseHighlightedID = ''; // ID of the first verse highlighted
+            var gVerseIsHighlighted  = ''; // Chapter to load comes from readSearch(); Default = '', Yes = 1
+            var gVersionID = 0; // Record id for the active versions[] array
+            var gVersionIDX = 0; // Active index for the versions[] array
+        // #endregion Global variables that load at startup.
 
-        var gSelectedVerse = ''; // ID for a verse that has been selected in the selectVerse() function
-        var gSettingsOpen = false;  // settingsContainer is either visible or not
-        var gStartup = true; // True when the page is first loaded
-        var gFont = 0;  // Contains the initial font size: 0 = default fontSize
-        var gTheme = 0; // Active theme number: 1 = default theme, 2 = dark theme
-        var gVerseCount = 31; // Number of verses in active chapter
-        var gVerseHighlightedID = ''; // ID of the first verse highlighted
-        var gVerseIsHighlighted  = '';  // Chapter to load comes from readSearch(); Default = '', Yes = 1
-        var gVersionID = 0; // Record id for the active versions[] array
-        var gVersionIDX = 0; // Active index for the versions[] array
+        // #region Global variables for the page() function
+            var gStateObject = { innerHTML: [], variablesHTML: [] };  // gStateObject is used by the window.history to keep track of navigating between the single page application(SPA)
+            var gState = 0;  // gState stores the current index of the arrays in the gStateObject
+            var gPageID = 0;  // Numerical suffix for the html element id attribute of the element clicked that is calling the page() function
+            var gAboutHTML = '';
+            var gMenuHTML = '';
+            var gMinistryHTML = '';
+            var gMissionHTML = '';
+            var gMovieHTML = '';
+            var gMusicHTML = '';
+            var gSearchHTML = '';
+            var gShareHTML = '';  // Not used Yet
+            var gShowHTML = '';
+            var gStatementHTML = '';
+            var gTestimonialHTML = '';
+        // #endregion Global variables for the page() function
     </script>
 
-    <script id="id-pageScript">
+    <!--<script id="id-pageScript">
         // Global variables for the page() function
-        var stateObject = { innerHTML: [], variablesHTML: [] };// stateObject is used by the window.history to keep track of navigating between the single page application(SPA)
-        var astate = 0; // astate stores the current index of the arrays in the stateObject
-        var aboutHTML = '';
-        var menuHTML = '';
-        var ministryHTML = '';
-        var missionHTML = '';
-        var movieHTML = '';
-        var musicHTML = '';
-        var searchHTML = '';
-        var shareHTML = '';
-        var showHTML = '';
-        var statementHTML = '';
-        var testimonialHTML = '';
-        var variablesHTML = '';
-    </script>
+        var gStateObject = { innerHTML: [], variablesHTML: [] };// gStateObject is used by the window.history to keep track of navigating between the single page application(SPA)
+        var gState = 0; // gState stores the current index of the arrays in the gStateObject
+        var gPageID = 0;  // Numerical suffix for the html element id attribute of the element clicked that is calling the page() function
+        var gAboutHTML = '';
+        var gMenuHTML = '';
+        var gMinistryHTML = '';
+        var gMissionHTML = '';
+        var gMovieHTML = '';
+        var gMusicHTML = '';
+        var gSearchHTML = '';
+        var gShareHTML = ''; // Not used Yet
+        var gShowHTML = '';
+        var gStatementHTML = '';
+        var gTestimonialHTML = '';
+        //var gVariablesHTML = '';
+    </script>-->
 
     <script id="id-searchScript">
         // Script contains global variables for elasticlunr search.js file
@@ -89,8 +107,8 @@
 <body id="id-body" onclick="ncbClose()">
 
     <div id="id-header" class="cs-header">
-        <h1 id="id-title" class="cs-title">New Christian Bible</h1>
-        <svg id="id-searchImg" class="cs-cp-hover cs-searchImg" onclick="page()" title="Search"
+        <h1 id="id-title" class="cs-title" onclick="headerPage()">New Christian Bible</h1>
+        <svg id="id-searchImg10" class="cs-cp-hover cs-searchImg" onclick="page()" title="Search"
             fill="currentColor" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
         </svg>
     </div>

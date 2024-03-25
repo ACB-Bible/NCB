@@ -157,7 +157,7 @@
 
         pushPage();
         removeItems('id-mainText');
-        document.getElementById('id-mainText').insertAdjacentHTML("afterbegin", menuHTML);
+        document.getElementById('id-mainText').insertAdjacentHTML("afterbegin", gMenuHTML);
 
         if (gBookID < 40) { book = oldBooks; } else { book = newBooks; };
         let idx = book.findIndex(books => Number(books.id) === Number(gBookID));

@@ -33,9 +33,13 @@ async function inTheBeginning() {
     if (!gVersionID) { gVersionID = 1; };  // gVersionID: 1 = Twenty-First Century Version TWF, 5 = KJV
     gVersionIDX = versions.findIndex(vrsn => Number(vrsn.id) === Number(gVersionID));
     gBookID = Number(urlParams.get('gBookID'));
-    if (!gBookID) { gBookID = 1 };
+    if (!gBookID) { gBookID = 1; };
     gChapterNumber = Number(urlParams.get('gChapterNumber'));
-    if (!gChapterNumber) { gChapterNumber = 1 };
+    if (!gChapterNumber) { gChapterNumber = 1; };
+
+    gPageID = Number(urlParams.get('gPageID'));
+    if (!gPageID) { gPageID = 0; };
+
     if (urlParams.has('gRandomVerseIDX')) { gRandomVerseIDX =  Number(urlParams.get('gRandomVerseIDX')); };
 
     document.getElementById('id-defaultVersionSpan').textContent = versions[gVersionIDX].ar;
@@ -46,13 +50,23 @@ async function letThereBeLight() {
     let res = false;
     res = await loadVersions();
 
-    if (res) { loadBooks() };
-    if (res) { loadChapters() };
-    if (res) { loadVerses() };
+    if (res) { loadBooks(); };
+    if (res) { loadChapters(); };
+    if (res) { loadVerses(); };
     if (res) { res = await changeVersion(gVersionID); };
-    if (res) { applyDefaultFont() };
-    if (res) { applyTheme() };
-    if (res) { menuHTML = document.getElementById('id-mainText').innerHTML; };
+    if (res) { applyDefaultFont(); };
+    if (res) { applyTheme(); };
+    if (res) { gMenuHTML = document.getElementById('id-mainText').innerHTML; };
+    if (res) {
+        if (gPageID) {
+            let pg = await page(true);
+            gFooterOpen = false;
+            document.getElementById('id-footer').style.display = 'none';
+            document.getElementById('id-toTop').style.display = 'block';
+            if (pg) { document.getElementById('id-leftArrow').style.display = 'none'; };
+            gPageID = 0;
+        };
+    };
 };
 
 async function loadVersions() {
